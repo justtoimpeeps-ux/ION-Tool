@@ -1,0 +1,698 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ION · Orinda Campus Planner</title><style>
+:root{color-scheme:dark;--bg:#0a111c;--panel:#172435;--border:#34475d;--muted:#a8bacb;--accent:#67d8cd}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:#edf4fb;font:13px system-ui,Segoe UI,Arial}header{padding:12px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:12px}h1{margin:0;font-size:19px}h2{font-size:14px;margin:0 0 10px}small,.muted{color:var(--muted)}button,select,input{font:inherit;color:inherit;background:#22364c;border:1px solid #516782;border-radius:6px;padding:7px 9px}button{cursor:pointer}button:hover{background:#324f6b}button:disabled{opacity:.4;cursor:default}.red{background:#77333c;border-color:#bc6871}.accent{background:#146e68;border-color:#42bdb1}#shell{display:grid;grid-template-columns:290px minmax(350px,1fr) 325px;height:calc(100vh - 66px)}aside{padding:12px;overflow:auto;background:#111d2b;border-right:1px solid var(--border)}aside.right{border-right:0;border-left:1px solid var(--border)}section{background:var(--panel);padding:11px;border:1px solid var(--border);border-radius:9px;margin-bottom:11px}label{display:block;color:#c5d4e5;margin:7px 0 4px}.two{display:grid;grid-template-columns:1fr 1fr;gap:6px}.toolbar{display:flex;gap:5px;flex-wrap:wrap}.toolbar button{padding:6px 8px}.toolbar button.selected{background:#0d7e75;border-color:#78eade}.row{display:flex;gap:7px;align-items:center;justify-content:space-between;margin:7px 0}.num{font-variant-numeric:tabular-nums}.stat{font-size:18px;font-weight:700;color:#82eadc}main{min-width:0;display:flex;flex-direction:column;background:#0c1725}#tabs{display:flex;overflow:auto;gap:5px;padding:8px 10px;border-bottom:1px solid var(--border)}#tabs button.active{background:#19766d}#mapScroll{position:relative;flex:1;min-height:200px;overflow:auto}canvas{display:block;cursor:crosshair;image-rendering:auto}#legend{padding:7px 10px;border-top:1px solid var(--border);color:var(--muted);display:flex;gap:14px;flex-wrap:wrap}#tooltip{position:fixed;z-index:10;pointer-events:none;background:#060a11;box-shadow:0 7px 22px #000b;border:1px solid #7893aa;padding:9px;border-radius:6px;max-width:330px;display:none;line-height:1.55}#tooltip b{color:#87f5dc}.dot{width:10px;height:10px;border-radius:50%;display:inline-block;border:1px solid #8c9cac}.scrollList{max-height:210px;overflow:auto;border:1px solid var(--border);border-radius:5px}.item{padding:7px;border-bottom:1px solid #324257;cursor:pointer}.item:hover,.item.active{background:#30445b}.good{color:#80e4a5}.warn{color:#ffcb72}.bad{color:#ff8d90}.tag{display:inline-block;font-size:10px;padding:2px 5px;border:1px solid #54657b;border-radius:4px;color:#c6d3df;margin:2px}#diag{max-height:225px;overflow:auto}#diag p{margin:6px 0}.flowline{color:#80decf}#file{display:none}details summary{cursor:pointer;color:#9bdaf1}#status{font-size:12px;color:#c5d4e5;padding:6px 11px;border-top:1px solid #36495c}@media(max-width:900px){#shell{grid-template-columns:230px minmax(250px,1fr)}.right{grid-column:1 / -1;max-height:350px;border-top:1px solid var(--border)}#shell{height:auto}main{height:70vh}}
+
+:root{--bg:#0b121b;--panel:#142131;--border:#2b4053;--muted:#94aabd;--accent:#68e3bc}body{font-family:Inter,system-ui,Segoe UI,sans-serif}header{min-height:82px;background:linear-gradient(110deg,#142c39,#101b2a);padding:16px 24px}h1{font-size:23px;letter-spacing:1.5px}header small{display:block;margin-top:5px;letter-spacing:.6px;font-size:11px}h2{font-size:12px;letter-spacing:.8px;color:#d3e7ee}#shell{height:calc(100vh - 82px);grid-template-columns:285px minmax(350px,1fr) 355px}aside{padding:14px;background:#0f1a27}section{padding:14px;border-radius:8px;margin-bottom:13px;box-shadow:0 5px 15px #0001}button{transition:background .15s;min-height:33px}button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid #75e3c2;outline-offset:3px}input[type=number]{width:100%;margin-bottom:7px}small{line-height:1.6}#tabs{padding:10px;background:#101e2c}#tabs button{white-space:nowrap;font-size:12px}.mapbar{padding:12px 15px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);font-size:11px;letter-spacing:1px;background:#132331}.mapbar small{margin-left:12px;letter-spacing:0}.mapbar label{margin:0;display:flex;align-items:center;gap:7px;font-size:11px}.mapbar input{width:90px;padding:0;accent-color:#6ce1be}#floor{width:2062.5px;height:1312.5px}.eyebrow{font-size:10px;color:#9ab7bd;letter-spacing:1px}.output-number{font-size:46px;font-weight:700;line-height:1.3;color:#8ef1c6;font-variant-numeric:tabular-nums}#summary{padding-bottom:14px;border-bottom:1px solid var(--border)}.stage{margin:15px 0}.stage .row{font-size:11px;align-items:start}.stage strong{color:#b4ead8;white-space:nowrap}.stage small{font-size:10px}.meter{height:5px;background:#273a4a;border-radius:3px;overflow:hidden}.meter i{display:block;height:100%;background:#58bca4}#stages{max-height:410px;overflow:auto;padding-right:5px}.handoff{padding:10px 0;border-bottom:1px solid var(--border);font-size:11px}.handoff small{display:block;margin:4px 0}.handoff div{display:flex;justify-content:space-between;gap:8px;margin:5px 0}.handoff strong{white-space:nowrap;color:#85d9ca}.job{display:grid;gap:4px;padding:8px 0;border-bottom:1px solid var(--border);font-size:11px}.job b{color:#c2d5e0;font-weight:500}.refit{margin:14px 0;padding:12px;border:1px solid #437467;border-radius:7px;background:#12332f}.refit p{margin:7px 0;color:#91e1bd}.refit button{display:block;margin-top:9px;width:100%}#diag p{padding:8px;background:#3b302026;border-left:2px solid #bd9451;font-size:11px}#selection{line-height:1.55}#legend{font-size:11px}#status{line-height:1.5;min-height:42px}.toolbar{gap:6px}.toolbar button{font-size:11px}#saveState{font-size:11px;color:#88ccb2}#handoffs{max-height:350px;overflow:auto}
+@media(max-width:1100px){#shell{grid-template-columns:245px minmax(280px,1fr) 300px}.mapbar small{display:none}}
+@media(max-width:900px){#shell{height:auto;grid-template-columns:230px minmax(250px,1fr)}aside.right{grid-column:1/-1;max-height:none;display:grid;grid-template-columns:1fr 1fr;gap:12px}.right section{margin:0}.mapbar{flex-wrap:wrap;gap:8px}main{height:75vh}header{padding:12px;gap:8px;flex-wrap:wrap}}
+@media(max-width:560px){#shell{display:flex;flex-direction:column}aside{max-height:330px}main{height:70vh;min-height:400px}aside.right{display:block;max-height:none}.right section{margin-bottom:12px}h1{font-size:18px}}
+select{max-width:100%;width:100%}.block{display:block;margin:6px 0}h3{font-size:12px;margin:18px 0 8px}.recipe{margin:12px 0;padding:10px;background:#0b1825;border-radius:6px}.recipe div{display:flex;justify-content:space-between;gap:12px;padding:3px 0;font-size:11px}.recipe b{white-space:nowrap}.tag button{padding:0 4px;min-height:0;margin-left:4px;background:transparent;border:0}.reference-output{padding:10px;margin-bottom:16px;background:#203c42;border:1px solid #3e6966;border-radius:6px;display:grid;gap:5px}.reference-output span{font-size:11px;color:#9ec5c5}.reference-output b{color:#cef6e3;font-size:17px}a{color:#8be6cf}#jobs{max-height:180px;overflow:auto}#inventory{max-height:300px;overflow:auto}#feeds{max-height:330px;overflow:auto;padding-right:8px}#areaInfo{font-size:11px}#tabs button{white-space:nowrap}header h1{font-size:22px}#summary small{display:block}#selection .tag{padding:4px}#legend{gap:10px}#file{display:none}button[hidden]{display:none}
+
+canvas{touch-action:none}
+
+.flow-chip{display:inline-flex;align-items:center;gap:5px;font-size:10px;margin:3px 6px 3px 0;color:#c5d8e3}.flow-chip i{display:inline-block;width:12px;height:3px;flex-shrink:0}#flowKey{max-height:150px;overflow:auto;margin:6px 0}
+body{height:100vh;display:flex;flex-direction:column}header{display:grid;grid-template-columns:1fr auto;gap:12px;flex:0 0 auto}.top-actions{grid-column:1/-1;display:flex;gap:8px;align-items:center;flex-wrap:wrap}.top-actions label{margin:0}.top-actions select{width:auto;max-width:180px}#shell{height:auto;flex:1;min-height:0}#skillLegend{display:flex;gap:8px;align-items:center;font-size:10px}#skillLegend span{display:flex;align-items:center;gap:4px}#skillLegend i{width:8px;height:8px;display:inline-block;border-radius:50%;border:1px solid #7b8fa0}dialog{background:#132331;color:#edf4fb;border:1px solid #49667d;border-radius:10px;width:min(850px,95vw);max-height:85vh;overflow:auto;padding:22px}dialog::backdrop{background:#07111bd9}.pool-worker{display:flex;justify-content:space-between;gap:15px;padding:9px;border-bottom:1px solid #2b4053;font-size:11px}.pool-worker small{display:block}.pool-worker select{width:100px}.tag select{width:48px;padding:2px;font-size:10px;display:inline-block;margin-left:4px}#workforceRoles{display:grid;grid-template-columns:1fr 1fr;gap:0 20px}@media(max-width:900px){header{grid-template-columns:1fr}.top-actions{grid-column:1}.top-actions select{max-width:140px}#shell{overflow:auto;flex-shrink:0}#skillLegend{flex-wrap:wrap}}
+</style></head><body>
+<header><div><h1>ION // ORINDA <span style="color:#68e3bc">CAMPUS PLANNER</span></h1><small>IE-4 ENGINE PROGRAM · A+B current output: 247 / normal 9-hour day · Factory C non-producing</small></div><div><button id="test" class="accent">▶ Test Campus</button> <button id="reset">Restore Register Layout</button></div><div class="top-actions"><button id="save">Save plan</button><label for="scope">Export</label><select id="scope"><option value="building">This building</option><option value="area">Selected area</option><option value="campus">Entire campus</option></select><select id="author" aria-label="Planner"><option>Corey</option><option>Joe</option><option>Josh</option></select><button id="export">Export JSON</button><button id="import">Import JSON</button><input id="file" type="file" accept=".json,application/json" hidden><button id="legacy" hidden>Previous plan</button><button id="workforce">Workforce</button><div id="skillLegend"></div></div></header>
+<div id="shell"><aside>
+<section><h2>Layout tools <button id="undo" class="red" style="float:right">↶ Undo</button></h2><div class="toolbar" id="tools"></div><label for="catalog">Equipment catalog</label><select id="catalog"></select><div class="two"><div><label for="cargo">Belt / storage cargo</label><select id="cargo"></select></div><div><label>Direction</label><button id="rotate">Rotate →</button></div></div><small id="toolhint">Inspect: click to view, or drag equipment, storage, and path tiles to move them. Area selects a rectangle for export. Belt, cart and walk tools paint paths by dragging.</small></section>
+<section><h2>Campus footprint</h2><div id="footprint"></div><details><summary>Registered equipment reconciliation</summary><div id="inventory"></div></details></section>
+<section><h2>Implementation plan</h2><div class="row"><span>Capital / work estimate</span><b id="cost" class="stat">0 Cr</b></div><div class="row"><span>Sequential installation</span><b id="days">0 days</b></div><small>Planning quotes use industrial analogues, not confirmed supplier prices. Costs accumulate for proposed changes; no campaign time or cash is spent.</small><div id="jobs"></div></section>
+<section><h2>Collaborative blueprints</h2><p id="areaInfo" class="muted">Choose Area, then drag to select a work area.</p><small>Save and export are on the top bar. Imports validate before confirmation. Area imports preserve everything outside the rectangle. Scoped work quotes merge once by work ID.</small><p id="saveState" class="muted"></p></section>
+<section><h2>Flow display</h2><label><input id="showFlow" type="checkbox" checked> Show routed cargo</label><label><input id="spreadFlow" type="checkbox" checked> Separate material lanes</label><div id="flowKey"></div><select id="flowMaterial"><option value="all">All materials</option></select><small>Materials use separate coloured lanes; matching duplicate route lines are combined. Arrowheads show direction. Cyan access squares are building inputs; amber squares are outputs. Receiving, local paths and interbuilding handoffs all count toward transport limits.</small></section>
+<section><h2>Operating scenario</h2><label for="warmupDays">Forecast basis</label><select id="warmupDays"><option value="2">Warmed model · 2 simulated startup days</option><option value="0">Cold start · empty machine buffers</option></select><small>Warm-up days are calculation only: no campaign time or real stock is created.</small><label for="hours">Operating hours / day</label><input id="hours" type="number" min="1" max="24" step=".5" value="9"><label for="dockCapacity">Shared cargo handling / building pair / normal day</label><input id="dockCapacity" type="number" min="0" value="2000"><details><summary>Planned daily inbound deliveries</summary><div id="feeds"></div></details><small>Defaults cover the documented 247/day reference plus 10% delivery headroom. These are assumed deliveries, not verified warehouse stock. Overtime scales candidate capacity; wages use an explicit planning estimate.</small></section>
+</aside>
+<main><div class="mapbar"><span>BUILDING FLOOR <small>2 m × 2 m squares</small></span><label>Zoom <input id="zoom" type="range" min="35" max="150" value="100" step="5"><b id="zoomLabel">100%</b></label></div><div id="tabs"></div><div id="mapScroll"><canvas id="floor"></canvas></div><div id="legend"><span>■ Equipment</span><span style="color:#f2ca73">→ Belt: 280</span><span style="color:#8eacde">▬ Cart: 145</span><span style="color:#a9a8a1">▬ Walk: 22</span><span>cargo volume / normal day</span></div><div id="status">Register-based campus layout. Test Campus forecasts a scenario; the observed 247/day remains a separate reference.</div></main>
+<aside class="right"><section><h2>Equipment / storage details</h2><div id="selection" class="muted">Select equipment to inspect its recipe, workers and upgrade options.</div></section><section><h2>Production dashboard</h2><div id="summary"></div><div id="stages"></div></section><section><h2>Interbuilding cargo flow</h2><div id="handoffs">Run Test Campus.</div></section><section><h2>Diagnostics</h2><div id="diag">No scenario tested.</div></section><section><h2>Source and assumptions</h2><p>Counts: register §7A. Inputs: §§8C, 11. Dependencies: §§10, 12. Stage reference: §§13–14. Workforce: §4A.</p><small>Task assignments within categories, machine dimensions, worker levels, loading volume, cycle distribution and upgrade quotes are planning assumptions. Per-station rates distribute the register’s candidate annual stage caps using 365 nine-hour operating days; the operating calendar remains unverified. No annual cap is presented as a measured cycle time. Stock and WIP stage quantities are unresolved: the ~750 campus WIP is not invented as finished or usable inventory.</small><details><summary>Read source reconciliation</summary><pre style="white-space:pre-wrap;max-height:400px;overflow:auto;font:11px system-ui"># Orinda campus: source reconciliation
+
+The user confirms that the current inefficient **A+B campus produces approximately 247 certified engines per normal nine-hour operating day**. This is an operating reference, not a target used to manufacture equipment counts. Factory C is non-producing.
+
+Source: [uploaded consolidated register](sources/ION_Consolidated_Assets_Register.docx), with a [searchable text extraction](sources/ION_Consolidated_Assets_Register.txt). The filename describes a 2026-10-13 organization update; its internal header says Working V2, 12 October 2026, Day 0. Its own qualifications about unresolved engineering and stock data are recorded as source facts, not treated as instructions to the developer.
+
+## Equipment: §7A
+
+| Category | Registered A | Registered B | Campus |
+| --- | ---: | ---: | ---: |
+| Precision machining / mill-turn | 155 | 145 | 300 |
+| Casting / forging / forming | 35 | 33 | 68 |
+| Heat treatment / vacuum processing | 44 | 42 | 86 |
+| Robotic assembly / integration | 88 | 84 | 172 |
+| Test / calibration / acceptance | 42 | 40 | 82 |
+| Finishing / cleaning / coating | 31 | 29 | 60 |
+| Packaging / palletizing | 18 | 18 | 36 |
+| Fabrication / toolroom / maintenance | 65 | 65 | 130 |
+| **Fixed stations** | **478** | **456** | **934** |
+| Mobile handling units (not additional stations) | 80 | 80 | 160 |
+
+The earlier generated 404-station fleet is superseded. Asset ownership remains A/B even after physical relocation into shared buildings. Station counts do not infer output rates.
+
+## Campus allocation: user clarification and image
+
+The six editable floors are:
+
+- Receiving: one central receiving/raw-material warehouse. The 20 input-material bins are modeled infrastructure, not additional production machines.
+- Factory A and Factory B: upstream forming, heat processing, finishing and local toolroom/support work, retaining their registered near-half inventory split.
+- Subassemblies: one shared building for the seven other assembly sets and complete eight-set kitting.
+- Precision Machining: one shared hall containing all 300 registered machining centres, operating on the complete kit according to §12.
+- Final Assembly &amp; Test: one shared building containing final integration, calibration, certification, and modeled outbound packaging. The image&#x27;s shipping yard is downstream campus context, not a duplicated production fleet.
+
+Within the 172 assembly cells, seven subassembly processes, kitting and final integration have **provisional** task assignments whose sums equal 88 A and 84 B. Similarly, 82 test stands are provisionally divided into 39 calibration and 43 QA stands. The register does not resolve those assignments. The housing&#x27;s specific forming → heat processing → finishing sequence is a provisional task assignment of registered equipment; the exact housing material recipe is sourced.
+
+Buildings are measured after all assigned equipment, receiving bins, service gaps, port access and handling aisles are placed. Two metres per cell edge is fixed. Dimensions and resulting floor areas are estimates, not surveyed floorplans. Campus roads, yards, offices, utilities and Factory C are excluded from summed production-floor area.
+
+## Exact input quantities: §§8C, 11
+
+Every engine needs one of each of eight subassembly sets, simultaneously. Expanding those recipes gives:
+
+| Feed | kg per engine |
+| --- | ---: |
+| Iron | 203 |
+| Nickel | 118 |
+| Cobalt | 10 |
+| Chromium | 27 |
+| Copper | 7.5 |
+| Silver | 1.5 |
+| Gold | 0.72 |
+| Platinum-group metals | 0.28 |
+| Superconductors | 59 |
+| Technical ceramics | 75 |
+| Tibanna | 16 |
+| Electronics feedstock | 37 |
+| Coolant | 28 |
+
+Also required per engine: 12 field coils, 6 regulator modules, 18 seals, 4 processor modules, 8 interface couplers, 10 sensor modules and 2 safing modules. Their units are **each**, not kg. The thirteen mass feeds total 583 kg before the separately counted purchased modules. No material total is consumed again after the subassemblies are complete.
+
+The prototype&#x27;s generic fabricated plate input, one-unit iron input, and missing specialty materials are removed from this version&#x27;s recipes. Revised blueprints use `ION-campus-2` and cannot silently reinterpret legacy recipes.
+
+## Dependencies and throughput: §§10, 12–14
+
+Qualified refined feed and purchased components enter receiving → upstream housing processing and subassembly fabrication → all eight sets released as a complete kit → precision machining/integration → final assembly → calibration → QA/certification → packaging/dispatch.
+
+Mining, extraction and sequential refining remain external upstream references, not invented extra machines or immediately available inventories on the Orinda campus.
+
+| Candidate stage (A+B) | Source engines/year |
+| --- | ---: |
+| Receiving/kits | 112,000 |
+| Casting/forming | 105,000 |
+| Machining | 96,000 |
+| Subassembly builds | 100,000 |
+| Final integration | 94,000 |
+| Calibration / functional testing | 92,000 |
+| QA / certification | 90,000 |
+| Packaging / dispatch | 110,000 |
+
+The register explicitly calls these a **candidate constrained model**, not validated work-centre cycle measurements. QA&#x27;s 90k cap closes its existing sustainable baseline. For this version, candidate station rates divide those annual stage caps over assigned A+B equipment at a reference level-2 crew and 95% condition. The conversion uses 365 nine-hour operating days as a stated provisional calendar, matching roughly 247/day; individual employee schedules and the actual annual calendar remain unresolved. Heat/finish candidate rates reuse the casting-stage reference because no separate verified caps exist. They are not independently measured extra source capacities.
+
+Actual worker levels, condition, equipment upgrades, incomplete recipes, finite buffers and physical handling routes affect the separate candidate forecast. **The forecast is not overwritten with 247**, nor does a low forecast revise the user&#x27;s current operating fact. An unexplained mismatch identifies calibration/model work still needed. The baseline cold-start day is about 144.0 engines with empty machine buffers; its next modeled days stabilize at 245.6/day. The default forecast therefore uses two synthetic warm-up days and reports only the next nine-hour day. This simulates a warmed process rather than inventing the real distribution of the ~750 WIP. Warm-up does not advance campaign time or alter any real inventory ledger. The UI warns when the last two modeled daily outputs have not stabilized. The existing candidate bottleneck ladder is QA → calibration → integration → machining, followed by unresolved specialty feed and logistics constraints.
+
+## Workforce and inventory: §4A and §§8C, 12
+
+A operations: 1,500 (machining 550; assembly 420; handling 210; shift support 320). B operations: 1,450 (530; 405; 205; 310). ION&#x27;s testing/QA/safety group of 300 is shared, not copied into every building. Model worker assignments and skill distributions are provisional, not a verified roster; a staffing adjustment does not create real hires or silently move company headcount.
+
+Zero finished certified engines are confirmed at the opening reference. Roughly 750 WIP cores are campus-wide with unresolved stage counts. Raw and subassembly stock counts are unresolved. Consequently, this scenario begins with empty machine buffers and explicit planned stock settings; it does **not** turn the 750 WIP into usable finished kits or cores. Defaults for inbound deliveries cover 247 engines/day plus 10%, and are editable assumptions rather than an assertion about inventory or contracts.
+
+## Transport, upgrades, and planning economics
+
+Belts carry 280, carts 145 and walking routes 22 modeled cargo-volume units per normal nine-hour day. Pathfinding prefers efficient handling when a modest detour beats walking. Volume conversions and handling rates are planning assumptions. Incoming feeds visibly travel from receiving access points into bins, then through local output access and destination input access to workstations. No interbuilding transfer bypasses disconnected local access. Off-floor freight is represented as a shared building-pair handoff with a separately editable volume cap.
+
+Refit restores seven condition points. Precision tooling / quick-change fixtures add a candidate 15% speed at 12% of equipment purchase estimate and four installation days. Robotic loading/inspection assist adds 25% speed, reduces required operators by one (minimum one), costs 40% of the equipment estimate and takes eight days. These are real-world industrial analogues with **provisional quotes and performance**, not Star Wars lore claims or sourced supplier offers. Applying them changes a proposed finished layout; construction downtime is reported in the sequential work ledger, not simulated inside the normal production day. Overtime wage estimates use an explicit 25 Cr/hour, 1.5× assumption, separate from capital costs.
+
+## Preservation
+
+The original HTML remains at `/workspace/ion-reference/index.html`. The pre-register planner is archived at `/workspace/ion-reference/planner-before-register.tar.gz`. Its browser key `ion-factory-plan` is never overwritten; a download button appears when that older plan exists. The new campus saves independently under `ion-campus-2`.
+
+Scoped blueprints include cost/time quotes attributable to their building or fully contained work area. Import previews those quotes and merges distinct work IDs; repeated imports do not charge the same quoted job twice. Independent, differently identified proposals can overlap and should be reviewed by planners.
+
+## Interactive controls update
+
+Save, scope selection, export/import and Workforce are on the top bar. Inspect mode supports direct dragging of equipment, storage and explicit transport tiles; drive lanes are empty space for equipment placement and are removed beneath a moved footprint. All otherwise unoccupied floor is walkable by default. Building access squares remain fixed.
+
+Material routes use separated colour lanes with duplicate per-material edges combined. Each station tile shows its type/number, current/candidate-nameplate output and every input’s per-cycle quantity plus delivered/required quantity per selected day. Daily need is at candidate nameplate, not a claim that those deliveries occurred. Input and output colours are on the station edges; flexible stations show both on every edge.
+
+The new baseline uses varied editable staffing requirements by equipment type, rather than assuming two operators everywhere. The planning roster has 1,203 assigned and 2,047 unassigned people within the 3,250 source headcount (A+B operations plus shared QA/safety). Unassigned in this model does not mean those staff are genuinely idle: handling, shift support and safety roles still have other duties. T0–T5 skill distribution is an explicit assumption (5%, 30%, 35%, 22%, 6%, 2%, mean tier 2), not a register census. Required staffing and worker skills can be edited as scenario/roster corrections without implying training or elapsed campaign time. Assigning and releasing workers transfers existing identities to/from compatible-role pools; it does not create new employees. Undo, campus saves and scoped imports retain roster state.
+</pre></details></section></aside>
+</div><dialog id="workforceDialog"><div class="row"><h2>Workforce · planning roster</h2><button id="closeWorkforce">Close</button></div><div id="workforceTotals"></div><p class="muted">Headcount limits come from §4A: A+B operations 2,950 plus shared QA/safety 300. Unassigned here means not assigned to a modeled workstation, not verified idle staff. Shift support, logistics and safety duties still exist. Individual skills and station staffing are editable assumptions.</p><div id="workforceRoles"></div><div class="two"><div><label for="poolRole">Role</label><select id="poolRole"><option value="all">All roles</option></select></div><div><label for="poolTier">Skill</label><select id="poolTier"><option value="all">All tiers</option></select></div></div><div id="poolList"></div></dialog><div id="tooltip"></div><script>
+const INLINE_WORKER_SOURCE="/* Complete-recipe, finite-buffer planning solver. No campaign time is advanced. */\nconst FactoryEngine=(()=>{\n const EPS=1e-8;\n function modifiers(m,catalog={}){return (m.upgrades||[]).reduce((a,k)=>{const u=catalog[k];if(u){a.speed*=u.speed||1;a.workers+=u.workerReduction||0}return a},{speed:1,workers:0})}\n function requiredWorkers(m,specs,catalog={}){return Math.max(1,(m.staffingRequired??specs[m.type].workers)-modifiers(m,catalog).workers)}\n function staffing(m,specs,catalog={}){const crew=m.crew||[];return crew.length?Math.min(1,crew.length/requiredWorkers(m,specs,catalog))*(.65+Math.min(.35,crew.reduce((n,p)=>n+p.level,0)/crew.length*.07)):0}\n function effectiveRate(m,specs,catalog={}){return specs[m.type].rate*modifiers(m,catalog).speed*staffing(m,specs,catalog)*m.condition}\n function ratedRate(m,specs,catalog={}){return specs[m.type].rate*modifiers(m,catalog).speed}\n function pathCapacity(p){return p.kind==='belt'?280:p.kind==='cart'?145:22}\n function storageCap(s,materials){return Math.floor(s.w*s.h*8.8/materials[s.item].volume)}\n function topological(specs){const done=new Set(),order=[];while(order.length<Object.keys(specs).length){let progress=false;for(const [type,s]of Object.entries(specs)){if(done.has(type))continue;const deps=Object.keys(specs).filter(t=>Object.keys(specs[t].outputs).some(k=>Object.hasOwn(s.inputs,k)));if(deps.every(t=>done.has(t))){done.add(type);order.push(type);progress=true}}if(!progress)throw Error('Recipe cycle detected. A starting-inventory model is required.')}return order}\n function simulate(buildings,specs,materials,options={}){\n  const warmupDays=options.warmupDays||0,dailyOutputs=[];\n  const steps=options.steps||36,hours=options.hours??9,timeFactor=hours/9,catalog=options.upgrades||{},dockCap=(options.dockCapacity??2000)*timeFactor;\n  if(!Number.isInteger(warmupDays)||warmupDays<0||warmupDays>10||!Number.isInteger(steps)||steps<1||steps>1000||!Number.isFinite(hours)||hours<=0||hours>24)throw Error('Invalid simulation period.');\n  const supply={...(options.supply||{iron:3000,nickel:600})},remainingSupply={...supply};\n  const receiving=options.receiving,terminal=options.terminal||(materials.shipped?'shipped':'tested');\n  const all=[],stores=[],owners={},pathMaps={},machines={},stage={},stocks={},buffers={},traffic={},details={},sources={};\n  const routeCache=new Map(),pathCache=new Map(),routes=new Map(),links=new Map();\n  for(const [bn,b]of Object.entries(buildings)){\n   pathMaps[bn]=new Map();\n   if(options.implicitWalk){const occupied=new Set();for(const o of [...b.machines,...b.storage])for(let y=o.y;y<o.y+o.h;y++)for(let x=o.x;x<o.x+o.w;x++)occupied.add(x+','+y);for(let y=0;y<b.rows;y++)for(let x=0;x<b.cols;x++)if(!occupied.has(x+','+y))pathMaps[bn].set(x+','+y,{x,y,kind:'walk',dir:0})}\n   for(const p of b.paths)pathMaps[bn].set(p.x+','+p.y,p);traffic[bn]={};\n   for(const m of b.machines){all.push(m);owners[m.id]=bn;buffers[m.id]={};machines[m.id]=0;details[m.id]={capacity:effectiveRate(m,specs,catalog)*timeFactor,blocked:0,shortages:{},inputSupply:{},inputNeed:Object.fromEntries(Object.entries(specs[m.type].inputs).map(([item,n])=>[item,n*ratedRate(m,specs,catalog)*timeFactor]))};\n    for(const item of Object.keys(specs[m.type].outputs))(sources[item]??=[]).push(m);\n    const st=stage[m.type]??={rated:0,possible:0,actual:0,machines:0};st.rated+=specs[m.type].rate*modifiers(m,catalog).speed*timeFactor;st.possible+=details[m.id].capacity;st.machines++;\n   }\n   for(const s of b.storage){stores.push(s);owners[s.id]=bn;stocks[s.id]=Math.min(s.stock||0,storageCap(s,materials))}\n  }\n  const order=topological(specs),sorted=all.slice().sort((a,b)=>order.indexOf(a.type)-order.indexOf(b.type));\n  const vol=item=>materials[item].volume;\n  function ends(o,output){\n   if(o.points)return o.points;\n   if(o.type&&specs[o.type].port==='fixed'){const a=o.angle||0,sign=output?1:-1;if(a%2)return [[o.x+Math.floor(o.w/2),sign*(a===1?1:-1)>0?o.y+o.h:o.y-1]];return [[sign*(a===0?1:-1)>0?o.x+o.w:o.x-1,o.y+Math.floor(o.h/2)]]}\n   const out=[];for(let x=o.x;x<o.x+o.w;x++)out.push([x,o.y-1],[x,o.y+o.h]);for(let y=o.y;y<o.y+o.h;y++)out.push([o.x-1,y],[o.x+o.w,y]);return out;\n  }\n  function local(bn,source,target,item){\n   const id=bn+':'+source.id+'>'+target.id+':'+item;if(pathCache.has(id))return pathCache.get(id);\n   const map=pathMaps[bn],allowed=p=>p&&(p.kind!=='belt'||p.cargo===item),goals=new Set(ends(target,false).filter(([x,y])=>allowed(map.get(x+','+y))).map(p=>p.join(','))),queue=[],prev=new Map();\n   for(const p of ends(source,true)){const k=p.join(',');if(allowed(map.get(k))&&!prev.has(k)){queue.push(p);prev.set(k,null)}}\n   // Prefer efficient handling: a cart detour can beat a short walking route.\n   const distance=new Map(),heap=[];\n   function push(p,cost){let i=heap.length;heap.push({p,cost});while(i){const parent=(i-1)>>1;if(heap[parent].cost<=cost)break;heap[i]=heap[parent];i=parent}heap[i]={p,cost}}\n   function pop(){const top=heap[0],last=heap.pop();if(heap.length){let i=0;while(true){let child=i*2+1;if(child>=heap.length)break;if(child+1<heap.length&&heap[child+1].cost<heap[child].cost)child++;if(heap[child].cost>=last.cost)break;heap[i]=heap[child];i=child}heap[i]=last}return top}\n   for(const p of queue){distance.set(p.join(','),0);push(p,0)}\n   let found=null;while(heap.length){const {p:point,cost}=pop(),[x,y]=point,k=x+','+y,p=map.get(k);if(cost!==distance.get(k))continue;if(goals.has(k)){found=k;break}\n    for(const [dx,dy,d]of [[1,0,0],[0,1,1],[-1,0,2],[0,-1,3]]){const nk=(x+dx)+','+(y+dy),n=map.get(nk);if(!allowed(n)||p.kind==='belt'&&p.dir!==d||n.kind==='belt'&&n.dir!==d)continue;const next=cost+(n.kind==='belt'?1:n.kind==='cart'?2:8);if(next<(distance.get(nk)??Infinity)){distance.set(nk,next);prev.set(nk,k);push([x+dx,y+dy],next)}}\n   }\n   const cells=[];while(found!==null){cells.push(found.split(',').map(Number));found=prev.get(found)}const result=cells.length?{building:bn,cells:cells.reverse()}:null;pathCache.set(id,result);return result;\n  }\n  const dock=(bn,kind)=>({id:bn+'-'+kind,points:buildings[bn].docks?.[kind]||[]});\n  function route(source,target,item){\n   const id=source.id+'>'+target.id+':'+item;if(routeCache.has(id))return routeCache.get(id);\n   const from=owners[source.id],to=owners[target.id];let result;\n   if(from===to){const path=local(from,source,target,item);result=path?{segments:[path]}:null}\n   else if(buildings[from].docks&&buildings[to].docks){const a=local(from,source,dock(from,'output'),item),b=local(to,dock(to,'input'),target,item);result=a&&b?{dock:from+' \u2192 '+to,fromBuilding:from,toBuilding:to,segments:[a,b]}:null}\n   else result=options.requireDocks?null:{dock:from+' \u2192 '+to,fromBuilding:from,toBuilding:to,segments:[]};\n   routeCache.set(id,result);return result;\n  }\n  let loads,dockLoads;\n  function room(r,item,extra=new Map()){\n   let available=Infinity;\n   if(r.dock)available=(dockCap/steps-(dockLoads[r.dock]||0)-(extra.get('dock:'+r.dock)||0));\n   for(const seg of r.segments)for(const p of seg.cells){const k=p.join(','),id=seg.building+':'+k;available=Math.min(available,pathCapacity(pathMaps[seg.building].get(k))*timeFactor/steps-(loads[id]||0)-(extra.get(id)||0))}\n   return Math.max(0,available)/vol(item);\n  }\n  function reserve(r,item,amount,extra){if(r.dock){const id='dock:'+r.dock;extra.set(id,(extra.get(id)||0)+amount*vol(item))}for(const seg of r.segments)for(const p of seg.cells){const id=seg.building+':'+p.join(',');extra.set(id,(extra.get(id)||0)+amount*vol(item))}}\n  function record(source,target,item,amount,r){\n   if(amount<EPS)return;const id=source.id+'>'+target.id+':'+item;\n   for(const [i,seg]of r.segments.entries()){\n    const rid=id+':'+i;if(!routes.has(rid))routes.set(rid,{...seg,item,from:source.id,to:target.id,rate:0,interbuilding:!!r.dock});routes.get(rid).rate+=amount;\n    for(const p of seg.cells){const k=p.join(','),lid=seg.building+':'+k;loads[lid]=(loads[lid]||0)+amount*vol(item);const t=traffic[seg.building][k]??={total:0,items:{}};t.total+=amount*vol(item);t.items[item]=(t.items[item]||0)+amount}\n   }\n   if(r.dock){dockLoads[r.dock]=(dockLoads[r.dock]||0)+amount*vol(item);const l=links.get(r.dock)||{from:r.fromBuilding,to:r.toBuilding,total:0,items:{}};l.total+=amount*vol(item);l.items[item]=(l.items[item]||0)+amount;links.set(r.dock,l)}\n  }\n  const candidates=new Map();\n  for(const m of all)for(const item of Object.keys(specs[m.type].inputs)){\n   const list=[...stores.filter(s=>s.item===item),...(sources[item]||[])].filter(s=>s!==m);\n   const distance=s=>owners[s.id]===owners[m.id]?Math.abs(s.x-m.x)+Math.abs(s.y-m.y):100000;\n   list.sort((a,b)=>distance(a)-distance(b));candidates.set(m.id+':'+item,list);\n  }\n  function plan(m,units){\n   const transfers=[],raw={},extra=new Map(),missing=[];\n   for(const [item,n]of Object.entries(specs[m.type].inputs)){\n    let need=units*n;\n    if(!receiving&&Object.hasOwn(supply,item)){raw[item]=Math.min(need,remainingSupply[item]);need-=raw[item]}\n    else for(const source of candidates.get(m.id+':'+item)){\n     if(source===m||need<EPS)continue;const available=source.type?(buffers[source.id][item]||0):stocks[source.id];if(available<EPS)continue;\n     const r=route(source,m,item);if(!r)continue;const amount=Math.min(need,available,room(r,item,extra));if(amount<EPS)continue;\n     transfers.push({source,item,amount,r});reserve(r,item,amount,extra);need-=amount;\n    }\n    if(need>EPS)missing.push(item);\n   }\n   return {transfers,raw,missing};\n  }\n  for(let tick=0;tick<steps*(warmupDays+1);tick++){\n   if(tick&&tick%steps===0){\n    dailyOutputs.push(stage.qa?.actual??stage[sorted.at(-1)?.type]?.actual??0);\n    for(const m of all){machines[m.id]=0;details[m.id].blocked=0;details[m.id].shortages={};details[m.id].inputSupply={}}\n    for(const st of Object.values(stage))st.actual=0;\n    for(const bn of Object.keys(traffic))traffic[bn]={};routes.clear();links.clear();Object.assign(remainingSupply,supply);\n   }\n   loads={};dockLoads={};\n   if(receiving){for(const s of stores.filter(s=>owners[s.id]===receiving&&s.receiving)){\n    const item=s.item,source=dock(receiving,'input'),path=local(receiving,source,s,item);if(!path)continue;const r={segments:[path]};\n    const amount=Math.min((supply[item]||0)/steps,remainingSupply[item]||0,storageCap(s,materials)-stocks[s.id],room(r,item));\n    if(amount>EPS){stocks[s.id]+=amount;remainingSupply[item]-=amount;record(source,s,item,amount,r)}\n   }}\n   for(const m of sorted){\n    const sp=specs[m.type],detail=details[m.id];if(sp.support)continue;let max=detail.capacity/steps;\n    for(const [item,n]of Object.entries(sp.outputs))if(item!==terminal)max=Math.min(max,Math.max(0,sp.rate*.2-(buffers[m.id][item]||0))/n);\n    if(max+EPS<detail.capacity/steps)detail.blocked++;\n    let chosen=plan(m,max),amount=max;\n    if(chosen.missing.length){for(const item of chosen.missing)detail.shortages[item]=(detail.shortages[item]||0)+1;let lo=0,hi=max;for(let j=0;j<18;j++){const mid=(lo+hi)/2;if(plan(m,mid).missing.length)hi=mid;else lo=mid}amount=lo;chosen=plan(m,amount)}\n    if(amount>EPS){for(const [item,n]of Object.entries(chosen.raw))remainingSupply[item]-=n;\n     for(const t of chosen.transfers){if(t.source.type)buffers[t.source.id][t.item]-=t.amount;else stocks[t.source.id]-=t.amount;record(t.source,m,t.item,t.amount,t.r)}\n     for(const [item,n]of Object.entries(sp.inputs))detail.inputSupply[item]=(detail.inputSupply[item]||0)+amount*n;\n     machines[m.id]+=amount;stage[m.type].actual+=amount;for(const [item,n]of Object.entries(sp.outputs))if(item!==terminal)buffers[m.id][item]=(buffers[m.id][item]||0)+amount*n;\n    }\n    for(const [item,quantity]of Object.entries(buffers[m.id]))if(quantity>EPS)for(const s of stores.filter(s=>owners[s.id]===owners[m.id]&&s.item===item&&!s.receiving)){\n     const r=route(m,s,item);if(!r)continue;const send=Math.min(buffers[m.id][item],storageCap(s,materials)-stocks[s.id],room(r,item));if(send>EPS){stocks[s.id]+=send;buffers[m.id][item]-=send;record(m,s,item,send,r)}\n    }\n   }\n  }\n  const diagnostics=[];for(const m of all){if(specs[m.type].support)continue;const d=details[m.id],name=specs[m.type].name+' #'+m.number;\n   if(!m.crew.length)diagnostics.push(name+': no workers assigned.');\n   else if(d.blocked)diagnostics.push(name+': output buffer blocked in '+d.blocked+' of '+steps+' steps.');\n   for(const item of Object.keys(d.shortages))diagnostics.push(name+': constrained by '+materials[item].title+' supply or its route.');\n  }\n  dailyOutputs.push(stage.qa?.actual??stage[sorted.at(-1)?.type]?.actual??0);\n  return {warmupDays,dailyOutputs,machines,stage,stocks,buffers,traffic,details,diagnostics,routes:[...routes.values()],links:[...links.values()],remainingSupply,steps,hours};\n }\n return {simulate,staffing,requiredWorkers,effectiveRate,ratedRate,pathCapacity,storageCap,topological};\n})();\nif(typeof module!=='undefined')module.exports=FactoryEngine;\n\n// Keep the editor responsive while calculating the campus forecast.\n\nonmessage=({data})=>{\n try{postMessage({result:FactoryEngine.simulate(data.buildings,data.specs,data.materials,data.options)})}\n catch(error){postMessage({error:error.message})}\n};\n";
+
+function makeInlineWorker(){
+ const url=URL.createObjectURL(new Blob([INLINE_WORKER_SOURCE],{type:'text/javascript'}));
+ const worker=new Worker(url),terminate=worker.terminate.bind(worker);
+ worker.terminate=()=>{URL.revokeObjectURL(url);terminate()};
+ return worker;
+}
+
+/* Source facts are reference data. Register process caps are explicitly modeled,
+   not independently measured per-station cycles. User confirms 247/day is A+B. */
+const ION_REGISTER={
+  source:'ION Consolidated Assets Register, uploaded organization update 2026-10-13; document header Working V2, 12 October 2026',
+  observed:{enginesPerDay:247,scope:'A+B combined',source:'User clarification'},
+  sustainable:{enginesPerYear:90000,scope:'A+B combined',source:'§13; modeled sustainable reference'},
+  factories:{
+    'Factory A':{operations:1500,roles:{machining:550,assembly:420,handling:210,shiftSupport:320},counts:{machining:155,casting:35,heat:44,assembly:88,test:42,finishing:31,packaging:18,toolroom:65,movers:80}},
+    'Factory B':{operations:1450,roles:{machining:530,assembly:405,handling:205,shiftSupport:310},counts:{machining:145,casting:33,heat:42,assembly:84,test:40,finishing:29,packaging:18,toolroom:65,movers:80}}
+  },
+  categories:{machining:'Precision machining / mill-turn',casting:'Casting / forging / forming',heat:'Heat treatment / vacuum processing',assembly:'Robotic assembly / integration',test:'Test / calibration / acceptance',finishing:'Surface finishing / cleaning / coating',packaging:'Packaging / palletizing',toolroom:'Fabrication / toolroom / maintenance',movers:'Mobile material-handling units'},
+  // Provisional task allocation WITHIN the documented categories; never extra assets.
+  allocation:{
+    'Factory A':{cast:35,heat:44,finish:31,cnc:155,field:10,energy:10,gas:8,electronic:8,thermal:10,interface:7,sensor:7,kit:12,integrate:16,calibrate:20,qa:22,package:18,support:65},
+    'Factory B':{cast:33,heat:42,finish:29,cnc:145,field:9,energy:9,gas:8,electronic:8,thermal:9,interface:7,sensor:7,kit:12,integrate:15,calibrate:19,qa:21,package:18,support:65}
+  },
+  // A+B candidate stage capacities in engine equivalents/year (§13).
+  stages:{receiving:112000,casting:105000,machining:96000,components:100000,integration:94000,calibration:92000,qa:90000,dispatch:110000},
+  masses:{iron:203,nickel:118,cobalt:10,chromium:27,copper:7.5,silver:1.5,gold:.72,pgm:.28,superconductor:59,ceramic:75,tibanna:16,electronicsFeed:37,coolant:28},
+  purchased:{fieldCoil:12,regulator:6,seal:18,processor:4,coupler:8,sensorModule:10,safingModule:2},
+  opening:{certifiedEngines:0,wipApprox:750,wipScope:'A+B, stage counts unreconciled',rawStock:null,subassemblyStock:null},
+  sharedPersonnel:{engineering:420,testingQA:300,supplyLogistics:250,facilities:220,corporate:160},
+  unresolved:['Per-work-centre cycles, yields and uptime','Subassembly counted stock','Raw stock balances','Exact task allocations within equipment categories','Factory-specific realized output split','Validated footprints and upgrade costs']
+};
+if(typeof module!=='undefined')module.exports=ION_REGISTER;
+
+</script><script>
+// Exact manufacturing inputs: register §§8C and 11. Masses are kg; modules are each.
+// Footprints, volumes, staffing factors and prices remain provisional planning values.
+const MATERIALS={
+ iron:{title:'Iron alloy',unit:'kg',volume:.00013},nickel:{title:'Nickel alloy',unit:'kg',volume:.00012},cobalt:{title:'Cobalt alloy',unit:'kg',volume:.00012},chromium:{title:'Chromium alloy',unit:'kg',volume:.00014},copper:{title:'Copper',unit:'kg',volume:.00012},silver:{title:'Silver',unit:'kg',volume:.0001},gold:{title:'Gold',unit:'kg',volume:.00006},pgm:{title:'Platinum-group metals',unit:'kg',volume:.00006},
+ superconductor:{title:'Superconductive media',unit:'kg',volume:.001},ceramic:{title:'Technical ceramic',unit:'kg',volume:.0004},tibanna:{title:'Tibanna charge',unit:'kg',volume:.005},electronicsFeed:{title:'Electronics feedstock',unit:'kg',volume:.002},coolant:{title:'Coolant charge',unit:'kg',volume:.001},
+ fieldCoil:{title:'Precision field coils',unit:'each',volume:.01},regulator:{title:'Regulator modules',unit:'each',volume:.01},seal:{title:'Seals',unit:'each',volume:.001},processor:{title:'Processor modules',unit:'each',volume:.002},coupler:{title:'Interface couplers',unit:'each',volume:.005},sensorModule:{title:'Sensor modules',unit:'each',volume:.003},safingModule:{title:'Safing modules',unit:'each',volume:.003},
+ housingRaw:{title:'Formed housing preform',unit:'each',volume:1.4},housingHeat:{title:'Heat-processed housing',unit:'each',volume:1.3},housing:{title:'Structural core housing',unit:'each',volume:1.2},field:{title:'Field-control set',unit:'each',volume:.6},energy:{title:'Energy-transfer set',unit:'each',volume:.6},gas:{title:'Gas-control set',unit:'each',volume:.5},electronic:{title:'Control-electronics set',unit:'each',volume:.25},thermal:{title:'Thermal set',unit:'each',volume:.6},interface:{title:'Precision-interface set',unit:'each',volume:.25},sensor:{title:'Sensor/safety set',unit:'each',volume:.25},kit:{title:'Complete eight-subassembly IE-4 kit',unit:'each',volume:3.5},machined:{title:'Machined/integrated core',unit:'each',volume:4.4},core:{title:'Assembled core',unit:'each',volume:4.4},calibrated:{title:'Calibrated core',unit:'each',volume:4.4},tested:{title:'Certified IE-4 core',unit:'each',volume:4.4},shipped:{title:'Dispatched IE-4 core',unit:'each',volume:4.4}
+};
+const SPECS={
+ cast:{name:'Casting / forging / forming cell',building:'Foundry',category:'casting',stage:'casting',w:3,h:3,inputs:{iron:182,nickel:46,chromium:14},outputs:{housingRaw:1},price:93000,days:8,workers:2,port:'fixed',color:'#9a765d'},
+ heat:{name:'Heat treatment / vacuum processing unit',building:'Heat Treatment',category:'heat',stage:'casting',w:3,h:3,inputs:{housingRaw:1},outputs:{housingHeat:1},price:120000,days:10,workers:2,port:'fixed',color:'#a27359'},
+ finish:{name:'Surface finishing / cleaning / coating line',building:'Finishing',category:'finishing',stage:'casting',w:3,h:3,inputs:{housingHeat:1},outputs:{housing:1},price:118000,days:9,workers:2,port:'fixed',color:'#8b8e5c'},
+ field:{name:'Field-control assembly cell',building:'Assembly',category:'assembly',stage:'components',w:3,h:3,inputs:{nickel:18,cobalt:7,copper:1.8,silver:.4,gold:.15,pgm:.05,superconductor:38,fieldCoil:12},outputs:{field:1},price:92000,days:7,workers:2,port:'flex',color:'#698c95'},
+ energy:{name:'Energy-transfer assembly cell',building:'Assembly',category:'assembly',stage:'components',w:3,h:3,inputs:{nickel:12,copper:4,silver:.6,gold:.3,pgm:.1,superconductor:21,ceramic:34},outputs:{energy:1},price:94000,days:7,workers:2,port:'flex',color:'#698c95'},
+ gas:{name:'Gas-control assembly cell',building:'Assembly',category:'assembly',stage:'components',w:3,h:3,inputs:{iron:12,nickel:9,chromium:4,tibanna:16,regulator:6,seal:18},outputs:{gas:1},price:78000,days:6,workers:2,port:'flex',color:'#698c95'},
+ electronic:{name:'Control-electronics integration bench',building:'Assembly',category:'assembly',stage:'components',w:3,h:2,inputs:{copper:1.2,silver:.3,gold:.2,pgm:.1,electronicsFeed:24,processor:4},outputs:{electronic:1},price:83000,days:5,workers:2,port:'flex',color:'#698c95'},
+ thermal:{name:'Thermal-management assembly cell',building:'Assembly',category:'assembly',stage:'components',w:3,h:3,inputs:{nickel:17,cobalt:3,chromium:6,ceramic:41,coolant:28},outputs:{thermal:1},price:92000,days:6,workers:2,port:'flex',color:'#698c95'},
+ interface:{name:'Precision-interface fit-up bench',building:'Assembly',category:'assembly',stage:'components',w:3,h:2,inputs:{nickel:16,iron:9,chromium:3,coupler:8},outputs:{interface:1},price:61000,days:5,workers:2,port:'flex',color:'#698c95'},
+ sensor:{name:'Sensor and safety integration bench',building:'Assembly',category:'assembly',stage:'components',w:3,h:2,inputs:{copper:.5,silver:.2,gold:.07,pgm:.03,electronicsFeed:13,sensorModule:10,safingModule:2},outputs:{sensor:1},price:67000,days:5,workers:2,port:'flex',color:'#698c95'},
+ kit:{name:'Eight-subassembly kitting station',building:'Assembly',category:'assembly',stage:'receiving',w:3,h:3,inputs:{housing:1,field:1,energy:1,gas:1,electronic:1,thermal:1,interface:1,sensor:1},outputs:{kit:1},price:89000,days:6,workers:2,port:'flex',color:'#548877'},
+ cnc:{name:'Precision machining / integration centre',building:'Machining',category:'machining',stage:'machining',w:3,h:3,inputs:{kit:1},outputs:{machined:1},price:155000,days:10,workers:2,port:'flex',color:'#527fa8'},
+ integrate:{name:'Final engine assembly / integration cell',building:'Assembly',category:'assembly',stage:'integration',w:4,h:3,inputs:{machined:1},outputs:{core:1},price:142000,days:9,workers:3,port:'fixed',color:'#668477'},
+ calibrate:{name:'Calibration / functional test stand',building:'Testing',category:'test',stage:'calibration',w:4,h:4,inputs:{core:1},outputs:{calibrated:1},price:190000,days:12,workers:3,port:'fixed',color:'#927b9f'},
+ qa:{name:'QA / certification acceptance stand',building:'Testing',category:'test',stage:'qa',w:4,h:4,inputs:{calibrated:1},outputs:{tested:1},price:210000,days:13,workers:3,port:'fixed',color:'#997b9f'},
+ package:{name:'Robotic packaging / palletizing station',building:'Packaging',category:'packaging',stage:'dispatch',w:3,h:3,inputs:{tested:1},outputs:{shipped:1},price:80000,days:6,workers:2,port:'flex',color:'#7d8461'},
+ support:{name:'Fabrication / toolroom / maintenance workstation',building:'Maintenance',category:'toolroom',stage:null,w:3,h:3,inputs:{},outputs:{},rate:0,price:72000,days:6,workers:2,port:'flex',color:'#647083',support:true}
+};
+// Explicit candidate calibration, not measured machine rates. Each §13 A+B cap is
+// shared across both factories' assigned stations at level-2 staffing / 95% condition.
+// This derives rates from the register's existing stage model, NEVER fleet size from 247/day.
+for(const [type,s]of Object.entries(SPECS))if(s.stage){
+ const count=Object.values(ION_REGISTER.allocation).reduce((n,a)=>n+(a[type]||0),0);
+ s.rate=ION_REGISTER.stages[s.stage]/(365*count*.7505);
+ s.rateSource='§13 candidate stage model, evenly distributed across provisionally assigned A+B stations';
+}
+// The four shared production buildings and two upstream works are the user's campus allocation.
+for(const s of Object.values(SPECS)){
+ if(['cast','heat','finish','support'].some(t=>SPECS[t]===s))s.building=null;
+ else if(s.category==='machining')s.building='Precision Machining';
+ else if(s.category==='assembly'&&s.stage!=='integration')s.building='Subassemblies';
+ else s.building='Final Assembly & Test';
+}
+const BLDGS=['Receiving','Factory A','Factory B','Subassemblies','Precision Machining','Final Assembly & Test'];
+const UPGRADES={
+ tooling:{name:'Precision tooling & quick-change fixtures',description:'Improved fixtures and reduced changeover time.',speed:1.15,priceFraction:.12,days:4},
+ automation:{name:'Robotic loading & inspection assist',description:'Automated handling raises capacity; one fewer operator is needed, minimum one.',speed:1.25,workerReduction:1,priceFraction:.4,days:8}
+};
+// Work-centre staffing and individual skill distribution are planning assumptions.
+const DEFAULT_STAFFING={cast:2,heat:1,finish:1,field:2,energy:2,gas:1,electronic:1,thermal:2,interface:1,sensor:1,kit:1,cnc:1,integrate:3,calibrate:2,qa:2,package:1,support:1};
+const STAFF_ROLES={machining:'Machining / upstream',assembly:'Assembly',handling:'Materials handling',shiftSupport:'Shift support / toolroom',qa:'QA / safety'};
+const roleForSpec=s=>s.category==='test'?'qa':s.category==='assembly'?'assembly':s.category==='packaging'?'handling':s.category==='toolroom'?'shiftSupport':'machining';
+const STAFF_POOLS=Object.entries(ION_REGISTER.factories).flatMap(([origin,f])=>Object.entries(f.roles).map(([role,count])=>({id:role+'-'+origin.slice(-1),origin,role,count}))).concat([{id:'qa-shared',origin:'Shared QA / safety',role:'qa',count:300}]);
+// A transparent, editable model distribution, not an asserted employee census.
+// 5% T0, 30% T1, 35% T2, 22% T3, 6% T4, 2% T5; mean tier 2.
+const planningTier=i=>{const n=(i*37)%100;return n<5?0:n<35?1:n<70?2:n<92?3:n<98?4:5};
+
+</script><script>
+/* Complete-recipe, finite-buffer planning solver. No campaign time is advanced. */
+const FactoryEngine=(()=>{
+ const EPS=1e-8;
+ function modifiers(m,catalog={}){return (m.upgrades||[]).reduce((a,k)=>{const u=catalog[k];if(u){a.speed*=u.speed||1;a.workers+=u.workerReduction||0}return a},{speed:1,workers:0})}
+ function requiredWorkers(m,specs,catalog={}){return Math.max(1,(m.staffingRequired??specs[m.type].workers)-modifiers(m,catalog).workers)}
+ function staffing(m,specs,catalog={}){const crew=m.crew||[];return crew.length?Math.min(1,crew.length/requiredWorkers(m,specs,catalog))*(.65+Math.min(.35,crew.reduce((n,p)=>n+p.level,0)/crew.length*.07)):0}
+ function effectiveRate(m,specs,catalog={}){return specs[m.type].rate*modifiers(m,catalog).speed*staffing(m,specs,catalog)*m.condition}
+ function ratedRate(m,specs,catalog={}){return specs[m.type].rate*modifiers(m,catalog).speed}
+ function pathCapacity(p){return p.kind==='belt'?280:p.kind==='cart'?145:22}
+ function storageCap(s,materials){return Math.floor(s.w*s.h*8.8/materials[s.item].volume)}
+ function topological(specs){const done=new Set(),order=[];while(order.length<Object.keys(specs).length){let progress=false;for(const [type,s]of Object.entries(specs)){if(done.has(type))continue;const deps=Object.keys(specs).filter(t=>Object.keys(specs[t].outputs).some(k=>Object.hasOwn(s.inputs,k)));if(deps.every(t=>done.has(t))){done.add(type);order.push(type);progress=true}}if(!progress)throw Error('Recipe cycle detected. A starting-inventory model is required.')}return order}
+ function simulate(buildings,specs,materials,options={}){
+  const warmupDays=options.warmupDays||0,dailyOutputs=[];
+  const steps=options.steps||36,hours=options.hours??9,timeFactor=hours/9,catalog=options.upgrades||{},dockCap=(options.dockCapacity??2000)*timeFactor;
+  if(!Number.isInteger(warmupDays)||warmupDays<0||warmupDays>10||!Number.isInteger(steps)||steps<1||steps>1000||!Number.isFinite(hours)||hours<=0||hours>24)throw Error('Invalid simulation period.');
+  const supply={...(options.supply||{iron:3000,nickel:600})},remainingSupply={...supply};
+  const receiving=options.receiving,terminal=options.terminal||(materials.shipped?'shipped':'tested');
+  const all=[],stores=[],owners={},pathMaps={},machines={},stage={},stocks={},buffers={},traffic={},details={},sources={};
+  const routeCache=new Map(),pathCache=new Map(),routes=new Map(),links=new Map();
+  for(const [bn,b]of Object.entries(buildings)){
+   pathMaps[bn]=new Map();
+   if(options.implicitWalk){const occupied=new Set();for(const o of [...b.machines,...b.storage])for(let y=o.y;y<o.y+o.h;y++)for(let x=o.x;x<o.x+o.w;x++)occupied.add(x+','+y);for(let y=0;y<b.rows;y++)for(let x=0;x<b.cols;x++)if(!occupied.has(x+','+y))pathMaps[bn].set(x+','+y,{x,y,kind:'walk',dir:0})}
+   for(const p of b.paths)pathMaps[bn].set(p.x+','+p.y,p);traffic[bn]={};
+   for(const m of b.machines){all.push(m);owners[m.id]=bn;buffers[m.id]={};machines[m.id]=0;details[m.id]={capacity:effectiveRate(m,specs,catalog)*timeFactor,blocked:0,shortages:{},inputSupply:{},inputNeed:Object.fromEntries(Object.entries(specs[m.type].inputs).map(([item,n])=>[item,n*ratedRate(m,specs,catalog)*timeFactor]))};
+    for(const item of Object.keys(specs[m.type].outputs))(sources[item]??=[]).push(m);
+    const st=stage[m.type]??={rated:0,possible:0,actual:0,machines:0};st.rated+=specs[m.type].rate*modifiers(m,catalog).speed*timeFactor;st.possible+=details[m.id].capacity;st.machines++;
+   }
+   for(const s of b.storage){stores.push(s);owners[s.id]=bn;stocks[s.id]=Math.min(s.stock||0,storageCap(s,materials))}
+  }
+  const order=topological(specs),sorted=all.slice().sort((a,b)=>order.indexOf(a.type)-order.indexOf(b.type));
+  const vol=item=>materials[item].volume;
+  function ends(o,output){
+   if(o.points)return o.points;
+   if(o.type&&specs[o.type].port==='fixed'){const a=o.angle||0,sign=output?1:-1;if(a%2)return [[o.x+Math.floor(o.w/2),sign*(a===1?1:-1)>0?o.y+o.h:o.y-1]];return [[sign*(a===0?1:-1)>0?o.x+o.w:o.x-1,o.y+Math.floor(o.h/2)]]}
+   const out=[];for(let x=o.x;x<o.x+o.w;x++)out.push([x,o.y-1],[x,o.y+o.h]);for(let y=o.y;y<o.y+o.h;y++)out.push([o.x-1,y],[o.x+o.w,y]);return out;
+  }
+  function local(bn,source,target,item){
+   const id=bn+':'+source.id+'>'+target.id+':'+item;if(pathCache.has(id))return pathCache.get(id);
+   const map=pathMaps[bn],allowed=p=>p&&(p.kind!=='belt'||p.cargo===item),goals=new Set(ends(target,false).filter(([x,y])=>allowed(map.get(x+','+y))).map(p=>p.join(','))),queue=[],prev=new Map();
+   for(const p of ends(source,true)){const k=p.join(',');if(allowed(map.get(k))&&!prev.has(k)){queue.push(p);prev.set(k,null)}}
+   // Prefer efficient handling: a cart detour can beat a short walking route.
+   const distance=new Map(),heap=[];
+   function push(p,cost){let i=heap.length;heap.push({p,cost});while(i){const parent=(i-1)>>1;if(heap[parent].cost<=cost)break;heap[i]=heap[parent];i=parent}heap[i]={p,cost}}
+   function pop(){const top=heap[0],last=heap.pop();if(heap.length){let i=0;while(true){let child=i*2+1;if(child>=heap.length)break;if(child+1<heap.length&&heap[child+1].cost<heap[child].cost)child++;if(heap[child].cost>=last.cost)break;heap[i]=heap[child];i=child}heap[i]=last}return top}
+   for(const p of queue){distance.set(p.join(','),0);push(p,0)}
+   let found=null;while(heap.length){const {p:point,cost}=pop(),[x,y]=point,k=x+','+y,p=map.get(k);if(cost!==distance.get(k))continue;if(goals.has(k)){found=k;break}
+    for(const [dx,dy,d]of [[1,0,0],[0,1,1],[-1,0,2],[0,-1,3]]){const nk=(x+dx)+','+(y+dy),n=map.get(nk);if(!allowed(n)||p.kind==='belt'&&p.dir!==d||n.kind==='belt'&&n.dir!==d)continue;const next=cost+(n.kind==='belt'?1:n.kind==='cart'?2:8);if(next<(distance.get(nk)??Infinity)){distance.set(nk,next);prev.set(nk,k);push([x+dx,y+dy],next)}}
+   }
+   const cells=[];while(found!==null){cells.push(found.split(',').map(Number));found=prev.get(found)}const result=cells.length?{building:bn,cells:cells.reverse()}:null;pathCache.set(id,result);return result;
+  }
+  const dock=(bn,kind)=>({id:bn+'-'+kind,points:buildings[bn].docks?.[kind]||[]});
+  function route(source,target,item){
+   const id=source.id+'>'+target.id+':'+item;if(routeCache.has(id))return routeCache.get(id);
+   const from=owners[source.id],to=owners[target.id];let result;
+   if(from===to){const path=local(from,source,target,item);result=path?{segments:[path]}:null}
+   else if(buildings[from].docks&&buildings[to].docks){const a=local(from,source,dock(from,'output'),item),b=local(to,dock(to,'input'),target,item);result=a&&b?{dock:from+' → '+to,fromBuilding:from,toBuilding:to,segments:[a,b]}:null}
+   else result=options.requireDocks?null:{dock:from+' → '+to,fromBuilding:from,toBuilding:to,segments:[]};
+   routeCache.set(id,result);return result;
+  }
+  let loads,dockLoads;
+  function room(r,item,extra=new Map()){
+   let available=Infinity;
+   if(r.dock)available=(dockCap/steps-(dockLoads[r.dock]||0)-(extra.get('dock:'+r.dock)||0));
+   for(const seg of r.segments)for(const p of seg.cells){const k=p.join(','),id=seg.building+':'+k;available=Math.min(available,pathCapacity(pathMaps[seg.building].get(k))*timeFactor/steps-(loads[id]||0)-(extra.get(id)||0))}
+   return Math.max(0,available)/vol(item);
+  }
+  function reserve(r,item,amount,extra){if(r.dock){const id='dock:'+r.dock;extra.set(id,(extra.get(id)||0)+amount*vol(item))}for(const seg of r.segments)for(const p of seg.cells){const id=seg.building+':'+p.join(',');extra.set(id,(extra.get(id)||0)+amount*vol(item))}}
+  function record(source,target,item,amount,r){
+   if(amount<EPS)return;const id=source.id+'>'+target.id+':'+item;
+   for(const [i,seg]of r.segments.entries()){
+    const rid=id+':'+i;if(!routes.has(rid))routes.set(rid,{...seg,item,from:source.id,to:target.id,rate:0,interbuilding:!!r.dock});routes.get(rid).rate+=amount;
+    for(const p of seg.cells){const k=p.join(','),lid=seg.building+':'+k;loads[lid]=(loads[lid]||0)+amount*vol(item);const t=traffic[seg.building][k]??={total:0,items:{}};t.total+=amount*vol(item);t.items[item]=(t.items[item]||0)+amount}
+   }
+   if(r.dock){dockLoads[r.dock]=(dockLoads[r.dock]||0)+amount*vol(item);const l=links.get(r.dock)||{from:r.fromBuilding,to:r.toBuilding,total:0,items:{}};l.total+=amount*vol(item);l.items[item]=(l.items[item]||0)+amount;links.set(r.dock,l)}
+  }
+  const candidates=new Map();
+  for(const m of all)for(const item of Object.keys(specs[m.type].inputs)){
+   const list=[...stores.filter(s=>s.item===item),...(sources[item]||[])].filter(s=>s!==m);
+   const distance=s=>owners[s.id]===owners[m.id]?Math.abs(s.x-m.x)+Math.abs(s.y-m.y):100000;
+   list.sort((a,b)=>distance(a)-distance(b));candidates.set(m.id+':'+item,list);
+  }
+  function plan(m,units){
+   const transfers=[],raw={},extra=new Map(),missing=[];
+   for(const [item,n]of Object.entries(specs[m.type].inputs)){
+    let need=units*n;
+    if(!receiving&&Object.hasOwn(supply,item)){raw[item]=Math.min(need,remainingSupply[item]);need-=raw[item]}
+    else for(const source of candidates.get(m.id+':'+item)){
+     if(source===m||need<EPS)continue;const available=source.type?(buffers[source.id][item]||0):stocks[source.id];if(available<EPS)continue;
+     const r=route(source,m,item);if(!r)continue;const amount=Math.min(need,available,room(r,item,extra));if(amount<EPS)continue;
+     transfers.push({source,item,amount,r});reserve(r,item,amount,extra);need-=amount;
+    }
+    if(need>EPS)missing.push(item);
+   }
+   return {transfers,raw,missing};
+  }
+  for(let tick=0;tick<steps*(warmupDays+1);tick++){
+   if(tick&&tick%steps===0){
+    dailyOutputs.push(stage.qa?.actual??stage[sorted.at(-1)?.type]?.actual??0);
+    for(const m of all){machines[m.id]=0;details[m.id].blocked=0;details[m.id].shortages={};details[m.id].inputSupply={}}
+    for(const st of Object.values(stage))st.actual=0;
+    for(const bn of Object.keys(traffic))traffic[bn]={};routes.clear();links.clear();Object.assign(remainingSupply,supply);
+   }
+   loads={};dockLoads={};
+   if(receiving){for(const s of stores.filter(s=>owners[s.id]===receiving&&s.receiving)){
+    const item=s.item,source=dock(receiving,'input'),path=local(receiving,source,s,item);if(!path)continue;const r={segments:[path]};
+    const amount=Math.min((supply[item]||0)/steps,remainingSupply[item]||0,storageCap(s,materials)-stocks[s.id],room(r,item));
+    if(amount>EPS){stocks[s.id]+=amount;remainingSupply[item]-=amount;record(source,s,item,amount,r)}
+   }}
+   for(const m of sorted){
+    const sp=specs[m.type],detail=details[m.id];if(sp.support)continue;let max=detail.capacity/steps;
+    for(const [item,n]of Object.entries(sp.outputs))if(item!==terminal)max=Math.min(max,Math.max(0,sp.rate*.2-(buffers[m.id][item]||0))/n);
+    if(max+EPS<detail.capacity/steps)detail.blocked++;
+    let chosen=plan(m,max),amount=max;
+    if(chosen.missing.length){for(const item of chosen.missing)detail.shortages[item]=(detail.shortages[item]||0)+1;let lo=0,hi=max;for(let j=0;j<18;j++){const mid=(lo+hi)/2;if(plan(m,mid).missing.length)hi=mid;else lo=mid}amount=lo;chosen=plan(m,amount)}
+    if(amount>EPS){for(const [item,n]of Object.entries(chosen.raw))remainingSupply[item]-=n;
+     for(const t of chosen.transfers){if(t.source.type)buffers[t.source.id][t.item]-=t.amount;else stocks[t.source.id]-=t.amount;record(t.source,m,t.item,t.amount,t.r)}
+     for(const [item,n]of Object.entries(sp.inputs))detail.inputSupply[item]=(detail.inputSupply[item]||0)+amount*n;
+     machines[m.id]+=amount;stage[m.type].actual+=amount;for(const [item,n]of Object.entries(sp.outputs))if(item!==terminal)buffers[m.id][item]=(buffers[m.id][item]||0)+amount*n;
+    }
+    for(const [item,quantity]of Object.entries(buffers[m.id]))if(quantity>EPS)for(const s of stores.filter(s=>owners[s.id]===owners[m.id]&&s.item===item&&!s.receiving)){
+     const r=route(m,s,item);if(!r)continue;const send=Math.min(buffers[m.id][item],storageCap(s,materials)-stocks[s.id],room(r,item));if(send>EPS){stocks[s.id]+=send;buffers[m.id][item]-=send;record(m,s,item,send,r)}
+    }
+   }
+  }
+  const diagnostics=[];for(const m of all){if(specs[m.type].support)continue;const d=details[m.id],name=specs[m.type].name+' #'+m.number;
+   if(!m.crew.length)diagnostics.push(name+': no workers assigned.');
+   else if(d.blocked)diagnostics.push(name+': output buffer blocked in '+d.blocked+' of '+steps+' steps.');
+   for(const item of Object.keys(d.shortages))diagnostics.push(name+': constrained by '+materials[item].title+' supply or its route.');
+  }
+  dailyOutputs.push(stage.qa?.actual??stage[sorted.at(-1)?.type]?.actual??0);
+  return {warmupDays,dailyOutputs,machines,stage,stocks,buffers,traffic,details,diagnostics,routes:[...routes.values()],links:[...links.values()],remainingSupply,steps,hours};
+ }
+ return {simulate,staffing,requiredWorkers,effectiveRate,ratedRate,pathCapacity,storageCap,topological};
+})();
+if(typeof module!=='undefined')module.exports=FactoryEngine;
+
+</script><script>
+/* Registered fleets are fixed; physical allocation follows the user's campus plan.
+   Floor dimensions are derived AFTER placing assets, receiving stores and aisles. */
+const FactoryBaseline=(()=>{
+ function billOfMaterials(specs,units=1){
+  const demand={shipped:units},cycles={};
+  for(const type of FactoryEngine.topological(specs).slice().reverse()){
+   const sp=specs[type],n=Math.max(0,...Object.entries(sp.outputs).map(([item,q])=>(demand[item]||0)/q));cycles[type]=n;
+   for(const [item,q]of Object.entries(sp.inputs))demand[item]=(demand[item]||0)+q*n;
+  }
+  const outputs=new Set(Object.values(specs).flatMap(s=>Object.keys(s.outputs)));
+  return {demand,cycles,raw:Object.fromEntries(Object.entries(demand).filter(([k])=>!outputs.has(k)))};
+ }
+ function generate(specs,materials,names){
+  const buildings=Object.fromEntries(names.map(name=>[name,{machines:[],storage:[],paths:[],docks:{input:[],output:[]},revision:2,layoutRevision:3}]));
+  const perCore=billOfMaterials(specs),incoming=Object.fromEntries(Object.entries(perCore.raw).map(([k,v])=>[k,Math.ceil(v*247*1.1)]));
+  let worker=0;
+  for(const [owner,allocation]of Object.entries(ION_REGISTER.allocation))for(const [type,count]of Object.entries(allocation)){
+   const sp=specs[type],destination=sp.building||owner,role=roleForSpec(sp),homePool=role==='qa'?'qa-shared':role+'-'+owner.slice(-1),staffingRequired=DEFAULT_STAFFING[type]??sp.workers;
+   for(let i=0;i<count;i++)buildings[destination].machines.push({id:owner.replace(' ','')+'-'+type+'-'+(i+1),type,owner,number:i+1,x:0,y:0,w:sp.w,h:sp.h,angle:0,condition:.95,staffingRequired,upgrades:[],crew:Array.from({length:staffingRequired},()=>({id:'worker-'+(++worker),level:planningTier(worker),role,homePool}))});
+  }
+  // Planning deliveries, not a claim about unresolved opening stock.
+  for(const item of Object.keys(incoming))buildings.Receiving.storage.push({id:'receiving-'+item,item,stock:0,x:0,y:0,w:2,h:2,receiving:true});
+  for(const [name,b]of Object.entries(buildings)){
+   const rows=[];
+   if(name==='Receiving')for(let i=0;i<b.storage.length;i+=5)rows.push(b.storage.slice(i,i+5));
+   else if(name==='Final Assembly & Test'||name==='Subassemblies'){
+    // Parallel production bays avoid sending the entire plant through one common aisle.
+    const types=FactoryEngine.topological(specs).filter(t=>b.machines.some(m=>m.type===t));
+    const bays=name==='Final Assembly & Test'?b.machines.filter(m=>m.type==='integrate').length:Math.min(...types.filter(t=>t!=='kit').map(t=>b.machines.filter(m=>m.type===t).length));
+    for(let row=0;row<bays;row++){
+     const items=[];
+     for(const type of types){const group=b.machines.filter(m=>m.type===type),start=Math.floor(row*group.length/bays),end=Math.floor((row+1)*group.length/bays);items.push(...group.slice(start,end))}
+     if(items.length)rows.push(items);
+    }
+   }else for(const type of FactoryEngine.topological(specs)){
+    const group=b.machines.filter(m=>m.type===type);
+    // Short process rows, not a preselected building envelope.
+    const across=Math.min(10,Math.max(1,Math.ceil(Math.sqrt(group.length))));
+    for(let i=0;i<group.length;i+=across)rows.push(group.slice(i,i+across));
+   }
+   let y=2,maxX=0;const aisles=[];
+   for(const row of rows){let x=2;const height=Math.max(...row.map(o=>o.h));for(const o of row){o.x=x;o.y=y;x+=o.w+2;maxX=Math.max(maxX,o.x+o.w)}aisles.push({top:y,y:y+height});y+=height+4;}
+   b.cols=Math.max(16,maxX+3);b.rows=Math.max(12,y);
+   const occupied=new Set();for(const o of [...b.machines,...b.storage])for(let yy=o.y;yy<o.y+o.h;yy++)for(let xx=o.x;xx<o.x+o.w;xx++)occupied.add(xx+','+yy);
+   const paths=new Map();
+   const add=(x,y,kind='cart')=>{const k=x+','+y;if(!occupied.has(k)&&x>=0&&y>=0&&x<b.cols&&y<b.rows&&(!paths.has(k)||kind==='cart'))paths.set(k,{x,y,kind,cargo:null,dir:0})};
+   for(const a of aisles){for(let x=1;x<b.cols-1;x++){add(x,a.y);add(x,a.y+1);add(x,a.y+2,'walk')}
+    // Input/output access at both ends, serving all rows without a single artificial choke.
+    b.docks.input.push([1,a.y],[b.cols-2,a.y]);b.docks.output.push([1,a.y+1],[b.cols-2,a.y+1]);
+   }
+   for(const o of [...b.machines,...b.storage]){const a=aisles.find(a=>a.top===o.y);for(let yy=o.y;yy<=a.y+1;yy++){add(o.x-1,yy);add(o.x+o.w,yy)}}
+   // Continue permanently clear service gaps between departments. Aisles are
+   // not forced to funnel the whole factory through only its two perimeter edges.
+   for(let xx=1;xx<b.cols-1;xx++){
+    let clear=true;for(let yy=1;yy<b.rows-1;yy++)if(occupied.has(xx+','+yy)){clear=false;break}
+    if(clear)for(let yy=1;yy<b.rows-1;yy++)add(xx,yy);
+   }
+   b.paths=[...paths.values()];
+  }
+  return {buildings,workerPool:availableWorkers(buildings,specs),sizing:{observed:247,perCore:perCore.raw,incoming,dockCapacity:2000}};
+ }
+ function availableWorkers(buildings,specs){
+  const used={};for(const b of Object.values(buildings))for(const m of b.machines)for(const w of m.crew){const role=w.role||roleForSpec(specs[m.type]),pool=w.homePool||(role==='qa'?'qa-shared':role+'-'+(m.owner==='Factory B'?'B':'A'));used[pool]=(used[pool]||0)+1}
+  const ids=new Set(Object.values(buildings).flatMap(b=>b.machines.flatMap(m=>m.crew.map(w=>w.id))));let index=0;return STAFF_POOLS.flatMap(pool=>{let sequence=0;return Array.from({length:Math.max(0,pool.count-(used[pool.id]||0))},()=>{let id;do{id='reserve-'+pool.id+'-'+(++sequence)}while(ids.has(id));ids.add(id);return {id,level:planningTier(++index),role:pool.role,homePool:pool.id}})});
+ }
+ return {generate,billOfMaterials,availableWorkers};
+})();
+if(typeof module!=='undefined')module.exports=FactoryBaseline;
+
+</script><script>
+'use strict';
+const $=id=>document.getElementById(id),escapeHtml=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const CELL=48,SCHEMA='ION-campus-2',SAVE_KEY='ion-campus-2';
+const fmt=n=>Number(n||0).toLocaleString(undefined,{maximumFractionDigits:2}),money=n=>Math.round(n).toLocaleString()+' Cr';
+const sid=()=>crypto.randomUUID().replaceAll('-','');
+const baselinePlan=FactoryBaseline.generate(SPECS,MATERIALS,BLDGS);
+let spareWorkers=[],buildings={},active='Factory A',tool='select',catalog='cast',cargo='housing',orientation=0,selected=null,tested=null,expenses=[],history=[],area=null,drag=null,hover=null,planRevision=0;
+let COLS=0,ROWS=0;
+const canvas=$('floor'),ctx=canvas.getContext('2d'),tip=$('tooltip');
+const workerColor=l=>['#8894a2','#ffffff','#29c564','#4489f6','#b772e8','#fc9628'][l];
+const key=(x,y)=>x+','+y;
+const inside=(x,y,b=buildings[active])=>x>=0&&y>=0&&x<b.cols&&y<b.rows;
+const intersects=(a,b)=>a.x<b.x+b.w&&a.x+a.w>b.x&&a.y<b.y+b.h&&a.y+a.h>b.y;
+const contains=(r,o)=>o.x>=r.x&&o.y>=r.y&&o.x+o.w<=r.x+r.w&&o.y+o.h<=r.y+r.h;
+const entities=b=>[...b.machines,...b.storage];
+const entityAt=(b,x,y)=>entities(b).find(o=>x>=o.x&&x<o.x+o.w&&y>=o.y&&y<o.y+o.h);
+const pathAt=(b,x,y)=>b.paths.find(p=>p.x===x&&p.y===y);
+const valid=(b,o,exclude)=>o.w>0&&o.h>0&&o.x>=0&&o.y>=0&&o.x+o.w<=b.cols&&o.y+o.h<=b.rows&&!entities(b).some(e=>e.id!==exclude&&intersects(e,o));
+const storageCap=s=>FactoryEngine.storageCap(s,MATERIALS);
+const nodeDock=(b,x,y)=>Object.values(b.docks).some(points=>points.some(p=>p[0]===x&&p[1]===y));
+const capacity=m=>FactoryEngine.effectiveRate(m,SPECS,UPGRADES);
+function scenario(){return {warmupDays:+$('warmupDays').value,hours:+$('hours').value,dockCapacity:+$('dockCapacity').value,supply:Object.fromEntries(Object.keys(baselinePlan.sizing.incoming).map(k=>[k,+$('feed-'+k).value]))}}
+function validateScenario(s){if(!s||![0,2].includes(s.warmupDays??2)||!Number.isFinite(s.hours)||s.hours<1||s.hours>24||!Number.isFinite(s.dockCapacity)||s.dockCapacity<0||!s.supply||Object.keys(baselinePlan.sizing.incoming).some(k=>!Number.isFinite(s.supply[k])||s.supply[k]<0))throw Error('Invalid operating hours, dock capacity or planned deliveries.');return s}
+function applyScenario(s){$('warmupDays').value=s.warmupDays??2;$('hours').value=s.hours;$('dockCapacity').value=s.dockCapacity;for(const k of Object.keys(baselinePlan.sizing.incoming))$('feed-'+k).value=s.supply[k]}
+function seed(){buildings=structuredClone(baselinePlan.buildings);spareWorkers=structuredClone(baselinePlan.workerPool);expenses=[];history=[];selected=null;tested=null;area=null;applyScenario({warmupDays:2,hours:9,dockCapacity:baselinePlan.sizing.dockCapacity,supply:baselinePlan.sizing.incoming})}
+function snapshot(){history.push(JSON.stringify({buildings,workerPool:spareWorkers,expenses,scenario:scenario()}));if(history.length>60)history.shift()}
+function invalidate(){planRevision++;tested=null;renderResults();$('status').textContent='Plan changed. Test Campus to refresh forecasts.'}
+function commit(cost=0,days=0,action='Layout change',bounds=selected?{x:selected.x,y:selected.y,w:selected.w,h:selected.h}:null){
+ for(const b of Object.values(buildings))b.paths=b.paths.filter(p=>!entityAt(b,p.x,p.y));
+ expenses.push({id:sid(),building:active,bounds,cost,days,action});invalidate();saveLocal();refresh();paint();
+}
+function undo(){if(!history.length)return;const last=JSON.parse(history.pop());buildings=last.buildings;spareWorkers=last.workerPool||FactoryBaseline.availableWorkers(buildings,SPECS);expenses=last.expenses;applyScenario(last.scenario);selected=null;area=null;invalidate();saveLocal();refresh();paint()}
+function saveLocal(){try{localStorage.setItem(SAVE_KEY,JSON.stringify(payload('campus')));$('saveState').textContent='Saved in this browser'}catch{$('saveState').textContent='Browser save unavailable. Export JSON to keep this plan.'}}
+function restoreLocal(){try{const text=localStorage.getItem(SAVE_KEY);if(text){const data=validatePayload(JSON.parse(text));buildings=data.buildings;spareWorkers=data.workerPool||FactoryBaseline.availableWorkers(buildings,SPECS);expenses=data.expenses;applyScenario(data.scenario);$('saveState').textContent='Restored saved campus.'}if(localStorage.getItem('ion-factory-plan'))$('legacy').hidden=false}catch{$('saveState').textContent='Saved campus could not be restored; source layout loaded. Previous data was retained.'}}
+const tools=[['select','Inspect'],['move','Move'],['place','Add station'],['belt','Belt'],['cart','Cart'],['walk','Walk'],['storage','Storage'],['area','Area'],['erase','Erase']];
+function initUI(){
+ $('tools').innerHTML=tools.map(([id,name])=>`<button data-tool="${id}">${name}</button>`).join('');
+ document.querySelectorAll('[data-tool]').forEach(b=>b.onclick=()=>{tool=b.dataset.tool;drag=null;renderTools();paint()});
+ $('catalog').innerHTML=Object.entries(SPECS).map(([k,s])=>`<option value="${k}">${s.name} · ${money(s.price)} / ${s.days}d estimate</option>`).join('');$('catalog').value=catalog;$('catalog').onchange=e=>{catalog=e.target.value;paint()};
+ $('cargo').innerHTML=Object.entries(MATERIALS).map(([k,m])=>`<option value="${k}">${m.title} (${m.unit})</option>`).join('');$('cargo').value=cargo;$('cargo').onchange=e=>cargo=e.target.value;
+ $('feeds').innerHTML=Object.keys(baselinePlan.sizing.incoming).map(k=>`<label for="feed-${k}">${MATERIALS[k].title} (${MATERIALS[k].unit})</label><input id="feed-${k}" type="number" min="0" step="any">`).join('');
+ $('rotate').onclick=()=>{orientation=(orientation+1)%4;$('rotate').textContent='Rotate '+['→','↓','←','↑'][orientation];paint()};
+ $('zoom').oninput=()=>{$('zoomLabel').textContent=$('zoom').value+'%';paint()};
+ $('showFlow').onchange=paint;$('spreadFlow').onchange=paint;$('flowMaterial').onchange=()=>{renderFlowKey();paint()};
+ for(const e of [$('warmupDays'),$('hours'),$('dockCapacity'),...$('feeds').querySelectorAll('input')])e.onchange=()=>{invalidate();try{validateScenario(scenario());saveLocal()}catch(err){$('status').textContent=err.message}refresh();paint()};
+ $('save').onclick=saveLocal;$('workforce').onclick=()=>{renderWorkforce();$('workforceDialog').showModal()};$('closeWorkforce').onclick=()=>$('workforceDialog').close();
+ $('poolRole').innerHTML='<option value="all">All roles</option>'+Object.entries(STAFF_ROLES).map(([k,v])=>`<option value="${k}">${v}</option>`).join('');$('poolTier').innerHTML='<option value="all">All tiers</option>'+Array.from({length:6},(_,i)=>`<option value="${i}">Tier ${i}</option>`).join('');$('poolRole').onchange=renderWorkforce;$('poolTier').onchange=renderWorkforce;
+ $('undo').onclick=undo;$('test').onclick=()=>{$('status').textContent='Calculating campus cargo and production… material routes appear when the forecast completes.';$('test').textContent='Calculating…';$('test').disabled=true;setTimeout(async()=>{try{await test()}catch(e){$('status').textContent=e.message;$('diag').textContent=e.message}finally{$('test').disabled=false;$('test').textContent='▶ Test Campus'}},20)};
+ $('reset').onclick=()=>{if(confirm('Replace all campus floors and planned changes with the register layout? Existing browser plans can be exported first.')){seed();saveLocal();renderResults();refresh();paint()}};
+ $('export').onclick=()=>{try{download(payload($('scope').value),'ION_'+$('author').value+'_'+$('scope').value+'.json')}catch(e){alert(e.message)}};
+ $('import').onclick=()=>$('file').click();$('file').onchange=e=>{if(e.target.files[0])importFile(e.target.files[0]);e.target.value=''};
+ $('legacy').onclick=()=>download(JSON.parse(localStorage.getItem('ion-factory-plan')),'ION_previous_recipe_plan.json');
+ renderTools();
+}
+function renderTools(){document.querySelectorAll('[data-tool]').forEach(b=>b.classList.toggle('selected',b.dataset.tool===tool))}
+function refresh(){
+ $('tabs').innerHTML=BLDGS.map(n=>`<button data-tab="${n}" class="${n===active?'active':''}">${n} (${buildings[n].machines.length})</button>`).join('');
+ document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>{active=b.dataset.tab;selected=null;area=null;drag=null;$('mapScroll').scrollTo(0,0);refresh();paint()});
+ $('undo').disabled=!history.length;$('undo').textContent='↶ Undo ('+history.length+')';
+ $('cost').textContent=money(expenses.reduce((n,e)=>n+e.cost,0));$('days').textContent=fmt(expenses.reduce((n,e)=>n+e.days,0))+' days';
+ $('jobs').innerHTML=expenses.slice(-8).reverse().map(e=>`<div class="job"><span>${escapeHtml(e.action)}</span><b>${money(e.cost)} · ${fmt(e.days)}d</b></div>`).join('');
+ const b=buildings[active],total=Object.values(buildings).reduce((n,b)=>n+b.cols*b.rows*4,0);
+ $('footprint').innerHTML=`<b>${active}: ${b.cols*2} × ${b.rows*2} m</b><div class="row"><span>This floor</span><b>${fmt(b.cols*b.rows*4)} m²</b></div><div class="row"><span>Combined building floors</span><b>${fmt(total)} m²</b></div><small>Measured after layout. Machine footprints, aisle widths and building assignments are provisional; yards, offices and Factory C excluded.</small>`;
+ const counts={};for(const b of Object.values(buildings))for(const m of b.machines){const c=SPECS[m.type].category;counts[c]=(counts[c]||0)+1}
+ $('inventory').innerHTML=Object.entries(ION_REGISTER.categories).map(([c,name])=>{const expected=Object.values(ION_REGISTER.factories).reduce((n,f)=>n+f.counts[c],0);return `<div class="job"><span>${name}</span><b>${c==='movers'?expected+' mobile units (not extra stations)':(counts[c]||0)+' planned / '+expected+' registered'}</b></div>`}).join('')+'<small>Source ownership A/B is preserved on relocated equipment. Task splits within categories are estimates. §4A operations: 1,500 A + 1,450 B; shared QA/safety: 300, not an extra per-building allocation.</small>';
+ $('areaInfo').textContent=area?`Selected ${area.w*2} × ${area.h*2} m at grid (${area.x}, ${area.y}). Only complete entities can be exported.`:'Choose Area, then drag to select a work area.';
+ renderSelection();renderFlowKey();renderWorkforce();
+}
+function renderWorkforce(){
+ const assigned=Object.values(buildings).flatMap(b=>b.machines.flatMap(m=>m.crew)),all=[...assigned,...spareWorkers];
+ $('workforce').textContent=`Workforce · ${assigned.length} assigned / ${spareWorkers.length} unassigned`;
+ $('skillLegend').innerHTML=['Trainee','Novice','Competent','Experienced','Expert','Master'].map((n,i)=>`<span title="Tier ${i}: ${n}"><i style="background:${workerColor(i)}"></i>T${i}</span>`).join('');
+ $('workforceTotals').innerHTML=`<b>${assigned.length} assigned · ${spareWorkers.length} unassigned in the planning model · ${all.length} modeled people</b>`;
+ $('workforceRoles').innerHTML=Object.entries(STAFF_ROLES).map(([role,name])=>`<div class="row"><span>${name}</span><b>${spareWorkers.filter(w=>w.role===role).length} unassigned</b></div>`).join('');
+ const role=$('poolRole').value,tier=$('poolTier').value,list=spareWorkers.filter(w=>(role==='all'||w.role===role)&&(tier==='all'||w.level===+tier));
+ $('poolList').innerHTML=`<p>${list.length} matching workers · showing up to 80. Filter by role and tier to narrow the list.</p>`+list.slice(0,80).map(w=>`<div class="pool-worker"><span>${escapeHtml(w.id)}<small>${STAFF_ROLES[w.role]} · ${escapeHtml(w.homePool)}</small></span><select data-pool-level="${w.id}" aria-label="Edit unassigned planning skill">${Array.from({length:6},(_,i)=>`<option value="${i}" ${i===w.level?'selected':''}>Tier ${i}</option>`).join('')}</select></div>`).join('');
+ $('poolList').querySelectorAll('[data-pool-level]').forEach(e=>e.onchange=()=>{const w=spareWorkers.find(w=>w.id===e.dataset.poolLevel);snapshot();w.level=+e.value;commit(0,0,'Adjust unassigned planning skill',null)});
+}
+function validateWorkerPool(pool,candidate){
+ if(!Array.isArray(pool)||pool.length>10000)throw Error('Invalid unassigned-worker pool.');const ids=new Set(Object.values(candidate).flatMap(b=>b.machines.flatMap(m=>m.crew.map(w=>w.id))));
+ for(const w of pool){if(typeof w.id!=='string'||!/^[a-zA-Z0-9_-]{1,90}$/.test(w.id)||ids.has(w.id)||!Number.isInteger(w.level)||w.level<0||w.level>5||!Object.hasOwn(STAFF_ROLES,w.role)||!STAFF_POOLS.some(p=>p.id===w.homePool&&p.role===w.role))throw Error('Invalid, incompatible or duplicate unassigned worker.');ids.add(w.id)}
+ return pool;
+}
+function mergedWorkerPool(candidate){
+ const assigned=new Set(Object.values(candidate).flatMap(b=>b.machines.flatMap(m=>m.crew.map(w=>w.id)))),previous=Object.values(buildings).flatMap(b=>b.machines.flatMap(m=>m.crew.map(w=>({...w,role:w.role||roleForSpec(SPECS[m.type]),homePool:w.homePool||(roleForSpec(SPECS[m.type])==='qa'?'qa-shared':roleForSpec(SPECS[m.type])+'-'+(m.owner==='Factory B'?'B':'A'))}))));
+ return validateWorkerPool([...new Map([...spareWorkers,...previous].filter(w=>!assigned.has(w.id)).map(w=>[w.id,w])).values()],candidate);
+}
+function renderSelection(){
+ const out=$('selection');if(!selected){out.textContent='Select equipment to inspect recipes, workers and upgrades.';return}
+ if(!selected.type){const s=selected;out.innerHTML=`<b>${MATERIALS[s.item].title} storage</b><p>Capacity: ${fmt(storageCap(s))} ${MATERIALS[s.item].unit}</p><p>Planned opening: ${fmt(s.stock)} · Scenario ending: ${tested?fmt(tested.stocks[s.id]):'not tested'}</p><small>Opening stock is a scenario assumption; register physical counts are unreconciled.</small><label for="stock">Planned opening quantity (${MATERIALS[s.item].unit})</label><input id="stock" type="number" min="0" max="${storageCap(s)}" value="${s.stock}"><button id="setStock">Set scenario stock</button>`;$('setStock').onclick=()=>{const n=+$('stock').value;if(!Number.isFinite(n)||n<0||n>storageCap(s)){alert('Stock must be between zero and capacity.');return}snapshot();s.stock=n;commit(0,0,'Adjust planned stock')};return}
+ const m=selected,s=SPECS[m.type],workers=FactoryEngine.requiredWorkers(m,SPECS,UPGRADES),role=roleForSpec(s),available=spareWorkers.filter(w=>w.role===role);;
+ out.innerHTML=`<b>${s.name} #${m.number}</b><small class="block">Registered owner: ${escapeHtml(m.owner||'New planning asset')} · ${ION_REGISTER.categories[s.category]}</small><div class="row"><span>Candidate capacity / normal day</span><b>${s.support?'Support only':fmt(capacity(m))}</b></div><div class="row"><span>Scenario production</span><b>${tested?fmt(tested.machines[m.id]):'Run test'}</b></div><div class="row"><span>Condition</span><b>${fmt(m.condition*100)}%</b></div><div class="recipe">${Object.entries(s.inputs).map(([k,n])=>`<div><span>${MATERIALS[k].title}</span><b>${fmt(n)} ${MATERIALS[k].unit}</b></div>`).join('')||'No engine recipe; maintenance support.'}</div><small>Recipe quantities are per completed cycle. Tile supply/need is delivered for production versus candidate nameplate demand for the selected operating day; undelivered inputs can remain in upstream stock.</small><h3>Workers · ${m.crew.length} assigned / ${workers} required</h3><label for="staffRequirement">Base operators before automation (planning assumption)</label><input id="staffRequirement" type="number" min="1" max="20" value="${m.staffingRequired??s.workers}"><button id="setStaff">Set staffing requirement</button><div>${m.crew.map(p=>`<span class="tag"><span class="dot" style="background:${workerColor(p.level)}"></span> T${p.level} <select data-worker-level="${p.id}" aria-label="Edit planning skill tier">${Array.from({length:6},(_,i)=>`<option value="${i}" ${p.level===i?'selected':''}>T${i}</option>`).join('')}</select><button data-release="${p.id}" title="Unassign this planned worker">×</button></span>`).join('')}</div><label for="level">Assign from unassigned ${STAFF_ROLES[role]} pool (${available.length})</label><select id="level">${['Trainee','Novice','Competent','Experienced','Expert','Master'].map((l,i)=>`<option value="${i}" ${i===2?'selected':''}>T${i} · ${l} (${available.filter(w=>w.level===i).length} available)</option>`).join('')}</select><button id="assign" ${m.crew.length>=workers?'disabled':''}>Assign available operator</button><small class="block">Unassigned model staff are not confirmed idle employees. Tier edits are roster corrections or scenario assumptions, not earned experience. Testing never advances skill.</small><h3>Industrial upgrade options</h3><div class="refit"><b>Service / precision refit</b><p>${money(s.price*.17)} · 3 installation days</p><small>Restores 7 condition points, up to 100%.</small><button id="refit" ${m.condition>=1?'disabled':''}>Plan refit</button></div>${s.support?'':Object.entries(UPGRADES).map(([k,u])=>`<div class="refit"><b>${u.name}</b><p>${money(s.price*u.priceFraction)} · ${u.days} installation days</p><small>${u.description} Candidate speed +${Math.round((u.speed-1)*100)}%. Downtime, performance and costs are estimates, not register facts.</small><button data-upgrade="${k}" ${(m.upgrades||[]).includes(k)?'disabled':''}>${(m.upgrades||[]).includes(k)?'Already planned':'Plan upgrade'}</button></div>`).join('')}<small>Applied changes represent the proposed finished layout. Installation days are reported separately; the daily forecast does not simulate the construction schedule.</small>`;
+ $('setStaff').onclick=()=>{const n=+$('staffRequirement').value;if(!Number.isInteger(n)||n<1||n>20){alert('Use a whole number of operators between 1 and 20.');return}snapshot();m.staffingRequired=n;commit(0,0,'Adjust planning staffing requirement')};
+ const updateAssign=()=>{$('assign').disabled=m.crew.length>=workers||!available.some(w=>w.level===+$('level').value)};$('level').onchange=updateAssign;updateAssign();
+ $('assign').onclick=()=>{const index=spareWorkers.findIndex(w=>w.role===role&&w.level===+$('level').value);if(m.crew.length>=workers||index<0)return;snapshot();m.crew.push(spareWorkers.splice(index,1)[0]);commit(0,0,'Reassign available operator')};
+ out.querySelectorAll('[data-release]').forEach(b=>b.onclick=()=>{const w=m.crew.find(w=>w.id===b.dataset.release);if(!w)return;snapshot();w.role??=role;w.homePool??=role==='qa'?'qa-shared':role+'-'+(m.owner==='Factory B'?'B':'A');m.crew=m.crew.filter(person=>person.id!==b.dataset.release);if(!spareWorkers.some(p=>p.id===w.id))spareWorkers.push(w);commit(0,0,'Return operator to unassigned pool')});
+ out.querySelectorAll('[data-worker-level]').forEach(b=>b.onchange=()=>{const w=m.crew.find(w=>w.id===b.dataset.workerLevel);snapshot();w.level=+b.value;commit(0,0,'Adjust planning operator skill tier')});
+ $('refit').onclick=()=>{if(m.condition>=1)return;snapshot();m.condition=Math.min(1,m.condition+.07);commit(Math.round(s.price*.17),3,'Refit '+s.name)};
+ out.querySelectorAll('[data-upgrade]').forEach(b=>b.onclick=()=>{const k=b.dataset.upgrade;if((m.upgrades||[]).includes(k))return;snapshot();(m.upgrades??=[]).push(k);const u=UPGRADES[k];commit(Math.round(s.price*u.priceFraction),u.days,u.name+' · '+s.name)});
+}
+async function test(){
+ const sc=validateScenario(scenario()),revision=planRevision,job={buildings:structuredClone(buildings),specs:SPECS,materials:MATERIALS,options:{...sc,upgrades:UPGRADES,receiving:'Receiving',requireDocks:true,implicitWalk:true,steps:36}};
+ const result=await new Promise((resolve,reject)=>{
+  const fallback=()=>setTimeout(()=>{try{resolve(FactoryEngine.simulate(job.buildings,job.specs,job.materials,job.options))}catch(e){reject(e)}},20);
+  try{const worker=makeInlineWorker();worker.onmessage=e=>{worker.terminate();if(e.data.error)reject(Error(e.data.error));else resolve(e.data.result)};worker.onerror=()=>{worker.terminate();fallback()};worker.postMessage(job)}catch{fallback()}
+ });
+ if(planRevision!==revision){$('status').textContent='Plan changed during calculation; result discarded. Test Campus again.';return}
+ tested=result;renderResults();refresh();paint();$('status').textContent=`Tested: ${tested.routes.length} visible route legs · ${tested.hours}-hour scenario · ${tested.warmupDays} calculation-only warm-up days. Observed campus output remains 247/day.`;
+}
+
+function renderResults(){
+ const reference='<div class="reference-output"><span>Current A+B operating reference</span><b>247 engines / 9-hour day</b></div>';
+ if(!tested){$('summary').innerHTML=reference+'<p class="muted">Test Campus to calculate a candidate layout forecast.</p>';$('stages').innerHTML='';$('handoffs').textContent='No current flow result.';$('diag').textContent='Results need recalculation.';return}
+ const overtime=Math.max(0,tested.hours-9),crew=Object.values(buildings).flatMap(b=>b.machines).reduce((n,m)=>n+m.crew.length,0);
+ $('summary').innerHTML=reference+`<div class="eyebrow">CANDIDATE CERTIFIED ENGINES / SCENARIO DAY</div><div class="output-number">${fmt(tested.stage.qa?.actual)}</div><small>${tested.hours} operating hours · ${tested.warmupDays?'warmed model after '+tested.warmupDays+' calculation days':'cold start from empty buffers'} · dispatched ${fmt(tested.stage.package?.actual)}. This is not a new measurement of current factory output.</small>`+(tested.warmupDays===0?`<p class="warn">Startup forecast: initially empty machine buffers understate ongoing factory output. Use the warmed model for steady-production comparisons.</p>`:'')+(tested.warmupDays>0&&Math.abs((tested.stage.qa?.actual||0)-247)>247*.05?`<p class="warn">This proposed scenario differs from the current operating reference. Check its changes, resource supply and constraints; it does not revise the known current output.</p>`:'')+(overtime?`<p>Overtime labour estimate: ${money(crew*overtime*25*1.5)} / day (${crew} planned operators × ${overtime}h × 25 Cr/h × 1.5; provisional wage assumption).</p>`:'');
+ if(tested.dailyOutputs.length>1){const previous=tested.dailyOutputs.at(-2),last=tested.dailyOutputs.at(-1);if(Math.abs(last-previous)>Math.max(1,last*.01))$('summary').innerHTML+='<p class="warn">Output was still changing over the last two simulated days. This scenario has not demonstrated a stable rate.</p>'}
+ $('stages').innerHTML=FactoryEngine.topological(SPECS).filter(k=>!SPECS[k].support).map(k=>{const z=tested.stage[k];return `<div class="stage"><div class="row"><span>${SPECS[k].name}</span><strong>${fmt(z.actual)}</strong></div><div class="meter"><i style="width:${z.rated?Math.min(100,z.actual/z.rated*100):0}%"></i></div><small>${fmt(z.actual)} routed / ${fmt(z.possible)} staffed candidate capacity</small></div>`}).join('');
+ $('diag').innerHTML='<small>Register §§13–14 candidate constraint: QA → calibration → integration → machining. Actual model constraints below can differ.</small>'+tested.diagnostics.map(s=>`<p class="warn">${escapeHtml(s)}</p>`).join('');
+ $('handoffs').innerHTML=tested.links.map(l=>`<div class="handoff"><b>${l.from} → ${l.to}</b><small>${fmt(l.total)} cargo volume / scenario day</small>${Object.entries(l.items).map(([k,v])=>`<div><span>${MATERIALS[k].title}</span><strong>${fmt(v)} ${MATERIALS[k].unit}</strong></div>`).join('')}</div>`).join('')||'No connected interbuilding transfers.';
+ const f=$('flowMaterial'),old=f.value;f.innerHTML='<option value="all">All materials</option>'+[...new Set(tested.routes.map(r=>r.item))].map(k=>`<option value="${k}">${MATERIALS[k].title}</option>`).join('');if([...f.options].some(o=>o.value===old))f.value=old;
+}
+const abbreviations={iron:'Fe',nickel:'Ni',cobalt:'Co',chromium:'Cr',copper:'Cu',silver:'Ag',gold:'Au',pgm:'PGM',superconductor:'SC',ceramic:'Cer',tibanna:'Tib',electronicsFeed:'EF',coolant:'Clnt',fieldCoil:'Coils',regulator:'Reg',seal:'Seals',processor:'CPU',coupler:'Coupl',sensorModule:'Sens',safingModule:'Safe'};
+const materialColor=k=>'hsl('+Math.round(Object.keys(MATERIALS).indexOf(k)*137.508)%360+',75%,68%)';
+function ports(m){const s=SPECS[m.type];if(s.support)return[];if(s.port==='flex')return [['in',m.x-1,m.y+Math.floor(m.h/2)],['out',m.x+m.w,m.y+Math.floor(m.h/2)],['in',m.x+Math.floor(m.w/2),m.y-1],['out',m.x+Math.floor(m.w/2),m.y+m.h]];const a=m.angle||0;return a%2?[['in',m.x+Math.floor(m.w/2),a===1?m.y-1:m.y+m.h],['out',m.x+Math.floor(m.w/2),a===1?m.y+m.h:m.y-1]]:[['in',a===0?m.x-1:m.x+m.w,m.y+Math.floor(m.h/2)],['out',a===0?m.x+m.w:m.x-1,m.y+Math.floor(m.h/2)]]}
+function drawMachine(m){const s=SPECS[m.type],X=m.x*CELL,Y=m.y*CELL,W=m.w*CELL,H=m.h*CELL,max=FactoryEngine.ratedRate(m,SPECS,UPGRADES)*(+$('hours').value/9),info=tested?.details[m.id];
+ ctx.fillStyle=s.color;ctx.fillRect(X+2,Y+2,W-4,H-4);ctx.strokeStyle=selected?.id===m.id?'#efff9f':'#9cb0c1';ctx.lineWidth=selected?.id===m.id?3:1;ctx.strokeRect(X+2,Y+2,W-4,H-4);
+ ctx.textAlign='left';ctx.fillStyle='#fff';ctx.font='bold 11px system-ui';ctx.fillText(m.type.toUpperCase()+' '+(m.owner?.slice(-1)||'')+'#'+m.number,X+7,Y+16,W-14);
+ ctx.font='10px system-ui';ctx.fillText(s.support?'Tooling / service':(tested?fmt(tested.machines[m.id]):'—')+' / '+fmt(max)+' per day',X+7,Y+30,W-14);
+ ctx.font='9px system-ui';let yy=Y+(H<130?38:43),lineStep=H<130?8:10;
+ for(const [item,qty]of Object.entries(s.inputs)){const amount=fmt(qty)+(MATERIALS[item].unit==='kg'?'kg':''),supply=tested?fmt(info?.inputSupply?.[item]||0):'—',need=fmt(info?.inputNeed?.[item]??qty*max);ctx.fillText(`${abbreviations[item]||item} ${amount}: ${supply}/${need} /d`,X+12,yy,W-24);yy+=lineStep}
+ (m.crew||[]).forEach((p,i)=>{ctx.beginPath();ctx.arc(X+10+i*11,Y+H-10,3.5,0,Math.PI*2);ctx.fillStyle=workerColor(p.level);ctx.fill();ctx.strokeStyle='#17212b';ctx.stroke()});
+ function mark(side,kind,offset=0){ctx.fillStyle=kind==='in'?'#43e6b4':'#ffbc77';if(side==='left'||side==='right')ctx.fillRect(side==='left'?X+2:X+W-8,Y+H/2-5+offset,6,10);else ctx.fillRect(X+W/2-5+offset,side==='top'?Y+2:Y+H-8,10,6)}
+ if(!s.support&&s.port==='flex')for(const side of ['left','right','top','bottom']){mark(side,'in',-7);mark(side,'out',7)}
+ else for(const [kind,x,y]of ports(m)){const side=x<m.x?'left':x>=m.x+m.w?'right':y<m.y?'top':'bottom';mark(side,kind,side==='left'||side==='right'?(y+.5)*CELL-(Y+H/2):(x+.5)*CELL-(X+W/2))};
+ if((m.upgrades||[]).length){ctx.fillStyle='#f2e6a7';ctx.font='10px system-ui';ctx.fillText('↑'.repeat(m.upgrades.length),X+W-22,Y+H-6)}
+}
+
+let flowCache=null;
+function flowGeometry(){
+ const filter=$('flowMaterial').value;
+ if(flowCache?.result===tested&&flowCache.active===active&&flowCache.filter===filter)return flowCache;
+ const edges=new Map(),items=new Set();
+ for(const r of tested?.routes||[]){if(r.building!==active||filter!=='all'&&r.item!==filter)continue;items.add(r.item);
+  for(let i=1;i<r.cells.length;i++){const a=r.cells[i-1],b=r.cells[i],id=r.item+':'+a.join(',')+'>'+b.join(',');if(!edges.has(id))edges.set(id,{item:r.item,a,b,rate:0});edges.get(id).rate+=r.rate}
+ }
+ const materials=[...items].sort((a,b)=>Object.keys(MATERIALS).indexOf(a)-Object.keys(MATERIALS).indexOf(b));
+ flowCache={result:tested,active,filter,edges:[...edges.values()],materials};return flowCache;
+}
+function renderFlowKey(){
+ const materials=tested?flowGeometry().materials:[];
+ $('flowKey').innerHTML=materials.map(k=>`<span class="flow-chip"><i style="background:${materialColor(k)}"></i>${MATERIALS[k].title}</span>`).join('');
+}
+function drawFlows(){
+ const {edges,materials}=flowGeometry(),separate=$('spreadFlow').checked,n=materials.length;
+ const spacing=n>1?Math.min(4,CELL*.52/(n-1)):0;
+ for(const e of edges){const lane=separate?(materials.indexOf(e.item)-(n-1)/2)*spacing:0;
+  const ax=(e.a[0]+.5)*CELL+lane,ay=(e.a[1]+.5)*CELL+lane,bx=(e.b[0]+.5)*CELL+lane,by=(e.b[1]+.5)*CELL+lane;
+  ctx.strokeStyle=materialColor(e.item);ctx.lineWidth=n>12?1.2:2;ctx.globalAlpha=.9;ctx.beginPath();ctx.moveTo(ax,ay);ctx.lineTo(bx,by);ctx.stroke();ctx.globalAlpha=1;
+  // Sparse arrows avoid piling hundreds of direction markers at intersections.
+  if((e.a[0]+e.a[1])%4===0){ctx.save();ctx.translate((ax+bx)/2,(ay+by)/2);ctx.rotate(Math.atan2(by-ay,bx-ax));ctx.fillStyle=materialColor(e.item);ctx.beginPath();ctx.moveTo(4,0);ctx.lineTo(-3,-2.5);ctx.lineTo(-3,2.5);ctx.closePath();ctx.fill();ctx.restore()}
+ }
+}
+function paint(){const b=buildings[active];if(!b)return;COLS=b.cols;ROWS=b.rows;canvas.width=COLS*CELL;canvas.height=ROWS*CELL;canvas.style.width=COLS*CELL*(+$('zoom').value/100)+'px';canvas.style.height=ROWS*CELL*(+$('zoom').value/100)+'px';ctx.fillStyle='#293340';ctx.fillRect(0,0,canvas.width,canvas.height);ctx.strokeStyle='#1c2e40';ctx.lineWidth=.5;
+ for(let x=0;x<=COLS;x++){ctx.beginPath();ctx.moveTo(x*CELL,0);ctx.lineTo(x*CELL,canvas.height);ctx.stroke()}for(let y=0;y<=ROWS;y++){ctx.beginPath();ctx.moveTo(0,y*CELL);ctx.lineTo(canvas.width,y*CELL);ctx.stroke()}
+ for(const p of b.paths){if(p.kind==='walk')continue;ctx.fillStyle=p.kind==='belt'?'#9c7d45':p.kind==='cart'?'#4d6484':'#4c515a';ctx.fillRect(p.x*CELL+2,p.y*CELL+2,CELL-4,CELL-4);if(p.kind==='belt'){ctx.fillStyle='#fff3c9';ctx.font='18px system-ui';ctx.fillText(['→','↓','←','↑'][p.dir],p.x*CELL+8,p.y*CELL+24)}}
+ for(const s of b.storage){ctx.fillStyle='#70518c';ctx.fillRect(s.x*CELL+2,s.y*CELL+2,s.w*CELL-4,s.h*CELL-4);ctx.fillStyle='#fff';ctx.font='10px system-ui';ctx.fillText(MATERIALS[s.item].title,s.x*CELL+4,s.y*CELL+17,s.w*CELL-8);ctx.fillText(fmt(tested?.stocks[s.id]??s.stock)+' '+MATERIALS[s.item].unit,s.x*CELL+4,s.y*CELL+32,s.w*CELL-8)}
+ for(const m of b.machines)drawMachine(m);
+ for(const [kind,points]of Object.entries(b.docks))for(const [x,y]of points){ctx.strokeStyle=kind==='input'?'#60dfd1':'#ffbc77';ctx.lineWidth=2;ctx.strokeRect(x*CELL+4,y*CELL+4,CELL-8,CELL-8);ctx.font='10px system-ui';ctx.fillStyle=ctx.strokeStyle;ctx.fillText(kind==='input'?'IN':'OUT',x*CELL+7,y*CELL+23)}
+ if(tested&&$('showFlow').checked)drawFlows();
+ let ghost=area&&{...area,area:true};if(drag?.kind==='move')ghost={...drag.source,x:drag.x,y:drag.y};else if(drag?.kind==='movePath')ghost={x:drag.x,y:drag.y,w:1,h:1};else if(['storage','area'].includes(drag?.kind))ghost=rectangle(drag.start,drag.current);else if(tool==='place'&&hover){const s=SPECS[catalog];ghost={x:hover.x,y:hover.y,w:orientation%2?s.h:s.w,h:orientation%2?s.w:s.h}}
+ if(ghost){const okay=ghost.area||tool==='area'||valid(b,ghost,drag?.source?.id)&&!Object.values(b.docks).flat().some(([x,y])=>contains(ghost,{x,y,w:1,h:1}));ctx.fillStyle=okay?'#6fe7c52c':'#f0636344';ctx.strokeStyle=okay?'#77ecd0':'#ff7d7d';ctx.lineWidth=2;ctx.fillRect(ghost.x*CELL,ghost.y*CELL,ghost.w*CELL,ghost.h*CELL);ctx.strokeRect(ghost.x*CELL,ghost.y*CELL,ghost.w*CELL,ghost.h*CELL)}
+}
+const pos=e=>{const r=canvas.getBoundingClientRect();return {x:Math.floor((e.clientX-r.left)*canvas.width/r.width/CELL),y:Math.floor((e.clientY-r.top)*canvas.height/r.height/CELL)}};
+const rectangle=(a,b)=>({x:Math.min(a.x,b.x),y:Math.min(a.y,b.y),w:Math.abs(b.x-a.x)+1,h:Math.abs(b.y-a.y)+1});
+function showTip(e,p){const b=buildings[active],o=entityAt(b,p.x,p.y),path=pathAt(b,p.x,p.y)||(!entityAt(b,p.x,p.y)?{kind:'walk',dir:0,implicit:true}:null);let html='';if(o?.type){const s=SPECS[o.type];html=`<b>${s.name} #${o.number}</b><br>${o.owner||'New planning asset'}<br>Candidate normal-day capacity: ${fmt(capacity(o))}<br>${Object.entries(s.inputs).map(([k,n])=>fmt(n)+' '+MATERIALS[k].unit+' '+MATERIALS[k].title+(tested?' · '+fmt(tested.details[o.id]?.inputSupply?.[k])+'/'+fmt(tested.details[o.id]?.inputNeed?.[k])+' '+MATERIALS[k].unit+'/day':'')).join('<br>')}<br>Crew ${o.crew.length}/${FactoryEngine.requiredWorkers(o,SPECS,UPGRADES)} · ${fmt(o.condition*100)}% condition<br>${s.port==='fixed'?'Fixed input/output ports':'Flexible access on any exposed edge'}`}
+ else if(o)html=`<b>${MATERIALS[o.item].title}</b><br>${fmt(tested?.stocks[o.id]??o.stock)} / ${fmt(storageCap(o))} ${MATERIALS[o.item].unit}`;
+ else if(path){const t=tested?.traffic[active][key(p.x,p.y)];html=`<b>${path.kind} ${nodeDock(b,p.x,p.y)?'· building access':''}</b><br>${fmt(t?.total)} cargo volume / ${fmt(FactoryEngine.pathCapacity(path)*(+$('hours').value/9))} scenario capacity<br>${Object.entries(t?.items||{}).map(([k,n])=>MATERIALS[k].title+': '+fmt(n)+' '+MATERIALS[k].unit).join('<br>')}`}
+ if(!html){tip.style.display='none';return}tip.innerHTML=html;tip.style.display='block';tip.style.left=Math.min(e.clientX+14,window.innerWidth-340)+'px';tip.style.top=Math.max(5,Math.min(e.clientY+14,window.innerHeight-tip.offsetHeight-10))+'px';
+}
+function brush(p){const b=buildings[active];if(!inside(p.x,p.y)||entityAt(b,p.x,p.y)||nodeDock(b,p.x,p.y))return;const old=pathAt(b,p.x,p.y);if(tool==='walk'&&(!old||old.kind==='walk'))return;if(old?.kind===tool&&(tool!=='belt'||old.cargo===cargo&&old.dir===orientation))return;b.paths=b.paths.filter(o=>o!==old);b.paths.push({x:p.x,y:p.y,kind:tool,cargo:tool==='belt'?cargo:null,dir:orientation});drag.count++;drag.bounds=drag.bounds?{x:Math.min(drag.bounds.x,p.x),y:Math.min(drag.bounds.y,p.y),w:Math.max(drag.bounds.x+drag.bounds.w,p.x+1)-Math.min(drag.bounds.x,p.x),h:Math.max(drag.bounds.y+drag.bounds.h,p.y+1)-Math.min(drag.bounds.y,p.y)}:{x:p.x,y:p.y,w:1,h:1}}
+canvas.onpointerdown=e=>{if(e.button!==0)return;const p=pos(e),b=buildings[active];if(!inside(p.x,p.y))return;const o=entityAt(b,p.x,p.y);canvas.setPointerCapture(e.pointerId);
+ if(['move','select'].includes(tool)&&o){selected=o;drag={kind:'move',source:o,x:o.x,y:o.y,offX:p.x-o.x,offY:p.y-o.y};refresh();paint()}
+ else if(['move','select'].includes(tool)&&pathAt(b,p.x,p.y)&&!nodeDock(b,p.x,p.y)){selected=null;drag={kind:'movePath',source:pathAt(b,p.x,p.y),x:p.x,y:p.y};refresh();paint()}
+ else if(['storage','area'].includes(tool))drag={kind:tool,start:p,current:p};
+ else if(['belt','cart','walk'].includes(tool)){snapshot();drag={kind:'brush',last:p,count:0};brush(p);paint()}
+ else if(tool==='select'){selected=o||null;refresh();paint()}
+ else if(tool==='place'){const s=SPECS[catalog],m={id:sid(),type:catalog,x:p.x,y:p.y,w:orientation%2?s.h:s.w,h:orientation%2?s.w:s.h,angle:orientation,number:Math.max(0,...b.machines.filter(m=>m.type===catalog).map(m=>m.number))+1,condition:.98,crew:[],upgrades:[]};if(valid(b,m)&&!Object.values(b.docks).flat().some(([x,y])=>contains(m,{x,y,w:1,h:1}))){snapshot();b.machines.push(m);selected=m;commit(s.price,s.days,'Add '+s.name)}}
+ else if(tool==='erase'){if(nodeDock(b,p.x,p.y))return;const path=pathAt(b,p.x,p.y);if(o||path){snapshot();b.machines=b.machines.filter(m=>m!==o);b.storage=b.storage.filter(s=>s!==o);b.paths=b.paths.filter(v=>v!==path);selected=null;commit(o?1200:70,o?1:0,'Remove '+(o?'equipment/storage':'path'),o?{x:o.x,y:o.y,w:o.w,h:o.h}:{x:p.x,y:p.y,w:1,h:1})}}
+};
+canvas.onpointermove=e=>{const p=pos(e);if(!inside(p.x,p.y))return;if(drag){tip.style.display='none';if(drag.kind==='move'){drag.x=p.x-drag.offX;drag.y=p.y-drag.offY}else if(drag.kind==='movePath'){drag.x=p.x;drag.y=p.y}else if(drag.kind==='brush'){let {x,y}=drag.last;while(x!==p.x||y!==p.y){if(x!==p.x)x+=Math.sign(p.x-x);else y+=Math.sign(p.y-y);brush({x,y})}drag.last=p}else drag.current=p;paint()}else{hover=p;if(tool==='place')paint();showTip(e,p)}};
+canvas.onpointerup=e=>{if(!drag)return;const d=drag;drag=null;const b=buildings[active];if(d.kind==='move'){const o={...d.source,x:d.x,y:d.y};if(valid(b,o,o.id)&&!Object.values(b.docks).flat().some(([x,y])=>contains(o,{x,y,w:1,h:1}))&&(o.x!==d.source.x||o.y!==d.source.y)){snapshot();d.source.x=o.x;d.source.y=o.y;selected=d.source;commit(2400,1,'Relocate equipment/storage')}}
+ else if(d.kind==='movePath'){const target={x:d.x,y:d.y,w:1,h:1};if(valid(b,target)&&!nodeDock(b,d.x,d.y)&&(d.x!==d.source.x||d.y!==d.source.y)){const previous={x:d.source.x,y:d.source.y},other=pathAt(b,d.x,d.y);snapshot();d.source.x=d.x;d.source.y=d.y;if(other){other.x=previous.x;other.y=previous.y}commit(other?140:70,0,other?'Swap transport tiles':'Relocate transport tile',target)}}
+ else if(d.kind==='area'){area=rectangle(d.start,d.current);$('scope').value='area';refresh()}
+ else if(d.kind==='storage'){const s={...rectangle(d.start,d.current),id:sid(),item:cargo,stock:0};if(valid(b,s)&&s.w*s.h>=2&&!Object.values(b.docks).flat().some(([x,y])=>contains(s,{x,y,w:1,h:1}))){snapshot();b.storage.push(s);selected=s;commit(s.w*s.h*420,1+Math.ceil(s.w*s.h/15),'Build storage')}}
+ else if(d.kind==='brush'){if(d.count)commit(d.count*(tool==='belt'?750:tool==='cart'?240:100),tool==='belt'?1:0,'Build '+d.count+' '+tool+' tiles',d.bounds);else history.pop()}
+ paint();refresh();
+};
+canvas.onpointercancel=()=>{if(drag?.kind==='brush'){const prev=JSON.parse(history.pop());buildings=prev.buildings}drag=null;paint()};canvas.onpointerleave=()=>{hover=null;tip.style.display='none';if(!drag)paint()};
+function payload(scope){
+ validateScenario(scenario());let chosen;
+ if(scope==='campus')chosen=buildings;
+ else if(scope==='building')chosen={[active]:buildings[active]};
+ else if(scope==='area'){
+  if(!area)throw Error('Choose Area and drag a rectangle first.');const b=buildings[active];
+  if(entities(b).some(o=>intersects(o,area)&&!contains(area,o)))throw Error('The area cuts through equipment or storage. Expand the rectangle to include whole entities.');
+  chosen={[active]:{...b,machines:b.machines.filter(m=>contains(area,m)),storage:b.storage.filter(s=>contains(area,s)),paths:b.paths.filter(p=>contains(area,{...p,w:1,h:1}))}};
+ }else throw Error('Unknown export scope.');
+ return structuredClone({schema:SCHEMA,factory:'Orinda Campus',baseRevision:2,author:$('author').value,created:new Date().toISOString(),scope,building:scope==='campus'?null:active,area:scope==='area'?area:null,buildings:chosen,...(scope==='campus'?{scenario:scenario(),expenses,workerPool:spareWorkers}:{proposedWork:expenses.filter(e=>e.building===active&&(scope==='building'||e.bounds&&contains(area,e.bounds)))} )});
+}
+function validateBuildings(candidate){
+ if(Object.keys(candidate).length!==BLDGS.length||BLDGS.some(n=>!candidate[n]))throw Error('Campus must contain all six agreed buildings.');const ids=new Set(),workerIDs=new Set();
+ for(const [name,b]of Object.entries(candidate)){
+  if(!BLDGS.includes(name)||!b||!Number.isInteger(b.cols)||!Number.isInteger(b.rows)||b.cols<4||b.rows<4||b.cols>400||b.rows>400||b.cols*b.rows>25000||!Array.isArray(b.machines)||b.machines.length>2000||!Array.isArray(b.storage)||b.storage.length>1000||!Array.isArray(b.paths)||b.paths.length>25000||!b.docks)throw Error('Invalid building dimensions or entity lists.');
+  const occupied=new Set(),paths=new Set();
+  for(const o of entities(b)){
+   if(typeof o.id!=='string'||!/^[a-zA-Z0-9_-]{1,90}$/.test(o.id)||o.id in Object.prototype||ids.has(o.id))throw Error('Invalid or duplicate entity ID.');ids.add(o.id);
+   if(!['x','y','w','h'].every(k=>Number.isInteger(o[k]))||o.w<1||o.h<1||!inside(o.x,o.y,b)||o.x+o.w>b.cols||o.y+o.h>b.rows)throw Error('Entity lies outside its floor.');
+   for(let y=o.y;y<o.y+o.h;y++)for(let x=o.x;x<o.x+o.w;x++){const k=key(x,y);if(occupied.has(k))throw Error('Overlapping equipment/storage.');occupied.add(k)}
+   if(o.type){if(!Object.hasOwn(SPECS,o.type))throw Error('Unknown equipment type.');const s=SPECS[o.type];
+    if(!Number.isInteger(o.angle)||o.angle<0||o.angle>3||o.w!==(o.angle%2?s.h:s.w)||o.h!==(o.angle%2?s.w:s.h)||!Number.isInteger(o.number)||o.number<1||!Number.isFinite(o.condition)||o.condition<0||o.condition>1||!Array.isArray(o.crew)||o.crew.length>20||o.staffingRequired!==undefined&&(!Number.isInteger(o.staffingRequired)||o.staffingRequired<1||o.staffingRequired>20)||o.owner!==undefined&&!Object.hasOwn(ION_REGISTER.factories,o.owner)||!Array.isArray(o.upgrades)||new Set(o.upgrades).size!==o.upgrades.length||o.upgrades.some(u=>!Object.hasOwn(UPGRADES,u)))throw Error('Invalid machine, crew or upgrade data.');
+    for(const w of o.crew){if(typeof w.id!=='string'||!/^[a-zA-Z0-9_-]{1,90}$/.test(w.id)||workerIDs.has(w.id)||!Number.isInteger(w.level)||w.level<0||w.level>5||w.role!==undefined&&w.role!==roleForSpec(s)||w.homePool!==undefined&&!STAFF_POOLS.some(p=>p.id===w.homePool&&p.role===roleForSpec(s)))throw Error('Invalid or duplicate worker.');workerIDs.add(w.id)}
+   }else if(!Object.hasOwn(MATERIALS,o.item)||!Number.isFinite(o.stock)||o.stock<0||o.stock>storageCap(o)||o.receiving!==undefined&&typeof o.receiving!=='boolean')throw Error('Invalid storage.');
+  }
+  for(const p of b.paths){const k=key(p.x,p.y);if(!Number.isInteger(p.x)||!Number.isInteger(p.y)||!inside(p.x,p.y,b)||occupied.has(k)||paths.has(k)||!['belt','cart','walk'].includes(p.kind)||!Number.isInteger(p.dir)||p.dir<0||p.dir>3||p.kind==='belt'&&!Object.hasOwn(MATERIALS,p.cargo))throw Error('Invalid, duplicate or obstructed transport tile.');paths.add(k)}
+  for(const kind of ['input','output']){if(!Array.isArray(b.docks[kind])||b.docks[kind].length>1000)throw Error('Invalid building access points.');const points=new Set();for(const p of b.docks[kind]){if(!Array.isArray(p)||p.length!==2||!p.every(Number.isInteger)||!inside(p[0],p[1],b)||occupied.has(key(...p))||points.has(p.join(',')))throw Error('Invalid or obstructed dock.');points.add(p.join(','))}}
+ }
+ return candidate;
+}
+function validatePayload(data){
+ if(!data||data.schema!==SCHEMA||data.factory!=='Orinda Campus'||data.baseRevision!==2)throw Error('This plan uses an incompatible recipe/campus schema. Earlier plans remain backed up and must not silently adopt different recipes.');
+ if(!['campus','building','area'].includes(data.scope)||!data.buildings||Object.keys(data.buildings).some(n=>!BLDGS.includes(n)))throw Error('Invalid blueprint scope.');
+ const names=Object.keys(data.buildings);if(data.scope!=='campus'&&(names.length!==1||names[0]!==data.building))throw Error('Scope must name exactly one building.');
+ if(data.proposedWork!==undefined&&(!Array.isArray(data.proposedWork)||data.proposedWork.length>10000||data.proposedWork.some(e=>!Number.isFinite(e.cost)||e.cost<0||!Number.isFinite(e.days)||e.days<0||typeof e.action!=='string'||typeof e.id!=='string'||!BLDGS.includes(e.building))))throw Error('Invalid scoped work quotes.');
+ if(data.proposedWork){const ids=new Set();for(const e of data.proposedWork){if(!/^[a-zA-Z0-9_-]{1,90}$/.test(e.id)||ids.has(e.id)||e.building!==data.building||e.action.length>500||data.scope==='area'&&(!e.bounds||!['x','y','w','h'].every(k=>Number.isInteger(e.bounds[k]))||e.bounds.w<1||e.bounds.h<1||!contains(data.area,e.bounds)))throw Error('Duplicate or out-of-scope work quote.');ids.add(e.id)}}
+ if(data.scope==='campus'){
+  validateBuildings(data.buildings);validateScenario(data.scenario);validateWorkerPool(data.workerPool||FactoryBaseline.availableWorkers(data.buildings,SPECS),data.buildings);
+  if(!Array.isArray(data.expenses)||data.expenses.length>10000||data.expenses.some(e=>!Number.isFinite(e.cost)||e.cost<0||!Number.isFinite(e.days)||e.days<0||typeof e.action!=='string'||e.action.length>500))throw Error('Invalid implementation ledger.');
+ }else{
+  const replacement=structuredClone(data.buildings[data.building]),candidate=structuredClone(buildings);
+  if(data.scope==='area'){
+   const r=data.area,existing=candidate[data.building];if(!r||!['x','y','w','h'].every(k=>Number.isInteger(r[k]))||r.w<1||r.h<1||!inside(r.x,r.y,existing)||r.x+r.w>existing.cols||r.y+r.h>existing.rows||replacement.cols!==existing.cols||replacement.rows!==existing.rows)throw Error('Area does not fit the destination floor.');
+   if(!Array.isArray(replacement.machines)||!Array.isArray(replacement.storage)||!Array.isArray(replacement.paths)||[...replacement.machines,...replacement.storage].some(o=>!contains(r,o))||replacement.paths.some(p=>!contains(r,{...p,w:1,h:1})))throw Error('Area blueprint contains data outside its rectangle.');
+   if(entities(existing).some(o=>intersects(r,o)&&!contains(r,o)))throw Error('Area replacement would cut through existing equipment/storage.');
+   const merge=(old,incoming,paths=false)=>{
+    const id=o=>paths?key(o.x,o.y):o.id,remaining=new Map(incoming.map(o=>[id(o),o]));
+    const merged=[];for(const o of old){if(!contains(r,paths?{...o,w:1,h:1}:o)){merged.push(o);continue}const replacement=remaining.get(id(o));if(replacement){merged.push(replacement);remaining.delete(id(o))}}
+    return [...merged,...remaining.values()];
+   };
+   candidate[data.building]={...existing,machines:merge(existing.machines,replacement.machines),storage:merge(existing.storage,replacement.storage),paths:merge(existing.paths,replacement.paths,true)};
+  }else candidate[data.building]=replacement;
+  validateBuildings(candidate);data.resolved=candidate;data.resolvedWorkerPool=mergedWorkerPool(candidate);
+ }
+ return data;
+}
+function download(data,name){const url=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json'})),a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)}
+function importFile(file){if(file.size>15000000){alert('Blueprint exceeds 15 MB.');return}const reader=new FileReader();reader.onload=()=>{try{
+ const data=validatePayload(JSON.parse(reader.result)),count=Object.values(data.buildings).reduce((n,b)=>n+b.machines.length,0);
+ const quote=(data.proposedWork||[]).reduce((a,e)=>({cost:a.cost+e.cost,days:a.days+e.days}),{cost:0,days:0});
+ const detail=data.scope==='campus'?'All six floors, scenario settings and implementation ledger':data.scope==='area'?`${data.building}: rectangle (${data.area.x},${data.area.y}), ${data.area.w} × ${data.area.h} cells. Everything outside remains unchanged`:`Only ${data.building}; other buildings and resource scenario stay unchanged; existing ledger entries are retained`;
+ if(!confirm(`Import preview: ${data.scope}, ${count} equipment items.\n${detail}.\n${data.scope==='campus'?'':`Included work quotes: ${money(quote.cost)} / ${fmt(quote.days)} installation days. Distinct work IDs will be merged into the plan ledger.`}\nApply this replacement?`))return;
+ snapshot();buildings=data.scope==='campus'?data.buildings:data.resolved;if(data.scope==='campus'){spareWorkers=data.workerPool||FactoryBaseline.availableWorkers(buildings,SPECS);expenses=data.expenses;applyScenario(data.scenario)}else{spareWorkers=data.resolvedWorkerPool;const known=new Set(expenses.map(e=>e.id));expenses.push(...(data.proposedWork||[]).filter(e=>!known.has(e.id)))}selected=null;area=null;invalidate();saveLocal();refresh();paint();alert('Blueprint imported. Test Campus to refresh the forecast.');
+ }catch(e){alert('Import failed: '+e.message)}};reader.readAsText(file)}
+initUI();seed();restoreLocal();renderResults();refresh();paint();
+
+</script></body></html>
