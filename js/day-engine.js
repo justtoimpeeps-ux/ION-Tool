@@ -78,11 +78,13 @@ const FactoryDay=(()=>{
  // A trip yields in its off-floor holding area until its complete route is safe.
  // No head-on swaps or occupied-cell crossings are permitted, including service stops.
  class Traffic{
-  constructor(geo=null,doorSeconds=2){this.geo=geo;this.doorSeconds=doorSeconds;this.cells=new Map();this.edges=new Map();this.plans=new Map();this.failed=new WeakMap();this.failedRoutes=new Lru(8192);this.prunedBefore=0;this.waitSeconds=0;this.conflicts=0}
+  constructor(geo=null,doorSeconds=2){this.geo=geo;this.doorSeconds=doorSeconds;this.cells=new Map();this.edges=new Map();this.plans=new WeakMap();this.failed=new WeakMap();this.failedRoutes=new Lru(8192);this.prunedBefore=0;this.waitSeconds=0;this.conflicts=0}
   conflict(map,key,start,end){const a=map.get(key);if(!a)return null;let lo=0,hi=a.length;while(lo<hi){const m=(lo+hi)>>1;if(a[m][1]<=start)lo=m+1;else hi=m}const r=a[lo];return r&&r[0]<end?r:null}
   insert(map,key,row){let a=map.get(key);if(!a){map.set(key,[row]);return}let lo=0,hi=a.length;while(lo<hi){const m=(lo+hi)>>1;if(a[m][0]<row[0])lo=m+1;else hi=m}a.splice(lo,0,row)}
   plan(path,kind,pickupIndex,dropIndex,pickupWait=0){
-   const ck=kind+'|'+pickupIndex+'|'+dropIndex+'|'+pickupWait;let cached=this.plans.get(path);if(cached?.has(ck))return cached.get(ck);if(!cached){cached=new Map();this.plans.set(path,cached);if(this.plans.size>256)this.plans.delete(this.plans.keys().next().value)}
+   // Paths and terrain are immutable within a day. Keep their plans while
+   // the route is alive; discarded routes release their plans automatically.
+   const ck=kind+'|'+pickupIndex+'|'+dropIndex+'|'+pickupWait;let cached=this.plans.get(path);if(cached?.has(ck))return cached.get(ck);if(!cached){cached=new Map();this.plans.set(path,cached)}
    const v=VEHICLES[kind],steps=[],merged=new Map(),edges=[];let duration=0;
    for(let i=0;i<path.length;i++){
     const p=path[i],previous=path[i-1],transition=previous&&previous[0]!==p[0],terrain=this.geo?.floors[p[0]]?.paths.get(p[1]+','+p[2])?.kind,speed=v.speed*(kind==='walker'||p[0]==='@campus'||['cart','loading'].includes(terrain)?1:.35),dt=Math.ceil(transition?this.doorSeconds:2/speed)+(i===pickupIndex||i===dropIndex?v.loadSeconds:0)+(i===pickupIndex?pickupWait:0);steps.push(duration);
@@ -103,17 +105,20 @@ const FactoryDay=(()=>{
    // Departures use integer seconds. Mark forbidden starts in a small exact
    // bitset instead of sorting all future bookings. Every cell, tail and edge
    // reservation is still checked, with the same half-open interval rules.
+   // Booking arrays remain unchanged during this search. Resolve them once,
+   // rather than repeating map lookups for every departure window. Preserve
+   // cell/edge order so the earliest feasible departure stays identical.
+   const checks=[];for(const [key,intervals]of merged){const bookings=this.cells.get(key);if(bookings)for(const [a,b]of intervals)checks.push([bookings,a,b])}for(const [key,a,b]of edges){const bookings=this.edges.get(key);if(bookings)checks.push([bookings,a,b])}
    const CHUNK=1024,blocked=new Uint32Array(CHUNK/32);let found=false,delayed=false;
    while(start<=lastStart){blocked.fill(0);const end=Math.floor(Math.min(lastStart,start+CHUNK-1)),words=Math.ceil((end-start+1)/32),bits=(end-start+1)%32;let full=false,jump=end+1,fullWords=0;if(bits)blocked[words-1]=0xffffffff<<bits;const mark=(word,mask)=>{const old=blocked[word];blocked[word]|=mask;if(old!==0xffffffff&&blocked[word]===0xffffffff)fullWords++;if(fullWords===words)full=true};
-    const exclude=(map,key,a,b)=>{if(full)return;const rows=map.get(key);if(!rows)return;let lo=0,hi=rows.length;while(lo<hi){const mid=(lo+hi)>>1;if(rows[mid][1]<=start+a)lo=mid+1;else hi=mid}
+    const exclude=(rows,a,b)=>{if(full)return;let lo=0,hi=rows.length;while(lo<hi){const mid=(lo+hi)>>1;if(rows[mid][1]<=start+a)lo=mid+1;else hi=mid}
      for(let i=lo;i<rows.length;i++){const [s,e]=rows[i];if(s>=end+b)break;const low=Math.max(start,s-b+1),high=Math.min(end,e-a-1);if(low>high)continue;
       if(low===start&&high===end){full=true;jump=Math.max(jump,e-a);return}
       const left=low-start,right=high-start,first=left>>>5,last=right>>>5,head=0xffffffff<<(left&31),tail=0xffffffff>>>(31-(right&31));
       if(first===last)mark(first,head&tail);else{mark(first,head);for(let word=first+1;word<last;word++)mark(word,0xffffffff);mark(last,tail)}if(full)return;
      }
     };
-    for(const [key,rows]of merged){if(full)break;for(const [a,b]of rows)exclude(this.cells,key,a,b)}
-    if(!full)for(const [key,a,b]of edges){exclude(this.edges,key,a,b);if(full)break}
+    for(let i=0;i<checks.length&&!full;i++){const check=checks[i];exclude(check[0],check[1],check[2])}
     if(!full){for(let word=0;word<blocked.length;word++){const available=~blocked[word]>>>0;if(!available)continue;const candidate=start+word*32+31-Math.clz32((available&-available)>>>0);if(candidate<=end){start=candidate;found=true}break}}
     if(found)break;delayed=true;start=jump;
    }
