@@ -2,6 +2,8 @@
 
 A reconstructed browser factory-design and operating-day planner for the IE-4 program. Recovered from the verified V4.1 package and rebuilt against the preserved V4.2 handoff. This is reconstruction, not recovery of the inaccessible original V4.2 workspace.
 
+Downloads from the recovery branch: [standalone HTML](https://github.com/justtoimpeeps-ux/ION-Tool/raw/refs/heads/recovery/v4-2-reconstruction/dist/ION_Campus_Planner_v4_2.html), [complete source ZIP](https://github.com/justtoimpeeps-ux/ION-Tool/raw/refs/heads/recovery/v4-2-reconstruction/dist/ION_Campus_Planner_v4_2.zip), and [SHA-256 checksums](https://github.com/justtoimpeeps-ux/ION-Tool/raw/refs/heads/recovery/v4-2-reconstruction/dist/SHA256SUMS). Packaging verification is recorded in `docs/PACKAGING_VERIFICATION_V4_2.json`.
+
 Open `dist/ION_Campus_Planner_v4_2.html` in a modern desktop browser, or unpack the complete source ZIP and run `npm start`. The standalone embeds artwork, styles and simulation workers and needs no server or external assets for normal desktop use. The development app has no runtime npm dependencies or credentials.
 
 ```sh
