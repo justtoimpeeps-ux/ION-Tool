@@ -1,0 +1,21 @@
+{
+  "build": "All sites review",
+  "source_commit": "e2c127329bc6bd3a56f98aad1244357c0db03bd4",
+  "branch": "recovery/v4-2-reconstruction",
+  "core_tests": 91,
+  "source_zip_tests": 91,
+  "zip_crc_and_all_current_entries_match": true,
+  "rebuilt_html_byte_identical": true,
+  "previous_v41_v42_binaries_unchanged": true,
+  "historical_duplicate_continuation_traces_omitted_from_review_zip": true,
+  "standalone_external_http_dependencies": 0,
+  "direct_file_navigation": "Managed Chromium blocks file://; standalone browser flow verified over HTTP with embedded assets/workers.",
+  "browser_checks": {
+    "source-complete": "PASS all 15 sites, 192 real map clicks, isolated source rosters, review inventory, finite deep-shaft operating day, read-only replay validation, acceptance/save/reload and embedded standalone assets.",
+    "source-packet-final": "PASS packet visuals: progressive reference-aligned assembly/final workpieces, all process types with family identifiers and selectable-function graphics, walking handlers without chassis, neutral speeders with separate cargo, recorded-cycle frame progression and no ledger posting.",
+    "standalone-complete": "PASS all 15 sites, 30 real map clicks, isolated source rosters, review inventory, finite deep-shaft operating day, read-only replay validation, acceptance/save/reload and embedded standalone assets.",
+    "standalone-vnext": "PASS VNext browser: 15 sites; isolated rosters; locked station; 2-stage palette; programmed CNC C-copy; natural art; all processes move; compressed workspace; nonengine dispatch; replay audit and playback without posting.",
+    "standalone-saves": "PASS older workspace retains every original floor, machine and worker; missing reference sites install once; original image upload preserves proportions and survives compressed save/reload.",
+    "standalone-packet": "PASS packet visuals: progressive reference-aligned assembly/final workpieces, all process types with family identifiers and selectable-function graphics, walking handlers without chassis, neutral speeders with separate cargo, recorded-cycle frame progression and no ledger posting."
+  }
+}

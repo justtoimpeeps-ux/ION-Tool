@@ -1,0 +1,322 @@
+{
+  "build": "All sites review",
+  "source_commit": "e2c127329bc6bd3a56f98aad1244357c0db03bd4",
+  "verified_at_utc": "2026-11-14T18:31:00.791588+00:00",
+  "branch": "recovery/v4-2-reconstruction",
+  "main_unchanged": "718ae90c0a731e785474c3f5baba88748baff112",
+  "counts": {
+    "sites": 15,
+    "areas": 192,
+    "modeledPeople": 6605,
+    "placedEquipment": 1655,
+    "newSpartanSites": 12,
+    "newAdoptedEquipment": 528,
+    "newReferencePeople": 3010
+  },
+  "coreTests": {
+    "passed": 91,
+    "failed": 0
+  },
+  "siteDays": [
+    {
+      "id": "west-basin",
+      "seconds": 2.4725780989999997,
+      "machines": 28,
+      "people": 120,
+      "completed": 70.7,
+      "dispatched": 70.7,
+      "unit": "t",
+      "products": {
+        "feedCopper": 45500,
+        "feedNickel": 15400,
+        "feedMixed": 9800
+      },
+      "trips": 1541,
+      "prepHours": 0.2475,
+      "maxMaterialError": 0,
+      "tailingsContained": 46450,
+      "liftTrips": 0,
+      "carrierTrips": 1180,
+      "beltParcels": 0,
+      "reservedBeltSlots": 0,
+      "inserterCount": 0
+    },
+    {
+      "id": "outer-spur",
+      "seconds": 2.414681344,
+      "machines": 38,
+      "people": 120,
+      "completed": 28.2,
+      "dispatched": 26.6,
+      "unit": "t",
+      "products": {
+        "concIron": 16000,
+        "concNickel": 6400,
+        "feedMixed": 4200
+      },
+      "trips": 1566,
+      "prepHours": 0.33305555555555555,
+      "maxMaterialError": 0,
+      "tailingsContained": 39140,
+      "liftTrips": 0,
+      "carrierTrips": 1238,
+      "beltParcels": 0,
+      "reservedBeltSlots": 0,
+      "inserterCount": 0
+    },
+    {
+      "id": "keldon-ridge",
+      "seconds": 1.8066240379999998,
+      "machines": 34,
+      "people": 110,
+      "completed": 89.4,
+      "dispatched": 88.2,
+      "unit": "t",
+      "products": {
+        "feedChromium": 73000,
+        "concCobalt": 15200
+      },
+      "trips": 1787,
+      "prepHours": 0.26666666666666666,
+      "maxMaterialError": 0,
+      "tailingsContained": 65340,
+      "liftTrips": 0,
+      "carrierTrips": 1371,
+      "beltParcels": 0,
+      "reservedBeltSlots": 0,
+      "inserterCount": 0
+    },
+    {
+      "id": "redbank",
+      "seconds": 3.853110933,
+      "machines": 31,
+      "people": 115,
+      "completed": 53.2,
+      "dispatched": 53.2,
+      "unit": "t",
+      "products": {
+        "feedIron": 42000,
+        "feedNickel": 11200
+      },
+      "trips": 1506,
+      "prepHours": 0.3288888888888889,
+      "maxMaterialError": 0,
+      "tailingsContained": 23300,
+      "liftTrips": 0,
+      "carrierTrips": 1068,
+      "beltParcels": 0,
+      "reservedBeltSlots": 0,
+      "inserterCount": 0
+    },
+    {
+      "id": "deep-vein",
+      "seconds": 1.1207069849999989,
+      "machines": 43,
+      "people": 120,
+      "completed": 37.8,
+      "dispatched": 37.8,
+      "unit": "t",
+      "products": {
+        "concNickel": 4140,
+        "concPrecious": 60,
+        "concCopper": 33600
+      },
+      "trips": 1227,
+      "prepHours": 0.4708333333333333,
+      "maxMaterialError": 0,
+      "tailingsContained": 45250,
+      "liftTrips": 86,
+      "carrierTrips": 917,
+      "beltParcels": 0,
+      "reservedBeltSlots": 0,
+      "inserterCount": 0
+    },
+    {
+      "id": "north-ridge",
+      "seconds": 2.4140350259999996,
+      "machines": 42,
+      "people": 125,
+      "completed": 48.9,
+      "dispatched": 48.1,
+      "unit": "t",
+      "products": {
+        "concIron": 32000,
+        "feedChromium": 16100
+      },
+      "trips": 1763,
+      "prepHours": 0.3472222222222222,
+      "maxMaterialError": 0,
+      "tailingsContained": 60910,
+      "liftTrips": 0,
+      "carrierTrips": 1340,
+      "beltParcels": 0,
+      "reservedBeltSlots": 0,
+      "inserterCount": 0
+    },
+    {
+      "id": "asteron-belt",
+      "seconds": 2.5038588419999996,
+      "machines": 50,
+      "people": 140,
+      "completed": 50.5,
+      "dispatched": 50.5,
+      "unit": "t",
+      "products": {
+        "concIron": 34400,
+        "concNickel": 11200,
+        "feedCobalt": 4900
+      },
+      "trips": 1817,
+      "prepHours": 0.33944444444444444,
+      "maxMaterialError": 0,
+      "tailingsContained": 59090,
+      "liftTrips": 0,
+      "carrierTrips": 1411,
+      "beltParcels": 0,
+      "reservedBeltSlots": 0,
+      "inserterCount": 0
+    },
+    {
+      "id": "talus-bulk",
+      "seconds": 3.2457163580000015,
+      "machines": 37,
+      "people": 165,
+      "completed": 80.5,
+      "dispatched": 79.1,
+      "unit": "t",
+      "products": {
+        "feedIron": 46900,
+        "feedNickel": 16800,
+        "feedCopper": 4900,
+        "feedMixed": 10500
+      },
+      "trips": 1340,
+      "prepHours": 0.7983333333333333,
+      "maxMaterialError": 0,
+      "tailingsContained": 43320,
+      "liftTrips": 0,
+      "carrierTrips": 1028,
+      "beltParcels": 0,
+      "reservedBeltSlots": 0,
+      "inserterCount": 0
+    },
+    {
+      "id": "selonia-recovery",
+      "seconds": 4.326870984000001,
+      "machines": 40,
+      "people": 190,
+      "completed": 32.3,
+      "dispatched": 31.6,
+      "unit": "t",
+      "products": {
+        "concNickel": 24840,
+        "concPrecious": 360,
+        "concCopper": 6400
+      },
+      "trips": 1407,
+      "prepHours": 0.7638888888888888,
+      "maxMaterialError": 0,
+      "tailingsContained": 46160,
+      "liftTrips": 0,
+      "carrierTrips": 1092,
+      "beltParcels": 0,
+      "reservedBeltSlots": 0,
+      "inserterCount": 0
+    },
+    {
+      "id": "drall-separation",
+      "seconds": 3.8196651029999993,
+      "machines": 46,
+      "people": 170,
+      "completed": 67.2,
+      "dispatched": 63.3,
+      "unit": "t",
+      "products": {
+        "concChromium": 38500,
+        "concCobalt": 20000,
+        "concNickel": 4800
+      },
+      "trips": 1308,
+      "prepHours": 0.8511111111111112,
+      "maxMaterialError": 0,
+      "tailingsContained": 75420,
+      "liftTrips": 0,
+      "carrierTrips": 1003,
+      "beltParcels": 0,
+      "reservedBeltSlots": 0,
+      "inserterCount": 0
+    },
+    {
+      "id": "harrow-junction",
+      "seconds": 3.802528460999998,
+      "machines": 43,
+      "people": 185,
+      "completed": 58.2,
+      "dispatched": 57.4,
+      "unit": "t",
+      "products": {
+        "concIron": 24800,
+        "feedChromium": 19600,
+        "feedNickel": 9800,
+        "concMixed": 3200
+      },
+      "trips": 1345,
+      "prepHours": 0.5975,
+      "maxMaterialError": 0,
+      "tailingsContained": 43080,
+      "liftTrips": 0,
+      "carrierTrips": 1051,
+      "beltParcels": 0,
+      "reservedBeltSlots": 0,
+      "inserterCount": 0
+    },
+    {
+      "id": "spartan-hq",
+      "seconds": 10.416619626,
+      "machines": 96,
+      "people": 1450,
+      "completed": 125,
+      "dispatched": 122,
+      "unit": "units",
+      "products": {
+        "testedMiningModule": 0,
+        "testedMiningDrone": 8,
+        "testedScanner": 17,
+        "spareKit": 97
+      },
+      "trips": 1449,
+      "prepHours": 2.2733333333333334,
+      "maxMaterialError": 0,
+      "tailingsContained": 0,
+      "liftTrips": 0,
+      "carrierTrips": 1066,
+      "beltParcels": 0,
+      "reservedBeltSlots": 0,
+      "inserterCount": 0
+    }
+  ],
+  "browserChecks": {
+    "source-complete": "PASS all 15 sites, 192 real map clicks, isolated source rosters, review inventory, finite deep-shaft operating day, read-only replay validation, acceptance/save/reload and embedded standalone assets.",
+    "source-packet-final": "PASS packet visuals: progressive reference-aligned assembly/final workpieces, all process types with family identifiers and selectable-function graphics, walking handlers without chassis, neutral speeders with separate cargo, recorded-cycle frame progression and no ledger posting.",
+    "standalone-complete": "PASS all 15 sites, 30 real map clicks, isolated source rosters, review inventory, finite deep-shaft operating day, read-only replay validation, acceptance/save/reload and embedded standalone assets.",
+    "standalone-vnext": "PASS VNext browser: 15 sites; isolated rosters; locked station; 2-stage palette; programmed CNC C-copy; natural art; all processes move; compressed workspace; nonengine dispatch; replay audit and playback without posting.",
+    "standalone-saves": "PASS older workspace retains every original floor, machine and worker; missing reference sites install once; original image upload preserves proportions and survives compressed save/reload.",
+    "standalone-packet": "PASS packet visuals: progressive reference-aligned assembly/final workpieces, all process types with family identifiers and selectable-function graphics, walking handlers without chassis, neutral speeders with separate cargo, recorded-cycle frame progression and no ledger posting."
+  },
+  "canonicalRecipe": "Exact positive raw quantities match tests/fixtures/v41-raw-bom.json; object insertion order is not treated as a recipe change.",
+  "originalOrindaReplay": "The existing day-one replay still matches the exact original 13-area Orinda layout; all recorded phases and carrier paths validate.",
+  "graphics": {
+    "maps": 15,
+    "processTypes": 106,
+    "atlasSetsIncludingVariants": 108,
+    "previewPolicy": "One atlas-backed preview per process/variant generated once. Work motion draws native atlas frames; duplicate baked preview frames removed."
+  },
+  "limits": [
+    "Adopted individual equipment allocation, role/skill split,365-day calendar,nine-hour shift,mineral recovery yields and finite two-day opening stock.",
+    "Cold-start figures are not sustainable annual capacities.",
+    "Cross-site shipment allocation, transit scheduling and automatic receipts are not implemented; reference relationships are shown and site ledgers remain separate.",
+    "Inter-area conveyors are abstracted by reserved carrier transfers; local mixed belts/inserters remain available.",
+    "Asteroid galleries and serialized underground shaft transfers use adopted carrier capacities and travel assumptions.",
+    "Spartan HQ outputs transportable equipment modules rather than entire self-propelled heavy haul vehicles."
+  ]
+}
