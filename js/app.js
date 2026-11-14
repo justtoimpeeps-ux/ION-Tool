@@ -115,7 +115,7 @@ function refresh(){
  $('undo').disabled=!history.length;$('undo').textContent='↶ Undo ('+history.length+')';
  $('cost').textContent=money(expenses.reduce((n,e)=>n+e.cost,0));$('days').textContent=fmt(expenses.reduce((n,e)=>n+e.days,0))+' days';
  $('jobs').innerHTML=expenses.slice(-8).reverse().map(e=>`<div class="job"><span>${escapeHtml(e.action)}</span><b>${money(e.cost)} · ${fmt(e.days)}d</b></div>`).join('');
- $('scenarioSummary').textContent='Operating day · '+$('hours').value+'h ▾';
+ $('scenarioSummary').textContent='Production shift · '+$('hours').value+'h ▾';
  $('areaInfo').textContent=area?`Selected ${area.w*2} × ${area.h*2} m at grid (${area.x}, ${area.y}). Only complete entities can be exported.`:'Choose Area, then drag to select a work area.';
  renderSelection();renderFlowKey();renderWorkforce();
 }

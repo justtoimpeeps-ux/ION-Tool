@@ -1,3 +1,5 @@
+> On-duty policy update: unassigned staff are excluded by default; see `DUTY_MANHOURS_REVIEW.md` for active-driver rules, legacy setting handling and the visible headcount/hour breakdown.
+
 # Separate prep crews and marginal overtime
 
 New operating-day calculations use two distinct crews. Prep logistics and maintenance employees have separate `pre-shift:` identities, replay actors and payroll rows. Production employees retain their saved roster and production shift. Prep duties do not extend a production employee's day.
