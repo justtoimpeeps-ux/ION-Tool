@@ -99,3 +99,7 @@ Continue necessary work autonomously. No subagents unless user explicitly asks. 
 ### Release verification in progress
 
 Final full fresh Orinda run completed:433.2449seconds,247certified/194dispatched,7327trips,6.0831hprep,maxerror6.9849e-10,SHA4300370de5eb13c4f9965dc293d5fe6791a12cf2fec66fd7f0e9fc6769cd964f. Independent carrier payload/cart-access/cell/edge/vehicle audit passed every7327trip. Source VNext, old-save/image-upload, attachments, inventory and packet-visual browser checks pass.85core tests pass. New replay replaces day1; old release replay/continuations retained under archive. Remaining exact-map dependency is original downloadable PNG/JPG; upload support and labeled schematic regions exist. Packaging/standalone/download verification still must complete before calling this a delivered release.
+
+### Campus hover and interior follow-up
+
+User requested visible-image hover and no empty generated interiors. Hover uses a translucent tint; ION HQ and other administrative/exterior landmarks open information instead of floor plans and are removed from interior tabs. Presentation-only `FacilityInteriors` classifies areas and supplies specific support fittings without changing saved world state. Any saved machinery/storage overrides landmark classification to preserve access. Audit: 138 interiors, 54 map landmarks, 50 fitted support areas across 192 total areas. Source browser covered every map region and preserved all layouts/rosters/ledgers; 94 core tests pass. Updated package/standalone verification must be completed for this follow-up.

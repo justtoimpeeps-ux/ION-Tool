@@ -158,7 +158,10 @@
               "capacity": 320000,
               "unit": "kg"
             }
-          ]
+          ],
+          "interior": true,
+          "fittingProfile": "warehouse",
+          "supportFittings": 0
         },
         {
           "name": "Factory A",
@@ -167,7 +170,10 @@
           "areaM2": 16320,
           "level": 0,
           "equipment": 139,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": null,
+          "supportFittings": 0
         },
         {
           "name": "Factory B",
@@ -176,7 +182,10 @@
           "areaM2": 14960,
           "level": 0,
           "equipment": 129,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": null,
+          "supportFittings": 0
         },
         {
           "name": "Subassemblies",
@@ -185,7 +194,10 @@
           "areaM2": 10200,
           "level": 0,
           "equipment": 120,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": null,
+          "supportFittings": 0
         },
         {
           "name": "Precision Machining",
@@ -194,7 +206,10 @@
           "areaM2": 26936,
           "level": 0,
           "equipment": 300,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": null,
+          "supportFittings": 0
         },
         {
           "name": "Final Assembly & Test",
@@ -203,7 +218,10 @@
           "areaM2": 9964,
           "level": 0,
           "equipment": 80,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": null,
+          "supportFittings": 0
         },
         {
           "name": "Shipping and Loading Yard",
@@ -212,7 +230,10 @@
           "areaM2": 4060,
           "level": 0,
           "equipment": 36,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": "warehouse",
+          "supportFittings": 0
         },
         {
           "name": "Maintenance and Toolroom",
@@ -221,7 +242,10 @@
           "areaM2": 7680,
           "level": 0,
           "equipment": 130,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": "workshop",
+          "supportFittings": 0
         },
         {
           "name": "ION Headquarters",
@@ -230,7 +254,10 @@
           "areaM2": 1728,
           "level": 0,
           "equipment": 0,
-          "storage": []
+          "storage": [],
+          "interior": false,
+          "fittingProfile": null,
+          "supportFittings": 0
         },
         {
           "name": "Utility Plant",
@@ -239,7 +266,10 @@
           "areaM2": 1728,
           "level": 0,
           "equipment": 0,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": "utilities",
+          "supportFittings": 9
         },
         {
           "name": "Employee Operations",
@@ -248,7 +278,10 @@
           "areaM2": 1728,
           "level": 0,
           "equipment": 0,
-          "storage": []
+          "storage": [],
+          "interior": false,
+          "fittingProfile": null,
+          "supportFittings": 0
         },
         {
           "name": "Internal Logistics Yard",
@@ -257,7 +290,10 @@
           "areaM2": 1728,
           "level": 0,
           "equipment": 0,
-          "storage": []
+          "storage": [],
+          "interior": false,
+          "fittingProfile": null,
+          "supportFittings": 0
         },
         {
           "name": "Factory C Expansion",
@@ -266,7 +302,10 @@
           "areaM2": 1728,
           "level": 0,
           "equipment": 0,
-          "storage": []
+          "storage": [],
+          "interior": false,
+          "fittingProfile": null,
+          "supportFittings": 0
         }
       ],
       "assumptions": "Existing source-derived campus"
@@ -289,7 +328,10 @@
           "areaM2": 1728,
           "level": 0,
           "equipment": 0,
-          "storage": []
+          "storage": [],
+          "interior": false,
+          "fittingProfile": null,
+          "supportFittings": 0
         },
         {
           "name": "VC Corellia / Industrial Engineering",
@@ -298,7 +340,10 @@
           "areaM2": 720,
           "level": 0,
           "equipment": 4,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": "control",
+          "supportFittings": 0
         },
         {
           "name": "VC Corellia / Automation and Controls Lab",
@@ -307,7 +352,10 @@
           "areaM2": 576,
           "level": 0,
           "equipment": 3,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": "laboratory",
+          "supportFittings": 0
         },
         {
           "name": "VC Corellia / Prototype Fabrication Hall",
@@ -316,7 +364,10 @@
           "areaM2": 9152,
           "level": 0,
           "equipment": 74,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": "workshop",
+          "supportFittings": 0
         },
         {
           "name": "VC Corellia / Machinery Workshops",
@@ -325,7 +376,10 @@
           "areaM2": 3596,
           "level": 0,
           "equipment": 32,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": "workshop",
+          "supportFittings": 0
         },
         {
           "name": "VC Corellia / Robotics and Testing Bay",
@@ -334,7 +388,10 @@
           "areaM2": 2688,
           "level": 0,
           "equipment": 18,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": null,
+          "supportFittings": 0
         },
         {
           "name": "VC Corellia / Advanced Research",
@@ -343,7 +400,10 @@
           "areaM2": 3360,
           "level": 0,
           "equipment": 30,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": "laboratory",
+          "supportFittings": 0
         },
         {
           "name": "VC Corellia / Training and Collaboration",
@@ -352,7 +412,10 @@
           "areaM2": 1728,
           "level": 0,
           "equipment": 0,
-          "storage": []
+          "storage": [],
+          "interior": false,
+          "fittingProfile": null,
+          "supportFittings": 0
         },
         {
           "name": "VC Corellia / Field Installation Depot",
@@ -361,7 +424,10 @@
           "areaM2": 1728,
           "level": 0,
           "equipment": 0,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": "workshop",
+          "supportFittings": 6
         },
         {
           "name": "VC Corellia / Logistics and Receiving Yard",
@@ -407,7 +473,10 @@
               "capacity": 1833,
               "unit": "each"
             }
-          ]
+          ],
+          "interior": true,
+          "fittingProfile": "warehouse",
+          "supportFittings": 0
         },
         {
           "name": "VC Corellia / Utility and Power",
@@ -416,7 +485,10 @@
           "areaM2": 1728,
           "level": 0,
           "equipment": 0,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": "utilities",
+          "supportFittings": 9
         },
         {
           "name": "VC Corellia / Employee Parking and Shuttle",
@@ -425,7 +497,10 @@
           "areaM2": 1728,
           "level": 0,
           "equipment": 0,
-          "storage": []
+          "storage": [],
+          "interior": false,
+          "fittingProfile": null,
+          "supportFittings": 0
         },
         {
           "name": "VC Corellia / Security Gatehouse",
@@ -434,7 +509,10 @@
           "areaM2": 1728,
           "level": 0,
           "equipment": 0,
-          "storage": []
+          "storage": [],
+          "interior": false,
+          "fittingProfile": null,
+          "supportFittings": 0
         },
         {
           "name": "VC Corellia / Courtyard and Plaza",
@@ -443,7 +521,10 @@
           "areaM2": 1728,
           "level": 0,
           "equipment": 0,
-          "storage": []
+          "storage": [],
+          "interior": false,
+          "fittingProfile": null,
+          "supportFittings": 0
         },
         {
           "name": "VC Corellia / Landing Pad and Shuttle Apron",
@@ -452,7 +533,10 @@
           "areaM2": 1728,
           "level": 0,
           "equipment": 0,
-          "storage": []
+          "storage": [],
+          "interior": false,
+          "fittingProfile": null,
+          "supportFittings": 0
         }
       ],
       "assumptions": "Adopted planning roster; reference does not state headcount"
@@ -475,7 +559,10 @@
           "areaM2": 768,
           "level": 0,
           "equipment": 0,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": "control",
+          "supportFittings": 6
         },
         {
           "name": "Spartan Orbit / Station Operations Center",
@@ -484,7 +571,10 @@
           "areaM2": 768,
           "level": 0,
           "equipment": 0,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": "control",
+          "supportFittings": 6
         },
         {
           "name": "Spartan Orbit / Communications and Sensors",
@@ -493,7 +583,10 @@
           "areaM2": 768,
           "level": 0,
           "equipment": 0,
-          "storage": []
+          "storage": [],
+          "interior": false,
+          "fittingProfile": null,
+          "supportFittings": 0
         },
         {
           "name": "Spartan Orbit / Medical Bay",
@@ -502,7 +595,10 @@
           "areaM2": 768,
           "level": 0,
           "equipment": 0,
-          "storage": []
+          "storage": [],
+          "interior": false,
+          "fittingProfile": null,
+          "supportFittings": 0
         },
         {
           "name": "Spartan Orbit / Crew Quarters",
@@ -511,7 +607,10 @@
           "areaM2": 768,
           "level": 0,
           "equipment": 0,
-          "storage": []
+          "storage": [],
+          "interior": false,
+          "fittingProfile": null,
+          "supportFittings": 0
         },
         {
           "name": "Spartan Orbit / Galley and Commons",
@@ -520,7 +619,10 @@
           "areaM2": 768,
           "level": 0,
           "equipment": 0,
-          "storage": []
+          "storage": [],
+          "interior": false,
+          "fittingProfile": null,
+          "supportFittings": 0
         },
         {
           "name": "Spartan Orbit / Power and Thermal",
@@ -529,7 +631,10 @@
           "areaM2": 768,
           "level": 0,
           "equipment": 0,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": "utilities",
+          "supportFittings": 9
         },
         {
           "name": "Spartan Orbit / Fuel and Utilities",
@@ -538,7 +643,10 @@
           "areaM2": 768,
           "level": 0,
           "equipment": 0,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": "utilities",
+          "supportFittings": 9
         },
         {
           "name": "Spartan Orbit / Cargo Transfer Bay",
@@ -596,7 +704,10 @@
               "capacity": 32,
               "unit": "each"
             }
-          ]
+          ],
+          "interior": true,
+          "fittingProfile": "warehouse",
+          "supportFittings": 0
         },
         {
           "name": "Spartan Orbit / Microgravity Materials Lab",
@@ -605,7 +716,10 @@
           "areaM2": 720,
           "level": 0,
           "equipment": 3,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": "laboratory",
+          "supportFittings": 0
         },
         {
           "name": "Spartan Orbit / Ore Assay Lab",
@@ -614,7 +728,10 @@
           "areaM2": 720,
           "level": 0,
           "equipment": 4,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": "laboratory",
+          "supportFittings": 0
         },
         {
           "name": "Spartan Orbit / Machine Shop",
@@ -623,7 +740,10 @@
           "areaM2": 728,
           "level": 0,
           "equipment": 5,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": null,
+          "supportFittings": 0
         },
         {
           "name": "Spartan Orbit / Drone Maintenance Bay",
@@ -632,7 +752,10 @@
           "areaM2": 840,
           "level": 0,
           "equipment": 6,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": "workshop",
+          "supportFittings": 0
         },
         {
           "name": "Spartan Orbit / Flight Test Control",
@@ -641,7 +764,10 @@
           "areaM2": 768,
           "level": 0,
           "equipment": 0,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": "control",
+          "supportFittings": 6
         },
         {
           "name": "Spartan Orbit / Small Craft Hangar",
@@ -650,7 +776,10 @@
           "areaM2": 768,
           "level": 0,
           "equipment": 0,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": "hangar",
+          "supportFittings": 4
         },
         {
           "name": "Spartan Orbit / Docking Collar",
@@ -659,7 +788,10 @@
           "areaM2": 768,
           "level": 0,
           "equipment": 0,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": "hangar",
+          "supportFittings": 4
         }
       ],
       "assumptions": "85 on-site personnel in supplied reference; role split adopted"
@@ -707,7 +839,10 @@
               "capacity": 190317,
               "unit": "kg"
             }
-          ]
+          ],
+          "interior": true,
+          "fittingProfile": null,
+          "supportFittings": 0
         },
         {
           "name": "West Basin / Drill pad line",
@@ -716,7 +851,10 @@
           "areaM2": 1728,
           "level": 0,
           "equipment": 0,
-          "storage": []
+          "storage": [],
+          "interior": false,
+          "fittingProfile": null,
+          "supportFittings": 0
         },
         {
           "name": "West Basin / Limited crusher module",
@@ -725,7 +863,10 @@
           "areaM2": 840,
           "level": 0,
           "equipment": 5,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": null,
+          "supportFittings": 0
         },
         {
           "name": "West Basin / Sorting unit",
@@ -734,7 +875,10 @@
           "areaM2": 840,
           "level": 0,
           "equipment": 6,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": null,
+          "supportFittings": 0
         },
         {
           "name": "West Basin / Pre-concentration skid",
@@ -743,7 +887,10 @@
           "areaM2": 1064,
           "level": 0,
           "equipment": 8,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": null,
+          "supportFittings": 0
         },
         {
           "name": "West Basin / Tank farm",
@@ -759,7 +906,10 @@
               "capacity": 1031250,
               "unit": "kg"
             }
-          ]
+          ],
+          "interior": true,
+          "fittingProfile": "utilities",
+          "supportFittings": 0
         },
         {
           "name": "West Basin / Loading yard",
@@ -768,7 +918,10 @@
           "areaM2": 1728,
           "level": 0,
           "equipment": 0,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": "warehouse",
+          "supportFittings": 6
         },
         {
           "name": "West Basin / Contractor offices",
@@ -777,7 +930,10 @@
           "areaM2": 1728,
           "level": 0,
           "equipment": 0,
-          "storage": []
+          "storage": [],
+          "interior": false,
+          "fittingProfile": null,
+          "supportFittings": 0
         },
         {
           "name": "West Basin / Crew support modules",
@@ -786,7 +942,10 @@
           "areaM2": 1728,
           "level": 0,
           "equipment": 0,
-          "storage": []
+          "storage": [],
+          "interior": false,
+          "fittingProfile": null,
+          "supportFittings": 0
         },
         {
           "name": "West Basin / Security checkpoint",
@@ -795,7 +954,10 @@
           "areaM2": 1728,
           "level": 0,
           "equipment": 0,
-          "storage": []
+          "storage": [],
+          "interior": false,
+          "fittingProfile": null,
+          "supportFittings": 0
         },
         {
           "name": "West Basin / Small landing pad",
@@ -804,7 +966,10 @@
           "areaM2": 1728,
           "level": 0,
           "equipment": 0,
-          "storage": []
+          "storage": [],
+          "interior": false,
+          "fittingProfile": null,
+          "supportFittings": 0
         }
       ],
       "assumptions": "Reference personnel and annual figures retained. Equipment count, role split, floor dimensions, operating calendar, mineral yields and opening stock are adopted review assumptions."
@@ -830,7 +995,10 @@
           "areaM2": 840,
           "level": 0,
           "equipment": 6,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": null,
+          "supportFittings": 0
         },
         {
           "name": "Outer Spur / Asteroid anchor truss",
@@ -839,7 +1007,10 @@
           "areaM2": 1728,
           "level": 0,
           "equipment": 0,
-          "storage": []
+          "storage": [],
+          "interior": false,
+          "fittingProfile": null,
+          "supportFittings": 0
         },
         {
           "name": "Outer Spur / Cutting arm",
@@ -867,7 +1038,10 @@
               "capacity": 172857,
               "unit": "kg"
             }
-          ]
+          ],
+          "interior": true,
+          "fittingProfile": null,
+          "supportFittings": 0
         },
         {
           "name": "Outer Spur / Habitat pod",
@@ -876,7 +1050,10 @@
           "areaM2": 1728,
           "level": 0,
           "equipment": 0,
-          "storage": []
+          "storage": [],
+          "interior": false,
+          "fittingProfile": null,
+          "supportFittings": 0
         },
         {
           "name": "Outer Spur / Power and thermal control",
@@ -885,7 +1062,10 @@
           "areaM2": 1728,
           "level": 0,
           "equipment": 0,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": "utilities",
+          "supportFittings": 9
         },
         {
           "name": "Outer Spur / Maintenance frame",
@@ -894,7 +1074,10 @@
           "areaM2": 480,
           "level": 0,
           "equipment": 2,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": "workshop",
+          "supportFittings": 0
         },
         {
           "name": "Outer Spur / Drone rack",
@@ -903,7 +1086,10 @@
           "areaM2": 1728,
           "level": 0,
           "equipment": 0,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": "hangar",
+          "supportFittings": 4
         },
         {
           "name": "Outer Spur / Feed silos",
@@ -919,7 +1105,10 @@
               "capacity": 1196250,
               "unit": "kg"
             }
-          ]
+          ],
+          "interior": true,
+          "fittingProfile": "warehouse",
+          "supportFittings": 0
         },
         {
           "name": "Outer Spur / Vacuum sorting bay",
@@ -928,7 +1117,10 @@
           "areaM2": 2592,
           "level": 0,
           "equipment": 21,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": null,
+          "supportFittings": 0
         },
         {
           "name": "Outer Spur / Ore skiff berths",
@@ -937,7 +1129,10 @@
           "areaM2": 1728,
           "level": 0,
           "equipment": 0,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": "hangar",
+          "supportFittings": 4
         },
         {
           "name": "Outer Spur / Cargo transfer node",
@@ -946,7 +1141,10 @@
           "areaM2": 1728,
           "level": 0,
           "equipment": 0,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": "warehouse",
+          "supportFittings": 6
         }
       ],
       "assumptions": "Reference personnel and annual figures retained. Equipment count, role split, floor dimensions, operating calendar, mineral yields and opening stock are adopted review assumptions."
@@ -987,7 +1185,10 @@
               "capacity": 445238,
               "unit": "kg"
             }
-          ]
+          ],
+          "interior": true,
+          "fittingProfile": null,
+          "supportFittings": 0
         },
         {
           "name": "Keldon Ridge / Drill towers",
@@ -996,7 +1197,10 @@
           "areaM2": 1728,
           "level": 0,
           "equipment": 0,
-          "storage": []
+          "storage": [],
+          "interior": false,
+          "fittingProfile": null,
+          "supportFittings": 0
         },
         {
           "name": "Keldon Ridge / Ore haul route",
@@ -1005,7 +1209,10 @@
           "areaM2": 1728,
           "level": 0,
           "equipment": 0,
-          "storage": []
+          "storage": [],
+          "interior": false,
+          "fittingProfile": null,
+          "supportFittings": 0
         },
         {
           "name": "Keldon Ridge / Primary crusher",
@@ -1014,7 +1221,10 @@
           "areaM2": 1444,
           "level": 0,
           "equipment": 12,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": null,
+          "supportFittings": 0
         },
         {
           "name": "Keldon Ridge / Dense-media separation hall",
@@ -1023,7 +1233,10 @@
           "areaM2": 1444,
           "level": 0,
           "equipment": 11,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": null,
+          "supportFittings": 0
         },
         {
           "name": "Keldon Ridge / Concentrate bins",
@@ -1032,7 +1245,10 @@
           "areaM2": 1728,
           "level": 0,
           "equipment": 0,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": "warehouse",
+          "supportFittings": 6
         },
         {
           "name": "Keldon Ridge / Power plant",
@@ -1041,7 +1257,10 @@
           "areaM2": 1728,
           "level": 0,
           "equipment": 0,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": "utilities",
+          "supportFittings": 9
         },
         {
           "name": "Keldon Ridge / Repair bays",
@@ -1050,7 +1269,10 @@
           "areaM2": 480,
           "level": 0,
           "equipment": 2,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": "workshop",
+          "supportFittings": 0
         },
         {
           "name": "Keldon Ridge / Crew support block",
@@ -1059,7 +1281,10 @@
           "areaM2": 1728,
           "level": 0,
           "equipment": 0,
-          "storage": []
+          "storage": [],
+          "interior": false,
+          "fittingProfile": null,
+          "supportFittings": 0
         },
         {
           "name": "Keldon Ridge / Water handling unit",
@@ -1075,7 +1300,10 @@
               "capacity": 1239027,
               "unit": "kg"
             }
-          ]
+          ],
+          "interior": true,
+          "fittingProfile": "utilities",
+          "supportFittings": 0
         },
         {
           "name": "Keldon Ridge / Landing pad",
@@ -1084,7 +1312,10 @@
           "areaM2": 1728,
           "level": 0,
           "equipment": 0,
-          "storage": []
+          "storage": [],
+          "interior": false,
+          "fittingProfile": null,
+          "supportFittings": 0
         }
       ],
       "assumptions": "Reference personnel and annual figures retained. Equipment count, role split, floor dimensions, operating calendar, mineral yields and opening stock are adopted review assumptions."
@@ -1131,7 +1362,10 @@
               "capacity": 1283333,
               "unit": "kg"
             }
-          ]
+          ],
+          "interior": true,
+          "fittingProfile": null,
+          "supportFittings": 0
         },
         {
           "name": "Redbank / Drill pads",
@@ -1140,7 +1374,10 @@
           "areaM2": 1728,
           "level": 0,
           "equipment": 0,
-          "storage": []
+          "storage": [],
+          "interior": false,
+          "fittingProfile": null,
+          "supportFittings": 0
         },
         {
           "name": "Redbank / Mobile crusher",
@@ -1149,7 +1386,10 @@
           "areaM2": 840,
           "level": 0,
           "equipment": 5,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": null,
+          "supportFittings": 0
         },
         {
           "name": "Redbank / Sorting shed",
@@ -1158,7 +1398,10 @@
           "areaM2": 1064,
           "level": 0,
           "equipment": 7,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": null,
+          "supportFittings": 0
         },
         {
           "name": "Redbank / Stockpile berms",
@@ -1167,7 +1410,10 @@
           "areaM2": 1728,
           "level": 0,
           "equipment": 0,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": "warehouse",
+          "supportFittings": 6
         },
         {
           "name": "Redbank / Partial reduction modules",
@@ -1176,7 +1422,10 @@
           "areaM2": 1064,
           "level": 0,
           "equipment": 8,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": null,
+          "supportFittings": 0
         },
         {
           "name": "Redbank / Dispatch yard",
@@ -1185,7 +1434,10 @@
           "areaM2": 1728,
           "level": 0,
           "equipment": 0,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": "warehouse",
+          "supportFittings": 6
         },
         {
           "name": "Redbank / Utility plant",
@@ -1194,7 +1446,10 @@
           "areaM2": 1728,
           "level": 0,
           "equipment": 0,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": "utilities",
+          "supportFittings": 9
         },
         {
           "name": "Redbank / Crew module",
@@ -1203,7 +1458,10 @@
           "areaM2": 1728,
           "level": 0,
           "equipment": 0,
-          "storage": []
+          "storage": [],
+          "interior": false,
+          "fittingProfile": null,
+          "supportFittings": 0
         },
         {
           "name": "Redbank / Security gate",
@@ -1212,7 +1470,10 @@
           "areaM2": 1728,
           "level": 0,
           "equipment": 0,
-          "storage": []
+          "storage": [],
+          "interior": false,
+          "fittingProfile": null,
+          "supportFittings": 0
         },
         {
           "name": "Redbank / Vehicle maintenance",
@@ -1221,7 +1482,10 @@
           "areaM2": 480,
           "level": 0,
           "equipment": 2,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": "workshop",
+          "supportFittings": 0
         },
         {
           "name": "Redbank / Shuttle pad",
@@ -1230,7 +1494,10 @@
           "areaM2": 1728,
           "level": 0,
           "equipment": 0,
-          "storage": []
+          "storage": [],
+          "interior": false,
+          "fittingProfile": null,
+          "supportFittings": 0
         }
       ],
       "assumptions": "Reference personnel and annual figures retained. Equipment count, role split, floor dimensions, operating calendar, mineral yields and opening stock are adopted review assumptions."
@@ -1271,7 +1538,10 @@
               "capacity": 20370,
               "unit": "kg"
             }
-          ]
+          ],
+          "interior": true,
+          "fittingProfile": null,
+          "supportFittings": 0
         },
         {
           "name": "Deep Vein / Tunnel portal",
@@ -1280,7 +1550,10 @@
           "areaM2": 1728,
           "level": 0,
           "equipment": 0,
-          "storage": []
+          "storage": [],
+          "interior": false,
+          "fittingProfile": null,
+          "supportFittings": 0
         },
         {
           "name": "Deep Vein / Ore lift",
@@ -1289,7 +1562,10 @@
           "areaM2": 1728,
           "level": 0,
           "equipment": 0,
-          "storage": []
+          "storage": [],
+          "interior": false,
+          "fittingProfile": null,
+          "supportFittings": 0
         },
         {
           "name": "Deep Vein / Underground access and mining levels",
@@ -1311,7 +1587,10 @@
               "capacity": 445238,
               "unit": "kg"
             }
-          ]
+          ],
+          "interior": true,
+          "fittingProfile": null,
+          "supportFittings": 0
         },
         {
           "name": "Deep Vein / Primary crusher",
@@ -1320,7 +1599,10 @@
           "areaM2": 2592,
           "level": 0,
           "equipment": 21,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": null,
+          "supportFittings": 0
         },
         {
           "name": "Deep Vein / Flotation hall",
@@ -1329,7 +1611,10 @@
           "areaM2": 1140,
           "level": 0,
           "equipment": 9,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": null,
+          "supportFittings": 0
         },
         {
           "name": "Deep Vein / Crew quarters",
@@ -1338,7 +1623,10 @@
           "areaM2": 1728,
           "level": 0,
           "equipment": 0,
-          "storage": []
+          "storage": [],
+          "interior": false,
+          "fittingProfile": null,
+          "supportFittings": 0
         },
         {
           "name": "Deep Vein / Repair hangar",
@@ -1347,7 +1635,10 @@
           "areaM2": 480,
           "level": 0,
           "equipment": 2,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": "workshop",
+          "supportFittings": 0
         },
         {
           "name": "Deep Vein / Assay lab",
@@ -1356,7 +1647,10 @@
           "areaM2": 1728,
           "level": 0,
           "equipment": 0,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": "laboratory",
+          "supportFittings": 6
         },
         {
           "name": "Deep Vein / Water treatment",
@@ -1372,7 +1666,10 @@
               "capacity": 1327638,
               "unit": "kg"
             }
-          ]
+          ],
+          "interior": true,
+          "fittingProfile": "utilities",
+          "supportFittings": 0
         },
         {
           "name": "Deep Vein / Concentrate storage",
@@ -1381,7 +1678,10 @@
           "areaM2": 1728,
           "level": 0,
           "equipment": 0,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": "warehouse",
+          "supportFittings": 6
         },
         {
           "name": "Deep Vein / Cargo loading apron",
@@ -1390,7 +1690,10 @@
           "areaM2": 1728,
           "level": 0,
           "equipment": 0,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": "warehouse",
+          "supportFittings": 6
         }
       ],
       "assumptions": "Reference personnel and annual figures retained. Equipment count, role split, floor dimensions, operating calendar, mineral yields and opening stock are adopted review assumptions."
@@ -1419,7 +1722,10 @@
           "areaM2": 1728,
           "level": 0,
           "equipment": 0,
-          "storage": []
+          "storage": [],
+          "interior": false,
+          "fittingProfile": null,
+          "supportFittings": 0
         },
         {
           "name": "North Ridge / Open pit",
@@ -1441,7 +1747,10 @@
               "capacity": 473174,
               "unit": "kg"
             }
-          ]
+          ],
+          "interior": true,
+          "fittingProfile": null,
+          "supportFittings": 0
         },
         {
           "name": "North Ridge / Haul road",
@@ -1450,7 +1759,10 @@
           "areaM2": 1728,
           "level": 0,
           "equipment": 0,
-          "storage": []
+          "storage": [],
+          "interior": false,
+          "fittingProfile": null,
+          "supportFittings": 0
         },
         {
           "name": "North Ridge / Primary crusher",
@@ -1459,7 +1771,10 @@
           "areaM2": 840,
           "level": 0,
           "equipment": 6,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": null,
+          "supportFittings": 0
         },
         {
           "name": "North Ridge / Sorting hall",
@@ -1468,7 +1783,10 @@
           "areaM2": 1064,
           "level": 0,
           "equipment": 8,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": null,
+          "supportFittings": 0
         },
         {
           "name": "North Ridge / Concentration plant",
@@ -1477,7 +1795,10 @@
           "areaM2": 1748,
           "level": 0,
           "equipment": 15,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": null,
+          "supportFittings": 0
         },
         {
           "name": "North Ridge / Ore stockpiles",
@@ -1486,7 +1807,10 @@
           "areaM2": 1728,
           "level": 0,
           "equipment": 0,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": "warehouse",
+          "supportFittings": 6
         },
         {
           "name": "North Ridge / Power station",
@@ -1495,7 +1819,10 @@
           "areaM2": 1728,
           "level": 0,
           "equipment": 0,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": "utilities",
+          "supportFittings": 9
         },
         {
           "name": "North Ridge / Drone control center",
@@ -1504,7 +1831,10 @@
           "areaM2": 1728,
           "level": 0,
           "equipment": 0,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": "control",
+          "supportFittings": 6
         },
         {
           "name": "North Ridge / Maintenance shop",
@@ -1513,7 +1843,10 @@
           "areaM2": 480,
           "level": 0,
           "equipment": 2,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": "workshop",
+          "supportFittings": 0
         },
         {
           "name": "North Ridge / Crew barracks",
@@ -1522,7 +1855,10 @@
           "areaM2": 1728,
           "level": 0,
           "equipment": 0,
-          "storage": []
+          "storage": [],
+          "interior": false,
+          "fittingProfile": null,
+          "supportFittings": 0
         },
         {
           "name": "North Ridge / Water recovery unit",
@@ -1538,7 +1874,10 @@
               "capacity": 1419305,
               "unit": "kg"
             }
-          ]
+          ],
+          "interior": true,
+          "fittingProfile": "utilities",
+          "supportFittings": 0
         },
         {
           "name": "North Ridge / Small landing pad",
@@ -1547,7 +1886,10 @@
           "areaM2": 1728,
           "level": 0,
           "equipment": 0,
-          "storage": []
+          "storage": [],
+          "interior": false,
+          "fittingProfile": null,
+          "supportFittings": 0
         }
       ],
       "assumptions": "Reference personnel and annual figures retained. Equipment count, role split, floor dimensions, operating calendar, mineral yields and opening stock are adopted review assumptions."
@@ -1580,7 +1922,10 @@
               "capacity": 1562916,
               "unit": "kg"
             }
-          ]
+          ],
+          "interior": true,
+          "fittingProfile": null,
+          "supportFittings": 0
         },
         {
           "name": "Asteron Belt / Main mining hub",
@@ -1608,7 +1953,10 @@
               "capacity": 155396,
               "unit": "kg"
             }
-          ]
+          ],
+          "interior": true,
+          "fittingProfile": null,
+          "supportFittings": 0
         },
         {
           "name": "Asteron Belt / Autonomous drill array",
@@ -1617,7 +1965,10 @@
           "areaM2": 1728,
           "level": 0,
           "equipment": 0,
-          "storage": []
+          "storage": [],
+          "interior": false,
+          "fittingProfile": null,
+          "supportFittings": 0
         },
         {
           "name": "Asteron Belt / Crew habitat ring",
@@ -1626,7 +1977,10 @@
           "areaM2": 1728,
           "level": 0,
           "equipment": 0,
-          "storage": []
+          "storage": [],
+          "interior": false,
+          "fittingProfile": null,
+          "supportFittings": 0
         },
         {
           "name": "Asteron Belt / Power and life support",
@@ -1635,7 +1989,10 @@
           "areaM2": 1728,
           "level": 0,
           "equipment": 0,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": "utilities",
+          "supportFittings": 9
         },
         {
           "name": "Asteron Belt / Maintenance workshop",
@@ -1644,7 +2001,10 @@
           "areaM2": 480,
           "level": 0,
           "equipment": 2,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": "workshop",
+          "supportFittings": 0
         },
         {
           "name": "Asteron Belt / Ore crusher",
@@ -1653,7 +2013,10 @@
           "areaM2": 1824,
           "level": 0,
           "equipment": 16,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": null,
+          "supportFittings": 0
         },
         {
           "name": "Asteron Belt / Magnetic separator",
@@ -1662,7 +2025,10 @@
           "areaM2": 2208,
           "level": 0,
           "equipment": 20,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": null,
+          "supportFittings": 0
         },
         {
           "name": "Asteron Belt / Concentrate silos",
@@ -1671,7 +2037,10 @@
           "areaM2": 1728,
           "level": 0,
           "equipment": 0,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": "warehouse",
+          "supportFittings": 6
         },
         {
           "name": "Asteron Belt / Docking arm",
@@ -1680,7 +2049,10 @@
           "areaM2": 1728,
           "level": 0,
           "equipment": 0,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": "hangar",
+          "supportFittings": 4
         },
         {
           "name": "Asteron Belt / Cargo pier",
@@ -1689,7 +2061,10 @@
           "areaM2": 1728,
           "level": 0,
           "equipment": 0,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": "warehouse",
+          "supportFittings": 6
         },
         {
           "name": "Asteron Belt / Drone bay",
@@ -1698,7 +2073,10 @@
           "areaM2": 1728,
           "level": 0,
           "equipment": 0,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": "hangar",
+          "supportFittings": 4
         },
         {
           "name": "Asteron Belt / Utility skiff berths",
@@ -1707,7 +2085,10 @@
           "areaM2": 1728,
           "level": 0,
           "equipment": 0,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": "utilities",
+          "supportFittings": 9
         }
       ],
       "assumptions": "Reference personnel and annual figures retained. Equipment count, role split, floor dimensions, operating calendar, mineral yields and opening stock are adopted review assumptions."
@@ -1786,7 +2167,10 @@
               "capacity": 249682,
               "unit": "kg"
             }
-          ]
+          ],
+          "interior": true,
+          "fittingProfile": "warehouse",
+          "supportFittings": 0
         },
         {
           "name": "Talus Terminal / Mobile crusher line",
@@ -1795,7 +2179,10 @@
           "areaM2": 1444,
           "level": 0,
           "equipment": 11,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": null,
+          "supportFittings": 0
         },
         {
           "name": "Talus Terminal / Screening and sorting hall",
@@ -1804,7 +2191,10 @@
           "areaM2": 1444,
           "level": 0,
           "equipment": 11,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": null,
+          "supportFittings": 0
         },
         {
           "name": "Talus Terminal / Partial reduction modules",
@@ -1813,7 +2203,10 @@
           "areaM2": 1748,
           "level": 0,
           "equipment": 13,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": null,
+          "supportFittings": 0
         },
         {
           "name": "Talus Terminal / Blending stockpiles",
@@ -1822,7 +2215,10 @@
           "areaM2": 1728,
           "level": 0,
           "equipment": 0,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": "warehouse",
+          "supportFittings": 6
         },
         {
           "name": "Talus Terminal / Concentrate and feed storage",
@@ -1831,7 +2227,10 @@
           "areaM2": 1728,
           "level": 0,
           "equipment": 0,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": "warehouse",
+          "supportFittings": 6
         },
         {
           "name": "Talus Terminal / Dispatch yard",
@@ -1840,7 +2239,10 @@
           "areaM2": 1728,
           "level": 0,
           "equipment": 0,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": "warehouse",
+          "supportFittings": 6
         },
         {
           "name": "Talus Terminal / Utility and power block",
@@ -1849,7 +2251,10 @@
           "areaM2": 1728,
           "level": 0,
           "equipment": 0,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": "utilities",
+          "supportFittings": 9
         },
         {
           "name": "Talus Terminal / Water recovery plant",
@@ -1865,7 +2270,10 @@
               "capacity": 2090000,
               "unit": "kg"
             }
-          ]
+          ],
+          "interior": true,
+          "fittingProfile": "utilities",
+          "supportFittings": 0
         },
         {
           "name": "Talus Terminal / Maintenance shop",
@@ -1874,7 +2282,10 @@
           "areaM2": 480,
           "level": 0,
           "equipment": 2,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": "workshop",
+          "supportFittings": 0
         },
         {
           "name": "Talus Terminal / Admin and crew support",
@@ -1883,7 +2294,10 @@
           "areaM2": 1728,
           "level": 0,
           "equipment": 0,
-          "storage": []
+          "storage": [],
+          "interior": false,
+          "fittingProfile": null,
+          "supportFittings": 0
         },
         {
           "name": "Talus Terminal / Landing pad",
@@ -1892,7 +2306,10 @@
           "areaM2": 1728,
           "level": 0,
           "equipment": 0,
-          "storage": []
+          "storage": [],
+          "interior": false,
+          "fittingProfile": null,
+          "supportFittings": 0
         }
       ],
       "assumptions": "Reference personnel and annual figures retained. Equipment count, role split, floor dimensions, operating calendar, mineral yields and opening stock are adopted review assumptions."
@@ -1957,7 +2374,10 @@
               "capacity": 25802,
               "unit": "kg"
             }
-          ]
+          ],
+          "interior": true,
+          "fittingProfile": null,
+          "supportFittings": 0
         },
         {
           "name": "Selonia Recovery / Crushing hall",
@@ -1966,7 +2386,10 @@
           "areaM2": 2976,
           "level": 0,
           "equipment": 27,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": null,
+          "supportFittings": 0
         },
         {
           "name": "Selonia Recovery / Flotation circuit",
@@ -1975,7 +2398,10 @@
           "areaM2": 1444,
           "level": 0,
           "equipment": 11,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": null,
+          "supportFittings": 0
         },
         {
           "name": "Selonia Recovery / Thickener tanks",
@@ -1984,7 +2410,10 @@
           "areaM2": 1728,
           "level": 0,
           "equipment": 0,
-          "storage": []
+          "storage": [],
+          "interior": false,
+          "fittingProfile": null,
+          "supportFittings": 0
         },
         {
           "name": "Selonia Recovery / Concentrate filtration building",
@@ -1993,7 +2422,10 @@
           "areaM2": 1728,
           "level": 0,
           "equipment": 0,
-          "storage": []
+          "storage": [],
+          "interior": false,
+          "fittingProfile": null,
+          "supportFittings": 0
         },
         {
           "name": "Selonia Recovery / Precious-metal recovery lab",
@@ -2002,7 +2434,10 @@
           "areaM2": 1728,
           "level": 0,
           "equipment": 0,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": "laboratory",
+          "supportFittings": 6
         },
         {
           "name": "Selonia Recovery / Reagent plant",
@@ -2011,7 +2446,10 @@
           "areaM2": 1728,
           "level": 0,
           "equipment": 0,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": "utilities",
+          "supportFittings": 9
         },
         {
           "name": "Selonia Recovery / Water recycle facility",
@@ -2027,7 +2465,10 @@
               "capacity": 1712638,
               "unit": "kg"
             }
-          ]
+          ],
+          "interior": true,
+          "fittingProfile": "utilities",
+          "supportFittings": 0
         },
         {
           "name": "Selonia Recovery / Concentrate storage silos",
@@ -2036,7 +2477,10 @@
           "areaM2": 1728,
           "level": 0,
           "equipment": 0,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": "warehouse",
+          "supportFittings": 6
         },
         {
           "name": "Selonia Recovery / Cargo loading apron",
@@ -2045,7 +2489,10 @@
           "areaM2": 1728,
           "level": 0,
           "equipment": 0,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": "warehouse",
+          "supportFittings": 6
         },
         {
           "name": "Selonia Recovery / Utility plant",
@@ -2054,7 +2501,10 @@
           "areaM2": 1728,
           "level": 0,
           "equipment": 0,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": "utilities",
+          "supportFittings": 9
         },
         {
           "name": "Selonia Recovery / Crew and admin block",
@@ -2063,7 +2513,10 @@
           "areaM2": 1728,
           "level": 0,
           "equipment": 0,
-          "storage": []
+          "storage": [],
+          "interior": false,
+          "fittingProfile": null,
+          "supportFittings": 0
         },
         {
           "name": "Selonia Recovery / Maintenance hangar",
@@ -2072,7 +2525,10 @@
           "areaM2": 480,
           "level": 0,
           "equipment": 2,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": "workshop",
+          "supportFittings": 0
         }
       ],
       "assumptions": "Reference personnel and annual figures retained. Equipment count, role split, floor dimensions, operating calendar, mineral yields and opening stock are adopted review assumptions."
@@ -2137,7 +2593,10 @@
               "capacity": 293333,
               "unit": "kg"
             }
-          ]
+          ],
+          "interior": true,
+          "fittingProfile": "warehouse",
+          "supportFittings": 0
         },
         {
           "name": "Drall Separation / Ore stockpile and surge bins",
@@ -2146,7 +2605,10 @@
           "areaM2": 1728,
           "level": 0,
           "equipment": 0,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": "warehouse",
+          "supportFittings": 6
         },
         {
           "name": "Drall Separation / Primary crusher",
@@ -2155,7 +2617,10 @@
           "areaM2": 1140,
           "level": 0,
           "equipment": 9,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": null,
+          "supportFittings": 0
         },
         {
           "name": "Drall Separation / Screening hall",
@@ -2164,7 +2629,10 @@
           "areaM2": 1140,
           "level": 0,
           "equipment": 9,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": null,
+          "supportFittings": 0
         },
         {
           "name": "Drall Separation / Dense-media separation hall",
@@ -2173,7 +2641,10 @@
           "areaM2": 1748,
           "level": 0,
           "equipment": 13,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": null,
+          "supportFittings": 0
         },
         {
           "name": "Drall Separation / Flotation modules",
@@ -2182,7 +2653,10 @@
           "areaM2": 1748,
           "level": 0,
           "equipment": 13,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": null,
+          "supportFittings": 0
         },
         {
           "name": "Drall Separation / Reagent storage",
@@ -2191,7 +2665,10 @@
           "areaM2": 1728,
           "level": 0,
           "equipment": 0,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": "utilities",
+          "supportFittings": 9
         },
         {
           "name": "Drall Separation / Concentrate bins",
@@ -2200,7 +2677,10 @@
           "areaM2": 1728,
           "level": 0,
           "equipment": 0,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": "warehouse",
+          "supportFittings": 6
         },
         {
           "name": "Drall Separation / Assay laboratory",
@@ -2209,7 +2689,10 @@
           "areaM2": 1728,
           "level": 0,
           "equipment": 0,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": "laboratory",
+          "supportFittings": 6
         },
         {
           "name": "Drall Separation / Water treatment and thickening",
@@ -2225,7 +2708,10 @@
               "capacity": 1816527,
               "unit": "kg"
             }
-          ]
+          ],
+          "interior": true,
+          "fittingProfile": "utilities",
+          "supportFittings": 0
         },
         {
           "name": "Drall Separation / Maintenance workshop",
@@ -2234,7 +2720,10 @@
           "areaM2": 480,
           "level": 0,
           "equipment": 2,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": "workshop",
+          "supportFittings": 0
         },
         {
           "name": "Drall Separation / Administration and crew support",
@@ -2243,7 +2732,10 @@
           "areaM2": 1728,
           "level": 0,
           "equipment": 0,
-          "storage": []
+          "storage": [],
+          "interior": false,
+          "fittingProfile": null,
+          "supportFittings": 0
         },
         {
           "name": "Drall Separation / Shuttle landing pad",
@@ -2252,7 +2744,10 @@
           "areaM2": 1728,
           "level": 0,
           "equipment": 0,
-          "storage": []
+          "storage": [],
+          "interior": false,
+          "fittingProfile": null,
+          "supportFittings": 0
         }
       ],
       "assumptions": "Reference personnel and annual figures retained. Equipment count, role split, floor dimensions, operating calendar, mineral yields and opening stock are adopted review assumptions."
@@ -2330,7 +2825,10 @@
               "capacity": 172857,
               "unit": "kg"
             }
-          ]
+          ],
+          "interior": true,
+          "fittingProfile": "warehouse",
+          "supportFittings": 0
         },
         {
           "name": "Harrow Junction / Sample and assay lab",
@@ -2339,7 +2837,10 @@
           "areaM2": 1728,
           "level": 0,
           "equipment": 0,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": "laboratory",
+          "supportFittings": 6
         },
         {
           "name": "Harrow Junction / Coarse crusher",
@@ -2348,7 +2849,10 @@
           "areaM2": 1140,
           "level": 0,
           "equipment": 9,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": null,
+          "supportFittings": 0
         },
         {
           "name": "Harrow Junction / Grinding mill hall",
@@ -2357,7 +2861,10 @@
           "areaM2": 1288,
           "level": 0,
           "equipment": 10,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": null,
+          "supportFittings": 0
         },
         {
           "name": "Harrow Junction / Magnetic separation hall",
@@ -2366,7 +2873,10 @@
           "areaM2": 2592,
           "level": 0,
           "equipment": 22,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": null,
+          "supportFittings": 0
         },
         {
           "name": "Harrow Junction / Blending stockpiles",
@@ -2375,7 +2885,10 @@
           "areaM2": 1728,
           "level": 0,
           "equipment": 0,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": "warehouse",
+          "supportFittings": 6
         },
         {
           "name": "Harrow Junction / Concentrate silos",
@@ -2384,7 +2897,10 @@
           "areaM2": 1728,
           "level": 0,
           "equipment": 0,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": "warehouse",
+          "supportFittings": 6
         },
         {
           "name": "Harrow Junction / Dispatch apron and freight loading",
@@ -2393,7 +2909,10 @@
           "areaM2": 1728,
           "level": 0,
           "equipment": 0,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": "warehouse",
+          "supportFittings": 6
         },
         {
           "name": "Harrow Junction / Water recovery unit",
@@ -2409,7 +2928,10 @@
               "capacity": 1978472,
               "unit": "kg"
             }
-          ]
+          ],
+          "interior": true,
+          "fittingProfile": "utilities",
+          "supportFittings": 0
         },
         {
           "name": "Harrow Junction / Maintenance shop",
@@ -2418,7 +2940,10 @@
           "areaM2": 480,
           "level": 0,
           "equipment": 2,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": "workshop",
+          "supportFittings": 0
         },
         {
           "name": "Harrow Junction / Crew and admin block",
@@ -2427,7 +2952,10 @@
           "areaM2": 1728,
           "level": 0,
           "equipment": 0,
-          "storage": []
+          "storage": [],
+          "interior": false,
+          "fittingProfile": null,
+          "supportFittings": 0
         },
         {
           "name": "Harrow Junction / Power station",
@@ -2436,7 +2964,10 @@
           "areaM2": 1728,
           "level": 0,
           "equipment": 0,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": "utilities",
+          "supportFittings": 9
         },
         {
           "name": "Harrow Junction / Small landing pad",
@@ -2445,7 +2976,10 @@
           "areaM2": 1728,
           "level": 0,
           "equipment": 0,
-          "storage": []
+          "storage": [],
+          "interior": false,
+          "fittingProfile": null,
+          "supportFittings": 0
         }
       ],
       "assumptions": "Reference personnel and annual figures retained. Equipment count, role split, floor dimensions, operating calendar, mineral yields and opening stock are adopted review assumptions."
@@ -2468,7 +3002,10 @@
           "areaM2": 1728,
           "level": 0,
           "equipment": 0,
-          "storage": []
+          "storage": [],
+          "interior": false,
+          "fittingProfile": null,
+          "supportFittings": 0
         },
         {
           "name": "Spartan HQ / R&D and prospecting labs",
@@ -2477,7 +3014,10 @@
           "areaM2": 840,
           "level": 0,
           "equipment": 6,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": "laboratory",
+          "supportFittings": 0
         },
         {
           "name": "Spartan HQ / Materials and metallurgy lab",
@@ -2486,7 +3026,10 @@
           "areaM2": 1368,
           "level": 0,
           "equipment": 8,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": "laboratory",
+          "supportFittings": 0
         },
         {
           "name": "Spartan HQ / Training center",
@@ -2495,7 +3038,10 @@
           "areaM2": 1728,
           "level": 0,
           "equipment": 0,
-          "storage": []
+          "storage": [],
+          "interior": false,
+          "fittingProfile": null,
+          "supportFittings": 0
         },
         {
           "name": "Spartan HQ / Automation and drone systems workshop",
@@ -2504,7 +3050,10 @@
           "areaM2": 3564,
           "level": 0,
           "equipment": 26,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": "workshop",
+          "supportFittings": 0
         },
         {
           "name": "Spartan HQ / Equipment fabrication hall",
@@ -2513,7 +3062,10 @@
           "areaM2": 4060,
           "level": 0,
           "equipment": 38,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": "workshop",
+          "supportFittings": 0
         },
         {
           "name": "Spartan HQ / Prototype test yard",
@@ -2522,7 +3074,10 @@
           "areaM2": 1444,
           "level": 0,
           "equipment": 12,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": "workshop",
+          "supportFittings": 0
         },
         {
           "name": "Spartan HQ / Security and medical building",
@@ -2531,7 +3086,10 @@
           "areaM2": 1728,
           "level": 0,
           "equipment": 0,
-          "storage": []
+          "storage": [],
+          "interior": false,
+          "fittingProfile": null,
+          "supportFittings": 0
         },
         {
           "name": "Spartan HQ / Fleet operations office",
@@ -2540,7 +3098,10 @@
           "areaM2": 1728,
           "level": 0,
           "equipment": 0,
-          "storage": []
+          "storage": [],
+          "interior": false,
+          "fittingProfile": null,
+          "supportFittings": 0
         },
         {
           "name": "Spartan HQ / Logistics dispatch center",
@@ -2549,7 +3110,10 @@
           "areaM2": 1728,
           "level": 0,
           "equipment": 0,
-          "storage": []
+          "storage": [],
+          "interior": false,
+          "fittingProfile": null,
+          "supportFittings": 0
         },
         {
           "name": "Spartan HQ / Warehousing and spare parts depot",
@@ -2601,7 +3165,10 @@
               "capacity": 2037,
               "unit": "each"
             }
-          ]
+          ],
+          "interior": true,
+          "fittingProfile": "workshop",
+          "supportFittings": 0
         },
         {
           "name": "Spartan HQ / Utilities and power plant",
@@ -2610,7 +3177,10 @@
           "areaM2": 576,
           "level": 0,
           "equipment": 6,
-          "storage": []
+          "storage": [],
+          "interior": true,
+          "fittingProfile": "utilities",
+          "supportFittings": 0
         },
         {
           "name": "Spartan HQ / Vehicle yard",
@@ -2619,7 +3189,10 @@
           "areaM2": 1728,
           "level": 0,
           "equipment": 0,
-          "storage": []
+          "storage": [],
+          "interior": false,
+          "fittingProfile": null,
+          "supportFittings": 0
         },
         {
           "name": "Spartan HQ / Small landing pads",
@@ -2628,7 +3201,10 @@
           "areaM2": 1728,
           "level": 0,
           "equipment": 0,
-          "storage": []
+          "storage": [],
+          "interior": false,
+          "fittingProfile": null,
+          "supportFittings": 0
         }
       ],
       "assumptions": "Reference personnel and annual figures retained. Equipment count, role split, floor dimensions, operating calendar, mineral yields and opening stock are adopted review assumptions."
@@ -2916,7 +3492,10 @@
     "sites": 15,
     "areas": 192,
     "people": 6605,
-    "equipment": 1655
+    "equipment": 1655,
+    "interiors": 138,
+    "mapLandmarks": 54,
+    "furnishedSupportAreas": 50
   },
   "assumptions": [
     "All new individual equipment allocations, role/skill splits, dimensions, two-day opening stocks, 365 operating days, nine-hour shifts and mineral recovery recipes are adopted review values.",

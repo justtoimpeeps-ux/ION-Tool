@@ -14,7 +14,7 @@
     "newReferencePeople": 3010
   },
   "coreTests": {
-    "passed": 91,
+    "passed": 94,
     "failed": 0
   },
   "siteDays": [
@@ -318,5 +318,14 @@
     "Inter-area conveyors are abstracted by reserved carrier transfers; local mixed belts/inserters remain available.",
     "Asteroid galleries and serialized underground shaft transfers use adopted carrier capacities and travel assumptions.",
     "Spartan HQ outputs transportable equipment modules rather than entire self-propelled heavy haul vehicles."
-  ]
+  ],
+  "campusNavigation": {
+    "interiors": 138,
+    "mapLandmarks": 54,
+    "furnishedSupportAreas": 50,
+    "hover": "Translucent tint and bright outline; map image remains visible",
+    "mapOnlyExample": "ION Headquarters",
+    "savedContentsPolicy": "Any existing machinery or storage keeps a saved interior accessible",
+    "statePreservation": "Presentation policy and visual fittings do not mutate layout, inventory, workforce or ledgers"
+  }
 }

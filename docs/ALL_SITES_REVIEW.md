@@ -67,3 +67,9 @@ Spartan HQ’s second carried day dispatched3 qualified equipment modules,16 dro
 Source PNGs, compact runtime maps, processing/ore sprites, generators, tests and the machine-readable review inventory are retained in the source package. Historical duplicate continuation traces are omitted from this review ZIP to keep it within hosting limits; they remain in the repository and prior release.
 
 This is a review checkpoint on the recovery branch. Main remains unchanged.
+
+## Campus navigation and interior audit
+
+Campus hover now adds a translucent color tint and outline, preserving the underlying image. Administrative, accommodation and exterior landmarks show map information rather than an empty floor; ION HQ is one example. These landmarks are omitted from the interior tabs.
+
+The 192 mapped areas now resolve to 138 interiors and 54 information-only landmarks. All openable reference interiors have operating equipment/storage or purpose-specific support fittings. Fifty support areas have fitted lab benches, workshops, utility systems, storage racks, control consoles or hangar bays. These fittings are visual support layouts, not extra productive equipment or employees. Existing saved machinery or storage always keeps its area accessible.

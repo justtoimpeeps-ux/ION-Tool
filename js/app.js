@@ -108,8 +108,8 @@ document.addEventListener('keydown',e=>{
  if(e.key.toLowerCase()==='c'&&!$('buildDialog').open){e.preventDefault();copySelected();return}if(e.key.toLowerCase()==='b'){e.preventDefault();if(!$('buildDialog').open)openBuild();return}if(e.key.toLowerCase()==='r'&&!$('buildDialog').open){e.preventDefault();rotateActive()}
 });
 function refresh(){
- const site=SITES.find(s=>s.id===$('site').value)||SITES[0];$('feeds').closest('details').hidden=site.id!=='orinda';if(!site.buildings.includes(active))active=site.buildings[0];
- $('tabs').innerHTML='<button id="campusTab" class="'+(activeView==='campus'?'active':'')+'">Campus map</button>'+SITES.find(s=>s.id===$('site').value).buildings.map(n=>`<button data-tab="${n}" class="${activeView==='building'&&n===active?'active':''}">${n} (${buildings[n].machines.length})</button>`).join('');
+ const site=SITES.find(s=>s.id===$('site').value)||SITES[0];$('feeds').closest('details').hidden=site.id!=='orinda';if(!site.buildings.includes(active))active=site.buildings[0];if(activeView==='building'&&!FacilityInteriors.canOpen(active,buildings[active]))activeView='campus';
+ $('tabs').innerHTML='<button id="campusTab" class="'+(activeView==='campus'?'active':'')+'">Campus map</button>'+SITES.find(s=>s.id===$('site').value).buildings.filter(n=>FacilityInteriors.canOpen(n,buildings[n])).map(n=>`<button data-tab="${n}" class="${activeView==='building'&&n===active?'active':''}">${n} (${buildings[n].machines.length})</button>`).join('');
  document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>{active=b.dataset.tab;activeView='building';selected=null;area=null;drag=null;$('mapScroll').scrollTo(0,0);refresh();paint()});
  $('campusTab').onclick=()=>{activeView='campus';selected=null;area=null;refresh();paint()};renderTools();$('tileActions').disabled=!selected||activeView==='campus';
  $('undo').disabled=!history.length;$('undo').textContent='↶ Undo ('+history.length+')';
