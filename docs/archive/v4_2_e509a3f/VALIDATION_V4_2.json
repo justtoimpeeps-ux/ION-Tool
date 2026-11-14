@@ -1,0 +1,117 @@
+{
+  "release": "Reconstructed V4.2",
+  "observed_at_utc": "2026-11-14T02:03:42.437159+00:00",
+  "fullPhysicalDay": {
+    "engine": "optimized",
+    "layout": "compact",
+    "seconds": 445.213173496,
+    "cpuSeconds": 502.642542,
+    "sha256": "e8433a3a6a9865c388f4cce5aded61869705461bea9ee49714b7616672041ea4",
+    "certified": 244,
+    "shipped": 194,
+    "trips": 7338,
+    "prepHours": 6.7825,
+    "maxMaterialError": 9.313225746154785e-10,
+    "command": "node scripts/benchmark-day.cjs --compact --output=/workspace/ion-v42-day.json"
+  },
+  "certifiedEngines": 244,
+  "dispatchedEngines": 194,
+  "shiftHours": 9,
+  "prepHours": 6.7825,
+  "assets": 934,
+  "normalPaidManHours": 29250,
+  "paidManHours": 31308.46739463602,
+  "coreTests": {
+    "passed": 71,
+    "failed": 0,
+    "skipped": 0
+  },
+  "limitations": [
+    "First day draws on opening WIP. Day-three certification fell to 196; sustainable 247/day and overtime annual output were not demonstrated.",
+    "Reference-derived artwork reconstructed; inaccessible original V4.2 artwork not recovered.",
+    "Cloud browser validates locally served standalone HTML; desktop file launch not exercised.",
+    "Pedestrian collision modeling and interstellar logistics remain outside the existing physical model."
+  ],
+  "browserChecks": [
+    {
+      "command": "node tests/ui-v4.cjs http://127.0.0.1:8000",
+      "status": "passed"
+    },
+    {
+      "command": "node tests/capital-browser.cjs http://127.0.0.1:8000",
+      "status": "passed"
+    },
+    {
+      "command": "node tests/inventory-browser.cjs http://127.0.0.1:8000",
+      "status": "passed"
+    },
+    {
+      "command": "node tests/compat-v4-1.cjs http://127.0.0.1:8000",
+      "status": "passed"
+    },
+    {
+      "command": "node tests/ui-v4.cjs http://127.0.0.1:8000/dist/ION_Campus_Planner_v4_2.html",
+      "status": "passed"
+    },
+    {
+      "command": "node tests/capital-browser.cjs http://127.0.0.1:8000/dist/ION_Campus_Planner_v4_2.html",
+      "status": "passed"
+    },
+    {
+      "command": "node tests/display-v4-1.cjs http://127.0.0.1:8000/dist/ION_Campus_Planner_v4_2.html",
+      "status": "passed"
+    },
+    {
+      "command": "node tests/replay-v4.cjs http://127.0.0.1:8000/dist/ION_Campus_Planner_v4_2.html",
+      "status": "passed"
+    },
+    {
+      "command": "node tests/inventory-browser.cjs http://127.0.0.1:8000/dist/ION_Campus_Planner_v4_2.html",
+      "status": "passed"
+    },
+    {
+      "command": "node tests/attachments-browser.cjs http://127.0.0.1:8000/dist/ION_Campus_Planner_v4_2.html",
+      "status": "passed"
+    }
+  ],
+  "playback": {
+    "fps": 58.68389819332716,
+    "p95FrameMs": 16.799999999999272,
+    "frames": 89,
+    "pause_freezes_animation": true,
+    "all_four_orientations_preserve_aspect_ratio": true,
+    "corrupt_import_preserves_playback": true
+  },
+  "recipePreservation": "Exact expanded raw recipe equality against recovery checkpoint 87676c2, plus baseline recipe conservation tests",
+  "matchingReplaySha256": "a71f49a2b80c4ad6270b39c6d7b8e3a2858590cc5348b63162389cec2fa39051",
+  "packaging": {
+    "embeddedAtlases": true,
+    "embeddedWorkers": true,
+    "noAdditionalHTTPRequestsInStandaloneWorkflow": true,
+    "originalV41DownloadsUnchanged": true,
+    "sourceZipTestsPassed": 71,
+    "rebuiltStandaloneByteIdentical": true,
+    "replayTransport": "ION-gzip-1 compressed portable JSON",
+    "serverRestartAfterEnvironmentReconnect": "HTTP and package version verified"
+  },
+  "continuationValidation": "CONTINUATION_V4_2.json",
+  "sustainable247PerDayDemonstrated": false,
+  "deepRegressionCoverage": [
+    "Unfinished work pauses without operators/access and resumes using its reserved inputs once.",
+    "Warehouse shrink, removal and material changes preserve displaced contents; new proposals create no actual stock.",
+    "Operating ledger balances override stale layout stock.",
+    "Whole-item receipts cannot create fractional modules/engines.",
+    "Legacy VC capability and prices migrate without becoming in-house fabrication.",
+    "Failed scoped imports preserve view, revision, history and layouts.",
+    "Replay schema rejects corrupt costs, events, cargo and ledgers before replacing playback.",
+    "Exact replay signature includes upgrades, staffing, attachments and storage model.",
+    "Direct floor input/output attachment choice, occupied/interior rejection, no-op, Escape and Undo.",
+    "Placement ghosts preserve proportions in every rotation.",
+    "Workspace map-array shapes reject before JSON serialization can drop inventory."
+  ],
+  "continuationReplaySha256": {
+    "ION_Orinda_Day_3_replay.json": "9b593318106e4ca5889c68a75f29520867d4f210a887c580029384338ebdb6cd",
+    "ION_Orinda_Day_2_replay.json": "1eb59e30ae6ed2fdb1ba21762d57ab781d67030628eeb810fe7652554fd4d4bf"
+  },
+  "verified_at_utc": "2026-11-14T03:28:56.792372+00:00"
+}

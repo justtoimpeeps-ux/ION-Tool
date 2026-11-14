@@ -24,3 +24,14 @@ Remaining modeling limits are explicit in `../RELEASE_V4_2.md`: adopted physical
 Extended checks additionally cover dormant unfinished work, actual warehouse contents during implementation, authoritative carried stock, fractional whole-item rejection, legacy VC semantics, atomic failed imports, strict read-only replay loading, and three-day stock/WIP carry without initialization. See the extended review and continuation measurements in the release documents. Third-day certification declined; sustainable output is expressly unproven rather than forced to the source reference.
 
 Direct floor-based attachment selection, occupied/interior rejection, no-op selection, Escape/Undo, and aspect-preserving placement ghosts are covered by `attachments-browser.cjs`. Workspace map-array corruption is rejected before it can drop unallocated inventory during serialization.
+
+## Expanded build supersedes the original reconstruction checklist above
+
+Current evidence is in `../VALIDATION_V4_2.json` and `../RELEASE_V4_2.md`. The initial six-building/33-process measurements above describe e509a3f, archived separately.
+
+- Current fresh workspace: three sites; 13 Orinda areas, 15 Corellia areas, 16 fixed-envelope station modules. Orinda934/3250 retained. Station85 people,220m length,140m height,4berths retained; support areas are distinct.
+- Realistic container stockpiles, larger natural-aspect artwork, all48 process motions, triangle ports/outside connectors, extensible design identities, two-column type-first palette, C-copy and configurable CNC/functions are implemented.
+- Connected loading-zone capacity, strict cart-road access, finite existing-person handoffs, mixed finite-slot belts, one-square autonomous inserters, shared dimensions/payloads and optional completion-threshold loader calls are implemented and tested.
+- Current full Orinda day:247 certified/194 dispatched/7327trips,433.24s calculation,6.0831h prep, balance error below7e-10. All carrier loads/routes and cell/edge/vehicle bookings independently audited.
+- 85core tests and expanded source/standalone browser acceptance checks cover saved policies, CNC copies, motion/proportions, old-layout retention, site payroll isolation, fixed boundaries, reference-image upload, replay audit and read-only playback. Archive continuation examples remain historical.
+- Exact campus/station image backgrounds remain pending the original downloadable PNG/JPG files. Normalized clickable highlights and saved image upload are available; labeled schematics do not pretend to be exact originals.

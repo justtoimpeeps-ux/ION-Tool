@@ -23,7 +23,7 @@ const FactoryReplay=(()=>{
   if(!r.labour||!['normalShiftHours','preShiftLogisticsHours','preShiftMaintenanceHours','totalPaidHours','productiveMachineHours'].every(k=>finite(r.labour[k]))||Math.abs(r.labour.totalPaidHours-r.labour.normalShiftHours-r.labour.preShiftLogisticsHours-r.labour.preShiftMaintenanceHours)>1e-5)throw Error('Invalid paid manpower.');
   const items=new Set();if(!Array.isArray(r.ledger))throw Error('Missing material ledger.');for(const row of r.ledger){if(!materials[row.item]||items.has(row.item)||!['opening','incoming','produced','consumed','shipped','closing','inTransit'].every(k=>finite(row[k],-1e-6))||!Number.isFinite(row.error)||Math.abs(row.error)>1e-5||Math.abs(row.opening+row.incoming+row.produced-row.consumed-row.shipped-row.closing-row.inTransit-row.error)>1e-5)throw Error('Replay ledger does not balance.');items.add(row.item)}
   if(r.anchors)for(const [name,p]of Object.entries(r.anchors))if(!names.has(name)||!Array.isArray(p)||p.length!==2||!p.every(Number.isFinite))throw Error('Invalid campus anchors.');
-  return r;
+  if(typeof LogisticsAudit!=='undefined')LogisticsAudit.verify(r,buildings,specs,Day);return r;
  }
  return {signature,validate};
 })();

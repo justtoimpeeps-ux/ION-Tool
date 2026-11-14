@@ -1,11 +1,9 @@
-# Current V4.2 matching replay
+# Matching expanded V4.2 replay
 
-`ION_Orinda_Day_1_replay.json` was generated from the exact reconstructed V4.2 starting layout and a fresh full-campus physical simulation: 244 certified, 194 dispatched, 7,338 trips, 6.7825 hours pre-shift plus nine production hours. Load it at Orinda in a fresh V4.2 workspace. It is read-only and cannot be accepted as a new operating day.
+Open the delivered HTML, leave Orinda selected, choose **Load replay**, select `ION_Orinda_Day_1_replay.json`, then **Play**. Open any building to watch its machines, handlers and cargo. No recalculation is needed. Replay and seeking never post inventory or advance a day.
 
-The original V4.1 replay remains recoverable from commit `87676c2` and the verified V4.1 complete source ZIP. Its layout differs and must not be loaded as the V4.2 baseline.
+This file matches the fresh 13-area Orinda reference layout: 247 certified, 194 dispatched, 7,327 trips, 6.0831 hours preparation plus nine production hours. It is a finite opening-WIP scenario, not evidence of sustainable output.
 
-To regenerate after relevant changes, run `node scripts/benchmark-day.cjs --compact --output=/workspace/ion-v42-day.json`, validate the result, then `node scripts/write_release_replay.cjs /workspace/ion-v42-day.json`. Do not reuse a replay for a different release layout.
+`archive/` retains the prior release's day-one and continuation traces with their own embedded layouts. The copies in `continuation/` are historical e509a3f-layout examples; they do not match the expanded fresh layout and must not be loaded into it. Their earlier results are not current release measurements.
 
-`continuation/ION_Orinda_Day_2_replay.json` and `continuation/ION_Orinda_Day_3_replay.json` carry the preceding final state directly. They certify 245 and 196 engines respectively and demonstrate that the day-one result does not establish steady throughput. These artifacts are read-only validation previews and are not accepted/postable operating entries. All three replay files pass schema checks against the exact release layout.
-
-Replay files use the existing `ION-gzip-1` portable JSON wrapper. The app decompresses them directly. The day-one download is approximately 3.3 MiB instead of roughly 48 MiB of raw trace JSON; quantities and events are unchanged.
+Regenerate with `node scripts/benchmark-day.cjs --fresh --output=work/day.json`, audit that result, then `node scripts/write_release_replay.cjs work/day.json`. Portable replay JSON uses the app's existing lossless gzip wrapper.

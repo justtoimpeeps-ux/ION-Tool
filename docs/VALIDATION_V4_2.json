@@ -1,117 +1,97 @@
 {
-  "release": "Reconstructed V4.2",
-  "observed_at_utc": "2026-11-14T02:03:42.437159+00:00",
+  "release": "Expanded recovered V4.2",
+  "observed_at_utc": "2026-11-14T14:43:00.789127+00:00",
+  "branch": "recovery/v4-2-reconstruction",
+  "main_unchanged": "718ae90c0a731e785474c3f5baba88748baff112",
+  "recovery_commits_checked": [
+    "2fd27d9fc7768e14c89a301c7b88fbe4a801da7d",
+    "34941e2"
+  ],
   "fullPhysicalDay": {
     "engine": "optimized",
-    "layout": "compact",
-    "seconds": 445.213173496,
-    "cpuSeconds": 502.642542,
-    "sha256": "e8433a3a6a9865c388f4cce5aded61869705461bea9ee49714b7616672041ea4",
-    "certified": 244,
+    "layout": "fresh reference campus",
+    "seconds": 433.24486266599996,
+    "cpuSeconds": 466.926077,
+    "sha256": "4300370de5eb13c4f9965dc293d5fe6791a12cf2fec66fd7f0e9fc6769cd964f",
+    "certified": 247,
     "shipped": 194,
-    "trips": 7338,
-    "prepHours": 6.7825,
-    "maxMaterialError": 9.313225746154785e-10,
-    "command": "node scripts/benchmark-day.cjs --compact --output=/workspace/ion-v42-day.json"
+    "trips": 7327,
+    "prepHours": 6.083055555555555,
+    "maxMaterialError": 6.984919309616089e-10
   },
-  "certifiedEngines": 244,
-  "dispatchedEngines": 194,
-  "shiftHours": 9,
-  "prepHours": 6.7825,
-  "assets": 934,
-  "normalPaidManHours": 29250,
-  "paidManHours": 31308.46739463602,
   "coreTests": {
-    "passed": 71,
-    "failed": 0,
-    "skipped": 0
+    "passed": 85,
+    "failed": 0
   },
-  "limitations": [
-    "First day draws on opening WIP. Day-three certification fell to 196; sustainable 247/day and overtime annual output were not demonstrated.",
-    "Reference-derived artwork reconstructed; inaccessible original V4.2 artwork not recovered.",
-    "Cloud browser validates locally served standalone HTML; desktop file launch not exercised.",
-    "Pedestrian collision modeling and interstellar logistics remain outside the existing physical model."
-  ],
-  "browserChecks": [
+  "normalPaidManHours": 29250,
+  "paidManHours": 31182.959894636013,
+  "trafficAudit": {
+    "day": 1,
+    "carrierTrips": 7327,
+    "reservedCells": 9381,
+    "reservedEdges": 10539,
+    "vehicles": 282,
+    "cellOverlap": 0,
+    "edgeOverlap": 0,
+    "doubleBookedVehicles": 0
+  },
+  "earlyCallMatchedFixture": [
     {
-      "command": "node tests/ui-v4.cjs http://127.0.0.1:8000",
-      "status": "passed"
+      "scenario": "off",
+      "iterations": 30,
+      "medianMs": 4.847013000000061,
+      "p90Ms": 8.625468000000012,
+      "precalled": 0,
+      "finished": 2,
+      "trips": 32
     },
     {
-      "command": "node tests/capital-browser.cjs http://127.0.0.1:8000",
-      "status": "passed"
-    },
-    {
-      "command": "node tests/inventory-browser.cjs http://127.0.0.1:8000",
-      "status": "passed"
-    },
-    {
-      "command": "node tests/compat-v4-1.cjs http://127.0.0.1:8000",
-      "status": "passed"
-    },
-    {
-      "command": "node tests/ui-v4.cjs http://127.0.0.1:8000/dist/ION_Campus_Planner_v4_2.html",
-      "status": "passed"
-    },
-    {
-      "command": "node tests/capital-browser.cjs http://127.0.0.1:8000/dist/ION_Campus_Planner_v4_2.html",
-      "status": "passed"
-    },
-    {
-      "command": "node tests/display-v4-1.cjs http://127.0.0.1:8000/dist/ION_Campus_Planner_v4_2.html",
-      "status": "passed"
-    },
-    {
-      "command": "node tests/replay-v4.cjs http://127.0.0.1:8000/dist/ION_Campus_Planner_v4_2.html",
-      "status": "passed"
-    },
-    {
-      "command": "node tests/inventory-browser.cjs http://127.0.0.1:8000/dist/ION_Campus_Planner_v4_2.html",
-      "status": "passed"
-    },
-    {
-      "command": "node tests/attachments-browser.cjs http://127.0.0.1:8000/dist/ION_Campus_Planner_v4_2.html",
-      "status": "passed"
+      "scenario": "early20",
+      "iterations": 30,
+      "medianMs": 5.322608000000059,
+      "p90Ms": 15.324127000000004,
+      "precalled": 4,
+      "finished": 2,
+      "trips": 32
     }
   ],
-  "playback": {
-    "fps": 58.68389819332716,
-    "p95FrameMs": 16.799999999999272,
-    "frames": 89,
-    "pause_freezes_animation": true,
-    "all_four_orientations_preserve_aspect_ratio": true,
-    "corrupt_import_preserves_playback": true
+  "referenceSites": {
+    "orinda": {
+      "areas": 13,
+      "machines": 934,
+      "people": 3250
+    },
+    "vc-corellia": {
+      "areas": 15,
+      "fixedProcessAssets": 173,
+      "portableAssets": 225,
+      "adoptedPeople": 260,
+      "coldDay1Seconds": 23.131459845,
+      "day2Validated": 50,
+      "day2Dispatched": 36
+    },
+    "spartan-orbit": {
+      "areas": 16,
+      "equipment": 20,
+      "referencePeople": 85,
+      "lockedLengthM": 220,
+      "lockedHeightM": 140,
+      "smallCraftBerths": 4,
+      "day1Seconds": 0.275066698,
+      "day1Completed": 55,
+      "day1Dispatched": 53,
+      "day2Completed": 63,
+      "day2Dispatched": 62
+    }
   },
-  "recipePreservation": "Exact expanded raw recipe equality against recovery checkpoint 87676c2, plus baseline recipe conservation tests",
-  "matchingReplaySha256": "a71f49a2b80c4ad6270b39c6d7b8e3a2858590cc5348b63162389cec2fa39051",
-  "packaging": {
-    "embeddedAtlases": true,
-    "embeddedWorkers": true,
-    "noAdditionalHTTPRequestsInStandaloneWorkflow": true,
-    "originalV41DownloadsUnchanged": true,
-    "sourceZipTestsPassed": 71,
-    "rebuiltStandaloneByteIdentical": true,
-    "replayTransport": "ION-gzip-1 compressed portable JSON",
-    "serverRestartAfterEnvironmentReconnect": "HTTP and package version verified"
-  },
-  "continuationValidation": "CONTINUATION_V4_2.json",
-  "sustainable247PerDayDemonstrated": false,
-  "deepRegressionCoverage": [
-    "Unfinished work pauses without operators/access and resumes using its reserved inputs once.",
-    "Warehouse shrink, removal and material changes preserve displaced contents; new proposals create no actual stock.",
-    "Operating ledger balances override stale layout stock.",
-    "Whole-item receipts cannot create fractional modules/engines.",
-    "Legacy VC capability and prices migrate without becoming in-house fabrication.",
-    "Failed scoped imports preserve view, revision, history and layouts.",
-    "Replay schema rejects corrupt costs, events, cargo and ledgers before replacing playback.",
-    "Exact replay signature includes upgrades, staffing, attachments and storage model.",
-    "Direct floor input/output attachment choice, occupied/interior rejection, no-op, Escape and Undo.",
-    "Placement ghosts preserve proportions in every rotation.",
-    "Workspace map-array shapes reject before JSON serialization can drop inventory."
+  "browserChecks": [
+    "vnext-browser.cjs source and standalone",
+    "reference-save-browser.cjs source and standalone",
+    "packet-visuals.cjs source and standalone",
+    "attachments-browser.cjs source and standalone",
+    "inventory-browser.cjs source and standalone"
   ],
-  "continuationReplaySha256": {
-    "ION_Orinda_Day_3_replay.json": "9b593318106e4ca5889c68a75f29520867d4f210a887c580029384338ebdb6cd",
-    "ION_Orinda_Day_2_replay.json": "1eb59e30ae6ed2fdb1ba21762d57ab781d67030628eeb810fe7652554fd4d4bf"
-  },
-  "verified_at_utc": "2026-11-14T03:28:56.792372+00:00"
+  "mapOriginals": "Inline references are not downloadable workspace files. Original PNG/JPG/WebP upload is supported; packaged maps remain explicitly labeled reference-aligned schematics.",
+  "performanceLimit": "Full-day computation is separate from playback. Site and matched-fixture timings are not isolated campus-wide feature overhead measurements.",
+  "sustainability": "Opening-WIP first day only. Historical continuation artifacts belong to their archived release layout."
 }

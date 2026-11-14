@@ -1,72 +1,37 @@
-# ION Campus Planner V4.2 — reconstructed release
+# V4.2 expanded recovery build
 
-Reconstructed from the verified V4.1 complete package and the preserved V4.2 handoff. The inaccessible original V4.2 environment was not modified. Main remains unchanged; source, artwork, validation and downloads are on the recovery branch.
+Continue on `recovery/v4-2-reconstruction`; `main` remains unchanged. The source engine bill of materials and Orinda census remain 934 fixed assets and 3,250 people. Reference facts, adopted planning values, forecasts and accepted operating records remain distinct.
 
-## Use
+## Watch and edit
 
-Open the standalone `ION_Campus_Planner_v4_2.html` in a modern desktop browser, or serve the source with `npm start`. For desktop use the HTML embeds art, worker code and styles; no asset server or external download is required. Managed-browser testing serves that single file locally because file navigation is restricted there.
+Open the standalone HTML in a desktop browser. At Orinda choose **Load replay**, select `examples/ION_Orinda_Day_1_replay.json`, then **Play**. Opening a building shows its working machines, cargo and workers. Seeking and replay never post balances. Calculate a day to test another configuration; **Accept closing balances** advances once. A full Orinda calculation takes several minutes.
 
-The fresh campus retains 934 assets and 3,250 workers, with the fixed tier census and recipes preserved. New floors are near-square or portrait rectangles derived from placement; prior imported layouts are retained. Compact-layout proposals remain explicit and undoable. Default 100% now has the former 70% square size.
+Choose **Proposal** to build. **B** opens larger two-column equipment types; choosing a type opens its design choices. CNC machines have selectable functions/recipes. **C** copies a selected equipment or path type and settings into placement without copying employees, inventory or history. **R**, click-drag and **Esc** retain their existing edit-mode behavior. Descriptions and output figures are in tile actions/hover; floor artwork fills more of each footprint and keeps its natural proportions. Operating processes animate; pausing freezes motion. Equipment designs share a family body with extensible stripes, generation marks and finish accents.
 
-## Operation and accounting
+## Materials and transport
 
-Calculate a day before replay. Replay, seeking and report export do not post operations. Only accepting the implemented day's closing balances posts inventory, wear, payroll and accepted operating results once. Preparation and the nine-hour production shift remain separately timed and costed. Calendar advancement implements due projects but creates no operating days.
+Realistic resource sprites appear in discrete open chests, vats, trays and assembly piles. Stock depletion removes actual handling groups; tooltips retain exact quantities and explain display grouping. Loading zones reserve one square from receiving storage, serve that store, and extend only through connected squares. Capacity excludes their area. Existing imports retain their stock and layouts.
 
-Physical operator/helper limits apply to assignment and calculation. Legacy excess assignments remain identified and paid, but do not increase productive hours or machine capacity. Helpers can provide a modest benefit within mechanical capacity. No automatic hiring, XP or promotions occur.
+Speeders use valid cart lanes and loading zones. Off-road transfers require finite hand-cart trips using existing handlers; whole items that exceed hand capacity require cart access or an inserter. Larger vehicles and loaded beds distinguish carried cargo. Shared adopted envelopes, mass, volume and stacking limits constrain carts, belts and storage. Engine-sized items occupy much more space than small components.
 
-Cart cells must belong to a complete unobstructed 2×2 painted block. Narrow segments are red and unavailable to carriers; walkers can still traverse them. Empty floor stays walkable. Fresh layouts contain no narrow cart cells. Carrier paths, loads and traffic reservations remain physical.
+Belts accept connected mixed materials without a cargo filter. Each square has four finite reserved slots; cargo occupies slots according to its physical size and mass. One-square autonomous inserters transfer at connected interfaces, including cart handoffs. They reserve real work time and do not invent operators. Optional early-loader calls are set per tile as completion percentages; 100% is the unchanged default. Reservations may wait for completion, but never collect unfinished output. The routed-cargo and separate-material-lane controls remain available. Specific ports use triangles and routed arrows stop outside the equipment footprint.
 
-VC in-house options allocate actual warehouse materials once when scheduled, expose fabrication labor obligations and enforce the minimum individual lead time. A shortage prevents scheduling; proposed warehouse quantities cannot fund it. Use Schedule / change report → Warehouse receipt / signed correction to record an actual receipt or adjustment. Completion installs the allocation without consuming its bill again. External purchase quotes, cumulative actual spending, signed cash adjustments and fabrication WIP remain separate. Retired Spartan manufacturing options still import but are not offered for new placement.
+## Reference locations
 
-Use **Save complete workspace** for a resumable save. **Export ION change report** creates read-only `ION-change-report-1` reconciliation data with persistent workspace/transaction identities, assets/configuration, staffing, inventories, project dates, production, accepted material balances, paid manpower, capital quotes, actual cash adjustments and fabrication allocations. Reports cannot be imported as complete workspaces. Repeated exports add no debit or expense. Accepted operating transactions are archived beyond the engine's rolling 90-day display history; legacy saves cannot recover older discarded detail. Starting a new ledger creates a distinct operating-series identity.
+Fresh workspaces have Orinda's 13 reference areas, Corellia's 15 engineering-campus areas and the station's 16 modules. Existing workspaces gain missing reference locations without relocating saved Orinda machinery. Fresh Orinda plans place packaging in Shipping and toolroom support in Maintenance; Factory C remains unbuilt.
 
-## Visuals and controls
+Corellia has 173 fixed process assets from the equipment rows, separate portable inventory, independent machinery/robotics recipes and an explicitly adopted 260-person planning roster. Header totals in the supplied collage differ from its row totals; they have not replaced the original ION register.
 
-The resupplied engine reference informs the coordinated eight part groups, grid/chamber/magnet/housing/pump/power-line layout, completed engines, pallets and shipping cradle. Palette art, machine workpieces, output waiting for pickup, storage and cargo use the same atlas family. Images preserve proportions on rotated footprints. Work-driven motion includes process feeds, forming, furnace heat/pouring, machining/welding, coating and testing; idle machinery does not run the animation. Repulsorlift cargo speeders replace wheeled vehicle drawings. Material cues are confined to cargo.
+The station keeps its reference **220 m overall length, 140 m height, 85 personnel and four small-craft berths**. Height is not floor depth. Equipment fits bounded, nonexpandable module interiors. Assay, microgravity testing, machining, drone service and cargo handling produce their own outputs; command, medical, accommodation, commons, power and other support areas remain separate. Corridor/deck distances, individual interior dimensions, fleet allocation, stock, role splits and new operating recipes/rates are adopted estimates. External ship flight and interstellar transport are outside this model.
 
-B opens Add Station / Define Space, R rotates, Escape cancels. Flexible stations let you choose input/output edges and move the attachment along that edge in tile actions; changes redraw on recalculation. Fixed industrial ports remain fixed. Routing follows passable squares; arbitrary freehand carrier routes are not invented. Hover and double-click details retain recipes, quantities, staffing, condition and throughput. Flow arrows and lane spacing are increased. Three-square reserve indicators, steady status lights, stock capacity/fullness and worker departures remain.
+Maps have normalized clickable building/module regions. **Sites → reference image** accepts the original PNG/JPG/WebP, preserves its proportions and saves it in the workspace. Original inline map images are not available as downloadable source files in this workspace; the shipped view therefore remains an explicitly labeled reference-aligned schematic until those originals are added. It is not a pixel-identical recreated background. The transport replay map remains available separately.
 
-Save/export and Workforce precede test controls. Daily manpower is above the right production dashboard after calculation; the interbuilding sidebar is removed while transfers remain modeled. Diagnostics stay collapsed. Dragging uses an overlay without recomputing the day.
+## Verification and performance
 
-## Evidence and limitations
+85 core tests pass, along with source and standalone browser checks for the expanded controls, all 48 moving process types, natural art proportions, CNC copying, compressed saves, old-workspace retention, attachment controls, legacy inventory migration and replay without postings.
 
-See `VALIDATION_V4_2.json` for current measurements. The new full-campus day certified 244 and dispatched 194 with finite inventory and conservation. This first day draws on opening WIP; it does not establish sustainable 247/day or the overtime-supported 108,800/year requirement. A+B's 247/day source reference remains separate. 108,800 × 250,000 Cr is 27.2 billion Cr gross annual engine sales, not profit. The provisional 365-day requirement is 298.08/day; a linear ~10.9h estimate is not a demonstrated overtime requirement. Do not add labor again to the referenced 152,500 Cr/engine expense without reconciling its coverage; other service revenue is separate.
+A fresh nine-hour Orinda day certified **247**, dispatched **194**, recorded **7,327** trips and needed **6.0831 h** preparation. Maximum material-balance error was **6.99×10⁻¹⁰**. All 7,327 carrier trips passed road-access and independent cell/edge/vehicle reservation audits. This day draws on opening WIP; it does not demonstrate sustainable annual output. Historical continuation results belong to their archived layouts.
 
-Physical dimensions, packing, service parameters, fabrication bills and equipment equivalents are adopted planning values where source measurements are absent. The original reference cutaway does not supply these missing measurements. The existing conservative traffic dispatcher is not an optimized safety/turning study. Pedestrians do not have a full collision model, and cross-site/interstellar logistics are not invented. Artwork is reconstructed, not recovered from the inaccessible V4.2 workspace.
+The full run took **433.24 seconds** in this environment. A prior short CPU sample put about 80% of sampled execution in traffic reservation/search work; it is not a whole-run timing breakdown. New sites calculate separately: the station's small adopted scenario took about 0.28 s and Corellia's cold-start scenario about 23.13 s. A matched small-fixture early-call benchmark had median 4.85 ms off versus 5.32 ms at 20%, with four real precalls and the same completed units. Those fixture measurements are not campus-wide overhead estimates. Dense traffic and additional routes can materially increase calculation time; artwork is drawn during playback, separately from day simulation.
 
-## Extended reconstruction review
-
-Further review and regression tests corrected several inherited edge cases:
-
-- Unfinished operations pause when operators or physical access are unavailable. Reserved inputs and remaining cycle time stay in WIP; neither output nor productive hours are invented. Restoring staff resumes the same work once.
-- Implementing a smaller warehouse, changing its material, or removing it preserves displaced contents in explicitly unallocated inventory/WIP. A newly proposed warehouse starts without actual stock. Recorded receipts are distinct from a proposed opening quantity.
-- An existing operating ledger is authoritative over stale layout quantities. Fabrication debits synchronize both views and retain before/after amounts. Whole-item receipts/issues reject fractional engines or modules.
-- Old VC choices retain their historical prices and capabilities as retired `vcLegacy` designs, including historical model-inventory totals. They do not silently become zero-price generation-I fabrication projects. The catalogue revision and migration notes persist.
-- Failed scoped imports leave the configuration view, layout, revision and Undo history unchanged. Invalid replay imports preserve the current replay; complete replay schema checks cover events, staff, quantities, costs, paid hours, routes and conservation. Matching includes upgrades, staffing, attachment positions and storage physics. Historical replay provenance is retained.
-- Detailed generated machinery sheets now cover all 33 processes. Empty/dim idle plates and loaded workpiece plates share aspect-preserving atlas coordinates; aligned overlays animate casting, presses, feed/winding, robotic tooling, machining, coating and scanning only during recorded work. The machinery source PNGs, engine source PNG, source geometry, atlas metadata and generation scripts are included.
-- Short type labels improve readability on small workstations. Numerical rounding on floor captions changes display only; detailed quantities and recipes retain their precision. Trace amounts near floating-point zero display as zero.
-- The diagnostics panel distinguishes remaining warehouse stock, upstream output and unallocated WIP from local ingredient starvation. Waiting hours are a sampled lower bound, not ingredient waits summed as elapsed time. Dispatch that draws on carried inventory is labeled explicitly.
-
-Three full physical days were validated without replenishing opening WIP or reinitializing closing balances:
-
-| Modeled day | Certified | Dispatched | Pre-shift hours | Production hours |
-| --- | ---: | ---: | ---: | ---: |
-| 1 | 244 | 194 | 6.7825 | 9 |
-| 2 | 245 | 242 | 3.0203 | 9 |
-| 3 | 196 | 235 | 2.5786 | 9 |
-
-Day three exposes upstream production/delivery, buffer and queue constraints after downstream opening WIP is drawn down. Raw stock remains in warehouses; aggregate stock is not proof of local delivery access or sustainable throughput. None of these runs demonstrates the source's sustainable 247/day reference or the overtime-supported annual requirement.
-
-Independent reconstruction of every carrier reservation found **zero cell overlaps, zero edge overlaps and zero double-booked vehicles** on all three days. These checks are separate from the scheduler's own diagnostics. Read-only continuation replay files are included under `examples/continuation/`. They are validation artifacts, not posted actual ION operating days. Detailed continuation measurements and flow diagnosis are in `CONTINUATION_V4_2.json`.
-
-## Direct flow attachments and placement previews
-
-For flexible equipment, Tile actions now offers **Choose input/output point on floor**. Available empty boundary squares highlight; click one to set the physical attachment. Occupied/interior squares reject, Escape cancels, and Undo restores the prior point. Selecting the current square is a no-op. Test the proposal to redraw actual routed flows; historical replays are not rewritten. Fixed ports remain fixed. Placement/move ghosts now use the same fitted transform as installed machinery, including rotated footprints.
-
-Malformed workspace map arrays that would lose inventory or ledger-series identities during JSON serialization are rejected before import. The complete core suite now contains 71 passing tests.
-
-## User-packet review
-
-The full resupplied packet was audited against code and behavior in `handoff/V4_2_PACKET_AUDIT.md`. This review corrected walking-handler silhouettes, neutral campus speeders with separate cargo, generic process overlays and repeated finished-workpiece plates. Working plates now follow recorded cycle stages, including ingredients, assembly and output; all 33 roles have process motion. The user's request for easier recognition adds distinct pictograms and matching color accents to floor and palette art while retaining the machinery designs. Idle and paused work remains still. Recipes, physical quantities, staffing, layout identities and ledger postings are unchanged.
-
-`PACKET_AUDIT_VALIDATION_V4_2.json` records fresh checks and a full-campus day, separately from earlier reconstruction evidence.
+Conservative dispatch, adopted packing dimensions, approximate site interiors and incomplete pedestrian collision modeling remain limitations. Save/export retains the full workspace. ION change reports are read-only reconciliation artifacts, not resumable workspaces.
