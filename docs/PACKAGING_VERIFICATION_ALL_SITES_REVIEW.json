@@ -1,6 +1,6 @@
 {
   "build": "All sites review",
-  "source_commit": "caab4a8f9ba5ea14f10212d30c86dc93cbdfef4f",
+  "source_commit": "977b826e1f592c32d77e3f8d5e944ede0e8b0b09",
   "branch": "recovery/v4-2-reconstruction",
   "core_tests": 104,
   "source_zip_tests": 104,
@@ -26,7 +26,8 @@
     "visual_cycles_source": "PASS all mechanisms, inventory-driven kitting compartments, upright full-size cargo, cropped maps and numbered highlights; 192 real source-map clicks; unchanged workspace and ledger.",
     "visual_cycles_standalone": "PASS cycles and preview pause/selection/close, VNext controls/save/replay, packet visuals, campus interiors and all-site smoke flow.",
     "payroll": "PASS separate prep identities and per-person marginal overtime; displayed crew split; accept/save/reload and legacy recorded replay.",
-    "duty_payroll": "PASS real 2,000-person roster: only assigned production staff and separate active prep staff charged; legacy defaults excluded, deliberate standby opt-in retained, correct Proposal/Implemented panel and valid save."
+    "duty_payroll": "PASS real 2,000-person roster: only assigned production staff and separate active prep staff charged; legacy defaults excluded, deliberate standby opt-in retained, correct Proposal/Implemented panel and valid save.",
+    "delete_shortcuts": "PASS D/Delete confirmation/cancel, machines/storage/paths to walk, worker and implemented-stock preservation, Undo, fixed access, read-only/typing/modal/repeat guards and valid saves."
   },
   "campus_interiors": 138,
   "map_only_landmarks": 54,
@@ -36,5 +37,6 @@
   "payroll_version": 2,
   "payroll_review": "PAYROLL_CREWS_REVIEW.md",
   "physical_simulation_regression": "Full Deep Vein and Spartan HQ result comparisons preserve all physical fields and events; only authorized payroll fields and prep identities normalize.",
-  "duty_manhours_review": "DUTY_MANHOURS_REVIEW.md"
+  "duty_manhours_review": "DUTY_MANHOURS_REVIEW.md",
+  "delete_shortcuts_review": "DELETE_SHORTCUTS.md"
 }
