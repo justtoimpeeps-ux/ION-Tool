@@ -1,0 +1,66 @@
+{
+  "kind": "Modeled continuation validation, not posted ION operating days",
+  "input": "Closing state of the fresh V4.2 day-one physical calculation",
+  "method": "Days two and three directly carry the prior final state; no call to opening/WIP initialization. Normal nine-hour production, same declared inbound supply and fixed 934 assets/3250 workers.",
+  "days": [
+    {
+      "day": 2,
+      "seconds": 283.471144263,
+      "certified": 245,
+      "shipped": 242,
+      "trips": 5764,
+      "prepHours": 3.020277777777778,
+      "paidManHours": 29950.84111111111,
+      "maxMaterialError": 2.6193447411060333e-10,
+      "wipMassRemaining": 896.3666666666666,
+      "closingCarriedWithoutReinitialization": true
+    },
+    {
+      "day": 3,
+      "seconds": 243.88597626000004,
+      "certified": 196,
+      "shipped": 235,
+      "trips": 5448,
+      "prepHours": 2.578611111111111,
+      "paidManHours": 29841.789722222224,
+      "maxMaterialError": 1.862645149230957e-09,
+      "wipMassRemaining": 896.3666666666666,
+      "closingCarriedWithoutReinitialization": true
+    }
+  ],
+  "trafficAudit": [
+    {
+      "day": 1,
+      "carrierTrips": 7338,
+      "reservedCells": 7930,
+      "reservedEdges": 9269,
+      "vehicles": 282,
+      "cellOverlap": 0,
+      "edgeOverlap": 0,
+      "doubleBookedVehicles": 0
+    },
+    {
+      "day": 2,
+      "carrierTrips": 5764,
+      "reservedCells": 7627,
+      "reservedEdges": 8696,
+      "vehicles": 282,
+      "cellOverlap": 0,
+      "edgeOverlap": 0,
+      "doubleBookedVehicles": 0
+    },
+    {
+      "day": 3,
+      "carrierTrips": 5448,
+      "reservedCells": 7209,
+      "reservedEdges": 8072,
+      "vehicles": 282,
+      "cellOverlap": 0,
+      "edgeOverlap": 0,
+      "doubleBookedVehicles": 0
+    }
+  ],
+  "sustainable247PerDayDemonstrated": false,
+  "finding": "Day three certification declined to 196 after opening downstream WIP was drawn down. Upstream output, local ingredient delivery and reserved traffic/finite buffers constrain flow even while raw warehouses contain stock. No inventory or capacity was invented to force the source target.",
+  "harnessNote": "A first day-three continuation comparison failed on cross-VM object prototypes, after simulation completed. The harness now compares exact serialized state values and immutability, which match the portable-save contract. Day three was rerun successfully from the saved day-two closing state."
+}
