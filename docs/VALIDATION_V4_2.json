@@ -91,7 +91,20 @@
     "attachments-browser.cjs source and standalone",
     "inventory-browser.cjs source and standalone"
   ],
-  "mapOriginals": "Inline references are not downloadable workspace files. Original PNG/JPG/WebP upload is supported; packaged maps remain explicitly labeled reference-aligned schematics.",
+  "mapOriginals": "User approved close reconstruction from pasted images. Three included illustrated maps with44aligned clickable highlights; original image upload remains optional.",
   "performanceLimit": "Full-day computation is separate from playback. Site and matched-fixture timings are not isolated campus-wide feature overhead measurements.",
-  "sustainability": "Opening-WIP first day only. Historical continuation artifacts belong to their archived release layout."
+  "sustainability": "Opening-WIP first day only. Historical continuation artifacts belong to their archived release layout.",
+  "mapArtwork": {
+    "updated_at_utc": "2026-11-14T17:02:22.423403+00:00",
+    "backgrounds": [
+      "orinda",
+      "vc-corellia",
+      "spartan-orbit"
+    ],
+    "clickableRegions": 44,
+    "format": "WebP",
+    "combinedBytes": 1686740,
+    "browserChecks": "reference-map-browser.cjs: all44real clicks, proportions, embedded standalone assets, no extra HTTP requests, unchanged building/ledger data",
+    "physicsChange": false
+  }
 }

@@ -1,3 +1,7 @@
+# Included reference-map reconstructions
+
+The user explicitly approved close reconstructions from pasted images. All three maps are now included by default, with44aligned clickable building/module regions. Original-file upload is optional; it is no longer a dependency. Retained PNGs: `assets/source/map-*.png`; compact runtime images: `assets/map-*.webp`; hotspot source: `assets/source/map-hotspots.json`; reproducible encoder: `scripts/render_reference_maps.cjs`. Numerical day engines, floor layouts, workers, inventory and station bounds are unchanged by this artwork update. Earlier notes below preserve the former exact-file limitation as history.
+
 # Expanded V4.2 release verification completed
 
 Source commit: `007a5e30e879fcd2760526844da4121cae9343da`. Final evidence: `../VALIDATION_V4_2.json`, `../PACKAGING_VERIFICATION_V4_2.json` and `../RELEASE_V4_2.md`. Expanded standalone/source browser checks and85core tests pass. The final package is rebuilt and verified; the chronology below preserves earlier work-in-progress states and should not be mistaken for current limitations. Exact original map-image files remain pending; image upload and labeled schematics are included. Main remains unchanged.

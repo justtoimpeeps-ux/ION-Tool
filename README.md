@@ -24,6 +24,6 @@ To watch immediately, open the HTML, select Orinda, choose **Load replay**, sele
 
 The current full nine-hour Orinda scenario certified 247 and dispatched 194, with 7,327 physical deliveries and exact material conservation within floating-point tolerance. Its approximately 433-second calculation is separate from smooth replay; opening WIP means this is not a sustainable-output demonstration.
 
-See [release notes](docs/RELEASE_V4_2.md) for loading zones, realistic stored materials, configurable CNC programs, finite mixed belts/inserters, hand-cart transfers, early calls, station constraints, map-reference upload, measured performance and remaining assumptions. Original map PNG/JPG files are still needed for exact background embedding; the shipped reference layouts are labeled schematics.
+See [release notes](docs/RELEASE_V4_2.md) for loading zones, realistic stored materials, configurable CNC programs, finite mixed belts/inserters, hand-cart transfers, early calls, station constraints, map-reference upload, measured performance and remaining assumptions. All three reference maps are now included as close illustrated reconstructions with 44 clickable building/module highlights. Uploading an original image is optional.
 
 Save the complete workspace to resume. Change reports and replays are read-only artifacts. `main` and retained V4.1 deliverables remain unchanged.

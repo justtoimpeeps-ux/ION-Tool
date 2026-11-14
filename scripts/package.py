@@ -27,7 +27,7 @@ page = (root / 'index.html').read_text()
 page = page.replace('<link rel="stylesheet" href="styles.css">', '<style>' + (root / 'styles.css').read_text() + '</style>')
 def inline(match):
     source = (root / match.group(1)).read_text()
-    if match.group(1)=='js/atlas-data.js':
+    if match.group(1) in ['js/atlas-data.js','js/map-art.js']:
         for asset in sorted((root/'assets').glob('*.webp')):
             source=source.replace('assets/'+asset.name,'data:image/webp;base64,'+base64.b64encode(asset.read_bytes()).decode())
     if match.group(1) in ['js/app.js','js/campaign.js']:

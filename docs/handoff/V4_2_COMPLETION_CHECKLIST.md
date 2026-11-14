@@ -35,3 +35,7 @@ Current evidence is in `../VALIDATION_V4_2.json` and `../RELEASE_V4_2.md`. The i
 - Current full Orinda day:247 certified/194 dispatched/7327trips,433.24s calculation,6.0831h prep, balance error below7e-10. All carrier loads/routes and cell/edge/vehicle bookings independently audited.
 - 85core tests and expanded source/standalone browser acceptance checks cover saved policies, CNC copies, motion/proportions, old-layout retention, site payroll isolation, fixed boundaries, reference-image upload, replay audit and read-only playback. Archive continuation examples remain historical.
 - Exact campus/station image backgrounds remain pending the original downloadable PNG/JPG files. Normalized clickable highlights and saved image upload are available; labeled schematics do not pretend to be exact originals.
+
+### Reference-map follow-up
+
+The user approved close visual reconstruction. Orinda,Corellia and the orbital station now have included rendered map backgrounds, with44aligned clickable highlights. Original uploads are optional. Source/standalone browser tests cover every map region, aspect ratio, compressed images, saved overrides and unchanged floor/ledger state.
