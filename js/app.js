@@ -1,0 +1,392 @@
+'use strict';
+const $=id=>document.getElementById(id),escapeHtml=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const CELL=48,SCHEMA='ION-campus-3',SAVE_KEY='ion-campus-4-111026';
+const fmt=n=>Number(n||0).toLocaleString(undefined,{maximumFractionDigits:2}),money=n=>Math.round(n).toLocaleString()+' Cr';
+const sid=()=>crypto.randomUUID().replaceAll('-','');
+const baselinePlan=FactoryBaseline.generate(SPECS,MATERIALS,BLDGS);
+let spareWorkers=[],buildings={},active='Factory A',activeView='campus',tool='select',catalog='cast',equipmentModel='standard',cargo='housing',orientation=0,selected=null,tested=null,expenses=[],history=[],area=null,drag=null,hover=null,planRevision=0;
+let COLS=0,ROWS=0;
+const canvas=$('floor'),ctx=canvas.getContext('2d'),tip=$('tooltip');
+const workerColor=l=>['#8894a2','#ffffff','#29c564','#4489f6','#b772e8','#fc9628'][l];
+const pathLabel=kind=>({cart:'Cart',walk:'Walk',belt:'Belt'}[kind]||kind);
+const key=(x,y)=>x+','+y;
+const inside=(x,y,b=buildings[active])=>x>=0&&y>=0&&x<b.cols&&y<b.rows;
+const intersects=(a,b)=>a.x<b.x+b.w&&a.x+a.w>b.x&&a.y<b.y+b.h&&a.y+a.h>b.y;
+const contains=(r,o)=>o.x>=r.x&&o.y>=r.y&&o.x+o.w<=r.x+r.w&&o.y+o.h<=r.y+r.h;
+const entities=b=>[...b.machines,...b.storage];
+const entityAt=(b,x,y)=>entities(b).find(o=>x>=o.x&&x<o.x+o.w&&y>=o.y&&y<o.y+o.h);
+const pathAt=(b,x,y)=>b.paths.find(p=>p.x===x&&p.y===y);
+const valid=(b,o,exclude)=>o.w>0&&o.h>0&&o.x>=0&&o.y>=0&&o.x+o.w<=b.cols&&o.y+o.h<=b.rows&&!entities(b).some(e=>e.id!==exclude&&intersects(e,o));
+const storageCap=s=>FactoryEngine.storageCap(s,MATERIALS);
+const nodeDock=(b,x,y)=>Object.values(b.docks).some(points=>points.some(p=>p[0]===x&&p[1]===y));
+const capacity=m=>FactoryEngine.effectiveRate(m,SPECS,UPGRADES);
+function scenario(){return {hours:+$('hours').value,supply:Object.fromEntries(Object.keys(baselinePlan.sizing.incoming).map(k=>[k,+$('feed-'+k).value]))}}
+function validateScenario(s){if(!s||!Number.isFinite(s.hours)||s.hours<1||s.hours>24||!s.supply||Object.keys(baselinePlan.sizing.incoming).some(k=>!Number.isFinite(s.supply[k])||s.supply[k]<0))throw Error('Invalid operating hours or assumed supplies.');return s}
+function applyScenario(s){$('hours').value=s.hours;for(const k of Object.keys(baselinePlan.sizing.incoming))$('feed-'+k).value=s.supply[k]}
+function seed(){applySites([{id:'orinda',name:'Orinda Campus',buildings:Object.keys(baselinePlan.buildings)}]);campaignData={};dayConfig={};implementationData=null;proposalWorkspace=null;buildings=structuredClone(baselinePlan.buildings);spareWorkers=structuredClone(baselinePlan.workerPool);expenses=[];history=[];selected=null;tested=null;area=null;applyScenario({hours:9,supply:baselinePlan.sizing.incoming})}
+function snapshot(){history.push(JSON.stringify({buildings,workerPool:spareWorkers,expenses,scenario:scenario(),sites:SITES,campaignData,dayConfig,implementationData,proposalWorkspace}));if(history.length>20)history.shift()}
+function invalidate(){planRevision++;tested=null;renderResults();$('status').textContent='Plan changed. Test Campus to refresh forecasts.'}
+function commit(cost=0,days=0,action='Layout change',bounds=selected?{x:selected.x,y:selected.y,w:selected.w,h:selected.h}:null){
+ for(const b of Object.values(buildings))b.paths=b.paths.filter(p=>!entityAt(b,p.x,p.y));
+ expenses.push({id:sid(),building:active,bounds,entityId:selected?.id||null,cost,days,action});invalidate();saveLocal();refresh();paint();
+}
+function undo(){if(!history.length)return;const last=JSON.parse(history.pop());applySites(last.sites);campaignData=last.campaignData||{};dayConfig=last.dayConfig||{};implementationData=last.implementationData||null;proposalWorkspace=last.proposalWorkspace||null;buildings=last.buildings;spareWorkers=last.workerPool||FactoryBaseline.availableWorkers(buildings,SPECS);expenses=last.expenses;applyScenario(last.scenario);selected=null;area=null;invalidate();saveLocal();refresh();paint()}
+let saveSequence=0;globalThis.pendingSave=Promise.resolve();
+function saveLocal(){const sequence=++saveSequence;$('saveState').textContent='Saving…';const data=JSON.stringify(payload('campus'));globalThis.pendingSave=FactoryStorage.pack(data).then(text=>{if(sequence!==saveSequence)return;localStorage.setItem(SAVE_KEY,text);$('saveState').textContent='Saved in this browser'}).catch(()=>{$('saveState').textContent='Browser save unavailable. Export JSON to keep this plan.'});return globalThis.pendingSave}
+
+async function restoreLocal(){let recoveryText=null;try{const text=localStorage.getItem(SAVE_KEY);recoveryText=text;if(text){const data=validatePayload(await FactoryStorage.unpack(text));applySites(data.sites);campaignData=data.campaignData||{};dayConfig=data.dayConfig||{};implementationData=data.implementationData||null;buildings=data.buildings;spareWorkers=data.workerPool||FactoryBaseline.availableWorkers(buildings,SPECS);expenses=data.expenses;applyScenario(data.scenario);$('saveState').textContent='Restored saved campus.'}if(localStorage.getItem(SAVE_KEY+'-recovery')||localStorage.getItem('ion-campus-3-110926')||localStorage.getItem('ion-campus-3')||localStorage.getItem('ion-campus-2')||localStorage.getItem('ion-factory-plan'))$('legacy').hidden=false}catch{if(recoveryText)try{localStorage.setItem(SAVE_KEY+'-recovery',recoveryText);$('legacy').hidden=false}catch{}$('saveState').textContent='Saved campus could not be restored; source layout loaded. Previous data was retained.'}}
+let campaignData={},dayConfig={},campaignResult=null,implementationData=null,proposalWorkspace=null;
+function applySites(sites){if(!sites)return;FactorySites.validate(sites);SITES.splice(0,SITES.length,...structuredClone(sites));BLDGS.splice(0,BLDGS.length,...SITES.flatMap(s=>s.buildings));const value=$('site').value;$('site').innerHTML=SITES.map(s=>`<option value="${s.id}">${escapeHtml(s.name)}</option>`).join('');$('site').value=SITES.some(s=>s.id===value)?value:'orinda'}
+
+function initUI(){
+ $('tools').innerHTML='<button data-build-group="stations">▣ Add Station</button><button data-build-group="space">▧ Define Space</button>';
+ document.querySelectorAll('[data-build-group]').forEach(b=>b.onclick=()=>{tool=b.dataset.buildGroup==='stations'?'place':'cart';drag=null;renderTools();renderPalette();queuePreview()});
+
+ $('cargo').innerHTML=Object.entries(MATERIALS).map(([k,m])=>`<option value="${k}">${m.title} (${m.unit})</option>`).join('');$('cargo').value=cargo;$('cargo').onchange=e=>cargo=e.target.value;
+ $('feeds').innerHTML=Object.keys(baselinePlan.sizing.incoming).map(k=>`<label for="feed-${k}">${MATERIALS[k].title} (${MATERIALS[k].unit})</label><input id="feed-${k}" type="number" min="0" step="any">`).join('');
+ $('zoom').oninput=()=>{$('zoomLabel').textContent=$('zoom').value+'%';paint()};
+ $('artMode').onchange=paint;$('showFlow').onchange=paint;$('spreadFlow').onchange=paint;$('flowMaterial').onchange=()=>{renderFlowKey();paint()};
+ for(const e of [$('hours'),...$('feeds').querySelectorAll('input')])e.onchange=()=>{invalidate();try{validateScenario(scenario());saveLocal()}catch(err){$('status').textContent=err.message}refresh();paint()};
+ $('tileActions').onclick=()=>{if(selected){$('tileDialog').showModal();renderSelection()}};$('closeTile').onclick=()=>$('tileDialog').close();
+ $('build').onclick=()=>openBuild();$('closeBuild').onclick=()=>$('buildDialog').close();$('useTool').onclick=()=>{$('buildDialog').close();renderTools();queuePreview()};document.querySelectorAll('[data-open-build]').forEach(b=>b.onclick=()=>openBuild(b.dataset.openBuild));document.querySelectorAll('[data-expand]').forEach(b=>b.onclick=()=>expandFloor(b.dataset.expand));$('compactFloor').onclick=compactActiveFloor;$('closeScenario').onclick=()=>$('scenarioSettings').open=false;
+ $('save').onclick=saveLocal;$('workforce').onclick=()=>{renderWorkforce();$('workforceDialog').showModal()};$('closeWorkforce').onclick=()=>$('workforceDialog').close();
+ $('poolRole').innerHTML='<option value="all">All roles</option>'+Object.entries(STAFF_ROLES).map(([k,v])=>`<option value="${k}">${v}</option>`).join('');$('poolTier').innerHTML='<option value="all">All tiers</option>'+Array.from({length:6},(_,i)=>`<option value="${i}">Tier ${i}</option>`).join('');$('poolRole').onchange=renderWorkforce;$('poolTier').onchange=renderWorkforce;
+ $('undo').onclick=undo;$('test').onclick=()=>{if(!CalculationUI.begin('Calculating production','Calculating production and material routes for the selected site.'))return;$('status').textContent='Calculating campus cargo and production… material routes appear when the forecast completes.';$('test').textContent='Calculating…';setTimeout(async()=>{let failure;try{await test()}catch(e){failure=e;$('status').textContent=e.message;$('diag').textContent=e.message}finally{CalculationUI.finish(failure);$('test').disabled=false;$('test').textContent='▶ Test Campus'}},20)};
+ $('reset').onclick=()=>{if(confirm('Restore the original Orinda layout and roster, removing additional sites and operating ledgers? Export first to retain your work.')){seed();saveLocal();renderResults();refresh();paint()}};
+ $('export').onclick=()=>{try{download(payload($('scope').value),'ION_'+$('author').value+'_'+$('scope').value+'.json')}catch(e){alert(e.message)}};
+ $('import').onclick=()=>$('file').click();$('file').onchange=e=>{if(e.target.files[0])importFile(e.target.files[0]);e.target.value=''};
+ $('legacy').onclick=async()=>{const text=localStorage.getItem(SAVE_KEY+'-recovery')||localStorage.getItem('ion-campus-3-110926')||localStorage.getItem('ion-campus-3')||localStorage.getItem('ion-campus-2')||localStorage.getItem('ion-factory-plan');download(await FactoryStorage.unpack(text),'ION_previous_recipe_plan.json')};
+ $('site').onchange=()=>{activeView='campus';active=SITES.find(s=>s.id===$('site').value).buildings[0];selected=null;area=null;refresh();paint()};renderTools();renderPalette();
+}
+function renderTools(){document.querySelectorAll('[data-tool]').forEach(b=>b.classList.toggle('selected',b.dataset.tool===tool));$('build').disabled=activeView==='campus';document.querySelectorAll('[data-open-build]').forEach(b=>b.disabled=activeView==='campus');$('activeTool').textContent=activeView==='campus'?'Select a building to edit':tool==='select'?'Click/drag · B build · R rotate':(tool==='place'?SPECS[catalog].name:tool)+' · R rotate · Esc cancel';}
+function openBuild(mode){if(activeView==='campus')return;$('scenarioSettings').open=false;if(mode)tool=mode==='space'?'cart':mode;else if(tool==='select'||tool==='move')tool='place';renderTools();renderPalette();$('buildDialog').showModal()}
+function renderPalette(){
+ document.querySelectorAll('[data-build-group]').forEach(b=>b.classList.toggle('selected',b.dataset.buildGroup===(tool==='place'?'stations':'space')));
+ $('spaceCards').hidden=tool==='place';
+ const spaces=[['belt','Belt','M5 12H59M5 36H59M12 16V32M24 16V32M36 16V32M48 16V32'],['cart','Cart Path','M4 8H60V40H4ZM8 24H18M26 24H36M44 24H56'],['walk','Walk Path','M20 8L28 14L23 24L15 20ZM40 25L48 31L43 41L35 37Z'],['storage','Storage Area','M6 10H28V30H6ZM33 10H55V30H33ZM6 34H55'],['expand','Add Floor / Expand','M8 8H42V40H8ZM48 24H62M55 17V31'],['area','Select Work Area','M8 8H56V40H8ZM15 16H49V32H15'],['compact','Compact Floor Layout','M5 5H22V22H5ZM27 5H44V22H27ZM5 27H22V44H5ZM27 27H44V44H27'],['erase','Remove Tile / Path','M12 30L33 9L52 28L39 41H23ZM39 41H58']];
+ $('spaceCards').innerHTML=spaces.map(([id,name,path])=>`<button class="build-card ${tool===id?'active':''}" data-space="${id}"><svg viewBox="0 0 64 48" aria-hidden="true"><path d="${path}" stroke="${id==='belt'?'#ddba72':id==='storage'?'#bd9bdd':'#80c7d4'}" stroke-width="3" fill="none"/></svg><span>${name}</span></button>`).join('');$('spaceCards').querySelectorAll('[data-space]').forEach(b=>b.onclick=()=>{tool=b.dataset.space;drag=null;renderTools();renderPalette();queuePreview()});
+ const tiles=tool==='place',cargoTool=tool==='belt'||tool==='storage';$('paletteEquipment').hidden=!tiles;$('paletteCargo').hidden=!cargoTool;$('expandSection').hidden=tool!=='expand';$('compactSection').hidden=tool!=='compact';$('useTool').hidden=['expand','compact'].includes(tool);$('useTool').textContent=tiles?'Place selected model':'Use selected item';
+ $('toolhint').textContent=tool==='area'?'Drag a rectangle to choose a complete work area for export.':tool==='storage'?'Choose a material, then drag a storage rectangle.':tool==='erase'?'Click a tile or explicit path to remove it; fixed building access stays.':tool==='expand'?'Choose an edge to add walkable space.':tool==='place'?'Choose a process, compare its equipment models, then place the selected model.':'Choose a cargo where needed, then drag to paint squares. R changes belt direction.';
+ if(tiles){$('paletteCards').innerHTML=Object.entries(SPECS).map(([id,s])=>`<button class="build-card ${id===catalog?'active':''}" data-catalog="${id}"><img src="${PROCESS_ART[id]}" alt=""><span>${s.name}</span></button>`).join('');$('paletteCards').querySelectorAll('[data-catalog]').forEach(b=>{b.onmouseenter=b.onfocus=()=>renderBuildInfo(b.dataset.catalog);b.onclick=()=>{catalog=b.dataset.catalog;equipmentModel='standard';renderPalette();renderTools();queuePreview();$('modelOptions').scrollIntoView({block:'nearest'})}});renderModelOptions();renderBuildInfo(catalog,equipmentModel)}else $('buildInfo').innerHTML='<small>Tile details appear here when choosing equipment.</small>';
+}
+function renderModelOptions(){const s=SPECS[catalog];$('modelOptions').innerHTML='<h3>'+escapeHtml(s.name)+' · equipment models</h3>'+Object.entries(s.models).map(([id,m])=>`<button class="model-card ${id===equipmentModel?'active':''}" data-model="${id}"><b>${escapeHtml(m.name)}</b><span>${money(m.price)} · ${m.days} installation days · ${s.support?'Support':fmt(s.rate*m.speed*(Object.values(s.outputs)[0]||0))+' units/day potential'} · ${Math.max(1,s.workers+m.workerDelta)} operators</span></button>`).join('');$('modelOptions').querySelectorAll('[data-model]').forEach(b=>{b.onmouseenter=b.onfocus=()=>renderBuildInfo(catalog,b.dataset.model);b.onclick=()=>{equipmentModel=b.dataset.model;renderModelOptions();renderBuildInfo(catalog,equipmentModel);renderTools();queuePreview()}})}
+function renderBuildInfo(id,model='standard'){const s=SPECS[id],v=s.models[model]||s.models.standard,qty=Object.values(s.outputs)[0]||0;$('buildInfo').innerHTML=`<img class="palette-preview" src="${PROCESS_ART[id]}" alt="${s.name}"><h3>${s.name}</h3><b>${escapeHtml(v.name)}</b><p>${escapeHtml(v.description)}</p><p>${ION_REGISTER.categories[s.category]} · ${s.w*2} × ${s.h*2} m working envelope</p><p><b>${money(v.price)}</b> estimated · ${v.days} installation days</p><p>${Math.max(1,s.workers+v.workerDelta)} operators · potential ${s.support?'support only':fmt(s.rate*v.speed*qty)+' units / 9h day'}</p><small>${s.accessDescription}</small><h3>Recipe per batch</h3>${Object.entries(s.inputs).map(([k,n])=>`<div>${fmt(n)} ${MATERIALS[k].unit} ${MATERIALS[k].title}</div>`).join('')||'No engine-production recipe.'}<p>Output: ${Object.entries(s.outputs).map(([k,n])=>fmt(n)+' '+MATERIALS[k].title).join(', ')||'Toolroom support'}</p><small>${s.recipeStatus||'Register material budget; modeled task allocation'}. Potential output assumes full staffing and condition; work-centre cycles and quotes are unverified.</small>`}
+function compactActiveFloor(){
+ if(activeView!=='building'||implementationData?.view!=='proposal')return;
+ const before=buildings[active];if(before.paths.some(p=>p.kind==='belt')){$('toolhint').textContent='This floor has belts. Preserve or redesign their routes manually before automatic compaction.';return}
+ const packed=FactoryBaseline.compactFloor(before,SPECS,MATERIALS),old=new Map(entities(before).map(o=>[o.id,o])),moved=entities(packed).filter(o=>{const p=old.get(o.id);return o.x!==p.x||o.y!==p.y}).length;
+ snapshot();buildings[active]=packed;area=null;selected=null;drag=null;tool='select';$('buildDialog').close();commit(moved*2400,Math.ceil(moved/12),'Compact floor layout · '+moved+' relocations');$('status').textContent='Compact proposal created. Equipment, materials and assignments retained; compare production before scheduling. Undo restores the original arrangement.';
+}
+function rotateActive(){if(activeView==='campus')return;
+ if(tool==='place'||tool==='belt') {orientation=(orientation+1)%4;queuePreview();return}
+ if(['storage','area'].includes(drag?.kind)){drag.rotated=!drag.rotated;queuePreview();return}
+ if(drag?.kind==='move'){const d=drag;d.angle=((d.angle??d.source.angle??0)+1)%4;[d.w,d.h]=[d.h??d.source.h,d.w??d.source.w];d.offX=Math.min(d.offX,d.w-1);d.offY=Math.min(d.offY,d.h-1);if(d.pointer){d.x=d.pointer.x-d.offX;d.y=d.pointer.y-d.offY}queuePreview();return}
+ if(tool!=='select'&&tool!=='move')return;const b=buildings[active],at=hover?entityAt(b,hover.x,hover.y):null,m=at||selected;
+ if(m){const o={...m,w:m.h,h:m.w,...(m.type?{angle:((m.angle||0)+1)%4}:{})};if(!valid(b,o,m.id)||Object.values(b.docks).flat().some(([x,y])=>contains(o,{x,y,w:1,h:1}))){$('status').textContent='Rotation does not fit here. Move the tile to clear space first.';return}snapshot();Object.assign(m,{w:o.w,h:o.h,...(m.type?{angle:o.angle}:{})});selected=m;commit(2400,1,'Rotate equipment/storage');return}
+ const p=hover?pathAt(b,hover.x,hover.y):null;if(p?.kind==='belt'&&!nodeDock(b,p.x,p.y)){snapshot();p.dir=(p.dir+1)%4;commit(70,0,'Rotate conveyor direction',{x:p.x,y:p.y,w:1,h:1})}
+}
+function expandFloor(side){
+ const n=+$('expandCount').value,b=buildings[active],oldCols=b.cols,oldRows=b.rows;if(!Number.isInteger(n)||n<1||n>25)return;const horizontal=side==='left'||side==='right',cols=oldCols+(horizontal?n:0),rows=oldRows+(horizontal?0:n);
+ if(cols>400||rows>400||cols*rows>25000){$('status').textContent='This extension exceeds the current editable floor limit.';return}
+ snapshot();const dx=side==='left'?n:0,dy=side==='top'?n:0;
+ for(const o of entities(b)){o.x+=dx;o.y+=dy}for(const p of b.paths){p.x+=dx;p.y+=dy}for(const points of Object.values(b.docks))for(const p of points){p[0]+=dx;p[1]+=dy}
+ b.cols=cols;b.rows=rows;
+ if(horizontal){const map=new Map(b.paths.map(p=>[key(p.x,p.y),p])),previous=side==='left'?1+n:oldCols-2,target=side==='left'?1:cols-2;for(const [kind,points]of Object.entries(b.docks))for(const p of points)if(p[0]===previous){for(let x=Math.min(previous,target);x<=Math.max(previous,target);x++)map.set(key(x,p[1]),{x,y:p[1],kind:'cart',cargo:null,dir:0,laneRole:kind});p[0]=target}b.paths=[...map.values()]}
+ for(const e of expenses)if(e.building===active&&e.bounds){e.bounds.x+=dx;e.bounds.y+=dy}if(area){area.x+=dx;area.y+=dy}
+ const added=cols*rows-oldCols*oldRows,bounds=side==='left'?{x:0,y:0,w:n,h:rows}:side==='right'?{x:oldCols,y:0,w:n,h:rows}:side==='top'?{x:0,y:0,w:cols,h:n}:{x:0,y:oldRows,w:cols,h:n};
+ $('buildDialog').close();tool='select';renderTools();commit(added*1000,Math.ceil(added/100),'Plan '+side+' floor extension (estimated civil work)',bounds);
+}
+document.addEventListener('keydown',e=>{
+ if(CalculationUI.visible&&!e.target.closest('header')){if(!e.target.closest('#calculationOverlay button'))e.preventDefault();return}
+ if(e.key==='Escape'){if($('scenarioSettings').open){$('scenarioSettings').open=false;return}if($('buildDialog').open){$('buildDialog').close();e.preventDefault()}if(!$('workforceDialog').open){if(drag?.kind==='brush'){const previous=JSON.parse(history.pop());buildings=previous.buildings}drag=null;tool='select';renderTools();queuePreview()}return}
+ if(document.querySelector('dialog[open]')&&!$('buildDialog').open)return;
+ if(e.ctrlKey||e.metaKey||e.altKey||e.target.closest('input,select,textarea,[contenteditable]')||$('workforceDialog').open||$('tileDialog').open)return;
+ if(e.key.toLowerCase()==='b'){e.preventDefault();if(!$('buildDialog').open)openBuild();return}if(e.key.toLowerCase()==='r'&&!$('buildDialog').open){e.preventDefault();rotateActive()}
+});
+function refresh(){
+ const site=SITES.find(s=>s.id===$('site').value)||SITES[0];if(!site.buildings.includes(active))active=site.buildings[0];
+ $('tabs').innerHTML='<button id="campusTab" class="'+(activeView==='campus'?'active':'')+'">Campus map</button>'+SITES.find(s=>s.id===$('site').value).buildings.map(n=>`<button data-tab="${n}" class="${activeView==='building'&&n===active?'active':''}">${n} (${buildings[n].machines.length})</button>`).join('');
+ document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>{active=b.dataset.tab;activeView='building';selected=null;area=null;drag=null;$('mapScroll').scrollTo(0,0);refresh();paint()});
+ $('campusTab').onclick=()=>{activeView='campus';selected=null;area=null;refresh();paint()};renderTools();$('tileActions').disabled=!selected||activeView==='campus';
+ $('undo').disabled=!history.length;$('undo').textContent='↶ Undo ('+history.length+')';
+ $('cost').textContent=money(expenses.reduce((n,e)=>n+e.cost,0));$('days').textContent=fmt(expenses.reduce((n,e)=>n+e.days,0))+' days';
+ $('jobs').innerHTML=expenses.slice(-8).reverse().map(e=>`<div class="job"><span>${escapeHtml(e.action)}</span><b>${money(e.cost)} · ${fmt(e.days)}d</b></div>`).join('');
+ $('scenarioSummary').textContent='Operating day · '+$('hours').value+'h ▾';
+ $('areaInfo').textContent=area?`Selected ${area.w*2} × ${area.h*2} m at grid (${area.x}, ${area.y}). Only complete entities can be exported.`:'Choose Area, then drag to select a work area.';
+ renderSelection();renderFlowKey();renderWorkforce();
+}
+function renderCampus(){
+ $('campusView').hidden=false;$('floorSurface').hidden=true;
+ const boxes={Receiving:[50,325,180,105],'Factory A':[300,65,205,140],'Factory B':[580,65,205,140],'Precision Machining':[290,325,205,105],Subassemblies:[555,325,205,105],'Final Assembly & Test':[820,325,245,105]};
+ const center=n=>{const [x,y,w,h]=boxes[n];return [x+w/2,y+h/2]};
+ let links='';for(const l of tested?.links||[]){if(!boxes[l.from]||!boxes[l.to])continue;const a=center(l.from),b=center(l.to),x=(a[0]+b[0])/2,y=260;links+=`<path d="M${a[0]},${a[1]} Q${x},${y} ${b[0]},${b[1]}" stroke="#6ee0c4" stroke-width="2" fill="none" marker-start="url(#campusArrowStart)" marker-end="url(#campusArrow)"><title>${escapeHtml(l.from+' → '+l.to+' · '+fmt(l.total)+' cargo volume/day')}</title></path>`}
+ const buildingsSvg=Object.entries(boxes).map(([name,[x,y,w,h]])=>`<g data-campus-building="${name}" role="button" tabindex="0" aria-label="Open ${name}"><rect x="${x}" y="${y}" width="${w}" height="${h}" rx="7" fill="#274757" stroke="#6898a5" stroke-width="2"/><path d="M${x+10} ${y+15}h${w-20}M${x+10} ${y+25}h${w-20}" stroke="#345b6e" stroke-width="5"/><text x="${x+w/2}" y="${y+h/2}" text-anchor="middle" fill="#edf4fb" font-size="15" font-family="system-ui">${name}</text><text x="${x+w/2}" y="${y+h/2+23}" text-anchor="middle" fill="#b0d5d7" font-size="12">${buildings[name].machines.length} modeled tiles</text><rect x="${x+w/2-10}" y="${y+h-5}" width="20" height="10" fill="#6ee0c4"/></g>`).join('');
+ $('campusView').innerHTML=`<div class="campus-heading"><h2>Orinda Campus</h2><p>Select a building to open its floor. This overview is schematic, not a surveyed site plan.</p></div><svg viewBox="0 0 1120 580" aria-label="Campus overview"><defs><marker id="campusArrow" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto"><path d="M0 0L6 3L0 6" fill="#6ee0c4"/></marker><marker id="campusArrowStart" markerWidth="7" markerHeight="7" refX="0" refY="3" orient="auto"><path d="M0 0L6 3L0 6" fill="#6ee0c4"/></marker></defs><rect width="1120" height="580" fill="#142633"/><path d="M30 260H1090M140 260V500M400 210V500M680 210V500M940 260V500M30 500H1090" stroke="#405363" stroke-width="24" fill="none"/><path d="M30 260H1090M30 500H1090" stroke="#b6a975" stroke-width="1" stroke-dasharray="10 10"/>${links}${buildingsSvg}<text x="50" y="550" fill="#a8c2d1" font-size="13">Shared fleet reference: 160 mobile movers + 110 forklifts/pallet movers. Vehicle traffic replay is not implemented yet.</text></svg>`;
+ $('campusView').querySelectorAll('[data-campus-building]').forEach(g=>{const open=()=>{active=g.dataset.campusBuilding;activeView='building';selected=null;area=null;refresh();paint()};g.onclick=open;g.onkeydown=e=>{if(e.key==='Enter')open()}});
+}
+function renderWorkforce(){
+ const assigned=Object.values(buildings).flatMap(b=>b.machines.flatMap(m=>m.crew)),all=[...assigned,...spareWorkers];
+ $('workforce').textContent=`Workforce · ${assigned.length} assigned / ${spareWorkers.length} unassigned`;
+ $('skillLegend').innerHTML=['Trainee','Novice','Competent','Experienced','Expert','Master'].map((n,i)=>`<span title="Tier ${i}: ${n}"><i style="background:${workerColor(i)}"></i>T${i}</span>`).join('');
+ $('workforceTotals').innerHTML=`<b>${assigned.length} assigned · ${spareWorkers.length} unassigned in the planning model · ${all.length} modeled people</b>`;
+ $('workforceRoles').innerHTML=Object.entries(STAFF_ROLES).map(([role,name])=>`<div class="row"><span>${name}</span><b>${spareWorkers.filter(w=>w.role===role).length} unassigned</b></div>`).join('');
+ const role=$('poolRole').value,tier=$('poolTier').value,list=spareWorkers.filter(w=>(role==='all'||w.role===role)&&(tier==='all'||w.level===+tier));
+ $('poolList').innerHTML=`<p>${list.length} matching workers · showing up to 80. Filter by role and tier to narrow the list.</p>`+list.slice(0,80).map(w=>`<div class="pool-worker"><span>${escapeHtml(w.id)}<small>${STAFF_ROLES[w.role]} · ${escapeHtml(w.homePool)}</small></span><select data-pool-level="${w.id}" aria-label="Edit unassigned planning skill">${Array.from({length:6},(_,i)=>`<option value="${i}" ${i===w.level?'selected':''}>Tier ${i}</option>`).join('')}</select></div>`).join('');
+ $('poolList').querySelectorAll('[data-pool-level]').forEach(e=>e.onchange=()=>{const w=spareWorkers.find(w=>w.id===e.dataset.poolLevel);snapshot();w.level=+e.value;commit(0,0,'Adjust unassigned planning skill',null)});
+}
+function validateWorkerPool(pool,candidate){
+ if(!Array.isArray(pool)||pool.length>10000)throw Error('Invalid unassigned-worker pool.');const ids=new Set(Object.values(candidate).flatMap(b=>b.machines.flatMap(m=>m.crew.map(w=>w.id))));
+ for(const w of pool){if(typeof w.id!=='string'||!/^[a-zA-Z0-9_-]{1,90}$/.test(w.id)||w.id in Object.prototype||ids.has(w.id)||['xpHours','totalHours'].some(k=>w[k]!==undefined&&(!Number.isFinite(w[k])||w[k]<0))||!Number.isInteger(w.level)||w.level<0||w.level>5||!Object.hasOwn(STAFF_ROLES,w.role)||!STAFF_POOLS.some(p=>p.id===w.homePool&&p.role===w.role))throw Error('Invalid, incompatible or duplicate unassigned worker.');ids.add(w.id)}
+ return pool;
+}
+function mergedWorkerPool(candidate){
+ const assigned=new Set(Object.values(candidate).flatMap(b=>b.machines.flatMap(m=>m.crew.map(w=>w.id)))),previous=Object.values(buildings).flatMap(b=>b.machines.flatMap(m=>m.crew.map(w=>({...w,role:w.role||roleForSpec(SPECS[m.type]),homePool:w.homePool||(roleForSpec(SPECS[m.type])==='qa'?'qa-shared':roleForSpec(SPECS[m.type])+'-'+(m.owner==='Factory B'?'B':'A'))}))));
+ return validateWorkerPool([...new Map([...spareWorkers,...previous].filter(w=>!assigned.has(w.id)).map(w=>[w.id,w])).values()],candidate);
+}
+function renderSelection(){
+ if(!$('tileDialog').open)return;
+ const out=$('selection');if(!selected){out.textContent='Select equipment to inspect recipes, workers and upgrades.';return}
+ if(!selected.type){const s=selected;out.innerHTML=`<b>${MATERIALS[s.item].title} storage</b><p>${storageDescription(s,tested?.stocks[s.id]??s.stock)}</p><p>Planned opening: ${fmt(s.stock)} · Scenario ending: ${tested?fmt(tested.stocks[s.id]):'not tested'}</p><small>Opening stock: ${escapeHtml(s.stockSource||'user scenario')}. Unknown supplier parts remain zero-stock assumptions.</small><label for="stock">Planned opening quantity (${MATERIALS[s.item].unit})</label><input id="stock" type="number" min="0" max="${storageCap(s)}" value="${s.stock}"><button id="setStock">Set scenario stock</button>`;$('setStock').onclick=()=>{const n=+$('stock').value;if(!Number.isFinite(n)||n<0||n>storageCap(s)){alert('Stock must be between zero and capacity.');return}snapshot();s.stock=n;commit(0,0,'Adjust planned stock')};return}
+ const m=selected,s=SPECS[m.type],workers=FactoryEngine.requiredWorkers(m,SPECS,UPGRADES),role=roleForSpec(s),available=spareWorkers.filter(w=>w.role===role);;
+ out.innerHTML=`<b>${s.name} #${m.number}</b><p>${escapeHtml(FactoryEngine.equipmentModel(m,SPECS).name)}</p><small class="block">Registered owner: ${escapeHtml(m.owner||'New planning asset')} · ${ION_REGISTER.categories[s.category]}</small><div class="row"><span>Candidate capacity / normal day</span><b>${s.support?'Support only':fmt(capacity(m)*Object.values(s.outputs)[0])}</b></div><div class="row"><span>Scenario production</span><b>${tested?fmt(tested.machines[m.id]*Object.values(s.outputs)[0]):'Run test'}</b></div><small>${s.w*2} × ${s.h*2} m reserved working envelope · ${escapeHtml(s.accessDescription||s.port)} · estimated footprint</small><div class="row"><span>Condition</span><b>${fmt(m.condition*100)}%</b></div><h3>Produces</h3><p>${Object.entries(s.outputs).map(([k,n])=>fmt(n)+' '+MATERIALS[k].unit+' '+MATERIALS[k].title+' per batch').join('; ')||'Toolroom / maintenance service'}</p><h3>Inputs per batch</h3><div class="recipe">${Object.entries(s.inputs).map(([k,n])=>`<div><span>${MATERIALS[k].title}</span><b>${fmt(n)} ${MATERIALS[k].unit}</b></div>`).join('')||'No engine recipe; maintenance support.'}</div><small>${escapeHtml(s.recipeStatus||'Register §9 parent recipe; operation routing is a model allocation')}<br>Recipe quantities are per completed batch; batch output is ${Object.entries(s.outputs).map(([k,n])=>fmt(n)+' '+MATERIALS[k].title).join(', ')}. Tile supply/need is delivered for production versus candidate nameplate demand for the selected operating day; undelivered inputs can remain in upstream stock.</small><h3>Material access</h3><small>Flexible equipment can use any exposed edge, or choose a specific edge below. Choices rotate with the tile and determine calculated delivery routes.</small>${['input','output'].map(kind=>`<label>${kind==='input'?'Input':'Output'} access<select id="${kind}Side" ${s.port==='fixed'?'disabled':''}><option value="">${s.port==='fixed'?'Fixed machine access':'Automatic · any exposed edge'}</option>${['left','right','top','bottom'].map(side=>`<option value="${side}" ${m[kind+'Side']===side?'selected':''}>${side[0].toUpperCase()+side.slice(1)} edge · before rotation</option>`).join('')}</select></label>`).join('')}<h3>Workers · ${m.crew.length} assigned / ${workers} required</h3><label for="staffRequirement">Base operators before automation (planning assumption)</label><input id="staffRequirement" type="number" min="1" max="20" value="${m.staffingRequired??Math.max(1,s.workers+(FactoryEngine.equipmentModel(m,SPECS).workerDelta||0))}"><button id="setStaff">Set staffing requirement</button><div>${m.crew.map(p=>`<span class="tag" title="${escapeHtml(p.id)}"><span class="dot" style="background:${workerColor(p.level)}"></span> T${p.level} <select data-worker-level="${p.id}" aria-label="Edit planning skill tier">${Array.from({length:6},(_,i)=>`<option value="${i}" ${p.level===i?'selected':''}>T${i}</option>`).join('')}</select><button data-release="${p.id}" title="Unassign this planned worker">×</button></span>`).join('')}</div><label for="level">Assign from unassigned ${STAFF_ROLES[role]} pool (${available.length})</label><select id="level">${['Trainee','Novice','Competent','Experienced','Expert','Master'].map((l,i)=>`<option value="${i}" ${i===2?'selected':''}>T${i} · ${l} (${available.filter(w=>w.level===i).length} available)</option>`).join('')}</select><button id="assign" ${m.crew.length>=workers?'disabled':''}>Assign available operator</button><small class="block">Unassigned model staff are not confirmed idle employees. Tier edits are roster corrections or scenario assumptions, not earned experience. Testing never advances skill.</small><h3>Industrial upgrade options</h3><div class="refit"><b>Service / precision refit</b><p>${money(FactoryEngine.equipmentModel(m,SPECS).price*.17)} · 3 installation days</p><small>Restores 7 condition points, up to 100%.</small><button id="refit" ${m.condition>=1?'disabled':''}>Plan refit</button></div>${s.support?'':Object.entries(UPGRADES).map(([k,u])=>`<div class="refit"><b>${u.name}</b><p>${money(FactoryEngine.equipmentModel(m,SPECS).price*u.priceFraction)} · ${u.days} installation days</p><small>${u.description} Candidate speed +${Math.round((u.speed-1)*100)}%. Downtime, performance and costs are estimates, not register facts.</small><button data-upgrade="${k}" ${(m.upgrades||[]).includes(k)?'disabled':''}>${(m.upgrades||[]).includes(k)?'Already planned':'Plan upgrade'}</button></div>`).join('')}<small>Applied changes represent the proposed finished layout. Installation days are reported separately; the daily forecast does not simulate the construction schedule.</small>`;
+ for(const kind of ['input','output'])$(kind+'Side').onchange=e=>{if(s.port==='fixed')return;const value=e.target.value,candidate={...m,[kind+'Side']:value||undefined};const accessible=FactoryEngine.accessPoints(candidate,SPECS,kind==='output').some(([x,y])=>inside(x,y)&&!entityAt(buildings[active],x,y));if(value&&!accessible){e.target.value=m[kind+'Side']||'';alert('That edge has no clear access square. Move the tile or choose another edge.');return}snapshot();if(value)m[kind+'Side']=value;else delete m[kind+'Side'];commit(0,0,'Set '+kind+' access · '+s.name)};
+ $('setStaff').onclick=()=>{const n=+$('staffRequirement').value;if(!Number.isInteger(n)||n<1||n>20){alert('Use a whole number of operators between 1 and 20.');return}snapshot();m.staffingRequired=n;commit(0,0,'Adjust planning staffing requirement')};
+ const updateAssign=()=>{$('assign').disabled=m.crew.length>=workers||!available.some(w=>w.level===+$('level').value)};$('level').onchange=updateAssign;updateAssign();
+ $('assign').onclick=()=>{const index=spareWorkers.findIndex(w=>w.role===role&&w.level===+$('level').value);if(m.crew.length>=workers||index<0)return;snapshot();m.crew.push(spareWorkers.splice(index,1)[0]);commit(0,0,'Reassign available operator')};
+ out.querySelectorAll('[data-release]').forEach(b=>b.onclick=()=>{const w=m.crew.find(w=>w.id===b.dataset.release);if(!w)return;snapshot();w.role??=role;w.homePool??=role==='qa'?'qa-shared':role+'-'+(m.owner==='Factory B'?'B':'A');m.crew=m.crew.filter(person=>person.id!==b.dataset.release);if(!spareWorkers.some(p=>p.id===w.id))spareWorkers.push(w);commit(0,0,'Return operator to unassigned pool')});
+ out.querySelectorAll('[data-worker-level]').forEach(b=>b.onchange=()=>{const w=m.crew.find(w=>w.id===b.dataset.workerLevel);snapshot();w.level=+b.value;commit(0,0,'Adjust planning operator skill tier')});
+ $('refit').onclick=()=>{if(m.condition>=1)return;snapshot();m.condition=Math.min(1,m.condition+.07);commit(Math.round(FactoryEngine.equipmentModel(m,SPECS).price*.17),3,'Refit '+s.name)};
+ out.querySelectorAll('[data-upgrade]').forEach(b=>b.onclick=()=>{const k=b.dataset.upgrade;if((m.upgrades||[]).includes(k))return;snapshot();(m.upgrades??=[]).push(k);const u=UPGRADES[k];commit(Math.round(FactoryEngine.equipmentModel(m,SPECS).price*u.priceFraction),u.days,u.name+' · '+s.name)});
+}
+async function test(){
+ const sc=validateScenario(scenario()),revision=planRevision,jobSite=$('site').value,job={buildings:structuredClone(Object.fromEntries(SITES.find(s=>s.id===$('site').value).buildings.map(n=>[n,buildings[n]]))),specs:SPECS,materials:MATERIALS,options:{...sc,warmupDays:0,dockCapacity:Infinity,upgrades:UPGRADES,receiving:SITES.find(s=>s.id===$('site').value).buildings.find(n=>/receiving/i.test(n))||SITES.find(s=>s.id===$('site').value).buildings[0],requireDocks:true,implicitWalk:true,steps:36}};
+ const result=await new Promise((resolve,reject)=>{
+  const fallback=()=>setTimeout(()=>{try{resolve(FactoryEngine.simulate(job.buildings,job.specs,job.materials,job.options))}catch(e){reject(e)}},20);
+  try{const worker=new Worker('js/simulation-worker.js');worker.onmessage=e=>{if(e.data.progress){$('test').textContent='Calculating '+Math.round(e.data.progress.completed/e.data.progress.total*100)+'%';CalculationUI.progress(e.data.progress);return}worker.terminate();if(e.data.error)reject(Error(e.data.error));else{CalculationUI.working('Preparing results…');resolve(e.data.result)}};worker.onerror=()=>{worker.terminate();fallback()};worker.postMessage(job)}catch{fallback()}
+ });
+ if(planRevision!==revision||$('site').value!==jobSite){$('status').textContent='Plan or location changed during calculation; result discarded. Test Campus again.';return}
+ tested=result;renderResults();refresh();paint();$('status').textContent=`Tested: ${tested.routes.length} visible route legs · ${tested.hours}-hour scenario. Observed campus output remains 247/day.`;
+}
+
+function renderResults(){
+ const reference='<div class="reference-output"><span>Register A+B operating reference</span><b>247 engines / 9-hour day</b></div>';
+ if(!tested){$('summary').innerHTML=reference+'<p class="muted">Test Campus to calculate a candidate layout forecast.</p>';$('stages').innerHTML='';$('handoffs').textContent='No current flow result.';$('diag').textContent='Results need recalculation.';return}
+ const overtime=Math.max(0,tested.hours-9),crew=Object.values(buildings).flatMap(b=>b.machines).reduce((n,m)=>n+m.crew.length,0);
+ $('summary').innerHTML=reference+`<div class="eyebrow">CANDIDATE CERTIFIED ENGINES / SCENARIO DAY</div><div class="output-number">${fmt(tested.stage.qa?.actual)}</div><small>${tested.hours} operating hours · dispatched ${fmt(tested.stage.package?.actual)}. This is not a new measurement of current factory output.</small>`+(overtime?`<p>Overtime labour estimate: ${money(crew*overtime*25*1.5)} / day (${crew} planned operators × ${overtime}h × 25 Cr/h × 1.5; provisional wage assumption).</p>`:'');
+ if(tested.dailyOutputs.length>1){const previous=tested.dailyOutputs.at(-2),last=tested.dailyOutputs.at(-1);if(Math.abs(last-previous)>Math.max(1,last*.01))$('summary').innerHTML+='<p class="warn">Output was still changing over the last two simulated days. This scenario has not demonstrated a stable rate.</p>'}
+ $('stages').innerHTML=FactoryEngine.topological(SPECS).filter(k=>!SPECS[k].support).map(k=>{const z=tested.stage[k]||{actual:0,rated:0,possible:0};return `<div class="stage"><div class="row"><span>${SPECS[k].name}</span><strong>${fmt(z.actual)}</strong></div><div class="meter"><i style="width:${z.rated?Math.min(100,z.actual/z.rated*100):0}%"></i></div><small>${fmt(z.actual)} routed / ${fmt(z.possible)} staffed candidate capacity</small></div>`}).join('');
+ $('diag').innerHTML='<small>Register §§13–14 candidate constraint: QA → calibration → integration → machining. Actual model constraints below can differ.</small>'+tested.diagnostics.map(s=>`<p class="warn">${escapeHtml(s)}</p>`).join('');
+ $('handoffs').innerHTML=tested.links.map(l=>`<div class="handoff"><b>${l.from} → ${l.to}</b><small>${fmt(l.total)} cargo volume / scenario day</small>${Object.entries(l.items).map(([k,v])=>`<div><span>${MATERIALS[k].title}</span><strong>${fmt(v)} ${MATERIALS[k].unit}</strong></div>`).join('')}</div>`).join('')||'No connected interbuilding transfers.';
+ const f=$('flowMaterial'),old=f.value;f.innerHTML='<option value="all">All materials</option>'+[...new Set(tested.routes.map(r=>r.item))].map(k=>`<option value="${k}">${escapeHtml(flowItemLabel(k))}</option>`).join('');if([...f.options].some(o=>o.value===old))f.value=old;
+}
+
+const materialColor=k=>'hsl('+Math.round(Object.keys(MATERIALS).indexOf(k)*137.508)%360+',75%,68%)';
+function ports(m){const s=SPECS[m.type];if(s.support)return[];return [...(s.port==='fixed'||m.inputSide?FactoryEngine.accessPoints(m,SPECS,false).map(p=>['in',...p]):[]),...(s.port==='fixed'||m.outputSide?FactoryEngine.accessPoints(m,SPECS,true).map(p=>['out',...p]):[])]}
+const machineImages={};let artworkLoaded=false;
+Promise.all(Object.entries(MACHINE_ART).map(([kind,url])=>new Promise(resolve=>{const img=new Image();img.onload=()=>{machineImages[kind]=img;resolve()};img.onerror=resolve;img.src=url}))).then(()=>{artworkLoaded=true;paint()});
+
+const processImages={},processFrameImages={};
+Promise.all(Object.entries(PROCESS_FRAMES).map(async([id,frames])=>{processFrameImages[id]=await Promise.all(frames.map(url=>new Promise(resolve=>{const img=new Image();img.onload=()=>resolve(img);img.onerror=()=>resolve(null);img.src=url})));processImages[id]=processFrameImages[id][0]})).then(()=>paint());
+function drawEquipmentArt(c,m,frame=0,alpha=.95){
+ if(!$('artMode').checked)return;const s=SPECS[m.type],image=processFrameImages[m.type]?.[frame]||processImages[m.type]||machineImages[s.art];if(!image)return;
+ const X=m.x*CELL,Y=m.y*CELL,W=m.w*CELL,H=m.h*CELL,top=H<=CELL?4:36,bodyH=H-top-15;
+ c.save();c.globalAlpha=alpha;c.translate(X+W/2,Y+top+bodyH/2);c.rotate((m.angle||0)*Math.PI/2);const iw=(m.angle||0)%2?bodyH:W-10,ih=(m.angle||0)%2?W-10:bodyH;c.drawImage(image,-iw/2,-ih/2,iw,ih);
+ if(m.model&&m.model!=='standard'){const color={manual:'#bd9c75',automated:'#71bdc6',spartan:'#d3a753',vc:'#b8a2de'}[m.model];c.fillStyle=color;c.fillRect(iw/2-8,-ih/2+2,6,Math.max(4,ih-4));c.fillStyle='#1e3945';for(let j=0;j<(m.model==='vc'?3:2);j++)c.fillRect(iw/2-7,-ih/2+5+j*7,4,3)}c.restore();
+}
+function drawBelt(c,p,phase=0,alpha=1){
+ c.save();c.globalAlpha=alpha;c.translate((p.x+.5)*CELL,(p.y+.5)*CELL);c.rotate(p.dir*Math.PI/2);c.fillStyle='#b59a63';c.fillRect(-CELL/2+2,-CELL/2+2,CELL-4,CELL-4);c.fillStyle='#34414a';c.fillRect(-CELL/2+4,-CELL/2+7,CELL-8,CELL-14);c.beginPath();c.rect(-CELL/2+4,-CELL/2+7,CELL-8,CELL-14);c.clip();c.strokeStyle='#9babb2';c.lineWidth=3;for(let x=-CELL;x<CELL;x+=12){c.beginPath();c.moveTo(x+phase%12,-CELL/2+9);c.lineTo(x+phase%12,CELL/2-9);c.stroke()}c.fillStyle='#e9d18e';c.beginPath();c.moveTo(7,0);c.lineTo(-3,-6);c.lineTo(-3,6);c.closePath();c.fill();c.restore();
+}
+
+let receivingDailyDemand;
+function storageAudit(s,amount=s.stock){receivingDailyDemand??=FactoryBaseline.billOfMaterials(SPECS,247).raw;const cap=storageCap(s),daily=receivingDailyDemand[s.item]||0;return {cap,daily,fill:cap?Math.max(0,Math.min(1,amount/cap)):0,days:daily?amount/daily:null}}
+function storageDescription(s,amount=s.stock){const a=storageAudit(s,amount),p=FactoryEngine.storageProfile(s.item,MATERIALS);return `${fmt(amount)} / ${fmt(a.cap)} ${MATERIALS[s.item].unit} · ${fmt(a.fill*100)}% full<br>${s.w*2} × ${s.h*2} m · ${fmt(s.w*s.h*4)} m² · ${p.kind}<br>${a.daily?fmt(a.daily)+' '+MATERIALS[s.item].unit+'/day at 247 engines/day · '+fmt(a.days)+' days on hand':'No raw-material demand in the engine recipe'}<br>${s.storageModel==='receiving-v1'?'Capacity allows for packing, storage access and load limits.':'Legacy storage capacity; saved footprint retained.'}`}
+function drawStorage(c,s,amount=s.stock){
+ const X=s.x*CELL+2,Y=s.y*CELL+2,W=s.w*CELL-4,H=s.h*CELL-4,a=storageAudit(s,amount),p=FactoryEngine.storageProfile(s.item,MATERIALS);
+ c.save();c.beginPath();c.rect(X,Y,W,H);c.clip();c.fillStyle='#233444';c.fillRect(X,Y,W,H);c.strokeStyle='#90a1ac';c.lineWidth=1;c.strokeRect(X+.5,Y+.5,W-1,H-1);
+ const top=Y+38,bottom=Y+H-13,bodyH=Math.max(1,bottom-top),cols=Math.max(1,Math.floor(W/30)),rows=Math.max(1,Math.floor(bodyH/28)),n=Math.min(180,cols*rows),across=Math.max(1,Math.min(n,Math.round(Math.sqrt(n*W/bodyH)))),down=Math.ceil(n/across),cw=W/across,ch=bodyH/down;
+ const colors={billets:'#a6b5c5',tank:s.item==='tibanna'?'#caa1e1':'#57bacc',reels:'#c39965',sacks:'#d4c9a3',crates:'#a58a5e'};
+ for(let i=0;i<n;i++){const x=X+(i%across)*cw+4,y=top+Math.floor(i/across)*ch+3,w=cw-8,h=ch-6,fill=Math.max(0,Math.min(1,a.fill*n-i));
+  c.save();c.beginPath();if(p.kind==='tank'||p.kind==='reels')c.ellipse(x+w/2,y+h/2,Math.max(1,w/2),Math.max(1,h/2),0,0,Math.PI*2);else c.rect(x,y,w,h);c.fillStyle='#162430';c.fill();c.strokeStyle='#536776';c.stroke();c.clip();c.fillStyle=colors[p.kind];c.fillRect(x,y+h*(1-fill),w,h*fill);c.strokeStyle='#253746';c.lineWidth=2;
+  if(p.kind==='billets'){for(let k=1;k<4;k++){c.beginPath();c.moveTo(x,y+h*k/4);c.lineTo(x+w,y+h*k/4);c.stroke()}}
+  if(p.kind==='crates'){c.strokeRect(x+3,y+3,w-6,h-6);c.beginPath();c.moveTo(x,y);c.lineTo(x+w,y+h);c.moveTo(x+w,y);c.lineTo(x,y+h);c.stroke()}
+  if(p.kind==='reels'){c.beginPath();c.ellipse(x+w/2,y+h/2,Math.max(1,w/5),Math.max(1,h/5),0,0,Math.PI*2);c.fillStyle='#233444';c.fill();c.stroke()}
+  if(p.kind==='tank'){c.beginPath();c.moveTo(x+w/2,y);c.lineTo(x+w/2,y+5);c.stroke()}
+  if(p.kind==='sacks'){c.beginPath();c.moveTo(x,y+h/2);c.quadraticCurveTo(x+w/2,y+h/3,x+w,y+h/2);c.stroke()}c.restore();
+ }
+ c.fillStyle='#10202cef';c.fillRect(X+1,Y+1,W-2,35);c.fillStyle='#fff';c.textAlign='center';c.font='bold 12px system-ui';c.fillText(MATERIALS[s.item].title,X+W/2,Y+15,W-8);c.font='11px system-ui';c.fillText(fmt(amount)+' / '+fmt(a.cap)+' '+MATERIALS[s.item].unit,X+W/2,Y+30,W-8);
+ c.fillStyle='#12212c';c.fillRect(X+4,Y+H-10,W-8,6);c.fillStyle=colors[p.kind];c.fillRect(X+4,Y+H-10,(W-8)*a.fill,6);c.restore();
+}
+
+function drawMachine(m){const s=SPECS[m.type],X=m.x*CELL,Y=m.y*CELL,W=m.w*CELL,H=m.h*CELL,max=FactoryEngine.ratedRate(m,SPECS,UPGRADES)*(+$('hours').value/9),info=tested?.details[m.id];
+ ctx.fillStyle=$('artMode').checked?'#233545':s.color;ctx.fillRect(X+2,Y+2,W-4,H-4);drawEquipmentArt(ctx,m);const captionY=H<=CELL?Y-32:Y+4,captionX=H<=CELL?X-9:X+3,captionW=H<=CELL?W+18:W-6;ctx.fillStyle='#10202ce0';ctx.fillRect(captionX,captionY,captionW,30);ctx.strokeStyle=selected?.id===m.id?'#efff9f':'#9cb0c1';ctx.lineWidth=selected?.id===m.id?3:1;ctx.strokeRect(X+2,Y+2,W-4,H-4);
+ ctx.save();ctx.beginPath();ctx.rect(captionX,captionY,captionW,31);ctx.clip();ctx.textAlign='center';ctx.fillStyle='#fff';const labelScale=+$('zoom').value/100;ctx.font='bold '+Math.min(18,Math.max(12,12/labelScale))+'px system-ui';ctx.fillText((s.tileLabel||m.type.replace(/([a-z])([A-Z])/g,'$1 $2')).toUpperCase()+' #'+m.number,X+W/2,captionY+12,captionW-4);
+ ctx.font=Math.min(16,Math.max(11,11/labelScale))+'px system-ui';ctx.fillText(s.support?'Tooling / service':(tested?fmt(tested.machines[m.id]*Object.values(s.outputs)[0]):'—')+' / '+fmt(max*Object.values(s.outputs)[0])+' /d',X+W/2,captionY+26,captionW-4);
+ ctx.restore();ctx.textAlign='left';
+ (m.crew||[]).forEach((p,i)=>{ctx.beginPath();ctx.arc(X+10+i*11,Y+H-10,3.5,0,Math.PI*2);ctx.fillStyle=workerColor(p.level);ctx.fill();ctx.strokeStyle='#17212b';ctx.stroke()});
+ function mark(side,kind,offset=0){ctx.fillStyle=kind==='in'?'#43e6b4':'#ffbc77';if(side==='left'||side==='right')ctx.fillRect(side==='left'?X+2:X+W-8,Y+H/2-5+offset,6,10);else ctx.fillRect(X+W/2-5+offset,side==='top'?Y+2:Y+H-8,10,6)}
+ if(!s.support&&s.port==='flex'){ctx.setLineDash([8,8]);for(const [i,color]of ['#43e6b4','#ffbc77'].entries()){ctx.strokeStyle=color;ctx.lineWidth=2;ctx.lineDashOffset=i*8;ctx.strokeRect(X+2,Y+2,W-4,H-4)}ctx.setLineDash([]);ctx.lineDashOffset=0}
+ for(const [kind,x,y]of ports(m)){const side=x<m.x?'left':x>=m.x+m.w?'right':y<m.y?'top':'bottom';mark(side,kind,(side==='left'||side==='right'?(y+.5)*CELL-(Y+H/2):(x+.5)*CELL-(X+W/2))+(ports(m).some(p=>p[0]!==kind&&p[1]===x&&p[2]===y)?(kind==='in'?-6:6):0))};
+ ctx.beginPath();ctx.arc(X+W-8,Y+9,4.5,0,Math.PI*2);ctx.fillStyle=m.crew?.length&&m.condition>0?'#e5bb4b':'#d95858';ctx.fill();
+ if((m.upgrades||[]).length){ctx.fillStyle='#f2e6a7';ctx.font='10px system-ui';ctx.fillText('↑'.repeat(m.upgrades.length),X+W-22,Y+H-6)}
+}
+
+let flowCache=null;
+function flowGeometry(){
+ const filter=$('flowMaterial').value;
+ if(flowCache?.result===tested&&flowCache.active===active&&flowCache.filter===filter)return flowCache;
+ const edges=new Map(),items=new Set(),ends=[];const index=new Map(Object.entries(buildings).flatMap(([building,b])=>entities(b).map(o=>[o.id,{building,o}])));const label=id=>{const found=index.get(id);return found?found.building+' · '+(found.o.type?SPECS[found.o.type].name+' #'+found.o.number:MATERIALS[found.o.item].title+' stock'):id.replaceAll('-',' ')};
+ for(const r of tested?.routes||[]){if(r.building!==active||filter!=='all'&&r.item!==filter)continue;items.add(r.item);const description=label(r.from)+' → '+label(r.to);ends.push({item:r.item,rate:r.rate,cells:r.cells,from:index.get(r.from)?.building===active?index.get(r.from).o:null,to:index.get(r.to)?.building===active?index.get(r.to).o:null,description});
+  for(let i=1;i<r.cells.length;i++){const a=r.cells[i-1],b=r.cells[i],id=r.item+':'+a.join(',')+'>'+b.join(',');if(!edges.has(id))edges.set(id,{item:r.item,a,b,rate:0,descriptions:new Set()});edges.get(id).rate+=r.rate;edges.get(id).descriptions.add(description)}
+ }
+ const materials=[...items].sort((a,b)=>Object.keys(MATERIALS).indexOf(a)-Object.keys(MATERIALS).indexOf(b));
+ flowCache={result:tested,active,filter,edges:[...edges.values()],materials,ends};return flowCache;
+}
+function flowItemLabel(item){const title=MATERIALS[item].title.replace(/^Purchased\s+/i,'').replace(/\s*\((?:assumed(?: qty)?|Purchased)\)/gi,'');return Object.hasOwn(ION_REGISTER.purchased,item)||Object.hasOwn(ION_REGISTER.assumedPurchased,item)?title+' (Purchased)':title}
+function flowItemDetail(item){if(item==='insulationFeed')return 'Planner baseline: 0.12 kg insulating feed per set of twelve coils.';if(item==='sealCompound')return 'Planner baseline: 0.9 kg seal compound per set of eighteen seals.';if(item==='regValve'||item==='regSense')return 'Planner baseline: one valve and one sensing element per regulator; six regulators per engine.';return MATERIALS[item].procurement||MATERIALS[item].title}
+function renderFlowKey(){
+ const materials=tested?flowGeometry().materials:[];
+ $('flowKey').innerHTML=materials.map(k=>`<span class="flow-chip" title="${escapeHtml(flowItemDetail(k))}"><i style="background:${materialColor(k)}"></i>${escapeHtml(flowItemLabel(k))}</span>`).join('');
+}
+let flowHits=new Map();
+function drawFlows(){
+ const {edges,materials,ends}=flowGeometry(),separate=$('spreadFlow').checked,n=materials.length,spacing=n>1?Math.min(9,CELL*.72/(n-1)):0;
+ flowHits=new Map();const lane=item=>separate?(materials.indexOf(item)-(n-1)/2)*spacing:0;
+ function segment(a,b,info){
+  ctx.strokeStyle=materialColor(info.item);ctx.lineWidth=n>12?1.5:2.2;ctx.beginPath();ctx.moveTo(...a);ctx.lineTo(...b);ctx.stroke();
+  const hit={a,b,...info};for(let y=Math.floor((Math.min(a[1],b[1])-5)/CELL);y<=Math.floor((Math.max(a[1],b[1])+5)/CELL);y++)for(let x=Math.floor((Math.min(a[0],b[0])-5)/CELL);x<=Math.floor((Math.max(a[0],b[0])+5)/CELL);x++){const k=key(x,y);if(!flowHits.has(k))flowHits.set(k,[]);flowHits.get(k).push(hit)}
+ }
+ function arrow(a,b,end=false){const angle=Math.atan2(b[1]-a[1],b[0]-a[0]),length=Math.hypot(b[0]-a[0],b[1]-a[1]),offset=Math.min(6,length*.25);const x=end?b[0]-Math.cos(angle)*offset:a[0]+Math.cos(angle)*offset,y=end?b[1]-Math.sin(angle)*offset:a[1]+Math.sin(angle)*offset;ctx.save();ctx.translate(x,y);ctx.rotate(angle);ctx.beginPath();ctx.moveTo(6,0);ctx.lineTo(-4.5,-3.75);ctx.lineTo(-4.5,3.75);ctx.closePath();ctx.fill();ctx.restore()}
+ const point=(p,offset)=>[(p[0]+.5)*CELL+offset,(p[1]+.5)*CELL+offset];
+ for(const e of edges){const offset=lane(e.item),a=point(e.a,offset),b=point(e.b,offset);segment(a,b,e);if((e.a[0]+e.a[1])%4===0){ctx.fillStyle=materialColor(e.item);arrow(a,b)}}
+ const connectors=new Map(),markers=new Map();
+ function attach(o,p,offset){const center=point(p,offset),x=o.x*CELL,y=o.y*CELL,w=o.w*CELL,h=o.h*CELL,clamp=(n,min,max)=>Math.max(min,Math.min(max,n));if(p[0]<o.x)return [x+2,clamp(center[1],y+8,y+h-8)];if(p[0]>=o.x+o.w)return [x+w-2,clamp(center[1],y+8,y+h-8)];if(p[1]<o.y)return [clamp(center[0],x+8,x+w-8),y+2];return [clamp(center[0],x+8,x+w-8),y+h-2]}
+ for(const r of ends){if(!r.cells.length)continue;const offset=lane(r.item),first=r.cells[0],last=r.cells.at(-1),start=point(first,offset),finish=point(last,offset),info={item:r.item,rate:r.rate,descriptions:new Set([r.description])};
+  function connection(o,p,a,b,kind){const id=r.item+':'+o.id+':'+p.join(',')+':'+kind;if(!connectors.has(id))connectors.set(id,{a,b,...info,tileID:o.id,endpointKind:kind});else{connectors.get(id).rate+=r.rate;connectors.get(id).descriptions.add(r.description)}}
+  if(r.from)connection(r.from,first,attach(r.from,first,offset),start,'out');else if(r.cells.length>1)markers.set(r.item+':start:'+first.join(','),{a:start,b:point(r.cells[1],offset),item:r.item,end:false});
+  if(r.to)connection(r.to,last,finish,attach(r.to,last,offset),'in');else if(r.cells.length>1)markers.set(r.item+':end:'+last.join(','),{a:point(r.cells.at(-2),offset),b:finish,item:r.item,end:true});
+ }
+ for(const c of connectors.values()){segment(c.a,c.b,c);ctx.fillStyle=materialColor(c.item);arrow(c.a,c.b,c.endpointKind==='in')}
+ for(const m of markers.values()){ctx.fillStyle=materialColor(m.item);arrow(m.a,m.b,m.end)}
+}
+function flowAt(e){if(!tested||!$('showFlow').checked)return null;const r=canvas.getBoundingClientRect(),x=(e.clientX-r.left)*canvas.width/r.width,y=(e.clientY-r.top)*canvas.height/r.height;let found=null,best=5;
+ for(const h of flowHits.get(key(Math.floor(x/CELL),Math.floor(y/CELL)))||[]){const dx=h.b[0]-h.a[0],dy=h.b[1]-h.a[1],t=Math.max(0,Math.min(1,((x-h.a[0])*dx+(y-h.a[1])*dy)/(dx*dx+dy*dy||1))),distance=Math.hypot(x-h.a[0]-t*dx,y-h.a[1]-t*dy);if(distance<best){best=distance;found=h}}
+ return found;
+}
+
+function paint(){if(activeView==='campus'){renderCampus();return}$('campusView').hidden=true;$('floorSurface').hidden=false;const b=buildings[active];if(!b)return;COLS=b.cols;ROWS=b.rows;if(canvas.width!==COLS*CELL)canvas.width=COLS*CELL;if(canvas.height!==ROWS*CELL)canvas.height=ROWS*CELL;canvas.style.width=COLS*CELL*(+$('zoom').value/100)+'px';canvas.style.height=ROWS*CELL*(+$('zoom').value/100)+'px';ctx.fillStyle='#293340';ctx.fillRect(0,0,canvas.width,canvas.height);ctx.strokeStyle='#1c2e40';ctx.lineWidth=.5;
+ for(let x=0;x<=COLS;x++){ctx.beginPath();ctx.moveTo(x*CELL,0);ctx.lineTo(x*CELL,canvas.height);ctx.stroke()}for(let y=0;y<=ROWS;y++){ctx.beginPath();ctx.moveTo(0,y*CELL);ctx.lineTo(canvas.width,y*CELL);ctx.stroke()}
+ for(const p of b.paths){if(p.kind==='walk')continue;if(p.kind==='belt'){drawBelt(ctx,p);continue}ctx.fillStyle=p.kind==='belt'?'#9c7d45':p.kind==='cart'?'#4d6484':'#4c515a';ctx.fillRect(p.x*CELL+2,p.y*CELL+2,CELL-4,CELL-4);if(p.kind==='belt'){ctx.fillStyle='#fff3c9';ctx.font='18px system-ui';ctx.fillText(['→','↓','←','↑'][p.dir],p.x*CELL+8,p.y*CELL+24)}}
+ for(const s of b.storage)drawStorage(ctx,s,tested?.stocks[s.id]??s.stock);
+ for(const m of b.machines)drawMachine(m);
+ for(const [kind,points]of Object.entries(b.docks))for(const [x,y]of points){ctx.strokeStyle=kind==='input'?'#60dfd1':'#ffbc77';ctx.lineWidth=2;ctx.strokeRect(x*CELL+4,y*CELL+4,CELL-8,CELL-8);ctx.font='10px system-ui';ctx.fillStyle=ctx.strokeStyle;ctx.fillText(kind==='input'?'IN':'OUT',x*CELL+7,y*CELL+23)}
+ if(tested&&$('showFlow').checked)drawFlows();
+ syncOverlay();drawPreview();
+}
+const overlay=$('dragOverlay'),overlayCtx=overlay.getContext('2d');let lastPreview=null,previewFrame=0;
+function syncOverlay(){if(overlay.width!==canvas.width||overlay.height!==canvas.height){overlay.width=canvas.width;overlay.height=canvas.height;lastPreview=null}overlay.style.width=canvas.style.width;overlay.style.height=canvas.style.height}
+function queuePreview(){if(!previewFrame)previewFrame=requestAnimationFrame(()=>{previewFrame=0;drawPreview()})}
+function drawPreview(){
+ if(lastPreview){overlayCtx.clearRect(lastPreview.x*CELL-5,lastPreview.y*CELL-5,lastPreview.w*CELL+10,lastPreview.h*CELL+10);lastPreview=null}
+ const b=buildings[active],ctx=overlayCtx;
+ let ghost=area&&{...area,area:true};if(drag?.kind==='move')ghost={...drag.source,x:drag.x,y:drag.y,w:drag.w??drag.source.w,h:drag.h??drag.source.h};else if(drag?.kind==='movePath')ghost={x:drag.x,y:drag.y,w:1,h:1};else if(['storage','area'].includes(drag?.kind))ghost=dragRectangle(drag);else if(['belt','cart','walk','storage','area','erase'].includes(tool)&&hover)ghost={x:hover.x,y:hover.y,w:1,h:1,area:tool==='area'};else if(tool==='place'&&hover){const s=SPECS[catalog];ghost={x:hover.x,y:hover.y,w:orientation%2?s.h:s.w,h:orientation%2?s.w:s.h}}
+ if(ghost){const okay=ghost.area||tool==='area'||valid(b,ghost,drag?.source?.id)&&!Object.values(b.docks).flat().some(([x,y])=>contains(ghost,{x,y,w:1,h:1}));ctx.fillStyle=okay?'#6fe7c52c':'#f0636344';ctx.strokeStyle=okay?'#77ecd0':'#ff7d7d';ctx.lineWidth=2;ctx.fillRect(ghost.x*CELL,ghost.y*CELL,ghost.w*CELL,ghost.h*CELL);const image=tool==='place'?(processImages[catalog]||machineImages[SPECS[catalog].art]):drag?.source?.type?(processImages[drag.source.type]||machineImages[SPECS[drag.source.type].art]):null;if(image){ctx.save();ctx.globalAlpha=.55;ctx.translate((ghost.x+ghost.w/2)*CELL,(ghost.y+ghost.h/2)*CELL);const angle=tool==='place'?orientation:drag.angle??drag.source.angle??0;ctx.rotate(angle*Math.PI/2);const iw=(angle%2?ghost.h:ghost.w)*CELL-8,ih=(angle%2?ghost.w:ghost.h)*CELL-8;ctx.drawImage(image,-iw/2,-ih/2,iw,ih);ctx.restore()}if(tool==='belt')drawBelt(ctx,{x:ghost.x,y:ghost.y,dir:orientation},0,.65);ctx.strokeRect(ghost.x*CELL,ghost.y*CELL,ghost.w*CELL,ghost.h*CELL)}
+ if(ghost)lastPreview={...ghost};
+}
+function drawPathSquare(p){if(p.kind==='belt'){drawBelt(ctx,p);return}ctx.fillStyle=p.kind==='walk'?'#293340':p.kind==='belt'?'#9c7d45':'#4d6484';ctx.fillRect(p.x*CELL+2,p.y*CELL+2,CELL-4,CELL-4);if(p.kind==='belt'){ctx.fillStyle='#fff3c9';ctx.font='18px system-ui';ctx.fillText(['→','↓','←','↑'][p.dir],p.x*CELL+8,p.y*CELL+24)}}
+
+const pos=e=>{const r=canvas.getBoundingClientRect();return {x:Math.floor((e.clientX-r.left)*canvas.width/r.width/CELL),y:Math.floor((e.clientY-r.top)*canvas.height/r.height/CELL)}};
+const dragRectangle=d=>{const r=rectangle(d.start,d.current);if(d.rotated)[r.w,r.h]=[r.h,r.w];return r};
+const rectangle=(a,b)=>({x:Math.min(a.x,b.x),y:Math.min(a.y,b.y),w:Math.abs(b.x-a.x)+1,h:Math.abs(b.y-a.y)+1});
+function showTip(e,p){const b=buildings[active],o=entityAt(b,p.x,p.y),path=pathAt(b,p.x,p.y)||(!entityAt(b,p.x,p.y)?{kind:'walk',dir:0,implicit:true}:null);let html='';const flow=flowAt(e);if(flow){html=`<b>${MATERIALS[flow.item].title}</b>${flow.endpointKind?'<br>Tile '+(flow.endpointKind==='in'?'input':'output'):''}<br>${fmt(flow.rate)} ${MATERIALS[flow.item].unit}/day on this line<br>${[...flow.descriptions].slice(0,5).map(escapeHtml).join('<br>')}${flow.descriptions.size>5?'<br>…and '+(flow.descriptions.size-5)+' other transfers':''}`}else if(o?.type){const s=SPECS[o.type];html=`<b>${s.name} #${o.number}</b><br>${o.owner||'New planning asset'}<br><b>Produces:</b> ${Object.entries(s.outputs).map(([k,n])=>fmt(n)+' '+MATERIALS[k].unit+' '+MATERIALS[k].title+' per batch').join('; ')||'Toolroom / maintenance service'}<br>Current daily output: ${tested?Object.entries(s.outputs).map(([k,n])=>fmt((tested.machines[o.id]||0)*n)+' '+MATERIALS[k].unit+' '+MATERIALS[k].title).join('; '):'Calculate production'}<br>Candidate normal-day capacity: ${fmt(capacity(o)*Object.values(s.outputs)[0])} units · ${Object.values(s.outputs)[0]||0}/batch<br>${Object.entries(s.inputs).map(([k,n])=>fmt(n)+' '+MATERIALS[k].unit+' '+MATERIALS[k].title+(tested?' · '+fmt(tested.details[o.id]?.inputSupply?.[k])+'/'+fmt(tested.details[o.id]?.inputNeed?.[k])+' '+MATERIALS[k].unit+'/day':'')).join('<br>')}<br>Crew ${o.crew.length}/${FactoryEngine.requiredWorkers(o,SPECS,UPGRADES)} · ${fmt(o.condition*100)}% assumed condition<br>Input access: ${o.inputSide|| (s.port==='fixed'?'fixed':'automatic exposed edge')} · output access: ${o.outputSide||(s.port==='fixed'?'fixed':'automatic exposed edge')}<br>${s.accessDescription|| (s.port==='fixed'?'Fixed input/output ports':'Flexible access on any exposed edge')}`}
+ else if(o)html=`<b>${MATERIALS[o.item].title}</b><br>${storageDescription(o,tested?.stocks[o.id]??o.stock)}`;
+ else if(path){const t=tested?.traffic?.[active]?.[key(p.x,p.y)];html=`<b>${pathLabel(path.kind)} ${nodeDock(b,p.x,p.y)?'· building access':''}</b><br>${fmt(t?.total)} cargo volume / ${fmt(FactoryEngine.pathCapacity(path)*(+$('hours').value/9))} scenario capacity<br>${Object.entries(t?.items||{}).map(([k,n])=>MATERIALS[k].title+': '+fmt(n)+' '+MATERIALS[k].unit).join('<br>')}`}
+ if(!html){tip.style.display='none';return}tip.innerHTML=html;tip.style.display='block';tip.style.left=Math.min(e.clientX+14,window.innerWidth-340)+'px';tip.style.top=Math.max(5,Math.min(e.clientY+14,window.innerHeight-tip.offsetHeight-10))+'px';
+}
+function brush(p){const b=buildings[active];if(!inside(p.x,p.y)||entityAt(b,p.x,p.y)||nodeDock(b,p.x,p.y))return;const old=pathAt(b,p.x,p.y);if(tool==='walk'&&(!old||old.kind==='walk'))return;if(old?.kind===tool&&(tool!=='belt'||old.cargo===cargo&&old.dir===orientation))return;b.paths=b.paths.filter(o=>o!==old);b.paths.push({x:p.x,y:p.y,kind:tool,cargo:tool==='belt'?cargo:null,dir:orientation});drawPathSquare(b.paths.at(-1));drag.count++;drag.bounds=drag.bounds?{x:Math.min(drag.bounds.x,p.x),y:Math.min(drag.bounds.y,p.y),w:Math.max(drag.bounds.x+drag.bounds.w,p.x+1)-Math.min(drag.bounds.x,p.x),h:Math.max(drag.bounds.y+drag.bounds.h,p.y+1)-Math.min(drag.bounds.y,p.y)}:{x:p.x,y:p.y,w:1,h:1}}
+canvas.ondblclick=e=>{const p=pos(e),o=entityAt(buildings[active],p.x,p.y);if(o){selected=o;$('tileDialog').showModal();renderSelection()}};
+canvas.onpointerdown=e=>{if(e.button!==0)return;canvas.focus({preventScroll:true});const p=pos(e),b=buildings[active];if(!inside(p.x,p.y))return;const o=entityAt(b,p.x,p.y);canvas.setPointerCapture(e.pointerId);
+ if(['move','select'].includes(tool)&&o){selected=o;drag={kind:'move',source:o,x:o.x,y:o.y,offX:p.x-o.x,offY:p.y-o.y};renderSelection();queuePreview()}
+ else if(['move','select'].includes(tool)&&pathAt(b,p.x,p.y)&&!nodeDock(b,p.x,p.y)){selected=null;drag={kind:'movePath',source:pathAt(b,p.x,p.y),x:p.x,y:p.y};renderSelection();queuePreview()}
+ else if(['storage','area'].includes(tool))drag={kind:tool,start:p,current:p};
+ else if(['belt','cart','walk'].includes(tool)){snapshot();drag={kind:'brush',last:p,count:0};brush(p);paint()}
+ else if(tool==='select'){selected=o||null;refresh();paint()}
+ else if(tool==='place'){const s=SPECS[catalog],m={id:sid(),type:catalog,model:equipmentModel,x:p.x,y:p.y,w:orientation%2?s.h:s.w,h:orientation%2?s.w:s.h,angle:orientation,number:Math.max(0,...Object.values(buildings).flatMap(f=>f.machines).filter(m=>m.type===catalog).map(m=>m.number))+1,condition:.98,crew:[],upgrades:[]};if(valid(b,m)&&!Object.values(b.docks).flat().some(([x,y])=>contains(m,{x,y,w:1,h:1}))){snapshot();b.machines.push(m);selected=m;const v=s.models[equipmentModel];commit(v.price,v.days,'Add '+s.name+' · '+v.name)}}
+ else if(tool==='erase'){if(nodeDock(b,p.x,p.y))return;const path=pathAt(b,p.x,p.y);if(o||path){snapshot();b.machines=b.machines.filter(m=>m!==o);b.storage=b.storage.filter(s=>s!==o);b.paths=b.paths.filter(v=>v!==path);selected=null;commit(o?1200:70,o?1:0,'Remove '+(o?'equipment/storage':'path'),o?{x:o.x,y:o.y,w:o.w,h:o.h}:{x:p.x,y:p.y,w:1,h:1})}}
+};
+canvas.onpointermove=e=>{const p=pos(e);if(!inside(p.x,p.y))return;if(drag){drag.pointer=p;tip.style.display='none';if(drag.kind==='move'){drag.x=p.x-drag.offX;drag.y=p.y-drag.offY}else if(drag.kind==='movePath'){drag.x=p.x;drag.y=p.y}else if(drag.kind==='brush'){let {x,y}=drag.last;while(x!==p.x||y!==p.y){if(x!==p.x)x+=Math.sign(p.x-x);else y+=Math.sign(p.y-y);brush({x,y})}drag.last=p}else drag.current=p;queuePreview()}else{hover=p;if(['place','belt','cart','walk','storage','area','erase'].includes(tool))queuePreview();if(tool==='select'||tool==='move')showTip(e,p);else tip.style.display='none'}};
+canvas.onpointerup=e=>{if(!drag)return;const d=drag;drag=null;const b=buildings[active];if(d.kind==='move'){const o={...d.source,x:d.x,y:d.y,w:d.w??d.source.w,h:d.h??d.source.h,angle:d.angle??d.source.angle};if(valid(b,o,o.id)&&!Object.values(b.docks).flat().some(([x,y])=>contains(o,{x,y,w:1,h:1}))&&(o.x!==d.source.x||o.y!==d.source.y||o.angle!==d.source.angle)){snapshot();Object.assign(d.source,{x:o.x,y:o.y,w:o.w,h:o.h,...(o.type?{angle:o.angle}:{})});selected=d.source;commit(2400,1,'Relocate equipment/storage')}}
+ else if(d.kind==='movePath'){const target={x:d.x,y:d.y,w:1,h:1};if(valid(b,target)&&!nodeDock(b,d.x,d.y)&&(d.x!==d.source.x||d.y!==d.source.y)){const previous={x:d.source.x,y:d.source.y},other=pathAt(b,d.x,d.y);snapshot();d.source.x=d.x;d.source.y=d.y;if(other){other.x=previous.x;other.y=previous.y}commit(other?140:70,0,other?'Swap transport tiles':'Relocate transport tile',target)}}
+ else if(d.kind==='area'){area=dragRectangle(d);$('scope').value='area';refresh()}
+ else if(d.kind==='storage'){const s={...dragRectangle(d),id:sid(),item:cargo,stock:0,storageModel:'receiving-v1'};if(valid(b,s)&&s.w*s.h>=2&&!Object.values(b.docks).flat().some(([x,y])=>contains(s,{x,y,w:1,h:1}))){snapshot();b.storage.push(s);selected=s;commit(s.w*s.h*420,1+Math.ceil(s.w*s.h/15),'Build storage')}}
+ else if(d.kind==='brush'){if(d.count)commit(d.count*(tool==='belt'?750:tool==='cart'?240:100),tool==='belt'?1:0,'Build '+d.count+' '+tool+' tiles',d.bounds);else history.pop()}
+ paint();refresh();
+};
+canvas.onpointercancel=()=>{if(drag?.kind==='brush'){const prev=JSON.parse(history.pop());buildings=prev.buildings}drag=null;paint()};canvas.onpointerleave=()=>{hover=null;tip.style.display='none';if(!drag)queuePreview()};
+function payload(scope){
+ validateScenario(scenario());let chosen;
+ if(scope==='campus')chosen=buildings;
+ else if(scope==='building')chosen={[active]:buildings[active]};
+ else if(scope==='area'){
+  if(!area)throw Error('Choose Area and drag a rectangle first.');const b=buildings[active];
+  if(entities(b).some(o=>intersects(o,area)&&!contains(area,o)))throw Error('The area cuts through equipment or storage. Expand the rectangle to include whole entities.');
+  chosen={[active]:{...b,machines:b.machines.filter(m=>contains(area,m)),storage:b.storage.filter(s=>contains(area,s)),paths:b.paths.filter(p=>contains(area,{...p,w:1,h:1}))}};
+ }else throw Error('Unknown export scope.');
+ return structuredClone({schema:SCHEMA,factory:'Orinda Campus',baseRevision:3,author:$('author').value,created:new Date().toISOString(),scope,building:scope==='campus'?null:active,area:scope==='area'?area:null,buildings:chosen,...(scope==='campus'?{scenario:scenario(),expenses,workerPool:spareWorkers,sites:SITES,campaignData,dayConfig,implementationData,modelData:{revision:'110926-process-v4',specs:SPECS,materials:MATERIALS},workspaceVersion:4}:{proposedWork:expenses.filter(e=>e.building===active&&(scope==='building'||e.bounds&&contains(area,e.bounds)))} )});
+}
+function validateBuildings(candidate,names=BLDGS){
+ if(Object.keys(candidate).length!==names.length||names.some(n=>!candidate[n]))throw Error('Campus must contain all six agreed buildings.');const ids=new Set(),workerIDs=new Set();
+ for(const [name,b]of Object.entries(candidate)){
+  if(!names.includes(name)||!b||!Number.isInteger(b.cols)||!Number.isInteger(b.rows)||b.cols<4||b.rows<4||b.cols>400||b.rows>400||b.cols*b.rows>25000||!Array.isArray(b.machines)||b.machines.length>2000||!Array.isArray(b.storage)||b.storage.length>1000||!Array.isArray(b.paths)||b.paths.length>25000||!b.docks)throw Error('Invalid building dimensions or entity lists.');
+  const occupied=new Set(),paths=new Set();
+  for(const o of entities(b)){
+   if(typeof o.id!=='string'||!/^[a-zA-Z0-9_-]{1,90}$/.test(o.id)||o.id in Object.prototype||ids.has(o.id))throw Error('Invalid or duplicate entity ID.');ids.add(o.id);
+   if(!['x','y','w','h'].every(k=>Number.isInteger(o[k]))||o.w<1||o.h<1||!inside(o.x,o.y,b)||o.x+o.w>b.cols||o.y+o.h>b.rows)throw Error('Entity lies outside its floor.');
+   for(let y=o.y;y<o.y+o.h;y++)for(let x=o.x;x<o.x+o.w;x++){const k=key(x,y);if(occupied.has(k))throw Error('Overlapping equipment/storage.');occupied.add(k)}
+   if(o.type){if(!Object.hasOwn(SPECS,o.type))throw Error('Unknown equipment type.');const s=SPECS[o.type];
+    if(['inputSide','outputSide'].some(k=>o[k]!==undefined&&(!['left','right','top','bottom'].includes(o[k])||s.port!=='flex'))||o.model!==undefined&&!Object.hasOwn(s.models,o.model)||!Number.isInteger(o.angle)||o.angle<0||o.angle>3||o.w!==(o.angle%2?s.h:s.w)||o.h!==(o.angle%2?s.w:s.h)||!Number.isInteger(o.number)||o.number<1||!Number.isFinite(o.condition)||o.condition<0||o.condition>1||!Array.isArray(o.crew)||o.crew.length>20||o.staffingRequired!==undefined&&(!Number.isInteger(o.staffingRequired)||o.staffingRequired<1||o.staffingRequired>20)||o.owner!==undefined&&!Object.hasOwn(ION_REGISTER.factories,o.owner)||!Array.isArray(o.upgrades)||new Set(o.upgrades).size!==o.upgrades.length||o.upgrades.some(u=>!Object.hasOwn(UPGRADES,u)))throw Error('Invalid machine, crew or upgrade data.');
+    for(const w of o.crew){if(typeof w.id!=='string'||!/^[a-zA-Z0-9_-]{1,90}$/.test(w.id)||w.id in Object.prototype||workerIDs.has(w.id)||['xpHours','totalHours'].some(k=>w[k]!==undefined&&(!Number.isFinite(w[k])||w[k]<0))||!Number.isInteger(w.level)||w.level<0||w.level>5||w.role!==undefined&&w.role!==roleForSpec(s)||w.homePool!==undefined&&!STAFF_POOLS.some(p=>p.id===w.homePool&&p.role===roleForSpec(s)))throw Error('Invalid or duplicate worker.');workerIDs.add(w.id)}
+   }else if(o.storageModel!==undefined&&o.storageModel!=='receiving-v1'||!Object.hasOwn(MATERIALS,o.item)||!Number.isFinite(o.stock)||o.stock<0||o.stock>storageCap(o)||o.receiving!==undefined&&typeof o.receiving!=='boolean')throw Error('Invalid storage.');
+  }
+  for(const p of b.paths){const k=key(p.x,p.y);if(!Number.isInteger(p.x)||!Number.isInteger(p.y)||!inside(p.x,p.y,b)||occupied.has(k)||paths.has(k)||!['belt','cart','walk'].includes(p.kind)||!Number.isInteger(p.dir)||p.dir<0||p.dir>3||p.kind==='belt'&&!Object.hasOwn(MATERIALS,p.cargo))throw Error('Invalid, duplicate or obstructed transport tile.');paths.add(k)}
+  for(const kind of ['input','output']){if(!Array.isArray(b.docks[kind])||b.docks[kind].length>1000)throw Error('Invalid building access points.');const points=new Set();for(const p of b.docks[kind]){if(!Array.isArray(p)||p.length!==2||!p.every(Number.isInteger)||!inside(p[0],p[1],b)||occupied.has(key(...p))||points.has(p.join(',')))throw Error('Invalid or obstructed dock.');points.add(p.join(','))}}
+ }
+ return candidate;
+}
+function validatePayload(data){
+ if(!data||data.schema!==SCHEMA||data.factory!=='Orinda Campus'||data.baseRevision!==3)throw Error('This plan uses an incompatible recipe/campus schema. Earlier plans remain backed up and must not silently adopt different recipes.');
+ const incomingNames=data.scope==='campus'&&data.sites?FactorySites.validate(data.sites).flatMap(s=>s.buildings):BLDGS;
+ if(!['campus','building','area'].includes(data.scope)||!data.buildings||Object.keys(data.buildings).some(n=>!incomingNames.includes(n)))throw Error('Invalid blueprint scope.');
+ const names=Object.keys(data.buildings);if(data.scope!=='campus'&&(names.length!==1||names[0]!==data.building))throw Error('Scope must name exactly one building.');
+ if(data.proposedWork!==undefined&&(!Array.isArray(data.proposedWork)||data.proposedWork.length>10000||data.proposedWork.some(e=>!Number.isFinite(e.cost)||e.cost<0||!Number.isFinite(e.days)||e.days<0||typeof e.action!=='string'||typeof e.id!=='string'||!BLDGS.includes(e.building))))throw Error('Invalid scoped work quotes.');
+ if(data.proposedWork){const ids=new Set();for(const e of data.proposedWork){if(!/^[a-zA-Z0-9_-]{1,90}$/.test(e.id)||ids.has(e.id)||e.building!==data.building||e.action.length>500||data.scope==='area'&&(!e.bounds||!['x','y','w','h'].every(k=>Number.isInteger(e.bounds[k]))||e.bounds.w<1||e.bounds.h<1||!contains(data.area,e.bounds)))throw Error('Duplicate or out-of-scope work quote.');ids.add(e.id)}}
+ if(data.scope==='campus'){
+  validateBuildings(data.buildings,incomingNames);validateScenario(data.scenario);validateWorkerPool(data.workerPool||FactoryBaseline.availableWorkers(data.buildings,SPECS),data.buildings);
+  if(data.implementationData)FactoryImplementation.validate(data.implementationData,b=>validateBuildings(b,incomingNames),validateWorkerPool,SPECS,MATERIALS,validateScenario);
+  if(data.campaignData){const sites=data.sites||SITES,people=[...Object.values(data.buildings).flatMap(b=>b.machines.flatMap(m=>m.crew)),...(data.workerPool||[])];if(typeof data.campaignData!=='object'||Array.isArray(data.campaignData))throw Error('Invalid operating ledgers.');for(const [id,state]of Object.entries(data.campaignData)){const site=sites.find(s=>s.id===id);if(!site)throw Error('Unknown operating site.');FactoryDay.validateState(state,Object.fromEntries(site.buildings.map(n=>[n,(data.implementationData?.active.buildings||data.buildings)[n]])),MATERIALS,people)}}for(const config of Object.values(data.dayConfig||{}))FactoryDay.settings(config);
+  if(!Array.isArray(data.expenses)||data.expenses.length>10000||data.expenses.some(e=>!Number.isFinite(e.cost)||e.cost<0||!Number.isFinite(e.days)||e.days<0||typeof e.action!=='string'||e.action.length>500))throw Error('Invalid implementation ledger.');
+ }else{
+  const replacement=structuredClone(data.buildings[data.building]),candidate=structuredClone(buildings);
+  if(data.scope==='area'){
+   const r=data.area,existing=candidate[data.building];if(!r||!['x','y','w','h'].every(k=>Number.isInteger(r[k]))||r.w<1||r.h<1||!inside(r.x,r.y,existing)||r.x+r.w>existing.cols||r.y+r.h>existing.rows||replacement.cols!==existing.cols||replacement.rows!==existing.rows)throw Error('Area does not fit the destination floor.');
+   if(!Array.isArray(replacement.machines)||!Array.isArray(replacement.storage)||!Array.isArray(replacement.paths)||[...replacement.machines,...replacement.storage].some(o=>!contains(r,o))||replacement.paths.some(p=>!contains(r,{...p,w:1,h:1})))throw Error('Area blueprint contains data outside its rectangle.');
+   if(entities(existing).some(o=>intersects(r,o)&&!contains(r,o)))throw Error('Area replacement would cut through existing equipment/storage.');
+   const merge=(old,incoming,paths=false)=>{
+    const id=o=>paths?key(o.x,o.y):o.id,remaining=new Map(incoming.map(o=>[id(o),o]));
+    const merged=[];for(const o of old){if(!contains(r,paths?{...o,w:1,h:1}:o)){merged.push(o);continue}const replacement=remaining.get(id(o));if(replacement){merged.push(replacement);remaining.delete(id(o))}}
+    return [...merged,...remaining.values()];
+   };
+   candidate[data.building]={...existing,machines:merge(existing.machines,replacement.machines),storage:merge(existing.storage,replacement.storage),paths:merge(existing.paths,replacement.paths,true)};
+  }else candidate[data.building]=replacement;
+  validateBuildings(candidate);data.resolved=candidate;data.resolvedWorkerPool=mergedWorkerPool(candidate);
+ }
+ return data;
+}
+function download(data,name){const url=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json'})),a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)}
+function importFile(file){if(file.size>100000000){alert('Blueprint exceeds 100 MB.');return}const reader=new FileReader();reader.onload=()=>{try{
+ const data=validatePayload(JSON.parse(reader.result)),count=Object.values(data.buildings).reduce((n,b)=>n+b.machines.length,0);
+ const quote=(data.proposedWork||[]).reduce((a,e)=>({cost:a.cost+e.cost,days:a.days+e.days}),{cost:0,days:0});
+ const detail=data.scope==='campus'?'All six floors, scenario settings and implementation ledger':data.scope==='area'?`${data.building}: rectangle (${data.area.x},${data.area.y}), ${data.area.w} × ${data.area.h} cells. Everything outside remains unchanged`:`Only ${data.building}; other buildings and resource scenario stay unchanged; existing ledger entries are retained`;
+ if(!confirm(`Import preview: ${data.scope}, ${count} equipment items.\n${detail}.\n${data.scope==='campus'?'':`Included work quotes: ${money(quote.cost)} / ${fmt(quote.days)} installation days. Distinct work IDs will be merged into the plan ledger.`}\nApply this replacement?`))return;
+ snapshot();if(data.scope==='campus'){applySites(data.sites);campaignData=data.campaignData||{};dayConfig=data.dayConfig||{};implementationData=data.implementationData||null;proposalWorkspace=null}buildings=data.scope==='campus'?data.buildings:data.resolved;if(data.scope==='campus'){spareWorkers=data.workerPool||FactoryBaseline.availableWorkers(buildings,SPECS);expenses=data.expenses;applyScenario(data.scenario)}else{spareWorkers=data.resolvedWorkerPool;const known=new Set(expenses.map(e=>e.id));expenses.push(...(data.proposedWork||[]).filter(e=>!known.has(e.id)))}selected=null;area=null;invalidate();saveLocal();refresh();paint();alert('Blueprint imported. Test Campus to refresh the forecast.');
+ }catch(e){alert('Import failed: '+e.message)}};reader.readAsText(file)}
+initUI();seed();globalThis.workspaceReady=restoreLocal().then(()=>{renderResults();refresh();paint();globalThis.workspaceLoaded=true});

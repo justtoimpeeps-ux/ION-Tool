@@ -1,0 +1,291 @@
+ION | CONSOLIDATED ASSETS REGISTER
+Merged ION | Day 0: November 1, 2026, 00:00 PDT | Opening position and manufacturing reference
+1 | Consolidated opening position
+Operating division / company | External revenue Cr/y | Operating expenses Cr/y | Operating profit Cr/y | Opening cash Cr
+Propulsion Systems / ION | 27.910B | 19.392B | 8.518B | 2.650B
+Mining & Materials / Spartan | 20.000B | 15.000B | 5.000B | 2.500B
+Industrial Engineering / VC | 2.500B | 2.000B | 0.500B | 0.300B
+TOTAL pre-merger reference | 50.410B | 36.392B | 14.018B | 5.450B
+2 | Personnel and organizational command
+Total personnel: 12,235 — Propulsion 4,300; Spartan 6,735; Valerion-Czerka 1,200. Department allocations below assign the existing workforce; they do not add employees. Allocations are an operational staffing proposal for confirmation, conserving each company total.
+Propulsion Systems — Mira Venn
+Department | NPC head | People | Role (if needed)
+Engine Manufacturing | Kaelen Dray | 2950 | 
+Propulsion Research & Development | Lyssa Toren | 160 | 
+Production Engineering | Bren Talvik | 480 | Includes process engineering and factory maintenance
+Testing, Certification & Quality | Elara Vossik | 300 | 
+Department total: 3,890 personnel.
+Mining & Materials Processing — Joe
+Department | NPC head | People | Role (if needed)
+Exploration & Geological Survey | Rovan Kess | 600 | 
+Mining & Extraction Operations | Tarek Vorn | 2100 | 
+Metallurgy, Refining & Processing | Selira Dorn | 900 | 
+Mining Equipment Manufacturing | Garrik Tallen | 950 | 
+Mining Technology & R&D | Nyra Vel | 850 | 
+Resource Development & Expansion | Davren Holt | 525 | Mining rights, new sites, expansion feasibility
+Department total: 5,925 personnel.
+Industrial Engineering & Automation — Josh
+Department | NPC head | People | Role (if needed)
+Industrial & Factory Engineering | Darius Keld | 300 | 
+Robotics & Automation | Veyla Renn | 180 | 
+Machinery & Precision Tooling | Corven Talis | 220 | 
+Prototyping, Testing & R&D | Jessa Valen | 195 | 
+Installation & Field Engineering | Rennik Sol | 250 | Includes manufacturing methods and commissioning
+Department total: 1,145 personnel.
+Fleet & Logistics — Corin Vale
+Department | NPC head | People | Role (if needed)
+Fleet Operations | Soren Vex | 110 | 
+Freight & Transportation | Alina Korr | 160 | 
+Warehousing & Distribution | Brenna Vail | 110 | 
+Ports & Cargo Operations | Jarek Thane | 100 | 
+Logistics Planning & Coordination | Tessa Varnik | 70 | 
+Department total: 550 personnel.
+Corporate Services — Tessa Rhyne
+Department | NPC head | People | Role (if needed)
+Finance & Accounting | Marek Solven | 125 | 
+Human Resources & Administration | Lina Torvik | 125 | 
+Procurement & Supplier Relations | Orren Dask | 135 | 
+Sales & Commercial Contracts | Vessa Kord | 90 | 
+Legal & Regulatory Affairs | Caldrin Voss | 65 | 
+Information Systems | Nira Talen | 85 | 
+Department total: 625 personnel.
+Security & Intelligence — Dalen Varek
+Department | NPC head | People | Role (if needed)
+Facilities & Personnel Security | Korrin Dace | 35 | 
+Fleet & Cargo Security | Varek Senn | 25 | 
+Intelligence & Threat Analysis | Lyren Kass | 15 | 
+Counterintelligence & Investigations | Doran Vesk | 10 | 
+Cybersecurity | Selka Rhenn | 15 | 
+Department total: 100 personnel.
+Personnel reconciliation: Propulsion departments 3,890 + shared divisions 410 = 4,300; Spartan 5,925 + shared divisions 810 = 6,735; VC 1,145 + shared divisions 55 = 1,200. Shared-division total 1,275 = Fleet 550 + Corporate 625 + Security 100. No worker is counted twice. Allocation source split is planning-only until operationally confirmed.
+3 | Factories, sites, and fleet
+Propulsion facilities
+ION Propulsion | Facility / role | Status
+Factory A | Older expanded main engine works; ~44–45k annual normal rated flow | Owned / operational
+Factory B | Near-clone rushed line; ~44–45k normal annual flow | Owned / operational
+Common quality/tooling/energy | Shared test and utilities assets (within 850M plant net book value) | Owned / operational
+Factory C | Preliminary design/site prep, separately valued 45M | Authorized, not producing
+Spartan facilities
+Spartan Mining Company (SMC) | Site / role | Status
+HQ/Corellian equipment works | R&D, mining machinery, prototype and headquarters | Owned
+Seven mining sites | Asteron, North Ridge, Deep Vein, Redbank, Keldon, Outer Spur, West Basin | 3 mineral rights owned, 3 leased, 1 JV
+Four processing plants | Corellia Prime, Talus Metals, Drall Alloy, Selonia Precision | All owned; technical naming remains source-authoritative
+Corellia orbital laboratory | 220 m × 140 m orbital test and research installation, not shipyard | Proposed technical fit; ownership included in planning
+Valerion-Czerka facilities
+Valerion-Czerka Systems Engineering (VCE) | Site / role | Status
+Corellian engineering & manufacturing campus | Owned fabrication, robotics, testing, labs | Approved campus in principle
+Two field/liaison offices | Regional engineering/customer support | Proposed / confirm locations
+ION-owned fleet and ground craft
+Asset group | Units | Primary duty | Accounting treatment
+YT-1300 light freighter | 1 | Urgent high-value components, engineering parts and small emergency deliveries | Included in 60M Cr other support assets
+G9 Rigger light freighter | 1 | Tooling, replacement components and compact cargo runs | Included in 60M Cr other support assets
+Theta-class T-2c shuttle | 1 | Technical teams, leadership and customer/supplier travel | Included in 60M Cr other support assets
+Local craft: cargo shuttles / personnel shuttles / utility tugs | 2 + 2 + 2 = 6 | In-system factory/port transfer, people transport and local handling | Shared factory assets: 850M Cr plant/equipment
+Industrial forklifts / pallet movers | 110 | Warehouse, racks and production feed | Shared factory assets
+Autonomous mobile material movers | 160 | Factory A/B line replenishment and internal transport | Shared factory assets
+Shop maintenance vehicles / lift platforms | 36 | Facilities repair and rigging | Shared factory assets
+External engine bulk transport | 0 | Routine Sienar deliveries handled through contracts and transport providers | Freight expense; not a hidden fleet
+Spartan-owned fleet and local craft
+Asset type | Count | working role / throughput assumption
+Gozanti Stella | 1 | Heritage engineering/survey/cargo ship; specific cargo rating/config remains to validate
+Action VI or medium bulk transports | 4 | 8,000 t per working voyage for conservative modeled freight
+Light utility/bulk freighters | 10 | 600 t each working voyage
+Survey/prospect vessels | 3 | Exploration, deposits and sampling
+Mobile mining support | 3 | Installation and maintenance
+Personnel/technical transports | 4 | Crews and spare parts
+TOTAL hyperspace vessels | 25 | Excludes local craft
+Mining shuttles | 24 | Local movement
+Ore lighters | 18 | Near-mine concentration and shuttle transfers
+Utility skiffs | 30 | Repair and personnel
+Cargo loaders/tugs | 42 | Loading and handling
+Drone tenders | 12 | Mining drone servicing
+TOTAL local craft | 126 | Baseline illustration only
+VC-owned transport
+Asset | Count | Operating role / qualification
+Light utility freighter (hyperspace-capable) | 1 | Sensitive automation shipments, mobile field deployment; type/name TBD
+Atmospheric personnel/cargo shuttles | 2 | Corellian campus and regional movement
+Cargo speeders / repulsorlift trucks | 18 | Receiving, test platforms and machinery delivery
+Engineering service speeders / field vans | 28 | Mobile teams and customer service
+Heavy equipment movers / mobile platforms | 9 | On-site industrial installation
+Forklifts / cargo-loader droids | 42 | Warehouse and shop material handling
+Spartan owns 25 hyperspace-capable vessels plus 126 local craft (151 total), including Gozanti Stella. VC freighter configuration is reserved for Josh. Operational fleet dispatches belong in ION Logistics.
+4 | Production equipment and installed machinery
+Propulsion factory machines
+Equipment category | Factory A | Factory B | Total | Notes
+Precision machining centers / advanced mill-turn stations | 155 | 145 | 300 | Major metalworking stations, multiple processes
+Casting, forging and forming cells | 35 | 33 | 68 | High-temperature components and near-net preforms
+Heat treatment / vacuum processing units | 44 | 42 | 86 | Controlled thermal processing
+Automated robotic assembly / integration cells | 88 | 84 | 172 | Assembly of IE-4 subassemblies and final cores
+Test, calibration and acceptance stands | 42 | 40 | 82 | Functional and safety tests; shared QA oversight
+Surface finishing / cleaning / coating lines | 31 | 29 | 60 | Materials preparation and protection
+Robotic packaging / palletizing stations | 18 | 18 | 36 | Outbound production flow
+Industrial material-handling movers | 80 | 80 | 160 | Same units listed above: not additional vehicles
+Fabrication / toolroom and maintenance workstations | 65 | 65 | 130 | In-house fixture repairs and tooling
+Spartan extraction and industrial machinery
+Equipment class | Company-owned count | Role
+Heavy autonomous extractors | 210 | Primary excavation/mining
+Small specialized extraction drones | 640 | Narrow-access and deposit-specific recovery
+Survey drones | 175 | Mapping and exploration
+Ore-hauler and material-handling droids | 320 | Mines, concentrate stations and ports
+Mobile crushing and separation trains | 42 | On-site beneficiation
+Advanced concentration/recovery modules | 36 | Site-specific high-recovery processing
+Heavy maintenance/repair droids | 110 | Reliability and repair
+Industrial fabrication cells | 48 | Mining equipment and custom modules
+VC manufacturing and automation equipment
+Asset group | Units | Notes / ownership and detail status
+Corellian engineering campus | 1 | OWNED Corellian land, buildings, HQ, labs, prototype shops; detailed valuation proposed
+Engineering satellite / customer liaison offices | 2 (proposed) | Owned field offices / liaison properties; locations and valuation to be confirmed by Josh
+5-axis precision machining centers | 32 | Prototype and tooling, not mass engine production
+CNC mills / lathes / grinders (other) | 46 | Precision mechanical work
+Industrial additive / casting / joining stations | 28 | Prototype and selected machinery housings
+Robotics validation cells | 18 | Test custom arms, grippers and controls
+Conveyor / handling pilot test lines | 12 | Full-scale demonstration and cycle studies
+Metrology / non-destructive test stations | 30 | CMM, imaging, dyno and reliability benches
+Industrial control / digital twin compute suites | 7 | Software and discrete-event simulation
+Portable field-installation tool kits | 84 | Teams share sets; calibration tracked
+Heavy lift / rigging / mobile hoists | 26 | Campus and customer deployment
+Construction / maintenance droids | 115 | Company-owned droids, not counted as personnel; count proposed
+Technology owned: Propulsion IE-4 patents and engine/manufacturing designs; Spartan proprietary enhanced extraction, recovery and survey systems; VC automation, controls, precision machinery designs and factory-simulation software. These are operating capabilities, not invented intangible valuations.
+5 | Propulsion capacity and opening stock
+Factories A+B: sustainable ~90,000 IE-4 individual engines/year, against Sienar delivery run rate 108,800 engines/year (54,400 pairs), a surge gap of 18,800 engines/year. No certified finished engines; 600–900 engines WIP (~750 planning midpoint). Factory C remains an unbuilt future project: size/scope and authorization for new capital commitments to be decided in replay.
+Material | Opening stock, tonnes
+Iron/alloy | 1800
+Nickel | 1100
+Cobalt | 100
+Chromium | 260
+Copper | 80
+Silver | 15
+Gold | 7
+PGM | 3
+Superconductive feed | 520
+Ceramics | 700
+Tibanna | 150
+Electronic feedstock | 350
+Coolant | 260
+Approved Sienar sale 250,000 Cr per engine; theoretical market-input production expense 152,500 Cr per engine. Current annualized IE-4 engine external revenue 27.2B Cr; legacy precision components, toolmaking and testing customers provide another 710M Cr. Inventory cannot be assigned the obsolete 165M Cr valuation without a fresh supported cost basis.
+6 | Spartan mining, processing and reserves
+Approved group rated annual flow: 1,040,000 tonnes ore, 222,300 tonnes concentrates, and 76,780 tonnes refined output. High-yield extractors are already in use. The seven mines and four plants below make up those totals; intermediate transfers are not additional output.
+Mine | Ore t/year | Recoverable ore t | Rated life y
+Asteron Belt | 180,000 | 4,320,000 | 24
+North Ridge | 165,000 | 4,785,000 | 29
+Deep Vein | 155,000 | 3,410,000 | 22
+Redbank | 145,000 | 3,915,000 | 27
+Keldon Ridge | 140,000 | 3,500,000 | 25
+Outer Spur | 135,000 | 3,375,000 | 25
+West Basin | 120,000 | 2,760,000 | 23
+TOTAL | 1,040,000 | 26,065,000 | 25.1 overall
+Refinery operations
+Processing plant | Input t/year (source model) | Primary output / transfer | Residual t/year (source model)
+Corellia Prime | 106,000 | 45,000t ferrous + 22,000t nickel-copper → Talus; 21,000t chromite-cobalt → Drall; 1,200t precious feed → Selonia | 16,800
+Talus Metals | 160,000 | 42,000t iron; 17,000t nickel; 4,800t copper; 1,200t cobalt intermediate → Drall; 180t anode slimes → Selonia | 94,820
+Drall Alloy Works | 43,200 | 7,200t ferrochrome; 3,400t Ni-Cr alloy; 1,900t cobalt products | 30,700
+Selonia Precision | 3,680 | 320t silver; 110t gold; 50t PGM products | 3,200
+Plant input figures are historical operational models and include feed and interplant transfers, not four independent raw-ore streams. Do not sum plant input/output as new company production. Site routing and recovery balances require reconciliation before dispatch orders; group totals and approved finished-stock figures govern.
+Stockpiles and reserves
+Inventory stage | Opening tonnes | Storage capacity tonnes
+Raw ore | 200000 | 250000
+Concentrates | 42000 | 60000
+Finished products | 40327 | 50000
+TOTAL | 282327 | 360000
+Finished product | Tonnes
+Iron | 18000
+Nickel | 11000
+Ferrochrome | 4200
+Nickel-chromium alloy | 2400
+Copper | 3100
+Cobalt products | 1250
+Silver | 245
+Gold | 90
+PGM products | 42
+Mine | Recoverable ore t | Rated life y
+Asteron Belt | 4320000 | 24
+North Ridge | 4785000 | 29
+Deep Vein | 3410000 | 22
+Redbank | 3915000 | 27
+Keldon Ridge | 3500000 | 25
+Outer Spur | 3375000 | 25
+West Basin | 2760000 | 23
+TOTAL | 26065000 | 25.1 at rated combined output
+Approved contained mineral quantities within these ore reserves (not additional tonnes of ore): Fe 1,243,800t; Ni 493,900t; Cr 110,850t; Co 43,010t; Cu 117,950t; Ag 8,083t; Au 2,772t; PGM 1,316t.
+7 | Spartan production costs and external contracts
+Product family | Annual units | Unit manufacturing cost | Annual manufacturing cost
+SP-EXTRACT | 240 | 8M | 1.92B
+SP-RECOVER | 120 | 12M | 1.44B
+SP-DRONE | 4000 | 180k | 720M
+SP-SCAN | 600 | 350k | 210M
+SP-STRUCT | 300 | 2M | 600M
+Spare assemblies | 12000 | 30k | 360M
+TOTAL |  |  | 5.25B
+Legacy customer | Materials B Cr/y | Equipment B Cr/y | Services B Cr/y
+Marrek Deepworks | 3 | 1.5 | 0.9
+Orindan Prospecting Consortium | 2 | 2 | 1.1
+Veyra Mining Guild | 1.5 | 1.5 | 0.8
+Talus Basin Industries | 1.5 | 1 | 0.7
+Smaller customers | 1 | 1 | 0.5
+TOTAL | 9 | 7 | 4
+Spartan operating costs: mining/processing 6B; equipment manufacturing 5.25B; field service and support 1.75B (maintenance 950M; installation 350M; licensing support 150M; field engineering 300M); administration/R&D 2B. External contracts survive merger; internally consumed output is not an extra sale.
+8 | Valerion-Czerka operating position
+VC owned Corellian engineering campus and supporting industrial machinery; one light utility freighter (configuration for Josh). Annual external revenue 2.5B, direct expense 1.67B, corporate overhead/R&D 330M, operating profit 500M and unrestricted opening cash 300M Cr. Existing customer commitments can be fulfilled while beginning internal ION engineering work; no imposed 80/20 capacity split.
+External service family | Revenue Cr/y | Direct cost Cr/y
+Machinery / automation | 1.10B | 770M
+Engineering / integration | 800M | 520M
+Precision tooling | 400M | 280M
+Software / maintenance | 200M | 100M
+VC physical inventory categories
+The older VC register identified the following inventory families but did not establish physical counts. Quantities are not invented; the former 19M Cr aggregate estimate is not carried forward as current valuation.
+Inventory family | Examples / intended use | Verified quantity | Approved cost
+Structural metals / machine stock | Industrial steel, aluminum/titanium analogs, high-grade alloys | Not established | Not established
+Precision components / bearing and drives | Linear rails, geartrains, servos, spindle sets | Not established | Not established
+Control electronics and instrumentation | Controller boards, sensors, power electronics | Not established | Not established
+Robotics actuators, grippers and hydraulics | Servo assemblies, tool changers, lines | Not established | Not established
+Conveyor modules / belts / rollers | Modular transport segments, power units | Not established | Not established
+Consumables, test and safety stock | Coolants, ceramics, lubricants, calibration standards | Not established | Not established
+Finished tools / partly completed automation systems | Ready-to-ship kits and finished assemblies | Not established | Not established
+9 | IE-4 manufacturing reference
+Manufacturing recipes are input/output specifications for the factory editor. A listed material may come from stock, internal fabrication or an outside purchase; only items marked External are assumed purchased. Existing machine counts are in Section 4. Preliminary intermediate-component material allowances are not additional confirmed material requirements until a complete BOM is reconciled, to avoid double-counting.
+Engine subassembly recipes
+Assembly / output | Units per engine | Direct grade inputs per unit | Additional required components / source
+Structural core housing | 1 | Iron alloy 182 kg; nickel alloy 46 kg; chromium alloy 14 kg | —
+Field-control assembly | 1 | Nickel alloy 18 kg; cobalt alloy 7 kg; copper 1.8 kg; silver 0.4 kg; gold 0.15 kg; platinum-group metals 0.05 kg | Superconductive media 38 kg; precision field coils x12
+Energy-transfer assembly | 1 | Nickel alloy 12 kg; copper 4.0 kg; silver 0.6 kg; gold 0.3 kg; platinum-group metals 0.1 kg | Superconductive media 21 kg; technical ceramic 34 kg
+Gas-control assembly | 1 | Iron alloy 12 kg; nickel alloy 9 kg; chromium alloy 4 kg | Tibanna charge 16 kg; regulator modules x6; seals x18
+Control electronics | 1 | Copper 1.2 kg; silver 0.3 kg; gold 0.2 kg; platinum-group metals 0.1 kg | Electronics feedstock 24 kg; processor modules x4
+Thermal-management assembly | 1 | Nickel alloy 17 kg; cobalt alloy 3 kg; chromium alloy 6 kg | Technical ceramic 41 kg; coolant charge 28 kg
+Precision interfaces | 1 | Nickel alloy 16 kg; iron alloy 9 kg; chromium alloy 3 kg | Interface couplers x8
+Sensor / safety package | 1 | Copper 0.5 kg; silver 0.2 kg; gold 0.07 kg; platinum-group metals 0.03 kg | Electronics feedstock 13 kg; sensor modules x10; safing modules x2
+Additional internal recipes and procurement boundaries
+Component and quantity per IE-4 | Source | Input / sub-recipe | Workstation / operation | Feeds
+Precision field coils ×12 | Internal, planned | Approved superconductive media (38 kg field-control allowance) + conductive wire/insulation from metal/feed stock; exact per-coil allocation TBD | Wire forming → coil winding → insulation → electrical test | Field-control
+Precision field coil wire | Internal, planned | Copper/silver conductor stock; drawing/extrusion and surface finishing; quantity TBD, included in reconciled coil BOM | Wire drawing / precision finishing | Field coils
+Precision coil insulation | Internal, planned | Ceramic or approved insulating feedstock; quantity TBD | Ceramic forming and coating | Field coils
+Regulator modules ×6 | Internal, planned | Machined iron/nickel/chromium alloy housings + purchased valves/sensing elements; quantities TBD | CNC machining → regulator assembly → pressure test | Gas-control
+Seals ×18 | Internal, planned | Engineering ceramic or qualified seal polymer/compound; feed quantity TBD | Molding/forming → dimensional inspection | Gas-control
+Interface couplers ×8 | Internal, planned | Existing specified nickel/iron/chromium stock + conductive contacts; allocation TBD | Precision mill/turn → coating → fit test | Precision interfaces
+Processor modules ×4 | External purchase until IC fabrication capability is approved | 4 qualified processor modules; no internal semiconductor-fab chain established | Incoming inspection / programming / integration | Control electronics
+Sensor modules ×10 | External purchase until detector fabrication capability is approved | 10 qualified sensors | Incoming calibration / integration | Sensor / safety
+Safing modules ×2 | External purchase until manufacturing capability is approved | 2 certified safing modules | Incoming qualification / installation | Sensor / safety
+Superconductive media, ceramics, tibanna, electronics feed, coolant | Stocked feedstock; external replenishment as required | Use quantities already specified in subassemblies; do not count again as separately added inputs | Receiving / preparation / metering | Multiple assemblies
+The internally feasible component chains above are proposed engineering routings, not a claim of installed dedicated workstation counts. Fabrication of qualified regulators, seals, couplers and coils must be demonstrated using existing machinery or approved upgrades. Raw-material quantities for these sub-recipes cannot be made authoritative without reconciling them to the parent BOM.
+Engine assembly and certification sequence
+Stage | Required input | Output | Status at Day 0
+Subassembly fabrication | Exact material BOM in Sections 3 & 8 | Individual subassembly set | Stocks in Section 8
+Core kit release | 1 housing + 1 field-control + 1 energy-transfer + 1 gas-control + 1 control-electronics + 1 thermal + 1 precision-interface + 1 sensor/safety set | 1 complete IE-4 kit | Kit availability constrained by lowest subassembly stock
+Precision machining / integration | 1 complete IE-4 kit | 1 machined/integrated core | A+B 90,000/y sustainable (combined; stage capacity modeled)
+Final assembly | 1 machined/integrated core; all 8 subassemblies remain installed | 1 mechanically/electrically complete core | Unreconciled Day 0 stage count
+Calibration | 1 complete assembled core | 1 calibrated core | Unreconciled Day 0 stage count
+QA / certification | 1 calibrated core | 1 certified IE-4 | Unreconciled Day 0 stage count
+Finished inventory | 1 certified IE-4 | 1 deliverable/strategic core | 0 certified finished engines at Day 0
+Customer shipment | 1 certified core + customer allocation | 1 delivered core | 108,800/y contracted
+Rated production stages and constraints
+Factory stage | Modeled sustainable engines/y | Equivalent engines/month | Surge demand/y
+Receiving and kits | 112,000 | 9,333 | 108,800
+Casting/forming | 105,000 | 8,750 | 108,800
+Precision machining | 96,000 | 8,000 | 108,800
+Component/subassembly builds | 100,000 | 8,333 | 108,800
+Final integration | 94,000 | 7,833 | 108,800
+Calibration and functional test | 92,000 | 7,667 | 108,800
+QA / certification | 90,000 | 7,500 | 108,800
+Packaging/dispatch | 110,000 | 9,167 | 108,800
+Primary bottleneck: QA/certification 90,000 IE-4/year; calibration/testing 92,000; final integration 94,000; machining 96,000. Sienar delivery run rate 108,800/year exceeds sustainable throughput by 18,800/year. These historic stage capacities are modeled baselines; reconcile and validate in the playable factory editor before treating workstation-level speeds as measured.
+Factory-editor integration
+Each internal recipe becomes an operation node attached to compatible owned machines or proposed new workstations. Nodes track units/batch, input quantities, materials, cycle times when known, queue buffers, WIP, reject/rework, machine availability and output routing. Unknown per-stage cycle times, component allowances and purchase lead times remain unspecified until measured or approved; the editor must not invent them. Logistics handles live orders and transport; this register governs the recipes and capability list.

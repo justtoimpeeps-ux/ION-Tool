@@ -1,0 +1,2 @@
+const {test}=require('node:test'),assert=require('node:assert/strict'),ReplayRangeIndex=require('../js/replay-index.js');
+test('replay ranges match direct scans when playing, paused, seeking and replaying',()=>{const rows=Array.from({length:1200},(_,id)=>({id,start:id%80,end:id%80+(id%17)})),index=new ReplayRangeIndex(rows);for(const time of [0,1,15,32,32,70,96,120,19,0,80,2,90])assert.deepEqual(index.at(time),rows.filter(r=>r.start<=time&&r.end>time));});

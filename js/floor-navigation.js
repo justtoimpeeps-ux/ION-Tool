@@ -1,0 +1,7 @@
+/* Floor navigation also works above replay and calculation overlays. */
+(()=>{const viewport=document.getElementById('factoryViewport'),scroll=document.getElementById('mapScroll');let pan=null;
+ viewport.addEventListener('wheel',e=>{if(e.ctrlKey||e.target.closest('input,select,textarea,button'))return;const unit=e.deltaMode===1?18:e.deltaMode===2?scroll.clientHeight:1,dx=(e.shiftKey&&!e.deltaX?e.deltaY:e.deltaX)*unit,dy=(e.shiftKey&&!e.deltaX?0:e.deltaY)*unit,x=scroll.scrollLeft,y=scroll.scrollTop;scroll.scrollLeft+=dx;scroll.scrollTop+=dy;if(x!==scroll.scrollLeft||y!==scroll.scrollTop)e.preventDefault()},{passive:false,capture:true});
+ viewport.addEventListener('pointerdown',e=>{if(e.button!==1)return;pan={id:e.pointerId,x:e.clientX,y:e.clientY,left:scroll.scrollLeft,top:scroll.scrollTop};viewport.setPointerCapture(e.pointerId);viewport.classList.add('is-panning');e.preventDefault();e.stopPropagation()},true);
+ viewport.addEventListener('pointermove',e=>{if(!pan||pan.id!==e.pointerId)return;scroll.scrollLeft=pan.left+pan.x-e.clientX;scroll.scrollTop=pan.top+pan.y-e.clientY;e.preventDefault();e.stopPropagation()},true);
+ const finish=e=>{if(pan?.id!==e.pointerId)return;pan=null;viewport.classList.remove('is-panning');if(viewport.hasPointerCapture(e.pointerId))viewport.releasePointerCapture(e.pointerId)};for(const name of ['pointerup','pointercancel','lostpointercapture'])viewport.addEventListener(name,finish,true);
+})();

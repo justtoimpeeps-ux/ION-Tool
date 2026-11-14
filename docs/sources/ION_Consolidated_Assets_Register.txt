@@ -1,0 +1,348 @@
+ION | CONSOLIDATED ASSETS REGISTER
+Consolidated Master Register • Working V2 • 12 October 2026 PT • 19 BBY / Day 0 model; live-state transition pending
+Authority: CURRENT WORKING REHAUL REFERENCE, NOT YET A CERTIFIED LIVE CHECKPOINT. ION approved opening decisions are preserved; Spartan and VCE estimates await Joe/Josh review. A future effective-dated live snapshot supersedes Day 0 figures for all quick asset and cash answers.
+1 | Consolidated financial bridge / summary
+Division | Assets Cr M | Known liabilities Cr M | Book equity Cr M | External revenue Cr M/y | Operating profit Cr M/y
+ION Propulsion | 1,800 | 650 | 1,150 | 1,088 | 175
+Spartan Mining (Joe review) | 920 | Not established | Not established | 600 | 65
+Valerion-Czerka (Josh review) | 243 | 92 | 151 | 185 | 22
+Subtotal before eliminations | 2,963 | 742 + Spartan TBD | 2,963 – total liabilities | 1,873 | 262
+The totals above are arithmetic division sums, not proof of consolidated liquidity or a fully balanced corporate ledger. Spartan cash, debt and detailed current obligations are UNRESOLVED. All revenue is initially external, but do not count post-merger internal material transfers as external sales. Equity merger assumed; no fictional purchase cash outflow, debt, or goodwill.
+2 | At-a-glance operating position
+Area | Day 0 / opening reference | Operational qualification
+Employees | 12,235 = 4,300 ION + 6,735 Spartan + 1,200 VCE | Joe and Josh organizational allocations under review
+IE-4 due deliveries | 0 overdue; 0 finished ready; ~750 WIP | 108,800 engines/year contracted; unsustainable surge
+Sustainable propulsion output | ~90,000 engines/year A+B combined | ~18,800/year below Sienar demand; pace must be improved
+Factory C | Authorized; preliminary engineering and site capital 45M Cr | No current finished-engine capacity
+Spartan raw ore modeled | 1,040,000 tonnes/year from seven mines | Proposed mine flows and grades; no duplication as finished metals
+Spartan finishing products | 76,780 tonnes/year modeled | Provisional recovered-metal and product composition
+VCE owned works | Corellian engineering campus | 1,200 staff; outside industrial automation customers
+Liquidity | ION 170M + VCE 38M + Spartan unknown | Do not claim 208M consolidated total as proven free cash
+3 | Financial breakdown and summary
+3A | ION Propulsion balance sheet (Cr M)
+Balance-sheet account (Cr millions) | Assets / cash | Liabilities / equity
+CASH ON HAND — unrestricted deposits | 170 | 
+External trade receivables | 130 | 
+Raw materials, WIP, completed engines & spares | 165 | 
+Factory A/B land, buildings & production equipment, net | 850 | 
+Factory C predevelopment / site works, net | 45 | 
+Owned propulsion patent & capitalized engineering IP, modeled | 380 | 
+Other operating assets, deposits and support fleet | 60 | 
+Trade payables and accrued procurement |  | 180
+Accrued payroll, benefits and taxes |  | 45
+Existing secured factory financing / long-term borrowings |  | 330
+Customer advances & deferred obligations |  | 65
+Other accrued liabilities |  | 30
+Book equity / retained capital (plug to reconcile) |  | 1,150
+TOTAL | 1,800 | 1,800
+3B | Valerion-Czerka balance sheet (Cr M)
+Balance-sheet account (Cr millions) | Assets / cash | Liabilities / equity
+CASH ON HAND — cash / near-cash | 38 | 
+External accounts receivable | 26 | 
+Work-in-progress / contract assets | 14 | 
+Raw materials, WIP & finished equipment | 19 | 
+Campus buildings, fabrication equipment & fleet (net) | 91 | 
+Capitalized patents, designs, control software & IP (model) | 48 | 
+Other assets / deposits | 7 | 
+Payables / accrued wages / trade liabilities |  | 24
+Equipment and property financing |  | 42
+Customer advances / deferred contract revenue |  | 17
+Other liabilities |  | 9
+Net invested equity / book interest |  | 151
+TOTAL | 243 | 243
+3C | Spartan provisional business scale
+Measure | Provisional Cr million/year or book value
+External annual revenue | 600
+Annual operating profit | 65
+Total owned assets (book model) | 920
+Mining/metal sales share of historical external revenue | 228
+Equipment sales | 120
+Extraction licensing | 102
+Engineering/survey/field service | 90
+Other products and services | 60
+ION propulsion annual income: 1,088M Cr external engine revenue less 913M Cr operating costs = 175M Cr operating profit. Model interest expense 18M Cr/year excluded from operating profit. Spartan and VCE profitability still modeled; consolidated taxes, cash movement and financing cannot yet be verified.
+4 | Personnel breakdown and summary
+4A | ION (4,300)
+Function | People | Operating role
+Factory A operations | 1,500 | Machining 550; assembly 420; materials handling 210; shift support 320
+Factory B operations | 1,450 | Machining 530; assembly 405; materials handling 205; shift support 310
+Product / process / industrial engineering | 420 | Propulsion design 160; process engineering 145; industrial optimization 115
+Testing, QA, regulatory / safety | 300 | Acceptance testing 130; metrology/QA 95; safety/compliance 75
+Supply chain, warehousing & outbound logistics | 250 | Procurement 95; warehouse 90; outbound logistics 65
+Facilities, maintenance & utilities | 220 | Maintenance 110; utilities 60; calibration/facilities 50
+Corporate, finance, legal, HR & IT | 160 | Finance 40; HR 32; legal/IP 25; IT 35; executive/admin 28
+TOTAL | 4,300 | Proposed ION workforce before addition of other divisions
+4B | Spartan Mining Company (SMC) (6,735)
+Directorate | Staff | Departments / subgroups
+R&D / Proprietary Technology | 1,480 | Extreme Environment 550; Prospecting & Scanners 350; Autonomous Systems 380; Metallurgy 200
+Fleet Logistics / Deep Space | 2,360 | Excavation & Drone Command 850; Cargo Transit 500; In-situ Resource Utilization 600; Security 410
+Vertical Integration / Manufacturing | 1,345 | Equipment Assembly 450; Space Systems & Industrial Structures 400 (proposed rename); Orbital Refining R&D 320; Maintenance / Retrofit 175
+Resource Strategy / Legal | 740 | Claims & Interstellar Law 180; Prospecting Economics 220; Procurement 340
+Corporate / Human Capital | 810 | HR 210; IT 280; Medical 150; Finance & Audit 170
+TOTAL | 6,735 | All site crews come from these divisions; never add site staffing a second time
+4C | Valerion-Czerka Systems Engineering (VCE) (1,200)
+Group | Headcount | Primary remit
+Industrial engineering & optimization | 300 | Flow analysis 115; layout design 105; production simulation 80
+Mechanical / tooling / machine design | 220 | Machine design 95; tooling/fixtures 75; mechanical systems 50
+Automation / controls / robotics | 180 | Robot integration 75; control systems 65; sensing/drives 40
+Manufacturing & process engineering | 140 | Manufacturing methods 65; process qualification 45; commissioning 30
+Prototype fabrication & test | 130 | Prototype fabrication 65; testing/verification 40; pilot operations 25
+Projects & field installation | 110 | Field installation 55; customer engineering 35; training/service 20
+Advanced R&D | 65 | Advanced machinery 25; controls/IP 20; exploratory research 20
+Corporate / finance / sales / administration | 55 | Finance 12; HR 10; sales/accounts 18; procurement/admin 15
+TOTAL | 1,200 | 
+Staff assigned to mine sites, plants or orbit are subsets of divisional headcounts, NOT additions to 12,235. No new department-owned financial pools are implied.
+4D | Corporate organization and leadership
+CURRENT STRUCTURE — six operating divisions. Division names identify business functions; legacy operating companies retain their names and owned assets. Existing leadership appointments do not add personnel or create new independent financial pools.
+Player leadership and reporting
+Role / division | Lead | Leadership relationship
+Coordinating CEO / lead player | Corey | First among player peers; coordinates major decisions and retains final canon/override authority.
+Mining & Materials Processing | Joe | Player division head; Spartan Mining Company (SMC) is the principal operating company.
+Industrial Engineering & Automation | Josh | Player division head; Valerion-Czerka Systems Engineering (VCE) is the principal operating company.
+Propulsion Systems | Mira Venn | Acting head; reports operationally to and coordinates with Joe and Josh as part of shared player leadership.
+Fleet & Logistics | Corin Vale | Acting head; reports operationally to and coordinates with Joe and Josh as part of shared player leadership.
+Corporate Services | Tessa Rhyne | Acting head; reports operationally to and coordinates with Joe and Josh as part of shared player leadership.
+Security & Intelligence | Dalen | Acting head; reports operationally to and coordinates with Joe and Josh as part of shared player leadership.
+Current divisions and departments
+Division | Departments / functions
+Propulsion Systems | Engine manufacturing (Factories A/B/C); propulsion R&D; production engineering; test, certification and quality.
+Mining & Materials Processing | Exploration and surveying; extraction and mine operations; metallurgy, refining and alloy processing; mining equipment and technology; resource development.
+Industrial Engineering & Automation | Industrial engineering and plant optimization; robotics and automation; machine tools and tooling; prototypes and testing; commissioning and field services.
+Fleet & Logistics | Fleet coordination and freight operations; port operations; warehouse and distribution; route and transport planning; cargo handling.
+Corporate Services | Finance and accounting; legal and compliance; human resources; procurement; information systems; commercial sales and contracts.
+Security & Intelligence | Site and personnel security; fleet and cargo protection; counterintelligence; information/cybersecurity; threat assessment.
+FUTURE DIVISIONS — PLANNING ONLY; not currently established or staffed
+Future division | Candidate departments / scope
+Starship Construction | Civilian ship design; commercial shipyards; hull fabrication; ship outfitting; testing and delivery.
+Naval Systems | Military vessel design; capital-ship construction; naval systems integration; trials and qualification.
+Advanced Technologies | Experimental propulsion; gravity-well systems; advanced physics and research; experimental prototyping.
+Defense Systems | Weapons; shields; sensors; fire control; military equipment integration.
+Operating principle: Corey, Joe and Josh are fellow players; acting division heads handle routine decisions and work with both Joe and Josh on cross-divisional priorities. Named department managers may be introduced later for role-play and delegation; legal, HR and similar administrative work remains optional gameplay. No future division is activated by this planning table.
+5 | Factories, sites and laboratories
+ION Propulsion | Facility / role | Status
+Factory A | Older expanded main engine works; ~44–45k annual normal rated flow | Owned / operational
+Factory B | Near-clone rushed line; ~44–45k normal annual flow | Owned / operational
+Common quality/tooling/energy | Shared test and utilities assets (within 850M plant net book value) | Owned / operational
+Factory C | Preliminary design/site prep, separately valued 45M | Authorized, not producing
+Spartan Mining Company (SMC) | Site / role | Status
+HQ/Corellian equipment works | R&D, mining machinery, prototype and headquarters | Owned
+Seven mining sites | Asteron, North Ridge, Deep Vein, Redbank, Keldon, Outer Spur, West Basin | 3 mineral rights owned, 3 leased, 1 JV
+Four processing plants | Corellia Prime, Talus Metals, Drall Alloy, Selonia Precision | All owned; technical naming remains source-authoritative
+Corellia orbital laboratory | 220 m × 140 m orbital test and research installation, not shipyard | Proposed technical fit; ownership included in planning
+Valerion-Czerka Systems Engineering (VCE) | Site / role | Status
+Corellian engineering & manufacturing campus | Owned fabrication, robotics, testing, labs | Approved campus in principle
+Two field/liaison offices | Regional engineering/customer support | Proposed / confirm locations
+6 | Spacecraft, fleet and vehicles
+6A | Approved ION fleet and ground transport
+Asset group | Units | Primary duty | Accounting treatment
+YT-1300 light freighter | 1 | Urgent high-value components, engineering parts and small emergency deliveries | Included in 60M Cr other support assets
+G9 Rigger light freighter | 1 | Tooling, replacement components and compact cargo runs | Included in 60M Cr other support assets
+Theta-class T-2c shuttle | 1 | Technical teams, leadership and customer/supplier travel | Included in 60M Cr other support assets
+Local craft: cargo shuttles / personnel shuttles / utility tugs | 2 + 2 + 2 = 6 | In-system factory/port transfer, people transport and local handling | Shared factory assets: 850M Cr plant/equipment
+Industrial forklifts / pallet movers | 110 | Warehouse, racks and production feed | Shared factory assets
+Autonomous mobile material movers | 160 | Factory A/B line replenishment and internal transport | Shared factory assets
+Shop maintenance vehicles / lift platforms | 36 | Facilities repair and rigging | Shared factory assets
+External engine bulk transport | 0 | Routine Sienar deliveries handled through contracts and transport providers | Freight expense; not a hidden fleet
+6B | Spartan Mining Company (SMC) — vessels and local craft
+Asset type | Count | working role / throughput assumption
+Gozanti Stella | 1 | Heritage engineering/survey/cargo ship; specific cargo rating/config remains to validate
+Action VI or medium bulk transports | 4 | 8,000 t per working voyage for conservative modeled freight
+Light utility/bulk freighters | 10 | 600 t each working voyage
+Survey/prospect vessels | 3 | Exploration, deposits and sampling
+Mobile mining support | 3 | Installation and maintenance
+Personnel/technical transports | 4 | Crews and spare parts
+TOTAL hyperspace vessels | 25 | Excludes local craft
+Mining shuttles | 24 | Local movement
+Ore lighters | 18 | Near-mine concentration and shuttle transfers
+Utility skiffs | 30 | Repair and personnel
+Cargo loaders/tugs | 42 | Loading and handling
+Drone tenders | 12 | Mining drone servicing
+TOTAL local craft | 126 | Baseline illustration only
+6C | Valerion-Czerka Systems Engineering (VCE) — transport
+Asset | Count | Operating role / qualification
+Light utility freighter (hyperspace-capable) | 1 | Sensitive automation shipments, mobile field deployment; type/name TBD
+Atmospheric personnel/cargo shuttles | 2 | Corellian campus and regional movement
+Cargo speeders / repulsorlift trucks | 18 | Receiving, test platforms and machinery delivery
+Engineering service speeders / field vans | 28 | Mobile teams and customer service
+Heavy equipment movers / mobile platforms | 9 | On-site industrial installation
+Forklifts / cargo-loader droids | 42 | Warehouse and shop material handling
+ION nine spacecraft/local craft are approved; Spartan Stella established, remainder proposed; VCE models/name remain under review. Bulk outbound TIE shipments are contracted freight, not an assumed ION-owned vessel fleet.
+7 | Machinery and physical support
+7A | Propulsion production machines by factory
+Equipment category | Factory A | Factory B | Total | Notes
+Precision machining centers / advanced mill-turn stations | 155 | 145 | 300 | Major metalworking stations, multiple processes
+Casting, forging and forming cells | 35 | 33 | 68 | High-temperature components and near-net preforms
+Heat treatment / vacuum processing units | 44 | 42 | 86 | Controlled thermal processing
+Automated robotic assembly / integration cells | 88 | 84 | 172 | Assembly of IE-4 subassemblies and final cores
+Test, calibration and acceptance stands | 42 | 40 | 82 | Functional and safety tests; shared QA oversight
+Surface finishing / cleaning / coating lines | 31 | 29 | 60 | Materials preparation and protection
+Robotic packaging / palletizing stations | 18 | 18 | 36 | Outbound production flow
+Industrial material-handling movers | 80 | 80 | 160 | Same units listed above: not additional vehicles
+Fabrication / toolroom and maintenance workstations | 65 | 65 | 130 | In-house fixture repairs and tooling
+7B | Spartan Mining Company (SMC) — extraction and fabrication
+Equipment class | Company-owned count | Role
+Heavy autonomous extractors | 210 | Primary excavation/mining
+Small specialized extraction drones | 640 | Narrow-access and deposit-specific recovery
+Survey drones | 175 | Mapping and exploration
+Ore-hauler and material-handling droids | 320 | Mines, concentrate stations and ports
+Mobile crushing and separation trains | 42 | On-site beneficiation
+Advanced concentration/recovery modules | 36 | Site-specific high-recovery processing
+Heavy maintenance/repair droids | 110 | Reliability and repair
+Industrial fabrication cells | 48 | Mining equipment and custom modules
+7C | Valerion-Czerka Systems Engineering (VCE) — automation and machinery
+Asset group | Units | Notes / ownership and detail status
+Corellian engineering campus | 1 | OWNED Corellian land, buildings, HQ, labs, prototype shops; detailed valuation proposed
+Engineering satellite / customer liaison offices | 2 (proposed) | Owned field offices / liaison properties; locations and valuation to be confirmed by Josh
+5-axis precision machining centers | 32 | Prototype and tooling, not mass engine production
+CNC mills / lathes / grinders (other) | 46 | Precision mechanical work
+Industrial additive / casting / joining stations | 28 | Prototype and selected machinery housings
+Robotics validation cells | 18 | Test custom arms, grippers and controls
+Conveyor / handling pilot test lines | 12 | Full-scale demonstration and cycle studies
+Metrology / non-destructive test stations | 30 | CMM, imaging, dyno and reliability benches
+Industrial control / digital twin compute suites | 7 | Software and discrete-event simulation
+Portable field-installation tool kits | 84 | Teams share sets; calibration tracked
+Heavy lift / rigging / mobile hoists | 26 | Campus and customer deployment
+Construction / maintenance droids | 115 | Company-owned droids, not counted as personnel; count proposed
+Machinery counts are itemizations inside recorded fixed-asset carrying values, not new added value. Output rates cannot be inferred from work-center totals alone.
+8 | Materials / raw-resource ledger
+Owned in-transit materials are INCLUDED in group on-hand stock; their physical location can be tracked without creating a new total. Spartan geological reserves and annual ore production are NOT counted as immediately usable ION warehouse metals.
+Material | IE-4 kg/core | Overall need (t/y) | Current stock (t) | Current production (t/y) | Internal share | External purchase (t/y)
+Iron | 203 | 22,086.4 | Unreconciled | 45,960 | 85% | 3,313.0
+Nickel | 118 | 12,838.4 | Unreconciled | 19,720 | 80% | 2,567.7
+Cobalt | 10 | 1,088.0 | Unreconciled | 1,615 | 40% | 652.8
+Chromium | 27 | 2,937.6 | Unreconciled | 3,920 | 65% | 1,028.2
+Copper | 7.5 | 816.0 | Unreconciled | 4,800 | 70% | 244.8
+Silver | 1.5 | 163.2 | Unreconciled | 320 | 25% | 122.4
+Gold | 0.72 | 78.3 | Unreconciled | 110 | 15% | 66.6
+Platinum-group metals | 0.28 | 30.5 | Unreconciled | 50 | 15% | 25.9
+Superconductors | 59 | 6,419.2 | Unreconciled | 0 confirmed | 0% | 6,419.2
+Ceramics | 75 | 8,160.0 | Unreconciled | 0 confirmed | 0% | 8,160.0
+Tibanna | 16 | 1,740.8 | Unreconciled | 0 confirmed | 0% | 1,740.8
+Electronics feedstock | 37 | 4,025.6 | Unreconciled | 0 confirmed | 0% | 4,025.6
+Coolant | 28 | 3,046.4 | Unreconciled | 0 confirmed | 0% | 3,046.4
+Material coverage percentages are accepted planning allocations for this register, subject to later Joe/management adjustments. Current stock is not reconstructed from pre-merger quantities. Current production reflects modeled Spartan finished contained-element output (not necessarily ION-available or propulsion-certified supply). External purchases reflect the planning allocations, not confirmed contracts.
+8B | Spartan Mining Company (SMC) — annual refinery throughput
+Plant / staff | Input (t/year) | Outputs / transfers (t/year) | Process residuals / byproducts (t/year)
+Corellia Prime; 155 | 106,000 | 45,000 ferrous → Talus; 22,000 nickel-copper → Talus; 21,000 chromite-cobalt → Drall; 1,200 precious feed → Selonia | 16,800
+Talus Metals; 165 | 160,000 | 42,000 iron; 17,000 nickel; 4,800 copper; 1,200 cobalt intermediate → Drall; 180 anode slimes → Selonia | 94,820
+Drall Alloy Works; 140 | 43,200 | 7,200 ferrochrome alloy; 3,400 nickel-chromium alloy; 1,900 cobalt metal/salts | 30,700
+Selonia Precision; 130 | 3,680 | 320 silver; 110 gold; 50 PGM | 3,200
+System-wide mass accounting (not a separate plant): 1,040,000 tonnes/year mined ore = 76,780 tonnes/year finished products + 963,220 tonnes/year residual material across mine sites and processing plants. Residuals include separated gangue, tailings, slag, moisture/process losses and byproducts; they are NOT unprocessed usable stock.
+8B.2 | Valerion-Czerka Systems Engineering (VCE) — inventory book values (Cr M)
+Material / inventory class | Estimated value (Cr M) | Typical contents
+Structural metals / machine stock | 4.5 | Industrial steel, aluminum/titanium analogs, high-grade alloys
+Precision components / bearing and drives | 3.6 | Linear rails, geartrains, servos, spindle sets
+Control electronics and instrumentation | 4.2 | Controller boards, sensors, power electronics
+Robotics actuators, grippers and hydraulics | 2.7 | Servo assemblies, tool changers, lines
+Conveyor modules / belts / rollers | 1.6 | Modular transport segments, power units
+Consumables, test and safety stock | 1.0 | Coolants, ceramics, lubricants, calibration standards
+Finished tools / partly completed automation systems | 1.4 | Ready-to-ship kits and finished assemblies
+TOTAL | 19.0 | Inventory balance-sheet value, not annual throughput
+The Spartan plant figures above are annual process flows, not on-hand inventories. Residual material is not assumed recoverable or available for reuse without separate assay and recovery records. Current physical stock balances still require a verified count.
+8C | IE-4 subassembly requirements and inventory values
+Legacy exact per-core subassembly recipe below is retained as an ENGINEERING REQUIREMENT, not as the old 58-core/month physical stock levels. Current Day 0 counted sets are not yet verified; do not import legacy counts. The ION 165M Cr inventory total includes 62M unfinished assemblies and ~750 cores at various stages and 10M spares/tool reserves; VCE has 19M component/automation inventory.
+Subassembly | Qty/core | Exact manufacturing-grade inputs per subassembly | Purchased/specialty components | Output
+Structural core housing | 1 | Iron alloy 182 kg; nickel alloy 46 kg; chromium alloy 14 kg | — | 1 housing
+Field-control assembly | 1 | Nickel alloy 18 kg; cobalt alloy 7 kg; copper 1.8 kg; silver 0.4 kg; gold 0.15 kg; platinum-group metals 0.05 kg | Superconductive media 38 kg; precision field coils x12 | 1 field-control set
+Energy-transfer assembly | 1 | Nickel alloy 12 kg; copper 4.0 kg; silver 0.6 kg; gold 0.3 kg; platinum-group metals 0.1 kg | Superconductive media 21 kg; technical ceramic 34 kg | 1 energy-transfer set
+Gas-control assembly | 1 | Iron alloy 12 kg; nickel alloy 9 kg; chromium alloy 4 kg | Tibanna charge 16 kg; regulator modules x6; seals x18 | 1 gas-control set
+Control electronics | 1 | Copper 1.2 kg; silver 0.3 kg; gold 0.2 kg; platinum-group metals 0.1 kg | Electronics feedstock 24 kg; processor modules x4 | 1 control-electronics set
+Thermal-management assembly | 1 | Nickel alloy 17 kg; cobalt alloy 3 kg; chromium alloy 6 kg | Technical ceramic 41 kg; coolant charge 28 kg | 1 thermal set
+Precision interfaces | 1 | Nickel alloy 16 kg; iron alloy 9 kg; chromium alloy 3 kg | Interface couplers x8 | 1 interface set
+Sensor / safety package | 1 | Copper 0.5 kg; silver 0.2 kg; gold 0.07 kg; platinum-group metals 0.03 kg | Electronics feedstock 13 kg; sensor modules x10; safing modules x2 | 1 sensor/safety set
+8C.2 | ION Propulsion — inventory valuation (Cr M)
+Inventories | Modeled value (Cr M) | Description / quantity basis
+Common structural metals & raw stock | 55 | Loose metal feed and manufacturing consumables; quantities in Section 12
+Specialty feedstocks / supplier components | 38 | Superconductors, ceramics, tibanna, electronics, coolant, precious feeds and bought modules
+Work in process and unfinished subassemblies | 62 | All unfinished subassemblies, fabricated parts and ~750 active engine cores (range 600–900); absorbs former 18M finished-goods allocation without adding assets
+Completed, certified engines ready for shipment | 0 | Zero certified completed engines ready for dispatch, as explicitly approved. No finished-goods buffer; Sienar overdue deliveries = zero.
+Replacement parts, tools and warranty stock | 10 | Spare parts, tooling consumables and field service reserve
+TOTAL | 165 | Reconciles to V1 balance sheet; no extra asset addition
+9 | Refining yields and material conversion
+Spartan-specific recovery figures replace legacy generic 61–72% ore-to-feed figures for strategic modeling, but they represent DIFFERENT denominators. The following is proposed END-TO-END contained-element recovery into finished products, not fraction of raw rock converted to saleable metal.
+Element | Contained in ore t | Contained in finished products t | Residual / unrecovered t | Net recovery
+Iron | 48,000 | 45,960 | 2,040 | 95.75%
+Nickel | 20,500 | 19,720 | 780 | 96.20%
+Chromium | 4,150 | 3,920 | 230 | 94.46%
+Cobalt | 1,740 | 1,615 | 125 | 92.82%
+Copper | 5,050 | 4,800 | 250 | 95.05%
+Silver | 345 | 320 | 25 | 92.75%
+Gold | 118 | 110 | 8 | 93.22%
+Platinum-group metals | 55 | 50 | 5 | 90.91%
+TOTAL | 79,958 | 76,495 | 3,463 | 95.67% (metal-weighted)
+Plant-to-plant physical conservation remains provisional; precious-metal output and refinery composition require technical assay reconciliation. Do not multiply a 95.67% contained-metal recovery by raw-ore mass. The original legacy yield table is retained only in migration references, not as current refinery yield.
+10 | Full resource-to-finished IE-4 core flow
+A. Extraction & logistics | B. Sequential refining | C. Materials & subassemblies | D. Core production & delivery
+1. Surveyed asteroid reserves; ↓; 2. Resource-specific extraction; ↓; 3. Container loading / raw transport; ↓; 4. RAW STOCKPILE | 5. Crushing / sorting; ↓; 6. Material separation; ↓; 7. Smelting / reduction; ↓; 8. Purification / alloy preparation; ↓; 9. REFINED MATERIAL STOCK | 10. Purchased specialty materials join refined internal materials; ↓; 11. Subassembly fabrication; ↓; 12. SUBASSEMBLY STOCK; ↓; 13. Kitting | 14. Precision machining / integration; ↓; 15. Final assembly; ↓; 16. Calibration; ↓; 17. Quality assurance / certification; ↓; 18. CERTIFIED CORE STOCK; ↓; 19. Customer allocation / delivery
+REHAUL ADDITIONS: Seven Spartan mines → on-site preconcentration → (where applicable) Corellia Prime → Talus/Drall/Selonia refining → ION-approved/certified metal stock → Factory A/B component fabrication. Purchased nonmetal specialties enter at qualification/warehouse issue. VCE supplies automation technology, maintenance tooling and possible bought components but has no confirmed current superconductors/ceramics/tibanna production. All four plants, seven mines and legal transfer legs are provisional until Joe confirms. Refer to §8 material routing and §9 mass model.
+11 | IE-4 engineering bill of materials
+Subassembly | Qty/core | Exact manufacturing-grade inputs per subassembly | Purchased/specialty components | Output
+Structural core housing | 1 | Iron alloy 182 kg; nickel alloy 46 kg; chromium alloy 14 kg | — | 1 housing
+Field-control assembly | 1 | Nickel alloy 18 kg; cobalt alloy 7 kg; copper 1.8 kg; silver 0.4 kg; gold 0.15 kg; platinum-group metals 0.05 kg | Superconductive media 38 kg; precision field coils x12 | 1 field-control set
+Energy-transfer assembly | 1 | Nickel alloy 12 kg; copper 4.0 kg; silver 0.6 kg; gold 0.3 kg; platinum-group metals 0.1 kg | Superconductive media 21 kg; technical ceramic 34 kg | 1 energy-transfer set
+Gas-control assembly | 1 | Iron alloy 12 kg; nickel alloy 9 kg; chromium alloy 4 kg | Tibanna charge 16 kg; regulator modules x6; seals x18 | 1 gas-control set
+Control electronics | 1 | Copper 1.2 kg; silver 0.3 kg; gold 0.2 kg; platinum-group metals 0.1 kg | Electronics feedstock 24 kg; processor modules x4 | 1 control-electronics set
+Thermal-management assembly | 1 | Nickel alloy 17 kg; cobalt alloy 3 kg; chromium alloy 6 kg | Technical ceramic 41 kg; coolant charge 28 kg | 1 thermal set
+Precision interfaces | 1 | Nickel alloy 16 kg; iron alloy 9 kg; chromium alloy 3 kg | Interface couplers x8 | 1 interface set
+Sensor / safety package | 1 | Copper 0.5 kg; silver 0.2 kg; gold 0.07 kg; platinum-group metals 0.03 kg | Electronics feedstock 13 kg; sensor modules x10; safing modules x2 | 1 sensor/safety set
+Section 8 lists the total 13 per-core feed masses. The table immediately above details original eight-subassembly precise allocations. Do not double-count subassembly inputs and per-core material totals: the former decompose the latter. Source recipes retained unless formally superseded by engineering change approval.
+12 | Assembly dependency tree
+Production step | Required input for EACH unit entering step | Output | Opening WIP
+Subassembly fabrication | Exact material BOM in Sections 3 & 8 | Individual subassembly set | Stocks in Section 8
+Core kit release | 1 housing + 1 field-control + 1 energy-transfer + 1 gas-control + 1 control-electronics + 1 thermal + 1 precision-interface + 1 sensor/safety set | 1 complete IE-4 kit | Kit availability constrained by lowest subassembly stock
+Precision machining / integration | 1 complete IE-4 kit | 1 machined/integrated core | A+B 90,000/y sustainable (combined; stage capacity modeled)
+Final assembly | 1 machined/integrated core; all 8 subassemblies remain installed | 1 mechanically/electrically complete core | Unreconciled Day 0 stage count
+Calibration | 1 complete assembled core | 1 calibrated core | Unreconciled Day 0 stage count
+QA / certification | 1 calibrated core | 1 certified IE-4 | Unreconciled Day 0 stage count
+Finished inventory | 1 certified IE-4 | 1 deliverable/strategic core | 0 certified finished engines at Day 0
+Customer shipment | 1 certified core + customer allocation | 1 delivered core | 108,800/y contracted
+One complete engine kit requires every prerequisite set simultaneously. Current quantities of each finished subassembly are unresolved and differ from old-game inventory; the dependency LOGIC remains authoritative as an engineering template.
+13 | Production and throughput
+Current APPROVED normal combined sustainable output ~90,000/year (7,500/month equivalent) versus a contracted 108,800/year (9,066.7/month). Factory A and B independently have modeled 44–45k/year capability. A 108,800/year shipping pace was temporarily attained using exceptional overtime/expediting, NOT a sustainable machine rate. The precise machine-stage bottleneck table below is an illustrative constrained model pending factory cycle-time design; it is not a verified measurement.
+Factory stage | Modeled sustainable engines/y | Equivalent engines/month | Surge demand/y
+Receiving and kits | 112,000 | 9,333 | 108,800
+Casting/forming | 105,000 | 8,750 | 108,800
+Precision machining | 96,000 | 8,000 | 108,800
+Component/subassembly builds | 100,000 | 8,333 | 108,800
+Final integration | 94,000 | 7,833 | 108,800
+Calibration and functional test | 92,000 | 7,667 | 108,800
+QA / certification | 90,000 | 7,500 | 108,800
+Packaging/dispatch | 110,000 | 9,167 | 108,800
+The final QA/acceptance step is shown as a provisional effective cap of 90k/y solely to close the existing 90k sustainable baseline. Upstream stages therefore are not proved free of bottlenecks; capacity may be redistributed during factory-design gameplay. A+B actual subassembly work-center counts by factory appear in §7. No current output is assigned to Factory C.
+14 | Current bottleneck ladder
+Priority | Candidate constraint | Modeled capacity/y | Impact vs 108,800 demand
+1 | QA / certification | 90,000 | 18,800 short
+2 | Calibration / functional test | 92,000 | 16,800 short if upstream fixed
+3 | Final engine integration | 94,000 | 14,800 short if upstream fixed
+4 | Precision machining | 96,000 | 12,800 short if upstream fixed
+5 | Specialty feed/quality and component certification | Unknown | Cannot rank until contracts and yields finalized
+6 | Spartan interplant logistics | Nominal 328,000 t/y bulk-fleet model vs ~312,880 t/y intermediate movements | Potential small transport headroom; external customer shipping unresolved
+This is a CANDIDATE ladder, not an independently validated factory simulation. Planned throughput updates and new engineering process studies should revise the effective constraint rather than carrying old 64/month figures forward.
+15 | Intellectual property
+Owning division | IP / technology | Carrying value or state
+ION Propulsion | Accidentally discovered IE-4 engine patent; exclusive rights owned outright; factory designs | Modeled 380M Cr net carrying value within balance sheet
+Spartan | Specialist extraction systems, recovery, scanner and mining equipment IP | Value within proposed Spartan 920M assets; unreleased secret extractor not assumed commercial
+Valerion-Czerka | Automation controls, designs, patents, digital-twin software | Modeled 48M Cr book IP; included in VCE 243M total
+16 | Governance reference, unresolved items and glossary
+Governing gameplay and accounting policies now live in ION Rules & Gameplay Library — Rehaul V2. This Assets register contains only a reference to those rules. Any new allocation, purchase, transfer or sale requires an effective-dated source ledger entry, not a silent reset from Day 0.
+16A | Unresolved reconciliation queue
+Item | Why unresolved | Who / next step
+Spartan opening cash, liabilities, book equity | No detailed liability ledger in Joe review draft | Joe / finance NPC
+Spartan metal inventory and external commitments | Annual refinery output is not transferable available ION stock | Joe / commercial and plant staff
+VCE manufacturing/freighter classifications | Models, clients and properties partially proposed | Josh
+ION stage rates and machine bottlenecks | No validated per-work-center cycle, yield or uptime | Corey/VCE process engineering
+Subassembly on-hand counted sets | Legacy stocks invalid after scale rehaul | ION logistics / factory stocktake
+Factory C detailed capacity and spending | Only predevelopment 45M capitalized baseline | Projects register after replay
+Spartan commodity recovery compositions | Provisional assays and product purity | Joe / Tessa/Mira technical team
+16B | Plain-English accounting and operations glossary
+Term | Plain-English meaning
+Operating profit | Annual operating sales less operating costs, before interest and income taxes.
+Revenue | Sales to customers; internal ION division transfers are removed from group revenue.
+Assets | Property, cash, inventory, receivables and other resources owned or controlled.
+Liabilities | Debts and amounts owed to suppliers, staff and customers.
+Book equity | Assets minus liabilities; not cash or acquisition value.
+Work in process | Partially made assemblies and engines; not finished inventory.
+Throughput | Actual quantity passing through a step over a defined time.
+Sustainable capacity | Repeatable output without extraordinary overtime or deferred maintenance.
+Nameplate capacity | Maximum designed rate, not a guaranteed achievable production rate.
+SOURCE FILES — ION Propulsion Day 0 Standalone Register (2026-10-12); Spartan Mining Resources Operating Register V3 Joe Review (2026-10-11); Valerion-Czerka Resources Operating Register revised (2026-10-11); ION Operations & Assets Master Reference v3 (legacy) and ION Gameplay Library (2026-10-05). All supporting registries are archived separately and are not additive live balances.

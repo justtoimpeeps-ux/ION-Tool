@@ -1,0 +1,458 @@
+{
+  "kind": "Recorded prototype baseline, not measured production",
+  "sourceReferenceEnginesPerDay": 247,
+  "operatingHours": 9,
+  "preShiftHours": 5.3825,
+  "certifiedEngines": 245,
+  "dispatchedEngines": 195,
+  "openingCertifiedEngines": 0,
+  "normalPaidManHours": 29250,
+  "totalPaidManHours": 30980.439894636016,
+  "labour": {
+    "normalShiftHours": 29250,
+    "preShiftLogisticsHours": 1353.911388888888,
+    "preShiftMaintenanceHours": 376.52850574712795,
+    "totalPaidHours": 30980.439894636016,
+    "productiveMachineHours": 5499.184841651563,
+    "vehicleBusyHours": 1273.796944444445,
+    "paidPeople": 3250,
+    "unassignedPaidPeople": 1493,
+    "byRole": {
+      "machining": {
+        "people": 1080,
+        "normalHours": 9720,
+        "preShiftHours": 0
+      },
+      "assembly": {
+        "people": 825,
+        "normalHours": 7425,
+        "preShiftHours": 0
+      },
+      "qa": {
+        "people": 300,
+        "normalHours": 2700,
+        "preShiftHours": 0
+      },
+      "shiftSupport": {
+        "people": 630,
+        "normalHours": 5670,
+        "preShiftHours": 376.52850574712795
+      },
+      "handling": {
+        "people": 415,
+        "normalHours": 3735,
+        "preShiftHours": 1353.9113888888892
+      }
+    },
+    "byProcess": {
+      "cast": {
+        "workers": 96,
+        "paidHours": 864,
+        "productiveHours": 235.78907950168556
+      },
+      "sealForm": {
+        "workers": 12,
+        "paidHours": 108,
+        "productiveHours": 62.94606371134019
+      },
+      "insulationForm": {
+        "workers": 8,
+        "paidHours": 72,
+        "productiveHours": 35.14971453688167
+      },
+      "heat": {
+        "workers": 78,
+        "paidHours": 702,
+        "productiveHours": 335.3510593896682
+      },
+      "coilInsulate": {
+        "workers": 8,
+        "paidHours": 72,
+        "productiveHours": 38.24326921733398
+      },
+      "finish": {
+        "workers": 40,
+        "paidHours": 360,
+        "productiveHours": 140.55186491815886
+      },
+      "wireFinish": {
+        "workers": 8,
+        "paidHours": 72,
+        "productiveHours": 23.52839512027171
+      },
+      "couplerCoat": {
+        "workers": 12,
+        "paidHours": 108,
+        "productiveHours": 35.461048201301836
+      },
+      "coilWind": {
+        "workers": 11,
+        "paidHours": 99,
+        "productiveHours": 51.846382851834115
+      },
+      "regAssemble": {
+        "workers": 26,
+        "paidHours": 234,
+        "productiveHours": 106.64706593980009
+      },
+      "coilTest": {
+        "workers": 12,
+        "paidHours": 108,
+        "productiveHours": 47.63965623174209
+      },
+      "regTest": {
+        "workers": 8,
+        "paidHours": 72,
+        "productiveHours": 34.32008957618255
+      },
+      "sealInspect": {
+        "workers": 4,
+        "paidHours": 36,
+        "productiveHours": 17.901956560412398
+      },
+      "couplerFit": {
+        "workers": 6,
+        "paidHours": 54,
+        "productiveHours": 23.97407714925556
+      },
+      "support": {
+        "workers": 130,
+        "paidHours": 1170,
+        "productiveHours": 0
+      },
+      "field": {
+        "workers": 32,
+        "paidHours": 288,
+        "productiveHours": 114.34599071109808
+      },
+      "energy": {
+        "workers": 32,
+        "paidHours": 288,
+        "productiveHours": 35.00731286208159
+      },
+      "gas": {
+        "workers": 14,
+        "paidHours": 126,
+        "productiveHours": 53.95321095061131
+      },
+      "electronic": {
+        "workers": 14,
+        "paidHours": 126,
+        "productiveHours": 31.883242697594486
+      },
+      "thermal": {
+        "workers": 32,
+        "paidHours": 288,
+        "productiveHours": 38.889503376173316
+      },
+      "interface": {
+        "workers": 12,
+        "paidHours": 108,
+        "productiveHours": 40.80379773315079
+      },
+      "sensor": {
+        "workers": 12,
+        "paidHours": 108,
+        "productiveHours": 23.4049465372142
+      },
+      "kit": {
+        "workers": 20,
+        "paidHours": 180,
+        "productiveHours": 52.80061986958138
+      },
+      "cnc": {
+        "workers": 216,
+        "paidHours": 1944,
+        "productiveHours": 1875.327971589075
+      },
+      "wireDraw": {
+        "workers": 16,
+        "paidHours": 144,
+        "productiveHours": 24.41453475885079
+      },
+      "regMachine": {
+        "workers": 22,
+        "paidHours": 198,
+        "productiveHours": 52.63366044626088
+      },
+      "couplerMachine": {
+        "workers": 22,
+        "paidHours": 198,
+        "productiveHours": 46.93654646043115
+      },
+      "contactMachine": {
+        "workers": 12,
+        "paidHours": 108,
+        "productiveHours": 15.064187338917518
+      },
+      "housingMachine": {
+        "workers": 12,
+        "paidHours": 108,
+        "productiveHours": 39.73060350003704
+      },
+      "integrate": {
+        "workers": 84,
+        "paidHours": 756,
+        "productiveHours": 710.3700624509867
+      },
+      "calibrate": {
+        "workers": 50,
+        "paidHours": 450,
+        "productiveHours": 446.42418901374714
+      },
+      "qa": {
+        "workers": 54,
+        "paidHours": 486,
+        "productiveHours": 480.8875298061101
+      },
+      "package": {
+        "workers": 36,
+        "paidHours": 324,
+        "productiveHours": 226.95720864377287
+      }
+    }
+  },
+  "cost": {
+    "prepLabour": 50771.67708333331,
+    "shiftLabour": 731250,
+    "logisticsLabour": 0,
+    "maintenanceLabour": 19767.746551724216,
+    "parts": 28020,
+    "energy": 5095.18777777778,
+    "total": 834904.6114128353
+  },
+  "materialBalanceMaximumError": 2.561137080192566e-9,
+  "trips": 7141,
+  "parameters": {
+    "hours": 9,
+    "bufferMinutes": 60,
+    "openingWip": 750,
+    "phaseOpeningWork": 1,
+    "forklifts": 110,
+    "tugs": 160,
+    "walkers": 12,
+    "maintenanceTarget": 0.97,
+    "serviceTrigger": 0.01,
+    "payUnassigned": 1,
+    "overtimeMultiplier": 1.5,
+    "maintenanceParts": 1000,
+    "wearPerDay": 0.002,
+    "serviceMinutes": 10,
+    "serviceMinutesPerPoint": 3,
+    "wage": 25,
+    "maintenanceWage": 35,
+    "energyPerVehicleHour": 4,
+    "partCost": 30,
+    "kitsInbound": 0,
+    "tickSeconds": 60,
+    "doorSeconds": 2,
+    "dispatchLookaheadMinutes": 15,
+    "beltSpeed": 0.8,
+    "beltVolumePerMetre": 0.25
+  },
+  "stageResults": {
+    "cast": {
+      "rated": 383.3061064313287,
+      "possible": 283.425319193597,
+      "actual": 75,
+      "machines": 48
+    },
+    "sealForm": {
+      "rated": 365.05343469650387,
+      "possible": 269.41247691797554,
+      "actual": 155,
+      "machines": 12
+    },
+    "insulationForm": {
+      "rated": 365.0534346965037,
+      "possible": 270.4452739269711,
+      "actual": 130,
+      "machines": 8
+    },
+    "heat": {
+      "rated": 383.3061064313286,
+      "possible": 286.052993122253,
+      "actual": 175,
+      "machines": 78
+    },
+    "coilInsulate": {
+      "rated": 365.0534346965037,
+      "possible": 264.2484918729979,
+      "actual": 142,
+      "machines": 8
+    },
+    "finish": {
+      "rated": 383.3061064313286,
+      "possible": 285.9195239703213,
+      "actual": 130,
+      "machines": 40
+    },
+    "wireFinish": {
+      "rated": 365.0534346965037,
+      "possible": 270.4452739269711,
+      "actual": 92,
+      "machines": 8
+    },
+    "couplerCoat": {
+      "rated": 365.05343469650387,
+      "possible": 265.2812888819935,
+      "actual": 93,
+      "machines": 12
+    },
+    "coilWind": {
+      "rated": 365.0534346965037,
+      "possible": 263.9668199614537,
+      "actual": 137,
+      "machines": 11
+    },
+    "regAssemble": {
+      "rated": 365.0534346965038,
+      "possible": 268.30023398521115,
+      "actual": 120,
+      "machines": 13
+    },
+    "coilTest": {
+      "rated": 365.05343469650387,
+      "possible": 277.6748529899397,
+      "actual": 127,
+      "machines": 12
+    },
+    "regTest": {
+      "rated": 365.0534346965037,
+      "possible": 282.8388380349174,
+      "actual": 136,
+      "machines": 8
+    },
+    "sealInspect": {
+      "rated": 365.0534346965037,
+      "possible": 267.3468828999845,
+      "actual": 134,
+      "machines": 4
+    },
+    "couplerFit": {
+      "rated": 365.0534346965038,
+      "possible": 267.3468828999845,
+      "actual": 122,
+      "machines": 6
+    },
+    "support": {
+      "rated": 0,
+      "possible": 0,
+      "actual": 0,
+      "machines": 130
+    },
+    "field": {
+      "rated": 365.0534346965036,
+      "possible": 271.9944694404644,
+      "actual": 108,
+      "machines": 16
+    },
+    "energy": {
+      "rated": 365.0534346965036,
+      "possible": 271.2198716837177,
+      "actual": 33,
+      "machines": 16
+    },
+    "gas": {
+      "rated": 365.05343469650376,
+      "possible": 270.8879012165406,
+      "actual": 116,
+      "machines": 14
+    },
+    "electronic": {
+      "rated": 365.05343469650376,
+      "possible": 258.49433710859427,
+      "actual": 64,
+      "machines": 14
+    },
+    "thermal": {
+      "rated": 365.0534346965036,
+      "possible": 273.5436649539576,
+      "actual": 36,
+      "machines": 16
+    },
+    "interface": {
+      "rated": 365.05343469650387,
+      "possible": 277.6748529899398,
+      "actual": 111,
+      "machines": 12
+    },
+    "sensor": {
+      "rated": 365.05343469650387,
+      "possible": 277.6748529899398,
+      "actual": 58,
+      "machines": 12
+    },
+    "kit": {
+      "rated": 408.8598468600843,
+      "possible": 302.2046672081626,
+      "actual": 98,
+      "machines": 20
+    },
+    "cnc": {
+      "rated": 350.451297308642,
+      "possible": 263.37307345584946,
+      "actual": 252,
+      "machines": 216
+    },
+    "wireDraw": {
+      "rated": 350.45129730864363,
+      "possible": 265.57637374170656,
+      "actual": 42,
+      "machines": 16
+    },
+    "regMachine": {
+      "rated": 350.45129730864363,
+      "possible": 263.1427284259643,
+      "actual": 67,
+      "machines": 22
+    },
+    "couplerMachine": {
+      "rated": 350.45129730864363,
+      "possible": 262.0611082856345,
+      "actual": 58,
+      "machines": 22
+    },
+    "contactMachine": {
+      "rated": 350.45129730864363,
+      "possible": 258.63597784125653,
+      "actual": 36,
+      "machines": 12
+    },
+    "housingMachine": {
+      "rated": 350.45129730864363,
+      "possible": 284.41459118578484,
+      "actual": 111,
+      "machines": 12
+    },
+    "integrate": {
+      "rated": 343.1502286147135,
+      "possible": 262.67864041932467,
+      "actual": 248,
+      "machines": 28
+    },
+    "calibrate": {
+      "rated": 335.8491599207836,
+      "possible": 252.8003796555721,
+      "actual": 251,
+      "machines": 25
+    },
+    "qa": {
+      "rated": 328.5480912268534,
+      "possible": 247.6352142711556,
+      "actual": 245,
+      "machines": 27
+    },
+    "package": {
+      "rated": 401.5587781661539,
+      "possible": 297.8684935562997,
+      "actual": 197,
+      "machines": 36
+    }
+  },
+  "notes": [
+    "WIP stage/cycle allocation, traffic, service, rates and wages are planning assumptions.",
+    "Full cloud calculation took about 20 minutes; the included recorded replay loads directly.",
+    "Forty-one core cases plus source and standalone browser workflow checks."
+  ]
+}

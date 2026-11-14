@@ -1,0 +1,27 @@
+ION | LOGISTICS DISPATCH & OPERATIONS
+Fleet & Logistics Division — Corin Vale | Day 0 proposed schedule | 1 November 2026, 00:00 PDT
+Operational planning document, not an executed voyage ledger. Vessel ownership, count and static specifications live in the Consolidated Assets Register. Ship-by-ship schedules and route orders are pending Corey’s fleet review; Joe may suggest Spartan assignments and Josh controls VC freighter configuration. Manufacturing recipes, machine capacity and bottlenecks are governed by the Consolidated Assets Register, Section 9.
+Dispatch board — proposed duties, not issued orders
+Operational stream | Proposed service | Dispatch status
+Spartan mine sites | Local extraction and on-site stock movement | Unassigned; site-specific shuttle roster pending
+Spartan concentrates | Concentrate to four owned processing plants | Unassigned; route and mass allocation pending
+Finished metals | Certified lots to storage, clients and ION works | Unassigned; contract priorities pending
+Mining equipment customers | Machine deliveries, rentals and service personnel | Unassigned; preserve outside customer commitments
+Research / survey / Stella | Prospecting, prototype trials, urgent specialized transfers | Stella available; no permanent dispatch
+VC field engineering | Specialists, tooling, installation and prototypes | Freighter identity/configuration reserved for Josh
+Propulsion | Factory interchanges, critical parts, customer engine freight | Local assets available; contracts/dispatch not yet allocated
+Freight capacity and storage watch
+Measure | Planning reference
+Spartan nominal long-haul workload | 312,880 t/year (scenario)
+Spartan nominal modeled capacity | 328,000 t/year (scenario)
+Utilization if fully assigned | 95.39% (scenario; no fleet-by-fleet proof)
+Theoretical annual headroom | 15,120 t/year
+Ore stores | 200,000 of 250,000t occupied
+Concentrates stores | 42,000 of 60,000t occupied
+Finished stores | 40,327 of 50,000t occupied
+At rated extraction 1,040,000t ore/year, do not presume all raw ore moves by hyperfreighter; on-site processing and local movements account for substantial tonnage. Freight utilization is only a prior planning estimate, not a verified booking schedule. Review reserve capacity, maintenance and customer deadlines before confirming routes.
+Scheduled movements
+Order ID | Ship | Origin → destination | Cargo / tonnes | Departure / arrival | Status
+— | Awaiting dispatch | — | — | — | None authorized at restart
+Priority operations requiring orders
+Corin and the relevant division should establish vessel assignments, ship-specific lift capacity, maintenance windows, actual route/flight times, local buffer capacity, customer delivery windows and route security. Corey has final approval over major reconfiguration. A voyage becomes actual only once ordered and entered above with an effective game date and verifiable cargo quantities.
