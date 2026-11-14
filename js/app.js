@@ -192,11 +192,8 @@ Promise.all(Object.entries(MACHINE_ART).map(([kind,url])=>new Promise(resolve=>{
 const processImages={},processFrameImages={};
 const processArtLoad=PROCESS_ART_READY.then(()=>Promise.all(Object.entries(PROCESS_FRAMES).map(async([id,frames])=>{processFrameImages[id]=await Promise.all(frames.map(url=>new Promise(resolve=>{const img=new Image();img.onload=()=>resolve(img);img.onerror=()=>resolve(null);img.src=url})));processImages[id]=processFrameImages[id][0]}))).then(()=>paint());
 function machineArtLayout(m){const W=m.w*CELL,H=m.h*CELL,angle=(m.angle||0)*Math.PI/2,box=IONArt.bounds(FactoryEngine.equipmentModel(m,SPECS).artVariant||(SPECS[m.type].art==='cnc'?'cnc':m.type)),availableW=(m.angle||0)%2?H-8:W-8,availableH=(m.angle||0)%2?W-8:H-8,fit=Math.min(availableW/box[2],availableH/box[3]);return {cx:m.x*CELL+W/2,cy:m.y*CELL+H/2,angle,box,fit,w:box[2]*fit,h:box[3]*fit}}
-function drawEquipmentArt(c,m,frame=0,alpha=.95){
- if(!$('artMode').checked)return;const s=SPECS[m.type],artType=FactoryEngine.equipmentModel(m,SPECS).artVariant||(s.programFamily?.startsWith('ore')?FactoryEngine.recipeType(m):s.art==='cnc'?'cnc':m.type),image=processFrameImages[artType]?.[s.art==='cnc'?0:frame]||processImages[artType]||machineImages[s.art];if(!image)return;const a=machineArtLayout(m);
- c.save();c.globalAlpha=alpha;c.translate(a.cx,a.cy);c.rotate(a.angle);if(!IONArt.machine(c,artType,s.art==='cnc'?0:frame,-a.w/2,-a.h/2,a.w,a.h))c.drawImage(image,-a.w/2,-a.h/2,a.w,a.h);
- if(s.art==='cnc'||s.programFamily){const output=Object.keys(FactoryEngine.operation(m,SPECS).outputs)[0],size=Math.min(36,a.h*.38),x=a.w/2-size/2-2,y=a.h/2-size/2-2;c.fillStyle='#102330ec';c.beginPath();c.roundRect(x-size/2,y-size/2,size,size,4);c.fill();IONArt.item(c,output,x,y,size-3,size-3)}
- drawMachineDesign(c,m,a);c.restore();
+function drawEquipmentArt(c,m,frame=0,alpha=.95,operating=false){
+ if(!$('artMode').checked||operating)return;c.save();c.globalAlpha=alpha;drawProcessMotion(c,m,0,0,null,false);c.restore();
 }
 
 function drawBelt(c,p,phase=0,alpha=1){
