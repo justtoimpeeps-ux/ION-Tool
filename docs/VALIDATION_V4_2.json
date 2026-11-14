@@ -11,7 +11,8 @@
     "shipped": 194,
     "trips": 7338,
     "prepHours": 6.7825,
-    "maxMaterialError": 9.313225746154785e-10
+    "maxMaterialError": 9.313225746154785e-10,
+    "command": "node scripts/benchmark-day.cjs --compact --output=/workspace/ion-v42-day.json"
   },
   "certifiedEngines": 244,
   "dispatchedEngines": 194,
@@ -21,7 +22,7 @@
   "normalPaidManHours": 29250,
   "paidManHours": 31308.46739463602,
   "coreTests": {
-    "passed": 59,
+    "passed": 60,
     "failed": 0,
     "skipped": 0
   },
@@ -30,5 +31,50 @@
     "Reference-derived artwork reconstructed; inaccessible original V4.2 artwork not recovered.",
     "Cloud browser validates locally served standalone HTML; desktop file launch not exercised.",
     "Pedestrian collision modeling and interstellar logistics remain outside the existing physical model."
-  ]
+  ],
+  "browserChecks": [
+    {
+      "command": "node tests/ui-v4.cjs http://127.0.0.1:8000",
+      "status": "passed"
+    },
+    {
+      "command": "node tests/capital-browser.cjs http://127.0.0.1:8000",
+      "status": "passed"
+    },
+    {
+      "command": "node tests/compat-v4-1.cjs http://127.0.0.1:8000",
+      "status": "passed"
+    },
+    {
+      "command": "node tests/ui-v4.cjs http://127.0.0.1:8000/dist/ION_Campus_Planner_v4_2.html",
+      "status": "passed"
+    },
+    {
+      "command": "node tests/capital-browser.cjs http://127.0.0.1:8000/dist/ION_Campus_Planner_v4_2.html",
+      "status": "passed"
+    },
+    {
+      "command": "node tests/display-v4-1.cjs http://127.0.0.1:8000/dist/ION_Campus_Planner_v4_2.html",
+      "status": "passed"
+    },
+    {
+      "command": "node tests/replay-v4.cjs http://127.0.0.1:8000/dist/ION_Campus_Planner_v4_2.html",
+      "status": "passed"
+    }
+  ],
+  "playback": {
+    "fps": 56.81455473986594,
+    "p95FrameMs": 16.800000000000182,
+    "frames": 89,
+    "pause_freezes_animation": true,
+    "all_four_orientations_preserve_aspect_ratio": true
+  },
+  "recipePreservation": "Exact expanded raw recipe equality against recovery checkpoint 87676c2, plus baseline recipe conservation tests",
+  "matchingReplaySha256": "237801cba67fed8170353534b0df2c918699f8a22adb9ebdcf4a23ef9e94ab68",
+  "packaging": {
+    "embeddedAtlases": true,
+    "embeddedWorkers": true,
+    "noAdditionalHTTPRequestsInStandaloneWorkflow": true,
+    "originalV41DownloadsUnchanged": true
+  }
 }
