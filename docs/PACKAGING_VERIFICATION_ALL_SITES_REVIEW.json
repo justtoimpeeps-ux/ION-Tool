@@ -1,9 +1,9 @@
 {
   "build": "All sites review",
-  "source_commit": "dedf9e06d5ee45a36ffb1f17c55304b95e58c830",
+  "source_commit": "d620bbe",
   "branch": "recovery/v4-2-reconstruction",
-  "core_tests": 94,
-  "source_zip_tests": 94,
+  "core_tests": 97,
+  "source_zip_tests": 97,
   "zip_crc_and_all_current_entries_match": true,
   "rebuilt_html_byte_identical": true,
   "previous_v41_v42_binaries_unchanged": true,
@@ -20,9 +20,12 @@
     "campus_hover_interiors_source": "PASS translucent hover, keyboard landmark information, filtered interior tabs, transport-map consistency, fitted utility/lab interiors and unchanged saved layout/workforce/ledgers: { interiors: 138, landmarks: 54, furnished: 50 }",
     "campus_all_regions_source": "PASS all 15 sites, 192 real map clicks, isolated source rosters, review inventory, finite deep-shaft operating day, read-only replay validation, acceptance/save/reload and embedded standalone assets.",
     "campus_hover_interiors_standalone": "PASS translucent hover, keyboard landmark information, filtered interior tabs, transport-map consistency, fitted utility/lab interiors and unchanged saved layout/workforce/ledgers: { interiors: 138, landmarks: 54, furnished: 50 }",
-    "campus_regression_standalone": "PASS VNext browser: 15 sites; isolated rosters; locked station; 2-stage palette; programmed CNC C-copy; natural art; all processes move; compressed workspace; nonengine dispatch; replay audit and playback without posting."
+    "campus_regression_standalone": "PASS VNext browser: 15 sites; isolated rosters; locked station; 2-stage palette; programmed CNC C-copy; natural art; all processes move; compressed workspace; nonengine dispatch; replay audit and playback without posting.",
+    "trimming_source": "PASS VNext and packet visuals: all process animations, cargo graphics, recipe/C-copy controls, save round trip and read-only replay.",
+    "trimming_standalone": "PASS VNext, packet visuals and campus interiors; same animation frames, all 15 sites and unchanged layout/workforce/ledgers."
   },
   "campus_interiors": 138,
   "map_only_landmarks": 54,
-  "furnished_support_areas": 50
+  "furnished_support_areas": 50,
+  "operating_day_review": "OPERATING_DAY_TRIMMING_REVIEW.md and OPERATING_DAY_TRIMMING_RESULTS.json"
 }

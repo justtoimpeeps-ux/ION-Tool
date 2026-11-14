@@ -1,0 +1,108 @@
+{
+  "baseline_commit": "c9a02ec925be810e8a5a64f250914b2508b4a3ed",
+  "optimized_runtime_commit": "d620bbe",
+  "baseline_engine_sha256": "59bcce5610cd8095fbd261de70b87fdf00d7b6a2ab8c8f43154f2881a2826279",
+  "full_catalogue": true,
+  "hours": 9,
+  "orinda": {
+    "before": {
+      "site": "orinda",
+      "seconds": 594.9353613440001,
+      "cpuSeconds": 479.593695,
+      "sha256": "b76f713ea3516572f92e85fc18592577dcec09b21f6b1bbedaba041adc908d75",
+      "certified": 247,
+      "dispatched": 194,
+      "trips": 7327,
+      "events": 25335,
+      "prepHours": 6.083055555555555,
+      "maxMaterialError": 6.984919309616089e-10
+    },
+    "before_repeat": {
+      "site": "orinda",
+      "seconds": 651.1282646710001,
+      "cpuSeconds": 493.564208,
+      "sha256": "b76f713ea3516572f92e85fc18592577dcec09b21f6b1bbedaba041adc908d75",
+      "certified": 247,
+      "dispatched": 194,
+      "trips": 7327,
+      "events": 25335,
+      "prepHours": 6.083055555555555,
+      "maxMaterialError": 6.984919309616089e-10
+    },
+    "after": {
+      "site": "orinda",
+      "seconds": 546.635374877,
+      "cpuSeconds": 420.370032,
+      "sha256": "b76f713ea3516572f92e85fc18592577dcec09b21f6b1bbedaba041adc908d75",
+      "certified": 247,
+      "dispatched": 194,
+      "trips": 7327,
+      "events": 25335,
+      "prepHours": 6.083055555555555,
+      "maxMaterialError": 6.984919309616089e-10
+    },
+    "cpu_reduction_percent": [
+      12.348715927134958,
+      14.829717149992373
+    ],
+    "entire_json_byte_identical": true,
+    "json_bytes": 53778124,
+    "profile_interval_microseconds": 5000,
+    "before_self_sample_percent": {
+      "exclude": 55.634,
+      "plan": 21.445,
+      "(garbage collector)": 7.079,
+      "vehicleEta": 5.794,
+      "reserve": 3.749,
+      "schedule": 0.879,
+      "road": 0.862,
+      "": 0.669
+    },
+    "after_self_sample_percent": {
+      "exclude": 61.777,
+      "plan": 9.595,
+      "reserve": 9.264,
+      "vehicleEta": 6.204,
+      "(garbage collector)": 5.583,
+      "schedule": 1.054,
+      "road": 1.018,
+      "": 0.903
+    }
+  },
+  "spartan_hq": {
+    "before": {
+      "site": "spartan-hq",
+      "seconds": 29.502154896,
+      "cpuSeconds": 12.673841,
+      "sha256": "a3c36887ed6b2c1e6eadab3d30579bcb7e8f358383f6e00cfcb5d6454df69eba",
+      "certified": 125,
+      "dispatched": 122,
+      "trips": 1449,
+      "events": 3668,
+      "prepHours": 2.2733333333333334,
+      "maxMaterialError": 0
+    },
+    "after": {
+      "site": "spartan-hq",
+      "seconds": 22.70548221,
+      "cpuSeconds": 11.455146,
+      "sha256": "a3c36887ed6b2c1e6eadab3d30579bcb7e8f358383f6e00cfcb5d6454df69eba",
+      "certified": 125,
+      "dispatched": 122,
+      "trips": 1449,
+      "events": 3668,
+      "prepHours": 2.2733333333333334,
+      "maxMaterialError": 0
+    },
+    "cpu_reduction_percent": 9.615829960309586,
+    "entire_json_sha256_identical": true
+  },
+  "core_tests": 97,
+  "source_zip_tests": 97,
+  "timing_note": "Measured on a shared machine with overlapping development jobs. CPU time measures process work; recorded wall times are observations, not an isolated throughput benchmark or a promised user wait time. Orinda before/after use the same 5ms CPU profiler; HQ uses no profiler.",
+  "production_files_changed": [
+    "js/day-engine.js"
+  ],
+  "graphics_animation_assets_unchanged": true,
+  "full_simulation_features_and_trace_retained": true
+}
