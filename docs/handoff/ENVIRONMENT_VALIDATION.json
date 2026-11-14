@@ -1,0 +1,97 @@
+{
+  "scope": "Recovered V4.1 environment validation; not V4.2 release validation",
+  "observed_at_utc": "2026-11-14T01:38:14.363288+00:00",
+  "source_checkpoint": "d30daa58d9824e4295760a212b257f486982ffb1",
+  "tools": {
+    "node": "24.22.1",
+    "python": "3.12.14",
+    "playwright": "1.62.1",
+    "chromium": "/usr/bin/chromium"
+  },
+  "core_tests": {
+    "command": "npm test",
+    "passed": 50,
+    "failed": 0,
+    "skipped": 0
+  },
+  "browser_checks": [
+    {
+      "command": "node tests/ui-v4.cjs http://127.0.0.1:8000",
+      "status": "passed"
+    },
+    {
+      "command": "node tests/display-v4-1.cjs http://127.0.0.1:8000",
+      "status": "passed"
+    },
+    {
+      "command": "node tests/compat-v4-1.cjs http://127.0.0.1:8000",
+      "status": "passed"
+    },
+    {
+      "command": "node tests/ui-v4.cjs http://127.0.0.1:8000/dist/ION_Campus_Planner_v4_1.html",
+      "status": "passed"
+    },
+    {
+      "command": "node tests/display-v4-1.cjs http://127.0.0.1:8000/dist/ION_Campus_Planner_v4_1.html",
+      "status": "passed"
+    },
+    {
+      "command": "node tests/replay-v4.cjs http://127.0.0.1:8000/dist/ION_Campus_Planner_v4_1.html",
+      "status": "passed"
+    }
+  ],
+  "server_restart": {
+    "startup": "npm start",
+    "http_readiness": "passed",
+    "functional_ui_v4_after_restart": "passed"
+  },
+  "packaging": {
+    "mode": "isolated staging copy; original tracked downloads preserved",
+    "command": "python3 scripts/package.py",
+    "standalone_sha256": "595fb32857d7bfb34ada4599d75a5f0f180efc72a68324e058feaf416bf166de",
+    "original_zip_sha256": "993b7b296a700b0392e878eabfadd7a3cd92e3737498f44232db933ee296969f",
+    "generated_standalone_matches_original": true,
+    "generated_zip_crc": "passed"
+  },
+  "fresh_full_campus": {
+    "command": "node scripts/benchmark-day.cjs --compact --output=/workspace/recovery-v4.1/current-instance-day.json",
+    "exit_code": 0,
+    "engine": "optimized",
+    "layout": "compact",
+    "seconds": 424.53854120600005,
+    "cpuSeconds": 487.780594,
+    "sha256": "00c50a739f2b3397efd8c88e4b37c0538c5c4190078e028195d893fabb483cc4",
+    "certified": 246,
+    "shipped": 194,
+    "trips": 7461,
+    "prepHours": 5.0008333333333335,
+    "maxMaterialError": 1.1641532182693481e-09,
+    "production_hours": 9,
+    "assets": 934,
+    "normal_paid_man_hours": 29250,
+    "total_paid_man_hours": 30838.532672413796,
+    "no_promotions": true,
+    "material_conservation_limit": 1e-06,
+    "assertions": "passed"
+  },
+  "historical_replay_browser_check": {
+    "result_origin": "bundled V4.1 replay, not fresh calculation",
+    "certified": 246,
+    "shipped": 194,
+    "trips": 7461,
+    "fps": 52.875475285171106,
+    "p95FrameMs": 16.800000000000182,
+    "frames": 89,
+    "concurrent_fresh_simulation": true,
+    "seek_does_not_post": true,
+    "final_balances_and_worker_departures": "passed"
+  },
+  "notes": [
+    "Incidental favicon.ico 404; no application page errors in browser checks.",
+    "No runtime npm dependencies or additional credentials required.",
+    "Application source/tests/manifests/lockfiles were not changed after source recovery.",
+    "Direct file:// desktop launch is outside managed-browser validation.",
+    "Full day draws on opening WIP; does not prove sustainable or overtime throughput.",
+    "V4.2 reconstruction remains; see V4_2_RECOVERY_AUDIT.md."
+  ]
+}
