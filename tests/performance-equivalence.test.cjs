@@ -1,8 +1,9 @@
 const {test}=require('node:test'),assert=require('node:assert/strict'),fs=require('fs'),vm=require('vm'),path=require('path');
 const c=vm.createContext({structuredClone});for(const name of ['register','data','engine','baseline'])vm.runInContext(fs.readFileSync(path.join(__dirname,'../js/'+name+'.js'),'utf8'),c);const reference=vm.runInContext(fs.readFileSync(path.join(__dirname,'reference/day-engine-v4.js'),'utf8')+';FactoryDay',vm.createContext({structuredClone,FactoryEngine:vm.runInContext('FactoryEngine',c)}));vm.runInContext(fs.readFileSync(path.join(__dirname,'../js/day-engine.js'),'utf8'),c);const {day,specs,materials,plan,upgrades}=vm.runInContext('({day:FactoryDay,specs:SPECS,materials:MATERIALS,plan:FactoryBaseline.generate(SPECS,MATERIALS,BLDGS),upgrades:UPGRADES})',c),plain=x=>JSON.parse(JSON.stringify(x));
 test('numeric path searches preserve exact routes, terrain choices and fixed ports',()=>{
- const old=reference.geometry(plan.buildings,specs),next=day.geometry(plan.buildings,specs);
- for(const [name,b]of Object.entries(plan.buildings)){
+ // Equivalence covers the pre-loading-zone feature set; loading behavior has its own tests.
+ const legacy=structuredClone(plan.buildings);for(const b of Object.values(legacy))for(const s of b.storage)delete s.loadingZones;const old=reference.geometry(legacy,specs),next=day.geometry(legacy,specs);
+ for(const [name,b]of Object.entries(legacy)){
   const nodes=[...b.storage,...b.machines].filter((_,i)=>i%17===0).map(m=>({...m,building:name}));
   for(let i=0;i<nodes.length;i++)for(const kind of ['walker','forklift']){
    assert.deepEqual(plain(next.approach(nodes[i],kind)),plain(old.approach(nodes[i],kind)));

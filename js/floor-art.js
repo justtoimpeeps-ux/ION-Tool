@@ -9,7 +9,7 @@ function drawSpeeder(c,x,y,angle,trip,loaded,clock,result){
   c.fillStyle='#df9b3b';c.fillRect(-4,-5,9,10);c.fillStyle=workerColor(level);c.beginPath();c.arc(3,0,4,0,Math.PI*2);c.fill();
   if(loaded)IONArt.item(c,trip.item,11,0,14);c.restore();return;
  }
- c.save();c.translate(x,y);c.rotate(angle);const bob=Math.sin(clock/400+x)*.7;c.fillStyle='#07121c66';c.beginPath();c.ellipse(0,4,24,11,0,0,Math.PI*2);c.fill();c.translate(0,bob);c.scale(1.13,1.13);c.fillStyle='#889b9e';c.strokeStyle='#233945';c.lineWidth=1.5;c.beginPath();c.roundRect(-21,-10,42,20,5);c.fill();c.stroke();c.fillStyle='#304b59';c.fillRect(-17,-7,12,14);c.fillStyle='#bba37c';c.fillRect(-18,-10,31,3);c.fillStyle='#88b5bf';c.fillRect(-25,-7,5,4);c.fillRect(-25,3,5,4);c.fillStyle=workerColor(level);c.fillRect(-14,-3,5,6);c.fillStyle='#273d48';c.fillRect(-2,-7,19,14);if(loaded){IONArt.item(c,trip.item,8,0,19);c.fillStyle=materialColor(trip.item);c.fillRect(14,6,3,2)}c.restore();
+ c.save();c.translate(x,y);c.rotate(angle);const bob=Math.sin(clock/400+x)*.7;c.fillStyle='#07121c66';c.beginPath();c.ellipse(0,5,24,17,0,0,Math.PI*2);c.fill();c.translate(0,bob);c.scale(1.02,1.02);c.fillStyle='#889b9e';c.strokeStyle='#233945';c.lineWidth=1.5;c.beginPath();c.roundRect(-22,-16,44,32,6);c.fill();c.stroke();c.fillStyle='#304b59';c.fillRect(-19,-12,13,24);c.fillStyle='#bba37c';c.fillRect(-19,-16,38,3);c.fillStyle='#88b5bf';c.fillRect(-24,-12,5,6);c.fillRect(-24,6,5,6);c.fillStyle=workerColor(level);c.fillRect(-15,-4,7,8);c.fillStyle='#273d48';c.fillRect(-4,-13,25,26);if(loaded){IONArt.item(c,trip.item,9,0,26,27);c.fillStyle=materialColor(trip.item);c.fillRect(18,11,3,2)}c.restore();
 }
 function campusCarrierMarkup(trip,position){
  const p=position,walk=trip.kind==='walker',title=escapeHtml(transportName(trip.kind,trip.vehicle)+' · '+(p.loaded?fmt(trip.amount)+' '+MATERIALS[trip.item].title:'empty')+' · '+trip.driver);
@@ -19,3 +19,5 @@ function campusCarrierMarkup(trip,position){
 }
 
 function transportName(kind,id){return ({tug:'Heavy cargo speeder',forklift:'Light cargo speeder',walker:'Walking handler',belt:'Conveyor'}[kind]||'Carrier')+' '+String(id).split('-').at(-1)}
+
+function drawLoadingZones(c,b,cell){for(const zone of FactoryEngine.loadingCells(b)){const s=b.storage.find(s=>s.id===zone.storageId),x=zone.x*cell,y=zone.y*cell;c.save();c.fillStyle='#253b44';c.fillRect(x,y,cell,cell);c.strokeStyle='#68c8c4';c.lineWidth=2;c.strokeRect(x+3,y+3,cell-6,cell-6);c.strokeStyle='#c9b36d';c.lineWidth=3;for(let i=5;i<cell-6;i+=9){c.beginPath();c.moveTo(x+i,y+3);c.lineTo(x+i+4,y+7);c.moveTo(x+i,y+cell-7);c.lineTo(x+i+4,y+cell-3);c.stroke()}c.globalAlpha=.4;IONArt.item(c,s.item,x+cell/2,y+cell/2,cell*.57,cell*.57);c.globalAlpha=1;c.strokeStyle='#a0d8d1';c.lineWidth=2;c.beginPath();c.moveTo(x+10,y+cell*.66);c.lineTo(x+10,y+12);c.lineTo(x+15,y+17);c.moveTo(x+cell-10,y+12);c.lineTo(x+cell-10,y+cell*.66);c.lineTo(x+cell-15,y+cell*.66-5);c.stroke();c.restore()}}

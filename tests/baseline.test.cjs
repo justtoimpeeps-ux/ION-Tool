@@ -98,6 +98,6 @@ test('compact process rows retain assets and provide connected worker and loadin
   const reached=new Set(),queue=[b.docks.input[0]];for(let i=0;i<queue.length;i++){const [x,y]=queue[i],key=x+','+y;if(x<0||y<0||x>=b.cols||y>=b.rows||occupied.has(key)||reached.has(key))continue;reached.add(key);queue.push([x+1,y],[x-1,y],[x,y+1],[x,y-1])}
   for(const o of assets){const edges=o.type&&specs[o.type].port==='fixed'?engine.accessPoints(o,specs,false):[[o.x-1,o.y],[o.x+o.w,o.y],[o.x,o.y-1],[o.x,o.y+o.h]];assert.ok(edges.some(p=>reached.has(p.join(','))),name+' '+o.id+' accessible')}
   if(b.machines.length)assert.ok(occupied.size/(b.cols*b.rows)>.24,name+' avoids excessive dead space');
-  const repacked=baseline.compactFloor(b,specs,materials),strip=o=>{const {x,y,...rest}=o;return rest};assert.deepEqual(repacked.machines.map(strip),b.machines.map(strip));assert.deepEqual(repacked.storage.map(strip),b.storage.map(strip));
+  const repacked=baseline.compactFloor(b,specs,materials),strip=o=>{const {x,y,...rest}=o;return JSON.parse(JSON.stringify(rest))};assert.deepEqual(repacked.machines.map(strip),b.machines.map(strip));assert.deepEqual(repacked.storage.map(strip),b.storage.map(strip));
  }
 });

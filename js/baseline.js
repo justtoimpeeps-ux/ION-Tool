@@ -45,11 +45,12 @@ const FactoryBaseline=(()=>{
   }
   // Confirmed opening tonnes become kg once; unknown components remain zero-stock scenarios.
   for(const item of Object.keys(incoming)){
-   const stock=(ION_REGISTER.openingTonnes[item]||0)*1000,dailyUse=perCore.raw[item]*247,p=FactoryEngine.storageProfile(item,materials),target=Math.max(stock/.85,dailyUse*3*1.1),perSquare=Math.min(p.usableVolume/p.volumePerUnit,materials[item].unit==='kg'?p.loadKg:Infinity),area=Math.max(4,Math.ceil(target/perSquare)),w=Math.ceil(Math.sqrt(area)),h=Math.ceil(area/w);
+   const stock=(ION_REGISTER.openingTonnes[item]||0)*1000,dailyUse=perCore.raw[item]*247,p=FactoryEngine.storageProfile(item,materials),target=Math.max(stock/.85,dailyUse*3*1.1),perSquare=Math.min(p.usableVolume/p.volumePerUnit,materials[item].unit==='kg'?p.loadKg:Infinity),area=Math.max(4,Math.ceil(target/perSquare)+1),w=Math.ceil(Math.sqrt(area)),h=Math.ceil(area/w);
    buildings.Receiving.storage.push({id:'receiving-'+item,item,stock,x:0,y:0,w,h,storageModel:'receiving-v1',receiving:true,stockSource:stock?'Register §5 opening tonnes × 1000':'Unknown; zero opening assumed'});
   }
   for(const [name,b]of Object.entries(buildings))buildings[name]=compactFloor(b,specs,materials);
 
+  for(const s of buildings.Receiving.storage)s.loadingZones=[[Math.floor(s.w/2),s.h-1]];
   const workerPool=availableWorkers(buildings,specs);
   const roster=[...Object.values(buildings).flatMap(b=>b.machines.flatMap(m=>m.crew)),...workerPool];
   // Largest-remainder rounding conserves the census; deterministic shuffle spreads
