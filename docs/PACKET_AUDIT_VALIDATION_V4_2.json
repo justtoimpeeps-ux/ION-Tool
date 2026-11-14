@@ -1,0 +1,81 @@
+{
+  "review": "Resupplied V4.2 packet and process-recognition follow-up",
+  "verified_at_utc": "2026-11-14T12:05:32.926660+00:00",
+  "source_checkpoint": "74f89c4",
+  "branch": "recovery/v4-2-reconstruction",
+  "main_unchanged": "718ae90c0a731e785474c3f5baba88748baff112",
+  "packet_sha256": "c9a54e37e0b945b7f0f43cbb8f520dfbfa76776429315fdf14daa8c74b8a616d",
+  "audit": "handoff/V4_2_PACKET_AUDIT.md",
+  "core_tests": {
+    "passed": 71,
+    "failed": 0
+  },
+  "fresh_full_physical_day": {
+    "engine": "optimized",
+    "layout": "compact",
+    "seconds": 499.218363372,
+    "cpuSeconds": 529.93445,
+    "sha256": "e8433a3a6a9865c388f4cce5aded61869705461bea9ee49714b7616672041ea4",
+    "certified": 244,
+    "shipped": 194,
+    "trips": 7338,
+    "prepHours": 6.7825,
+    "maxMaterialError": 9.313225746154785e-10
+  },
+  "simulation_byte_identical_to_prior_verified_run": true,
+  "traffic_audit": {
+    "day": 1,
+    "carrierTrips": 7338,
+    "reservedCells": 7930,
+    "reservedEdges": 9269,
+    "vehicles": 282,
+    "cellOverlap": 0,
+    "edgeOverlap": 0,
+    "doubleBookedVehicles": 0
+  },
+  "browser_checks": {
+    "source_workspace": [
+      "PASS V4 browser: sites/buildings, worker-backed physical trips, replay/seek without advancing, one-time accept, next-day stock carry, fixed skills, man-hours, ledger, workspace export/import and browser restoration."
+    ],
+    "standalone_workspace": [
+      "PASS V4 browser: sites/buildings, worker-backed physical trips, replay/seek without advancing, one-time accept, next-day stock carry, fixed skills, man-hours, ledger, workspace export/import and browser restoration."
+    ],
+    "source_process_visuals": [
+      "PASS packet visuals: progressive reference-aligned assembly/final workpieces, 33 moving processes with distinct shape/color identifiers, walking handlers without chassis, neutral speeders with separate cargo, recorded-cycle frame progression and no ledger posting."
+    ],
+    "standalone_process_visuals": [
+      "PASS packet visuals: progressive reference-aligned assembly/final workpieces, 33 moving processes with distinct shape/color identifiers, walking handlers without chassis, neutral speeders with separate cargo, recorded-cycle frame progression and no ledger posting."
+    ],
+    "standalone_replay": [
+      "PASS full 934-tile recorded replay: {\"certified\":244,\"shipped\":194,\"trips\":7338,\"balanceError\":9.313225746154785e-10,\"fps\":57.41935483870967,\"p95FrameMs\":16.80000000000109}; animated playback, live scrolling, worker departures, final balances, no posting or page errors."
+    ],
+    "standalone_display": [
+      "PASS V4.1 display: two-stage palette, distinct sprites, ghost rotation, compaction/Undo, progress/error overlay, wheel and middle-drag navigation, stock fullness."
+    ],
+    "standalone_attachments": [
+      "PASS floor attachments: exposed-square click, blocked-square rejection, exact physical point, Undo, Escape cancellation, and undistorted placement ghosts in all orientations."
+    ]
+  },
+  "playback": {
+    "fps": 57.41935483870967,
+    "p95FrameMs": 16.80000000000109,
+    "frames": 89
+  },
+  "recipes": "Exact expanded raw recipe equality verified with write_handoff_catalogue.cjs",
+  "source_zip_tests": {
+    "passed": 71,
+    "failed": 0
+  },
+  "packaging": {
+    "crc_and_all_entries_match_checkout": true,
+    "source_zip_rebuild_byte_identical_html": true,
+    "original_v41_hashes_unchanged": true
+  },
+  "scope": "Presentation, progressive artwork, process identifiers, UI wording and audit documentation; no numerical simulation, recipe, asset-allocation or accounting changes.",
+  "limits": [
+    "No proof of sustainable 247/day or overtime annual output.",
+    "Original inaccessible V4.2 source/art is reconstructed, not recovered.",
+    "Carrier reservations do not establish full pedestrian collision/turning safety or interstellar logistics.",
+    "Workpiece stages are illustrative recorded-cycle views, not measured assembly geometry."
+  ]
+}
