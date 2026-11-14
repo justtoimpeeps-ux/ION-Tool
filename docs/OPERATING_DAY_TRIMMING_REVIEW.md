@@ -1,3 +1,5 @@
+> Later payroll correction: see `PAYROLL_CREWS_REVIEW.md`. Historical timing/visual evidence below describes its delivered checkpoint. New crew identities and wage totals intentionally differ; physical production, routing and all graphics remain covered by regression checks.
+
 # Operating-day trimming review — November 2026
 
 The calculation still produces the same complete operating-day result. No recipe, transport rule, inventory limit, employee, building, drawing, animation frame, replay event, or scheduling resolution was removed.

@@ -1,3 +1,5 @@
+> Later payroll correction: see `PAYROLL_CREWS_REVIEW.md`. Historical timing/visual evidence below describes its delivered checkpoint. New crew identities and wage totals intentionally differ; physical production, routing and all graphics remain covered by regression checks.
+
 # Machine cycles, cargo and map review
 
 The machine floor renderer now draws complete shaded mechanisms instead of animating lines over static reference photographs. Catalogue/reference art is retained. Working cells use repeating 30-fps mechanisms: ladle tilt and a pouring stream, mold filling and cooling, furnace temperature cycles, turning spools and increasing wire packs, moving spindles and presses, articulated assembly arms, crusher teeth, vibrating screens, grinding drums, tank agitation, filtration and hoists. Excavators have tracks, a moving boom, cutting teeth and falling ore. Enclosed equipment keeps a function badge; physical equipment design marks remain visible.
