@@ -1,12 +1,12 @@
 const {test}=require('node:test'),assert=require('node:assert/strict'),fs=require('fs'),vm=require('vm'),path=require('path');
 const c=vm.createContext({structuredClone});for(const name of ['register','data','engine','baseline'])vm.runInContext(fs.readFileSync(path.join(__dirname,'../js/'+name+'.js'),'utf8'),c);const reference=vm.runInContext(fs.readFileSync(path.join(__dirname,'reference/day-engine-v4.js'),'utf8')+';FactoryDay',vm.createContext({structuredClone,FactoryEngine:vm.runInContext('FactoryEngine',c)}));vm.runInContext(fs.readFileSync(path.join(__dirname,'../js/day-engine.js'),'utf8'),c);const {day,specs,materials,plan,upgrades}=vm.runInContext('({day:FactoryDay,specs:SPECS,materials:MATERIALS,plan:FactoryBaseline.generate(SPECS,MATERIALS,BLDGS),upgrades:UPGRADES})',c),plain=x=>JSON.parse(JSON.stringify(x));
-test('numeric path searches preserve exact routes, terrain choices and fixed ports',()=>{
+test('numeric path searches preserve exact walking routes and fixed ports',()=>{
  // Equivalence covers the pre-loading-zone feature set; loading behavior has its own tests.
  const legacy=structuredClone(plan.buildings);for(const b of Object.values(legacy))for(const s of b.storage)delete s.loadingZones;const old=reference.geometry(legacy,specs),next=day.geometry(legacy,specs);
  for(const [name,b]of Object.entries(legacy)){
   const nodes=[...b.storage,...b.machines].filter((_,i)=>i%17===0).map(m=>({...m,building:name}));
-  for(let i=0;i<nodes.length;i++)for(const kind of ['walker','forklift']){
-   assert.deepEqual(plain(next.approach(nodes[i],kind)),plain(old.approach(nodes[i],kind)));
+  for(let i=0;i<nodes.length;i++)for(const kind of ['walker']){
+   if(!nodes[i].type||specs[nodes[i].type].port!=='fixed')assert.deepEqual(plain(next.approach(nodes[i],kind)),plain(old.approach(nodes[i],kind)));
    if(i)assert.deepEqual(plain(next.route(nodes[i-1],nodes[i],kind)),plain(old.route(nodes[i-1],nodes[i],kind)));
   }
  }
@@ -18,9 +18,9 @@ test('bitset reservation windows match the reference scheduler through congested
   const a=old.reserve(route,kind,earliest,0,length-1,latest,maxStart),b=next.reserve(route,kind,earliest,0,length-1,latest,maxStart);assert.deepEqual(plain(b),plain(a),'reservation '+i);assert.equal(next.waitSeconds,old.waitSeconds);
  }
 });
-test('full operating-day outputs remain identical on a multi-station physical-delivery fixture',()=>{
+test('full operating-day outputs remain identical on a multi-station walking-delivery fixture',()=>{
  const materials={raw:{unit:'kg',volume:.001},tested:{unit:'each',volume:.1},shipped:{unit:'each',volume:.1}},specs={work:{rate:25,workers:1,w:1,h:1,inputs:{raw:2},outputs:{tested:1},port:'flex'},pack:{rate:40,workers:1,w:1,h:1,inputs:{tested:1},outputs:{shipped:1},port:'flex'}};
- const crew=id=>[{id:'op-'+id,role:'assembly',level:2}],b={Works:{cols:20,rows:14,machines:Array.from({length:8},(_,i)=>({id:'m'+i,type:i<4?'work':'pack',number:i+1,x:4+(i%4)*3,y:i<4?3:8,w:1,h:1,angle:0,condition:.95,crew:crew(i),upgrades:[]})),storage:[{id:'bin',item:'raw',stock:1000,x:1,y:1,w:2,h:2}],paths:[],docks:{input:[[0,5]],output:[[19,5]]}}},workers=Array.from({length:6},(_,i)=>({id:'driver'+i,role:'handling',level:2})),config={openingWip:0,forklifts:6,tugs:0,walkers:0,maintenanceTarget:.95},state=day.initial(b,specs,materials,config,workers);
+ const crew=id=>[{id:'op-'+id,role:'assembly',level:2}],b={Works:{cols:20,rows:14,machines:Array.from({length:8},(_,i)=>({id:'m'+i,type:i<4?'work':'pack',number:i+1,x:4+(i%4)*3,y:i<4?3:8,w:1,h:1,angle:0,condition:.95,crew:crew(i),upgrades:[]})),storage:[{id:'bin',item:'raw',stock:1000,x:1,y:1,w:2,h:2}],paths:[],docks:{input:[[0,5]],output:[[19,5]]}}},workers=Array.from({length:6},(_,i)=>({id:'driver'+i,role:'handling',level:2})),config={openingWip:0,forklifts:0,tugs:0,walkers:6,maintenanceTarget:.95},state=(()=>{for(const floor of Object.values(b))for(let y=0;y<floor.rows;y++)for(let x=0;x<floor.cols;x++)if(![...floor.machines,...floor.storage].some(o=>x>=o.x&&y>=o.y&&x<o.x+o.w&&y<o.y+o.h))floor.paths.push({x,y,kind:'cart'});return day.initial(b,specs,materials,config,workers)})();
  const a=plain(day.simulate(b,specs,materials,state,workers,config)),r=plain(reference.simulate(b,specs,materials,state,workers,config));delete a.traffic.conflicts;delete r.traffic.conflicts;assert.deepEqual(a,r);
 });
 

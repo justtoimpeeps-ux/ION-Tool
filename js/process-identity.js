@@ -1,5 +1,5 @@
 /* Painted process identifiers: a distinct shape plus color, shared by floor and palette. */
-const PROCESS_IDENTITY={
+const PROCESS_IDENTITY={inserter:{color:'#e0ac66',path:'M2 14h7 M5 14V9l5-4 3 3 M8 3a2 2 0 1 0 4 0a2 2 0 1 0-4 0 M12 9l3 2 M12 9l2-2'},
  cast:{color:'#efae55',path:'M3 3h10v4H3z M5 7v3l3 3 3-3V7 M1 13h14'},
  heat:{color:'#f2874e',path:'M3 14V5h10v9z M6 11C2 8 9 7 7 2c7 5 6 8 3 10'},
  finish:{color:'#63caca',path:'M2 3h6v4H2z M8 5l6-3 M8 5h7 M8 5l6 3 M3 11h10v3H3z'},

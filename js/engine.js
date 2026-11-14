@@ -7,10 +7,10 @@ const FactoryEngine=(()=>{
  function equipmentModel(m,specs){return specs[m.type].models?.[m.model||'standard']||{speed:1,workerDelta:0,price:specs[m.type].price,days:specs[m.type].days,name:'Standard production cell'}}
  function modifiers(m,catalog={}){return (m.upgrades||[]).reduce((a,k)=>{const u=catalog[k];if(u){a.speed*=u.speed||1;a.workers+=u.workerReduction||0}return a},{speed:1,workers:0})}
  function operatorLimit(m,specs){return specs[m.type].operatorLimit??Math.max(1,specs[m.type].workers||1)}
- function requiredWorkers(m,specs,catalog={}){return Math.min(operatorLimit(m,specs),Math.max(1,(m.staffingRequired??Math.max(1,specs[m.type].workers+(equipmentModel(m,specs).workerDelta||0)))-modifiers(m,catalog).workers))}
+ function requiredWorkers(m,specs,catalog={}){if(specs[m.type].autonomous)return 0;return Math.min(operatorLimit(m,specs),Math.max(1,(m.staffingRequired??Math.max(1,specs[m.type].workers+(equipmentModel(m,specs).workerDelta||0)))-modifiers(m,catalog).workers))}
  function crewLimit(m,specs,catalog={}){return requiredWorkers(m,specs,catalog)+(specs[m.type].helpers||0)}
  function productiveCrew(m,specs,catalog={}){return (m.crew||[]).slice(0,crewLimit(m,specs,catalog))}
- function staffing(m,specs,catalog={}){const crew=productiveCrew(m,specs,catalog),required=requiredWorkers(m,specs,catalog),operators=crew.slice(0,required);return operators.length?Math.min(1,Math.min(1,operators.length/required)*(.65+Math.min(.35,operators.reduce((n,p)=>n+p.level,0)/operators.length*.07))*(1+Math.min(1,Math.max(0,crew.length-required))*.04)):0}
+ function staffing(m,specs,catalog={}){if(specs[m.type].autonomous)return 1;const crew=productiveCrew(m,specs,catalog),required=requiredWorkers(m,specs,catalog),operators=crew.slice(0,required);return operators.length?Math.min(1,Math.min(1,operators.length/required)*(.65+Math.min(.35,operators.reduce((n,p)=>n+p.level,0)/operators.length*.07))*(1+Math.min(1,Math.max(0,crew.length-required))*.04)):0}
  function loadingCells(b){return b.storage.flatMap(s=>(s.loadingZones||[]).map(([x,y])=>({x:s.x+x,y:s.y+y,kind:'loading',storageId:s.id})))}
  function loadingPoints(s){return s.loadingZones?.length?s.loadingZones.map(([x,y])=>[s.x+x,s.y+y]):null}
  function validateLoadingZones(b){for(const s of b.storage){if(s.loadingZones===undefined)continue;if(!Array.isArray(s.loadingZones)||s.loadingZones.length>s.w*s.h-1)throw Error('Invalid storage loading zones.');const keys=new Set();for(const p of s.loadingZones){if(!Array.isArray(p)||p.length!==2||!p.every(Number.isInteger)||p[0]<0||p[1]<0||p[0]>=s.w||p[1]>=s.h||keys.has(p.join(',')))throw Error('Invalid or duplicate loading square.');keys.add(p.join(','))}if(!keys.size)continue;const seen=new Set(),queue=[s.loadingZones[0]];for(const [x,y]of queue){const k=x+','+y;if(seen.has(k))continue;seen.add(k);for(const [dx,dy]of [[1,0],[-1,0],[0,1],[0,-1]])if(keys.has((x+dx)+','+(y+dy))&&!seen.has((x+dx)+','+(y+dy)))queue.push([x+dx,y+dy])}if(seen.size!==keys.size)throw Error('Loading squares must connect to the existing zone for this store.');const exposed=s.loadingZones.some(([x,y])=>[[1,0],[-1,0],[0,1],[0,-1]].some(([dx,dy])=>{const xx=x+dx,yy=y+dy;if(xx>=0&&yy>=0&&xx<s.w&&yy<s.h)return false;const gx=s.x+xx,gy=s.y+yy;return gx>=0&&gy>=0&&gx<b.cols&&gy<b.rows&&![...b.machines,...b.storage].some(o=>o.id!==s.id&&gx>=o.x&&gy>=o.y&&gx<o.x+o.w&&gy<o.y+o.h)&&!b.paths.some(p=>p.x===gx&&p.y===gy&&p.kind==='belt')}));if(!exposed)throw Error('Loading zone needs an exposed entrance at the storage boundary.');}return b}
@@ -60,7 +60,7 @@ const FactoryEngine=(()=>{
   }
   function local(bn,source,target,item){
    const id=bn+':'+source.id+'>'+target.id+':'+item;if(pathCache.has(id))return pathCache.get(id);
-   const map=pathMaps[bn],allowed=p=>p&&(p.kind!=='belt'||p.cargo===item),goals=new Set(ends(target,false).filter(([x,y])=>allowed(map.get(x+','+y))).map(p=>p.join(','))),queue=[],prev=new Map();
+   const map=pathMaps[bn],allowed=p=>!!p,goals=new Set(ends(target,false).filter(([x,y])=>allowed(map.get(x+','+y))).map(p=>p.join(','))),queue=[],prev=new Map();
    for(const p of ends(source,true)){const k=p.join(',');if(allowed(map.get(k))&&!prev.has(k)){queue.push(p);prev.set(k,null)}}
    // Prefer efficient handling: a cart detour can beat a short walking route.
    const distance=new Map(),heap=[];
