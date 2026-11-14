@@ -1,6 +1,7 @@
 """Build a self-contained HTML and a complete source ZIP without dependencies."""
 from pathlib import Path
 from zipfile import ZipFile, ZIP_DEFLATED
+import base64
 import json
 import re
 
@@ -26,20 +27,23 @@ page = (root / 'index.html').read_text()
 page = page.replace('<link rel="stylesheet" href="styles.css">', '<style>' + (root / 'styles.css').read_text() + '</style>')
 def inline(match):
     source = (root / match.group(1)).read_text()
+    if match.group(1)=='js/atlas-data.js':
+        for asset in sorted((root/'assets').glob('*.webp')):
+            source=source.replace('assets/'+asset.name,'data:image/webp;base64,'+base64.b64encode(asset.read_bytes()).decode())
     if match.group(1) in ['js/app.js','js/campaign.js']:
         source = source.replace("new Worker('js/simulation-worker.js')", 'makeInlineWorker()').replace("new Worker('js/day-worker.js')", 'makeInlineDayWorker()')
     return '<script>\n' + source + '\n</script>'
 page = re.sub(r'<script src="([^"]+)"></script>', inline, page)
 page = page.replace('<script>', '<script>\n' + prelude, 1)
 page = page.replace('</body>', '<script type="application/json" id="modelNotes">' + json.dumps((root / 'docs/REGISTER_RECONCILIATION.md').read_text()).replace('<', '\\u003c') + '</script></body>')
-standalone = out / 'ION_Campus_Planner_v4_1.html'
+standalone = out / 'ION_Campus_Planner_v4_2.html'
 standalone.write_text(page)
-archive = out / 'ION_Campus_Planner_v4_1.zip'
+archive = out / 'ION_Campus_Planner_v4_2.zip'
 with ZipFile(archive, 'w', ZIP_DEFLATED) as z:
     z.write(standalone, standalone.name)
     for name in ['index.html', 'styles.css', 'README.md', 'package.json', '.gitignore']:
         if (root / name).exists(): z.write(root / name, name)
-    for name in ['js', 'docs', 'tests', 'scripts', 'examples']:
+    for name in ['js', 'assets', 'docs', 'tests', 'scripts', 'examples']:
         for p in sorted((root / name).rglob('*')):
             if p.is_file() and '__pycache__' not in p.parts: z.write(p, p.relative_to(root))
 print(f'HTML: {standalone} ({standalone.stat().st_size:,} bytes)')

@@ -1,6 +1,6 @@
 # Recovery audit and development environment
 
-This checkout is recovered V4.1, not recovered or reconstructed V4.2. The complete user request is preserved in `V4_2_RECONSTRUCTION_REQUEST.txt`. Historical results in that request are not current validation results.
+This is the historical V4.1 audit made before reconstruction. For the reconstructed V4.2 status and tests, see `../RELEASE_V4_2.md` and `../VALIDATION_V4_2.json`. The complete user request is preserved in `V4_2_RECONSTRUCTION_REQUEST.txt`. Historical results in that request are not current validation results.
 
 ## Verified recovery
 

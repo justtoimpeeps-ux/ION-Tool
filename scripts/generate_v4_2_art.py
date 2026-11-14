@@ -50,10 +50,10 @@ for k in kinds:
     for phase in range(4):
         if k in ['cnc','integrate','calibrate','qa','package']:
             body=base['conveyor'](phase) if k=='package' else base['bed']()
-            body+='<g transform="translate(35 27) scale(.65)">'+engine('shipped' if k=='package' else 'tested' if k=='qa' else 'core')+'</g>'
+            # The reference-derived engine is composited by render_atlases.cjs.
             body+=base['robot'](160,102,phase) if k in ['integrate','package'] else box(34,18+phase*6,125,9,'#a6c5c9')
         elif k in ['field','energy','gas','electronic','thermal','interface','sensor','housingMachine']:
-            body=base['bench']()+'<g transform="translate(29 20) scale(.7)">'+item('housing' if k=='housingMachine' else k)+'</g>'+box(15+phase*3,25,10,70,'#c2aa7e')
+            body=base['bench']()+box(15+phase*3,25,10,70,'#c2aa7e')
         else:body=base['art'](k,phase)
         frames.append(svg(body))
     sources['machines'][k]=frames

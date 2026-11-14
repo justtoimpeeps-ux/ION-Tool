@@ -1,0 +1,34 @@
+{
+  "release": "Reconstructed V4.2",
+  "observed_at_utc": "2026-11-14T02:03:42.437159+00:00",
+  "fullPhysicalDay": {
+    "engine": "optimized",
+    "layout": "compact",
+    "seconds": 445.213173496,
+    "cpuSeconds": 502.642542,
+    "sha256": "e8433a3a6a9865c388f4cce5aded61869705461bea9ee49714b7616672041ea4",
+    "certified": 244,
+    "shipped": 194,
+    "trips": 7338,
+    "prepHours": 6.7825,
+    "maxMaterialError": 9.313225746154785e-10
+  },
+  "certifiedEngines": 244,
+  "dispatchedEngines": 194,
+  "shiftHours": 9,
+  "prepHours": 6.7825,
+  "assets": 934,
+  "normalPaidManHours": 29250,
+  "paidManHours": 31308.46739463602,
+  "coreTests": {
+    "passed": 59,
+    "failed": 0,
+    "skipped": 0
+  },
+  "limitations": [
+    "First day draws on opening WIP; sustainable and overtime targets not demonstrated.",
+    "Reference-derived artwork reconstructed; inaccessible original V4.2 artwork not recovered.",
+    "Cloud browser validates locally served standalone HTML; desktop file launch not exercised.",
+    "Pedestrian collision modeling and interstellar logistics remain outside the existing physical model."
+  ]
+}
