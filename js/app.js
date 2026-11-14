@@ -108,7 +108,7 @@ function removeSelectedTile(entity=selected,path=null){
  if(Object.values(b.docks).flat().some(([x,y])=>contains(bounds,{x,y,w:1,h:1}))){$('status').textContent='Fixed building access cannot be removed.';return}
  const label=entity?(entity.type?SPECS[entity.type].name:MATERIALS[entity.item].title+' storage area'):pathLabel(path.kind);
  if(!confirm('Remove '+label+' and replace its footprint with walk path?'+(entity?.crew?.length?' Assigned workers will return to the unassigned roster.':'')))return;
- snapshot();if(entity?.type){const ids=new Set(spareWorkers.map(w=>w.id));for(const w of entity.crew)if(!ids.has(w.id)){spareWorkers.push(w);ids.add(w.id)}}
+ snapshot();if(entity)b.keepWorksiteOpen=true;if(entity?.type){const ids=new Set(spareWorkers.map(w=>w.id));for(const w of entity.crew)if(!ids.has(w.id)){spareWorkers.push(w);ids.add(w.id)}}
  b.machines=b.machines.filter(m=>m!==entity);b.storage=b.storage.filter(store=>store!==entity);b.paths=b.paths.filter(p=>!contains(bounds,{x:p.x,y:p.y,w:1,h:1}));
  for(let y=bounds.y;y<bounds.y+bounds.h;y++)for(let x=bounds.x;x<bounds.x+bounds.w;x++)b.paths.push({x,y,kind:'walk',cargo:null,dir:0});
  selected=null;selectedPath=null;area=null;hover=null;dayReplay=null;replayPlaying=false;commit(entity?1200:70,entity?1:0,'Remove '+label+' · restore walk path',bounds);
