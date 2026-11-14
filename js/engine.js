@@ -3,12 +3,17 @@ const FactoryEngine=(()=>{
  const EPS=1e-8;
  function equipmentModel(m,specs){return specs[m.type].models?.[m.model||'standard']||{speed:1,workerDelta:0,price:specs[m.type].price,days:specs[m.type].days,name:'Standard production cell'}}
  function modifiers(m,catalog={}){return (m.upgrades||[]).reduce((a,k)=>{const u=catalog[k];if(u){a.speed*=u.speed||1;a.workers+=u.workerReduction||0}return a},{speed:1,workers:0})}
- function requiredWorkers(m,specs,catalog={}){return Math.max(1,(m.staffingRequired??Math.max(1,specs[m.type].workers+(equipmentModel(m,specs).workerDelta||0)))-modifiers(m,catalog).workers)}
- function staffing(m,specs,catalog={}){const crew=m.crew||[];return crew.length?Math.min(1,crew.length/requiredWorkers(m,specs,catalog))*(.65+Math.min(.35,crew.reduce((n,p)=>n+p.level,0)/crew.length*.07)):0}
+ function operatorLimit(m,specs){return specs[m.type].operatorLimit??Math.max(1,specs[m.type].workers||1)}
+ function requiredWorkers(m,specs,catalog={}){return Math.min(operatorLimit(m,specs),Math.max(1,(m.staffingRequired??Math.max(1,specs[m.type].workers+(equipmentModel(m,specs).workerDelta||0)))-modifiers(m,catalog).workers))}
+ function crewLimit(m,specs,catalog={}){return requiredWorkers(m,specs,catalog)+(specs[m.type].helpers||0)}
+ function productiveCrew(m,specs,catalog={}){return (m.crew||[]).slice(0,crewLimit(m,specs,catalog))}
+ function staffing(m,specs,catalog={}){const crew=productiveCrew(m,specs,catalog),required=requiredWorkers(m,specs,catalog),operators=crew.slice(0,required);return operators.length?Math.min(1,Math.min(1,operators.length/required)*(.65+Math.min(.35,operators.reduce((n,p)=>n+p.level,0)/operators.length*.07))*(1+Math.min(1,Math.max(0,crew.length-required))*.04)):0}
+ function cartCells(b){const occupied=new Set();for(const o of [...b.machines,...b.storage])for(let y=o.y;y<o.y+o.h;y++)for(let x=o.x;x<o.x+o.w;x++)occupied.add(x+','+y);const painted=new Set(b.paths.filter(p=>p.kind==='cart'&&!occupied.has(p.x+','+p.y)).map(p=>p.x+','+p.y)),valid=new Set();for(const k of painted){const [x,y]=k.split(',').map(Number),block=[k,(x+1)+','+y,x+','+(y+1),(x+1)+','+(y+1)];if(block.every(p=>painted.has(p)))block.forEach(p=>valid.add(p))}return {valid,narrow:new Set([...painted].filter(k=>!valid.has(k)))}}
+
  function effectiveRate(m,specs,catalog={}){return specs[m.type].rate*equipmentModel(m,specs).speed*modifiers(m,catalog).speed*staffing(m,specs,catalog)*m.condition}
  function ratedRate(m,specs,catalog={}){return specs[m.type].rate*equipmentModel(m,specs).speed*modifiers(m,catalog).speed}
  function accessPoints(m,specs,output){
-  const s=specs[m.type],side=output?m.outputSide:m.inputSide,access=s.port==='flex'&&side?[{kind:output?'out':'in',side,position:.5}]:s.access;if(!access){const a=m.angle||0,sign=output?1:-1;if(a%2)return [[m.x+Math.floor(m.w/2),sign*(a===1?1:-1)>0?m.y+m.h:m.y-1]];return [[sign*(a===0?1:-1)>0?m.x+m.w:m.x-1,m.y+Math.floor(m.h/2)]]}
+  const s=specs[m.type],side=output?m.outputSide:m.inputSide,access=s.port==='flex'&&side?[{kind:output?'out':'in',side,position:(output?m.outputPosition:m.inputPosition)??.5}]:s.access;if(!access){const a=m.angle||0,sign=output?1:-1;if(a%2)return [[m.x+Math.floor(m.w/2),sign*(a===1?1:-1)>0?m.y+m.h:m.y-1]];return [[sign*(a===0?1:-1)>0?m.x+m.w:m.x-1,m.y+Math.floor(m.h/2)]]}
   return access.filter(p=>p.kind===(output?'out':'in')).map(p=>{
    let w=s.w,h=s.h,x=p.side==='left'?-1:p.side==='right'?w:Math.min(w-1,Math.floor(w*p.position)),y=p.side==='top'?-1:p.side==='bottom'?h:Math.min(h-1,Math.floor(h*p.position));
    for(let a=0;a<(m.angle||0);a++){[x,y]=[h-1-y,x];[w,h]=[h,w]}return [m.x+x,m.y+y];
@@ -32,7 +37,7 @@ const FactoryEngine=(()=>{
   for(const [bn,b]of Object.entries(buildings)){
    pathMaps[bn]=new Map();
    if(options.implicitWalk){const occupied=new Set();for(const o of [...b.machines,...b.storage])for(let y=o.y;y<o.y+o.h;y++)for(let x=o.x;x<o.x+o.w;x++)occupied.add(x+','+y);for(let y=0;y<b.rows;y++)for(let x=0;x<b.cols;x++)if(!occupied.has(x+','+y))pathMaps[bn].set(x+','+y,{x,y,kind:'walk',dir:0})}
-   for(const p of b.paths)pathMaps[bn].set(p.x+','+p.y,p);traffic[bn]={};
+   const lanes=cartCells(b);for(const p of b.paths)pathMaps[bn].set(p.x+','+p.y,p.kind==='cart'&&!lanes.valid.has(p.x+','+p.y)?{...p,kind:'walk'}:p);traffic[bn]={};
    for(const m of b.machines){all.push(m);owners[m.id]=bn;buffers[m.id]={};machines[m.id]=0;details[m.id]={capacity:effectiveRate(m,specs,catalog)*timeFactor,blocked:0,shortages:{},inputSupply:{},inputNeed:Object.fromEntries(Object.entries(specs[m.type].inputs).map(([item,n])=>[item,n*ratedRate(m,specs,catalog)*timeFactor]))};
     for(const item of Object.keys(specs[m.type].outputs))(sources[item]??=[]).push(m);
     const st=stage[m.type]??={rated:0,possible:0,actual:0,machines:0};st.rated+=specs[m.type].rate*equipmentModel(m,specs).speed*modifiers(m,catalog).speed*timeFactor;st.possible+=details[m.id].capacity;st.machines++;
@@ -143,6 +148,6 @@ const FactoryEngine=(()=>{
   dailyOutputs.push(stage.qa?.actual??stage[sorted.at(-1)?.type]?.actual??0);
   return {warmupDays,dailyOutputs,machines,stage,stocks,buffers,traffic,details,diagnostics,routes:[...routes.values()],links:[...links.values()],remainingSupply,steps,hours};
  }
- return {equipmentModel,storageProfile,simulate,staffing,requiredWorkers,effectiveRate,ratedRate,accessPoints,pathCapacity,storageCap,topological};
+ return {operatorLimit,crewLimit,productiveCrew,cartCells,equipmentModel,storageProfile,simulate,staffing,requiredWorkers,effectiveRate,ratedRate,accessPoints,pathCapacity,storageCap,topological};
 })();
 if(typeof module!=='undefined')module.exports=FactoryEngine;

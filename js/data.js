@@ -396,3 +396,17 @@ for(const [type,s]of Object.entries(SPECS)){
  if(s.models.automated)s.models.automated.speed=gain;
  if(s.models.vc)s.models.vc.speed=Math.max(s.models.vc.speed,gain+.12);
 }
+
+// V4.2 adopted engineering limits and in-house fabrication designs.
+for(const [type,s]of Object.entries(SPECS)){
+ s.operatorLimit=Math.max(1,DEFAULT_STAFFING[type]||s.workers);
+ s.helpers=['cast','heat','finish','field','energy','thermal','integrate','package','support'].includes(type)?1:0;
+ if(s.models.spartan)s.models.spartan.retired=true;
+ const commercial=Object.values(s.models).filter(m=>!m.retired&&!m.inHouse&&m!==s.models.vc),best=Math.max(...commercial.map(m=>m.speed));
+ const old=s.models.vc||{workerDelta:-1};
+ s.models.vc={...old,name:'VC generation I · '+s.name,price:0,days:Math.max(...commercial.map(m=>m.days))*3,speed:best*1.06,inHouse:true,description:'In-house fabrication: warehouse materials and labor, no external equipment purchase. Nominal capability 6% above the best commercial design.',bill:{iron:Math.ceil(s.w*s.h*45),nickel:Math.ceil(s.w*s.h*9),copper:Math.ceil(s.w*s.h*4),electronicsFeed:Math.ceil(s.w*s.h*2)},fabricationManHours:s.w*s.h*24};
+}
+const CANON_GROUP_NAMES={housing:'Injector-relay housing and frame',field:'Magnet-ring assembly',energy:'Ion-grid and particle-energizer cassette',gas:'Propellant pump and injection set',electronic:'Charge-input control electronics',thermal:'Ionization chamber and thermal jacket',interface:'Power-feed and mounting interfaces',sensor:'Engine sensors and safety instrumentation'};
+for(const [id,title]of Object.entries(CANON_GROUP_NAMES)){MATERIALS[id].title=title;if(SPECS[id])SPECS[id].name=title+' cell'}
+MATERIALS.housingRaw.title='Injector-relay housing preform';MATERIALS.housingHeat.title='Heat-treated injector-relay housing';
+for(const id of ['kit','machined','core','calibrated','tested','shipped'])MATERIALS[id].title=({kit:'Complete IE-4 eight-module kit',machined:'Machined IE-4 engine',core:'Assembled IE-4 ion engine',calibrated:'Calibrated IE-4 ion engine',tested:'Certified IE-4 ion engine',shipped:'Packaged IE-4 ion engine'})[id];

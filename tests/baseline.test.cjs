@@ -85,8 +85,8 @@ test('equipment variants retain recipes and apply independent throughput and sta
   for(const [model,v]of Object.entries(s.models)){
    const variant={...m,model};
    assert.equal(engine.ratedRate(variant,specs),s.rate*v.speed);
-   assert.equal(engine.requiredWorkers(variant,specs),Math.max(1,s.workers+v.workerDelta));
-   assert.ok(v.price>0&&Number.isInteger(v.days)&&v.days>0);
+   assert.equal(engine.requiredWorkers(variant,specs),Math.min(s.operatorLimit,Math.max(1,s.workers+v.workerDelta)));
+   assert.ok((v.inHouse?v.price===0:v.price>0)&&Number.isInteger(v.days)&&v.days>0);
   }
  }
  assert.ok(specs.cast.models.spartan);assert.ok(!specs.electronic.models.spartan);assert.ok(specs.electronic.models.vc);

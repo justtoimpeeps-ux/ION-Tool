@@ -24,3 +24,6 @@ body{height:100vh;display:flex;flex-direction:column}header{display:grid;grid-te
 #compactSection[hidden]{display:none}#compactSection p{font-size:12px;line-height:1.5}#dailyManpower[hidden]{display:none}#dailyManpowerDetails p{margin:8px 0;font-size:12px}
 #factoryViewport.is-panning,#factoryViewport.is-panning canvas{cursor:grabbing!important}
 main{min-height:0}#factoryViewport{display:flex;flex-direction:column}#factoryViewport>#mapScroll{flex:1;height:auto;min-height:0;width:100%}
+
+/* V4.2 compact controls and floor emphasis */
+header{gap:18px;flex-wrap:wrap}header .top-actions{flex:1;justify-content:center}#workforce{margin:0 18px}#dailyManpower{margin-bottom:12px}.mapbar{gap:9px}#flowKey{display:flex;flex-direction:column;align-items:flex-start}#scenarioSettings{max-width:440px}.model-card{white-space:normal}

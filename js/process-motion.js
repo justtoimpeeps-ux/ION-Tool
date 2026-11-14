@@ -1,0 +1,8 @@
+/* Work-only motion drawn in the same fitted 192×128 coordinate system as artwork. */
+function drawProcessMotion(c,m,progress,clock){const W=m.w*CELL,H=m.h*CELL,top=H<=CELL?4:36,bodyH=H-top-15,angle=(m.angle||0)*Math.PI/2,iw=m.angle%2?bodyH:W-10,ih=m.angle%2?W-10:bodyH,fit=Math.min(iw/192,ih/128);c.save();c.translate(m.x*CELL+W/2,m.y*CELL+top+bodyH/2);c.rotate(angle);c.scale(fit,fit);c.translate(-96,-64);const phase=Math.max(0,Math.min(1,progress)),pulse=(Math.sin(clock/120)+1)/2;
+ if(['cast','heat'].includes(m.type)){c.fillStyle='rgba(255,143,45,'+(.25+pulse*.25)+')';c.fillRect(70,42,52,42);if(m.type==='cast'){c.strokeStyle='#ffd384';c.lineWidth=3;c.beginPath();c.moveTo(98,24);c.lineTo(98,48+phase*20);c.stroke()}}
+ else if(['coilWind','wireDraw','wireFinish'].includes(m.type)){c.strokeStyle='#e9bd78';c.lineWidth=2;c.beginPath();c.moveTo(25,45+phase*7);c.lineTo(155,58);c.stroke();c.strokeStyle='#81d1d2';c.beginPath();c.arc(65,65,24,clock/300,clock/300+1);c.stroke()}
+ else if(['integrate','contactMachine','cnc','housingMachine','regMachine','couplerMachine'].includes(m.type)){c.fillStyle='#ffd28a';for(let i=0;i<5;i++){const a=clock/200+i*1.2;c.fillRect(115+Math.cos(a)*12,65+Math.sin(a)*12,2+pulse,2)}}
+ else if(['calibrate','qa','coilTest','regTest','sealInspect'].includes(m.type)){c.strokeStyle='#83e4d4';c.lineWidth=2;c.beginPath();c.moveTo(45+phase*100,30);c.lineTo(45+phase*100,98);c.stroke()}
+ else if(['finish','couplerCoat'].includes(m.type)){c.fillStyle='#a0dcea55';for(let i=0;i<15;i++)c.fillRect(61+(i*13)%70,40+(i*7+clock/40)%45,2,5)}
+ else {c.strokeStyle='#bfd6d8';c.lineWidth=2;c.strokeRect(35+phase*25,26,18,14)}c.restore()}

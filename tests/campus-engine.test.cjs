@@ -1,7 +1,7 @@
 const {test}=require('node:test'),assert=require('node:assert/strict'),Engine=require('../js/engine.js');
 const materials={raw:{volume:1},tested:{volume:1}},specs={work:{rate:24,workers:2,inputs:{raw:1},outputs:{tested:1},port:'flex'}};
 const worker=id=>({id,level:5}),m=()=>({id:'m',type:'work',number:1,x:3,y:0,w:1,h:1,angle:0,condition:1,crew:[worker('one'),worker('two')],upgrades:[]});
-const b=(machines=[],storage=[])=>({machines,storage,paths:[0,1,2,3,4].map(x=>({x,y:1,kind:'cart',dir:0})),docks:{input:[[0,1]],output:[[4,1]]}});
+const b=(machines=[],storage=[])=>({machines,storage,paths:[1,2].flatMap(y=>[0,1,2,3,4].map(x=>({x,y,kind:'cart',dir:0}))),docks:{input:[[0,1]],output:[[4,1]]}});
 const store=()=>({id:'raw-bin',item:'raw',stock:0,x:1,y:0,w:1,h:1,receiving:true});
 test('receiving deliveries trace a physical inbound route and cannot teleport when disconnected',()=>{
  const campus={Receiving:b([m()],[store()])},options={supply:{raw:24},receiving:'Receiving',requireDocks:true};

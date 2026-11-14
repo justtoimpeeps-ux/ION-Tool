@@ -18,22 +18,22 @@ const FactoryBaseline=(()=>{
   for(let round=0;round<rounds;round++)for(const group of groups)process.push(...group.slice(Math.ceil(round*group.length/rounds),Math.ceil((round+1)*group.length/rounds)));
   const items=[...b.storage,...process,...b.machines.filter(m=>specs[m.type].support).sort((a,b)=>a.number-b.number)];
   if(!items.length)return b;
-  const rough=items.reduce((n,o)=>n+(o.w+1)*(o.h+2),0),minWidth=Math.max(...items.map(o=>o.w)),ideal=Math.sqrt(rough*1.25);
-  function pack(width){let x=2,y=2,height=0,used=0;const positions=[],shelves=[];for(const o of items){if(x>2&&x+o.w>width+2){shelves.push({top:y,y:y+height,height});y+=height+2;x=2;height=0}positions.push({id:o.id,x,y,h:o.h});x+=o.w+1;height=Math.max(height,o.h);used=Math.max(used,x-1)}shelves.push({top:y,y:y+height,height});for(const p of positions){const shelf=shelves.find(s=>s.top===p.y);p.y=shelf.y-p.h}const cols=Math.max(12,used+3),rows=Math.max(10,y+height+3);return {positions,shelves,cols,rows,score:cols*rows*(1+.06*Math.abs(Math.log(cols/rows/1.25)))}}
-  let best;for(let width=Math.max(minWidth,Math.floor(ideal*.65));width<=Math.max(minWidth,Math.ceil(ideal*1.45));width++){const trial=pack(width);if(trial.cols>400||trial.rows>400||trial.cols*trial.rows>25000)continue;if(!best||trial.score<best.score)best=trial}
+  const rough=items.reduce((n,o)=>n+(o.w+1)*(o.h+2),0),minWidth=Math.max(...items.map(o=>o.w)),ideal=Math.sqrt(rough*.82);
+  function pack(width){let x=2,y=2,height=0,used=0;const positions=[],shelves=[];for(const o of items){if(x>2&&x+o.w>width+2){shelves.push({top:y,y:y+height,height});y+=height+2;x=2;height=0}positions.push({id:o.id,x,y,h:o.h});x+=o.w+1;height=Math.max(height,o.h);used=Math.max(used,x-1)}shelves.push({top:y,y:y+height,height});for(const p of positions){const shelf=shelves.find(s=>s.top===p.y);p.y=shelf.y-p.h}const cols=Math.max(12,used+3),rows=Math.max(10,y+height+3);return {positions,shelves,cols,rows,score:cols*rows*(1+.6*Math.abs(Math.log(cols/rows/.86)))}}
+  let best;for(let width=Math.max(minWidth,Math.floor(ideal*.65));width<=Math.max(minWidth,Math.ceil(ideal*1.45));width++){const trial=pack(width);if(trial.cols>trial.rows||trial.cols>400||trial.rows>400||trial.cols*trial.rows>25000)continue;if(!best||trial.score<best.score)best=trial}
   if(!best)throw Error('Equipment cannot fit within the supported floor size.');
   const byId=new Map(items.map(o=>[o.id,o]));for(const p of best.positions)Object.assign(byId.get(p.id),{x:p.x,y:p.y});
   Object.assign(b,{cols:best.cols,rows:best.rows,layoutRevision:5,docks:{input:[],output:[]}});
   const occupied=new Set();for(const o of items)for(let y=o.y;y<o.y+o.h;y++)for(let x=o.x;x<o.x+o.w;x++)occupied.add(x+','+y);
   const paths=new Map(),add=(x,y,kind='cart',laneRole=null)=>{const key=x+','+y;if(x>=0&&y>=0&&x<b.cols&&y<b.rows&&!occupied.has(key)&&(!paths.has(key)||kind==='cart'))paths.set(key,{x,y,kind,cargo:null,dir:0,laneRole:laneRole||paths.get(key)?.laneRole||null})};
   for(const shelf of best.shelves)for(let x=1;x<b.cols-1;x++){add(x,shelf.y,'cart','input');add(x,shelf.y+1,'cart','output')}
-  for(let y=1;y<b.rows-1;y++){add(1,y);add(b.cols-2,y)}
+  for(let y=1;y<b.rows-1;y++){add(0,y);add(1,y);add(b.cols-2,y);add(b.cols-1,y)}
   // Distributed loading bays serve connected process aisles; local gaps remain walkable.
   const doorShelves=best.shelves;
   for(const shelf of doorShelves){b.docks.input.push([1,shelf.y],[b.cols-2,shelf.y]);b.docks.output.push([1,shelf.y+1],[b.cols-2,shelf.y+1])}
   for(const m of b.machines){const s=specs[m.type],shelf=best.shelves.find(row=>row.y===m.y+m.h),bulky=Object.entries(s.outputs).reduce((n,[item,q])=>n+q*(materials[item]?.volume||0),0)*s.rate>22,points=s.port==='fixed'?[...FactoryEngine.accessPoints(m,specs,false),...FactoryEngine.accessPoints(m,specs,true)]:bulky?[[m.x-1,m.y+Math.floor(m.h/2)],[m.x+m.w,m.y+Math.floor(m.h/2)]]:[];for(const [x,y]of points)for(let yy=y;yy<=shelf.y+1;yy++)add(x,yy,'cart')}
 
-  b.paths=[...paths.values()];return b;
+  b.paths=[...paths.values()];const lanes=FactoryEngine.cartCells(b);for(const p of b.paths)if(lanes.narrow.has(p.x+','+p.y))p.kind='walk';return b;
  }
  function generate(specs,materials,names){
   const buildings=Object.fromEntries(names.map(name=>[name,{machines:[],storage:[],paths:[],docks:{input:[],output:[]},revision:3,layoutRevision:4}]));
