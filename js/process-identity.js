@@ -50,3 +50,5 @@ Object.assign(PROCESS_IDENTITY,{
  droneRepair:{color:'#dca764',path:'M2 3l4 3-2 2-3-4 M4 8l6 6 3-3-6-6 M8 2h6v5h-3 M13 8v6'},
  servicePacking:{color:'#85ccad',path:'M1 5h14v9H1z M1 5l4-3h6l4 3 M4 9l3 3 5-5'}
 });
+
+if(typeof SpartanIndustry!=='undefined'){const shapes={crush:'M1 1h14l-3 6H4z M3 8l3 5 3-5 4 5 M1 15h14',screen:'M1 3h14v10H1z M4 5v6 M8 5v6 M12 5v6 M1 8h14',mill:'M2 5h12v7H2z M1 6v5 M15 6v5 M5 2v3 M10 12v3',separate:'M3 1h10v4H3z M8 5v4 M8 9l-6 5 M8 9l6 5 M5 14h6',float:'M1 5h14v9H1z M3 2h2 M8 1v3 M12 2h2 M3 9h2 M7 11h2 M11 8h2',filter:'M1 4h14v9H1z M4 3v11 M7 3v11 M10 3v11 M13 3v11',hoist:'M3 1v14 M13 1v14 M3 2h10 M5 6h6v5H5z M8 2v4'};for(const id of SpartanIndustry.added){const m=SPECS[id],base=PROCESS_IDENTITY[m.motion]||PROCESS_IDENTITY[m.artSource]||PROCESS_IDENTITY.cnc;PROCESS_IDENTITY[id]={color:m.motion==='hoist'?'#e6bb6b':'#8bc8cb',path:shapes[m.motion]||base.path}}}

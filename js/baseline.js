@@ -1,6 +1,7 @@
 /* Registered fleets are fixed; physical allocation follows the user's campus plan.
    Floor dimensions are derived AFTER placing assets, receiving stores and aisles. */
 const FactoryBaseline=(()=>{
+ const rawReferenceOrder=['tibanna','nickel','cobalt','copper','silver','gold','pgm','iron','chromium','electronicsFeed','processor','sealCompound','regValve','regSense','superconductor','insulationFeed','sensorModule','safingModule','ceramic','coolant'];
  function billOfMaterials(specs,units=1,output='shipped'){
   const demand={[output]:units},cycles={};
   for(const type of FactoryEngine.topological(specs).slice().reverse()){
@@ -8,7 +9,7 @@ const FactoryBaseline=(()=>{
    for(const [item,q]of Object.entries(sp.inputs))demand[item]=(demand[item]||0)+q*n;
   }
   const outputs=new Set(Object.values(specs).flatMap(s=>Object.keys(s.outputs)));
-  return {demand,cycles,raw:Object.fromEntries(Object.entries(demand).filter(([k])=>!outputs.has(k)))};
+  return {demand,cycles,raw:Object.fromEntries(Object.entries(demand).filter(([k,q])=>q>0&&!outputs.has(k)).sort((a,b)=>output==='shipped'?(rawReferenceOrder.indexOf(a[0])<0?999:rawReferenceOrder.indexOf(a[0]))-(rawReferenceOrder.indexOf(b[0])<0?999:rawReferenceOrder.indexOf(b[0])):0))};
  }
  function compactFloor(input,specs,materials={}){
   const b=structuredClone(input),order=FactoryEngine.topological(specs);
@@ -20,7 +21,7 @@ const FactoryBaseline=(()=>{
   if(!items.length)return b;
   const rough=items.reduce((n,o)=>n+(o.w+2)*(o.h+2),0),minWidth=Math.max(...items.map(o=>o.w)),ideal=Math.sqrt(rough*.82);
   function pack(width){let x=2,y=2,height=0,used=0;const positions=[],shelves=[];for(const o of items){if(x>2&&x+o.w>width+2){shelves.push({top:y,y:y+height,height});y+=height+2;x=2;height=0}positions.push({id:o.id,x,y,h:o.h});x+=o.w+2;height=Math.max(height,o.h);used=Math.max(used,x-1)}shelves.push({top:y,y:y+height,height});for(const p of positions){const shelf=shelves.find(s=>s.top===p.y);p.y=shelf.y-p.h}const cols=Math.max(12,used+3),rows=Math.max(10,y+height+3);return {positions,shelves,cols,rows,score:cols*rows*(1+.6*Math.abs(Math.log(cols/rows/.86)))}}
-  let best;for(let width=Math.max(minWidth,Math.floor(ideal*.65));width<=Math.max(minWidth,Math.ceil(ideal*1.45));width++){const trial=pack(width);if(trial.cols>trial.rows||trial.cols>400||trial.rows>400||trial.cols*trial.rows>25000)continue;if(!best||trial.score<best.score)best=trial}
+  let best;for(let width=Math.max(minWidth,Math.floor(ideal*.65));width<=Math.max(minWidth,Math.ceil(ideal*1.45));width++){const trial=pack(width);if(b.allowLandscape!==true&&trial.cols>trial.rows||trial.cols>400||trial.rows>400||trial.cols*trial.rows>25000)continue;if(!best||trial.score<best.score)best=trial}
   if(!best)throw Error('Equipment cannot fit within the supported floor size.');
   const byId=new Map(items.map(o=>[o.id,o]));for(const p of best.positions)Object.assign(byId.get(p.id),{x:p.x,y:p.y});
   Object.assign(b,{cols:best.cols,rows:best.rows,layoutRevision:5,docks:{input:[],output:[]}});
@@ -37,7 +38,8 @@ const FactoryBaseline=(()=>{
  }
  function generate(specs,materials,names){
   const buildings=Object.fromEntries(names.map(name=>[name,{machines:[],storage:[],paths:[],docks:{input:[],output:[]},revision:3,layoutRevision:4}]));
-  const perCore=billOfMaterials(specs),incoming=Object.fromEntries(Object.entries(perCore.raw).map(([k,v])=>[k,Object.hasOwn(ION_REGISTER.openingTonnes,k)?0:Math.ceil(v*247*1.1)]));
+  // Retain three historical zero-stock receiving slots so existing V4.2 replays/layouts still match.
+  const perCore=billOfMaterials(specs),incoming=Object.fromEntries(Object.entries(perCore.raw).flatMap(([k,v])=>[[k,Object.hasOwn(ION_REGISTER.openingTonnes,k)?0:Math.ceil(v*247*1.1)],...(k==='pgm'&&materials.damagedDrone&&materials.testCoupon&&materials.oreSample?[['damagedDrone',0],['testCoupon',0],['oreSample',0]]:[])]));
   let worker=0;const numbers={};
   for(const [owner,allocation]of Object.entries(ION_REGISTER.allocation))for(const [type,count]of Object.entries(allocation)){
    const sp=specs[type],destination=sp.building||owner,role=roleForSpec(sp),homePool=role==='qa'?'qa-shared':role+'-'+owner.slice(-1),staffingRequired=DEFAULT_STAFFING[type]??sp.workers;
@@ -45,7 +47,7 @@ const FactoryBaseline=(()=>{
   }
   // Confirmed opening tonnes become kg once; unknown components remain zero-stock scenarios.
   for(const item of Object.keys(incoming)){
-   const stock=(ION_REGISTER.openingTonnes[item]||0)*1000,dailyUse=perCore.raw[item]*247,p=FactoryEngine.storageProfile(item,materials),target=Math.max(stock/.85,dailyUse*3*1.1),perSquare=Math.min(p.usableVolume/p.volumePerUnit,materials[item].unit==='kg'?p.loadKg:Infinity),area=Math.max(4,Math.ceil(target/perSquare)+1),w=Math.ceil(Math.sqrt(area)),h=Math.ceil(area/w);
+   const stock=(ION_REGISTER.openingTonnes[item]||0)*1000,dailyUse=(perCore.raw[item]||0)*247,p=FactoryEngine.storageProfile(item,materials),target=Math.max(stock/.85,dailyUse*3*1.1),perSquare=Math.min(p.usableVolume/p.volumePerUnit,materials[item].unit==='kg'?p.loadKg:Infinity),area=Math.max(4,Math.ceil(target/perSquare)+1),w=Math.ceil(Math.sqrt(area)),h=Math.ceil(area/w);
    buildings.Receiving.storage.push({id:'receiving-'+item,item,stock,x:0,y:0,w,h,storageModel:'receiving-v1',receiving:true,stockSource:stock?'Register §5 opening tonnes × 1000':'Unknown; zero opening assumed'});
   }
   for(const [name,b]of Object.entries(buildings))buildings[name]=compactFloor(b,specs,materials);

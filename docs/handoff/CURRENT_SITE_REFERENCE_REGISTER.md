@@ -1,6 +1,6 @@
 # Complete current-site reference register
 
-The reference collection is complete: **15 sites**. Three are already in the planner; twelve additional Spartan locations have been received and await implementation. This register transcribes the pasted references and does not claim those twelve sites are already built.
+The reference collection is complete: **15 sites**. All fifteen are included in the all-sites review build. This register transcribes the supplied reference facts; adopted equipment, layout and operating assumptions are detailed in `../ALL_SITES_REVIEW.md`.
 
 ## Additional Spartan sites
 
@@ -39,6 +39,6 @@ Seven mines total 1,040,000 t/year of referenced raw extraction. Four processors
 - Size new interiors from equipment, storage and usable access where possible; preserve the orbital station envelope.
 - Asteroid, underground and surface sites need different transfer geometry; retain finite payload, lift/docking time and real roster limits.
 - Reference imagery is sufficient for close map reconstruction. Original image files are optional.
-- New site maps and operation models are pending implementation; receiving references has not added them to the released planner.
+- The all-sites review build includes all twelve new locations, with adopted equipment and operating assumptions.
 
 The machine-readable companion JSON retains all facility/module names, input/output streams, ownership, environmental differences and the distinction between existing planner sites and collected references.

@@ -1,0 +1,2931 @@
+{
+  "format": "ION-all-sites-review-evidence-1",
+  "sites": [
+    {
+      "id": "orinda",
+      "name": "Orinda Campus",
+      "world": "",
+      "referencePersonnel": 3250,
+      "modeledPeople": 3250,
+      "annualReference": null,
+      "ownership": null,
+      "referenceLinks": [],
+      "equipment": 934,
+      "areas": [
+        {
+          "name": "Receiving",
+          "cols": 86,
+          "rows": 94,
+          "areaM2": 32336,
+          "level": 0,
+          "equipment": 0,
+          "storage": [
+            {
+              "item": "tibanna",
+              "opening": 150000,
+              "capacity": 179200,
+              "unit": "kg"
+            },
+            {
+              "item": "nickel",
+              "opening": 1100000,
+              "capacity": 1320000,
+              "unit": "kg"
+            },
+            {
+              "item": "cobalt",
+              "opening": 100000,
+              "capacity": 120000,
+              "unit": "kg"
+            },
+            {
+              "item": "copper",
+              "opening": 80000,
+              "capacity": 102500,
+              "unit": "kg"
+            },
+            {
+              "item": "silver",
+              "opening": 15000,
+              "capacity": 20000,
+              "unit": "kg"
+            },
+            {
+              "item": "gold",
+              "opening": 7000,
+              "capacity": 12500,
+              "unit": "kg"
+            },
+            {
+              "item": "pgm",
+              "opening": 3000,
+              "capacity": 7500,
+              "unit": "kg"
+            },
+            {
+              "item": "damagedDrone",
+              "opening": 0,
+              "capacity": 3,
+              "unit": "each"
+            },
+            {
+              "item": "testCoupon",
+              "opening": 0,
+              "capacity": 3666,
+              "unit": "each"
+            },
+            {
+              "item": "oreSample",
+              "opening": 0,
+              "capacity": 1833,
+              "unit": "each"
+            },
+            {
+              "item": "iron",
+              "opening": 1800000,
+              "capacity": 2172500,
+              "unit": "kg"
+            },
+            {
+              "item": "chromium",
+              "opening": 260000,
+              "capacity": 327500,
+              "unit": "kg"
+            },
+            {
+              "item": "electronicsFeed",
+              "opening": 350000,
+              "capacity": 412500,
+              "unit": "kg"
+            },
+            {
+              "item": "processor",
+              "opening": 0,
+              "capacity": 4888,
+              "unit": "each"
+            },
+            {
+              "item": "sealCompound",
+              "opening": 0,
+              "capacity": 3666,
+              "unit": "kg"
+            },
+            {
+              "item": "regValve",
+              "opening": 0,
+              "capacity": 6111,
+              "unit": "each"
+            },
+            {
+              "item": "regSense",
+              "opening": 0,
+              "capacity": 6111,
+              "unit": "each"
+            },
+            {
+              "item": "superconductor",
+              "opening": 520000,
+              "capacity": 617222,
+              "unit": "kg"
+            },
+            {
+              "item": "insulationFeed",
+              "opening": 0,
+              "capacity": 3666,
+              "unit": "kg"
+            },
+            {
+              "item": "sensorModule",
+              "opening": 0,
+              "capacity": 9777,
+              "unit": "each"
+            },
+            {
+              "item": "safingModule",
+              "opening": 0,
+              "capacity": 2037,
+              "unit": "each"
+            },
+            {
+              "item": "ceramic",
+              "opening": 700000,
+              "capacity": 852500,
+              "unit": "kg"
+            },
+            {
+              "item": "coolant",
+              "opening": 260000,
+              "capacity": 320000,
+              "unit": "kg"
+            }
+          ]
+        },
+        {
+          "name": "Factory A",
+          "cols": 60,
+          "rows": 68,
+          "areaM2": 16320,
+          "level": 0,
+          "equipment": 139,
+          "storage": []
+        },
+        {
+          "name": "Factory B",
+          "cols": 55,
+          "rows": 68,
+          "areaM2": 14960,
+          "level": 0,
+          "equipment": 129,
+          "storage": []
+        },
+        {
+          "name": "Subassemblies",
+          "cols": 50,
+          "rows": 51,
+          "areaM2": 10200,
+          "level": 0,
+          "equipment": 120,
+          "storage": []
+        },
+        {
+          "name": "Precision Machining",
+          "cols": 74,
+          "rows": 91,
+          "areaM2": 26936,
+          "level": 0,
+          "equipment": 300,
+          "storage": []
+        },
+        {
+          "name": "Final Assembly & Test",
+          "cols": 47,
+          "rows": 53,
+          "areaM2": 9964,
+          "level": 0,
+          "equipment": 80,
+          "storage": []
+        },
+        {
+          "name": "Shipping and Loading Yard",
+          "cols": 29,
+          "rows": 35,
+          "areaM2": 4060,
+          "level": 0,
+          "equipment": 36,
+          "storage": []
+        },
+        {
+          "name": "Maintenance and Toolroom",
+          "cols": 40,
+          "rows": 48,
+          "areaM2": 7680,
+          "level": 0,
+          "equipment": 130,
+          "storage": []
+        },
+        {
+          "name": "ION Headquarters",
+          "cols": 24,
+          "rows": 18,
+          "areaM2": 1728,
+          "level": 0,
+          "equipment": 0,
+          "storage": []
+        },
+        {
+          "name": "Utility Plant",
+          "cols": 24,
+          "rows": 18,
+          "areaM2": 1728,
+          "level": 0,
+          "equipment": 0,
+          "storage": []
+        },
+        {
+          "name": "Employee Operations",
+          "cols": 24,
+          "rows": 18,
+          "areaM2": 1728,
+          "level": 0,
+          "equipment": 0,
+          "storage": []
+        },
+        {
+          "name": "Internal Logistics Yard",
+          "cols": 24,
+          "rows": 18,
+          "areaM2": 1728,
+          "level": 0,
+          "equipment": 0,
+          "storage": []
+        },
+        {
+          "name": "Factory C Expansion",
+          "cols": 24,
+          "rows": 18,
+          "areaM2": 1728,
+          "level": 0,
+          "equipment": 0,
+          "storage": []
+        }
+      ],
+      "assumptions": "Existing source-derived campus"
+    },
+    {
+      "id": "vc-corellia",
+      "name": "Valerion-Czerka Corellia",
+      "world": "",
+      "referencePersonnel": null,
+      "modeledPeople": 260,
+      "annualReference": null,
+      "ownership": null,
+      "referenceLinks": [],
+      "equipment": 173,
+      "areas": [
+        {
+          "name": "VC Corellia / Headquarters",
+          "cols": 24,
+          "rows": 18,
+          "areaM2": 1728,
+          "level": 0,
+          "equipment": 0,
+          "storage": []
+        },
+        {
+          "name": "VC Corellia / Industrial Engineering",
+          "cols": 12,
+          "rows": 15,
+          "areaM2": 720,
+          "level": 0,
+          "equipment": 4,
+          "storage": []
+        },
+        {
+          "name": "VC Corellia / Automation and Controls Lab",
+          "cols": 12,
+          "rows": 12,
+          "areaM2": 576,
+          "level": 0,
+          "equipment": 3,
+          "storage": []
+        },
+        {
+          "name": "VC Corellia / Prototype Fabrication Hall",
+          "cols": 44,
+          "rows": 52,
+          "areaM2": 9152,
+          "level": 0,
+          "equipment": 74,
+          "storage": []
+        },
+        {
+          "name": "VC Corellia / Machinery Workshops",
+          "cols": 29,
+          "rows": 31,
+          "areaM2": 3596,
+          "level": 0,
+          "equipment": 32,
+          "storage": []
+        },
+        {
+          "name": "VC Corellia / Robotics and Testing Bay",
+          "cols": 24,
+          "rows": 28,
+          "areaM2": 2688,
+          "level": 0,
+          "equipment": 18,
+          "storage": []
+        },
+        {
+          "name": "VC Corellia / Advanced Research",
+          "cols": 24,
+          "rows": 35,
+          "areaM2": 3360,
+          "level": 0,
+          "equipment": 30,
+          "storage": []
+        },
+        {
+          "name": "VC Corellia / Training and Collaboration",
+          "cols": 24,
+          "rows": 18,
+          "areaM2": 1728,
+          "level": 0,
+          "equipment": 0,
+          "storage": []
+        },
+        {
+          "name": "VC Corellia / Field Installation Depot",
+          "cols": 24,
+          "rows": 18,
+          "areaM2": 1728,
+          "level": 0,
+          "equipment": 0,
+          "storage": []
+        },
+        {
+          "name": "VC Corellia / Logistics and Receiving Yard",
+          "cols": 19,
+          "rows": 28,
+          "areaM2": 2128,
+          "level": 0,
+          "equipment": 12,
+          "storage": [
+            {
+              "item": "iron",
+              "opening": 18000,
+              "capacity": 27500,
+              "unit": "kg"
+            },
+            {
+              "item": "nickel",
+              "opening": 4200,
+              "capacity": 7500,
+              "unit": "kg"
+            },
+            {
+              "item": "copper",
+              "opening": 1800,
+              "capacity": 7500,
+              "unit": "kg"
+            },
+            {
+              "item": "chromium",
+              "opening": 500,
+              "capacity": 7500,
+              "unit": "kg"
+            },
+            {
+              "item": "electronicsFeed",
+              "opening": 1500,
+              "capacity": 3055,
+              "unit": "kg"
+            },
+            {
+              "item": "processor",
+              "opening": 900,
+              "capacity": 1833,
+              "unit": "each"
+            }
+          ]
+        },
+        {
+          "name": "VC Corellia / Utility and Power",
+          "cols": 24,
+          "rows": 18,
+          "areaM2": 1728,
+          "level": 0,
+          "equipment": 0,
+          "storage": []
+        },
+        {
+          "name": "VC Corellia / Employee Parking and Shuttle",
+          "cols": 24,
+          "rows": 18,
+          "areaM2": 1728,
+          "level": 0,
+          "equipment": 0,
+          "storage": []
+        },
+        {
+          "name": "VC Corellia / Security Gatehouse",
+          "cols": 24,
+          "rows": 18,
+          "areaM2": 1728,
+          "level": 0,
+          "equipment": 0,
+          "storage": []
+        },
+        {
+          "name": "VC Corellia / Courtyard and Plaza",
+          "cols": 24,
+          "rows": 18,
+          "areaM2": 1728,
+          "level": 0,
+          "equipment": 0,
+          "storage": []
+        },
+        {
+          "name": "VC Corellia / Landing Pad and Shuttle Apron",
+          "cols": 24,
+          "rows": 18,
+          "areaM2": 1728,
+          "level": 0,
+          "equipment": 0,
+          "storage": []
+        }
+      ],
+      "assumptions": "Adopted planning roster; reference does not state headcount"
+    },
+    {
+      "id": "spartan-orbit",
+      "name": "Spartan Orbital Testing and Logistics",
+      "world": "",
+      "referencePersonnel": 85,
+      "modeledPeople": 85,
+      "annualReference": null,
+      "ownership": null,
+      "referenceLinks": [],
+      "equipment": 20,
+      "areas": [
+        {
+          "name": "Spartan Orbit / Command Deck",
+          "cols": 16,
+          "rows": 12,
+          "areaM2": 768,
+          "level": 0,
+          "equipment": 0,
+          "storage": []
+        },
+        {
+          "name": "Spartan Orbit / Station Operations Center",
+          "cols": 16,
+          "rows": 12,
+          "areaM2": 768,
+          "level": 0,
+          "equipment": 0,
+          "storage": []
+        },
+        {
+          "name": "Spartan Orbit / Communications and Sensors",
+          "cols": 16,
+          "rows": 12,
+          "areaM2": 768,
+          "level": 0,
+          "equipment": 0,
+          "storage": []
+        },
+        {
+          "name": "Spartan Orbit / Medical Bay",
+          "cols": 16,
+          "rows": 12,
+          "areaM2": 768,
+          "level": 0,
+          "equipment": 0,
+          "storage": []
+        },
+        {
+          "name": "Spartan Orbit / Crew Quarters",
+          "cols": 16,
+          "rows": 12,
+          "areaM2": 768,
+          "level": 0,
+          "equipment": 0,
+          "storage": []
+        },
+        {
+          "name": "Spartan Orbit / Galley and Commons",
+          "cols": 16,
+          "rows": 12,
+          "areaM2": 768,
+          "level": 0,
+          "equipment": 0,
+          "storage": []
+        },
+        {
+          "name": "Spartan Orbit / Power and Thermal",
+          "cols": 16,
+          "rows": 12,
+          "areaM2": 768,
+          "level": 0,
+          "equipment": 0,
+          "storage": []
+        },
+        {
+          "name": "Spartan Orbit / Fuel and Utilities",
+          "cols": 16,
+          "rows": 12,
+          "areaM2": 768,
+          "level": 0,
+          "equipment": 0,
+          "storage": []
+        },
+        {
+          "name": "Spartan Orbit / Cargo Transfer Bay",
+          "cols": 16,
+          "rows": 22,
+          "areaM2": 1408,
+          "level": 0,
+          "equipment": 2,
+          "storage": [
+            {
+              "item": "iron",
+              "opening": 260,
+              "capacity": 7500,
+              "unit": "kg"
+            },
+            {
+              "item": "nickel",
+              "opening": 60,
+              "capacity": 7500,
+              "unit": "kg"
+            },
+            {
+              "item": "copper",
+              "opening": 100,
+              "capacity": 7500,
+              "unit": "kg"
+            },
+            {
+              "item": "electronicsFeed",
+              "opening": 180,
+              "capacity": 1833,
+              "unit": "kg"
+            },
+            {
+              "item": "processor",
+              "opening": 100,
+              "capacity": 1833,
+              "unit": "each"
+            },
+            {
+              "item": "oreSample",
+              "opening": 96,
+              "capacity": 1833,
+              "unit": "each"
+            },
+            {
+              "item": "testCoupon",
+              "opening": 48,
+              "capacity": 3666,
+              "unit": "each"
+            },
+            {
+              "item": "damagedDrone",
+              "opening": 24,
+              "capacity": 32,
+              "unit": "each"
+            }
+          ]
+        },
+        {
+          "name": "Spartan Orbit / Microgravity Materials Lab",
+          "cols": 12,
+          "rows": 15,
+          "areaM2": 720,
+          "level": 0,
+          "equipment": 3,
+          "storage": []
+        },
+        {
+          "name": "Spartan Orbit / Ore Assay Lab",
+          "cols": 12,
+          "rows": 15,
+          "areaM2": 720,
+          "level": 0,
+          "equipment": 4,
+          "storage": []
+        },
+        {
+          "name": "Spartan Orbit / Machine Shop",
+          "cols": 13,
+          "rows": 14,
+          "areaM2": 728,
+          "level": 0,
+          "equipment": 5,
+          "storage": []
+        },
+        {
+          "name": "Spartan Orbit / Drone Maintenance Bay",
+          "cols": 14,
+          "rows": 15,
+          "areaM2": 840,
+          "level": 0,
+          "equipment": 6,
+          "storage": []
+        },
+        {
+          "name": "Spartan Orbit / Flight Test Control",
+          "cols": 16,
+          "rows": 12,
+          "areaM2": 768,
+          "level": 0,
+          "equipment": 0,
+          "storage": []
+        },
+        {
+          "name": "Spartan Orbit / Small Craft Hangar",
+          "cols": 16,
+          "rows": 12,
+          "areaM2": 768,
+          "level": 0,
+          "equipment": 0,
+          "storage": []
+        },
+        {
+          "name": "Spartan Orbit / Docking Collar",
+          "cols": 16,
+          "rows": 12,
+          "areaM2": 768,
+          "level": 0,
+          "equipment": 0,
+          "storage": []
+        }
+      ],
+      "assumptions": "85 on-site personnel in supplied reference; role split adopted"
+    },
+    {
+      "id": "west-basin",
+      "name": "West Basin Project",
+      "world": "Talus",
+      "referencePersonnel": 120,
+      "modeledPeople": 120,
+      "annualReference": {
+        "tonnes": 120000,
+        "basis": "raw-ore extraction"
+      },
+      "ownership": "Joint venture; Spartan operating partner",
+      "referenceLinks": [
+        "talus-bulk",
+        "harrow-junction"
+      ],
+      "equipment": 28,
+      "areas": [
+        {
+          "name": "West Basin / Basin extraction zone",
+          "cols": 38,
+          "rows": 38,
+          "areaM2": 5776,
+          "level": 0,
+          "equipment": 9,
+          "storage": [
+            {
+              "item": "depositCopper",
+              "opening": 295891,
+              "capacity": 445238,
+              "unit": "kg"
+            },
+            {
+              "item": "depositNickel",
+              "opening": 230137,
+              "capacity": 340476,
+              "unit": "kg"
+            },
+            {
+              "item": "depositMixed",
+              "opening": 131507,
+              "capacity": 190317,
+              "unit": "kg"
+            }
+          ]
+        },
+        {
+          "name": "West Basin / Drill pad line",
+          "cols": 24,
+          "rows": 18,
+          "areaM2": 1728,
+          "level": 0,
+          "equipment": 0,
+          "storage": []
+        },
+        {
+          "name": "West Basin / Limited crusher module",
+          "cols": 14,
+          "rows": 15,
+          "areaM2": 840,
+          "level": 0,
+          "equipment": 5,
+          "storage": []
+        },
+        {
+          "name": "West Basin / Sorting unit",
+          "cols": 14,
+          "rows": 15,
+          "areaM2": 840,
+          "level": 0,
+          "equipment": 6,
+          "storage": []
+        },
+        {
+          "name": "West Basin / Pre-concentration skid",
+          "cols": 14,
+          "rows": 19,
+          "areaM2": 1064,
+          "level": 0,
+          "equipment": 8,
+          "storage": []
+        },
+        {
+          "name": "West Basin / Tank farm",
+          "cols": 32,
+          "rows": 31,
+          "areaM2": 3968,
+          "level": 0,
+          "equipment": 0,
+          "storage": [
+            {
+              "item": "tailings",
+              "opening": 0,
+              "capacity": 1031250,
+              "unit": "kg"
+            }
+          ]
+        },
+        {
+          "name": "West Basin / Loading yard",
+          "cols": 24,
+          "rows": 18,
+          "areaM2": 1728,
+          "level": 0,
+          "equipment": 0,
+          "storage": []
+        },
+        {
+          "name": "West Basin / Contractor offices",
+          "cols": 24,
+          "rows": 18,
+          "areaM2": 1728,
+          "level": 0,
+          "equipment": 0,
+          "storage": []
+        },
+        {
+          "name": "West Basin / Crew support modules",
+          "cols": 24,
+          "rows": 18,
+          "areaM2": 1728,
+          "level": 0,
+          "equipment": 0,
+          "storage": []
+        },
+        {
+          "name": "West Basin / Security checkpoint",
+          "cols": 24,
+          "rows": 18,
+          "areaM2": 1728,
+          "level": 0,
+          "equipment": 0,
+          "storage": []
+        },
+        {
+          "name": "West Basin / Small landing pad",
+          "cols": 24,
+          "rows": 18,
+          "areaM2": 1728,
+          "level": 0,
+          "equipment": 0,
+          "storage": []
+        }
+      ],
+      "assumptions": "Reference personnel and annual figures retained. Equipment count, role split, floor dimensions, operating calendar, mineral yields and opening stock are adopted review assumptions."
+    },
+    {
+      "id": "outer-spur",
+      "name": "Outer Spur Mine",
+      "world": "Corellia System Outer Belt",
+      "referencePersonnel": 120,
+      "modeledPeople": 120,
+      "annualReference": {
+        "tonnes": 135000,
+        "basis": "raw-ore extraction"
+      },
+      "ownership": "Spartan-owned equipment; leased mineral rights",
+      "referenceLinks": [],
+      "equipment": 38,
+      "areas": [
+        {
+          "name": "Outer Spur / Sensor beacon",
+          "cols": 14,
+          "rows": 15,
+          "areaM2": 840,
+          "level": 0,
+          "equipment": 6,
+          "storage": []
+        },
+        {
+          "name": "Outer Spur / Asteroid anchor truss",
+          "cols": 24,
+          "rows": 18,
+          "areaM2": 1728,
+          "level": 0,
+          "equipment": 0,
+          "storage": []
+        },
+        {
+          "name": "Outer Spur / Cutting arm",
+          "cols": 41,
+          "rows": 39,
+          "areaM2": 6396,
+          "level": 0,
+          "equipment": 9,
+          "storage": [
+            {
+              "item": "depositIron",
+              "opening": 369864,
+              "capacity": 532539,
+              "unit": "kg"
+            },
+            {
+              "item": "depositNickel",
+              "opening": 258905,
+              "capacity": 391111,
+              "unit": "kg"
+            },
+            {
+              "item": "depositMixed",
+              "opening": 110959,
+              "capacity": 172857,
+              "unit": "kg"
+            }
+          ]
+        },
+        {
+          "name": "Outer Spur / Habitat pod",
+          "cols": 24,
+          "rows": 18,
+          "areaM2": 1728,
+          "level": 0,
+          "equipment": 0,
+          "storage": []
+        },
+        {
+          "name": "Outer Spur / Power and thermal control",
+          "cols": 24,
+          "rows": 18,
+          "areaM2": 1728,
+          "level": 0,
+          "equipment": 0,
+          "storage": []
+        },
+        {
+          "name": "Outer Spur / Maintenance frame",
+          "cols": 12,
+          "rows": 10,
+          "areaM2": 480,
+          "level": 0,
+          "equipment": 2,
+          "storage": []
+        },
+        {
+          "name": "Outer Spur / Drone rack",
+          "cols": 24,
+          "rows": 18,
+          "areaM2": 1728,
+          "level": 0,
+          "equipment": 0,
+          "storage": []
+        },
+        {
+          "name": "Outer Spur / Feed silos",
+          "cols": 34,
+          "rows": 33,
+          "areaM2": 4488,
+          "level": 0,
+          "equipment": 0,
+          "storage": [
+            {
+              "item": "tailings",
+              "opening": 0,
+              "capacity": 1196250,
+              "unit": "kg"
+            }
+          ]
+        },
+        {
+          "name": "Outer Spur / Vacuum sorting bay",
+          "cols": 24,
+          "rows": 27,
+          "areaM2": 2592,
+          "level": 0,
+          "equipment": 21,
+          "storage": []
+        },
+        {
+          "name": "Outer Spur / Ore skiff berths",
+          "cols": 24,
+          "rows": 18,
+          "areaM2": 1728,
+          "level": 0,
+          "equipment": 0,
+          "storage": []
+        },
+        {
+          "name": "Outer Spur / Cargo transfer node",
+          "cols": 24,
+          "rows": 18,
+          "areaM2": 1728,
+          "level": 0,
+          "equipment": 0,
+          "storage": []
+        }
+      ],
+      "assumptions": "Reference personnel and annual figures retained. Equipment count, role split, floor dimensions, operating calendar, mineral yields and opening stock are adopted review assumptions."
+    },
+    {
+      "id": "keldon-ridge",
+      "name": "Keldon Ridge Mine",
+      "world": "Drall",
+      "referencePersonnel": 110,
+      "modeledPeople": 110,
+      "annualReference": {
+        "tonnes": 140000,
+        "basis": "raw-ore extraction"
+      },
+      "ownership": "Spartan-owned equipment; leased mineral rights",
+      "referenceLinks": [
+        "drall-separation"
+      ],
+      "equipment": 34,
+      "areas": [
+        {
+          "name": "Keldon Ridge / Ridge excavation",
+          "cols": 27,
+          "rows": 52,
+          "areaM2": 5616,
+          "level": 0,
+          "equipment": 9,
+          "storage": [
+            {
+              "item": "depositChromium",
+              "opening": 460274,
+              "capacity": 661746,
+              "unit": "kg"
+            },
+            {
+              "item": "depositCobalt",
+              "opening": 306850,
+              "capacity": 445238,
+              "unit": "kg"
+            }
+          ]
+        },
+        {
+          "name": "Keldon Ridge / Drill towers",
+          "cols": 24,
+          "rows": 18,
+          "areaM2": 1728,
+          "level": 0,
+          "equipment": 0,
+          "storage": []
+        },
+        {
+          "name": "Keldon Ridge / Ore haul route",
+          "cols": 24,
+          "rows": 18,
+          "areaM2": 1728,
+          "level": 0,
+          "equipment": 0,
+          "storage": []
+        },
+        {
+          "name": "Keldon Ridge / Primary crusher",
+          "cols": 19,
+          "rows": 19,
+          "areaM2": 1444,
+          "level": 0,
+          "equipment": 12,
+          "storage": []
+        },
+        {
+          "name": "Keldon Ridge / Dense-media separation hall",
+          "cols": 19,
+          "rows": 19,
+          "areaM2": 1444,
+          "level": 0,
+          "equipment": 11,
+          "storage": []
+        },
+        {
+          "name": "Keldon Ridge / Concentrate bins",
+          "cols": 24,
+          "rows": 18,
+          "areaM2": 1728,
+          "level": 0,
+          "equipment": 0,
+          "storage": []
+        },
+        {
+          "name": "Keldon Ridge / Power plant",
+          "cols": 24,
+          "rows": 18,
+          "areaM2": 1728,
+          "level": 0,
+          "equipment": 0,
+          "storage": []
+        },
+        {
+          "name": "Keldon Ridge / Repair bays",
+          "cols": 12,
+          "rows": 10,
+          "areaM2": 480,
+          "level": 0,
+          "equipment": 2,
+          "storage": []
+        },
+        {
+          "name": "Keldon Ridge / Crew support block",
+          "cols": 24,
+          "rows": 18,
+          "areaM2": 1728,
+          "level": 0,
+          "equipment": 0,
+          "storage": []
+        },
+        {
+          "name": "Keldon Ridge / Water handling unit",
+          "cols": 35,
+          "rows": 33,
+          "areaM2": 4620,
+          "level": 0,
+          "equipment": 0,
+          "storage": [
+            {
+              "item": "tailings",
+              "opening": 0,
+              "capacity": 1239027,
+              "unit": "kg"
+            }
+          ]
+        },
+        {
+          "name": "Keldon Ridge / Landing pad",
+          "cols": 24,
+          "rows": 18,
+          "areaM2": 1728,
+          "level": 0,
+          "equipment": 0,
+          "storage": []
+        }
+      ],
+      "assumptions": "Reference personnel and annual figures retained. Equipment count, role split, floor dimensions, operating calendar, mineral yields and opening stock are adopted review assumptions."
+    },
+    {
+      "id": "redbank",
+      "name": "Redbank Mine",
+      "world": "Tralus",
+      "referencePersonnel": 115,
+      "modeledPeople": 115,
+      "annualReference": {
+        "tonnes": 145000,
+        "basis": "raw-ore extraction"
+      },
+      "ownership": "Spartan-owned equipment; leased mineral rights",
+      "referenceLinks": [
+        "talus-bulk"
+      ],
+      "equipment": 31,
+      "areas": [
+        {
+          "name": "Redbank / Extraction cut",
+          "cols": 45,
+          "rows": 61,
+          "areaM2": 10980,
+          "level": 0,
+          "equipment": 9,
+          "storage": [
+            {
+              "item": "depositIron",
+              "opening": 476713,
+              "capacity": 696666,
+              "unit": "kg"
+            },
+            {
+              "item": "depositNickel",
+              "opening": 317809,
+              "capacity": 473174,
+              "unit": "kg"
+            },
+            {
+              "item": "tailings",
+              "opening": 0,
+              "capacity": 1283333,
+              "unit": "kg"
+            }
+          ]
+        },
+        {
+          "name": "Redbank / Drill pads",
+          "cols": 24,
+          "rows": 18,
+          "areaM2": 1728,
+          "level": 0,
+          "equipment": 0,
+          "storage": []
+        },
+        {
+          "name": "Redbank / Mobile crusher",
+          "cols": 14,
+          "rows": 15,
+          "areaM2": 840,
+          "level": 0,
+          "equipment": 5,
+          "storage": []
+        },
+        {
+          "name": "Redbank / Sorting shed",
+          "cols": 14,
+          "rows": 19,
+          "areaM2": 1064,
+          "level": 0,
+          "equipment": 7,
+          "storage": []
+        },
+        {
+          "name": "Redbank / Stockpile berms",
+          "cols": 24,
+          "rows": 18,
+          "areaM2": 1728,
+          "level": 0,
+          "equipment": 0,
+          "storage": []
+        },
+        {
+          "name": "Redbank / Partial reduction modules",
+          "cols": 14,
+          "rows": 19,
+          "areaM2": 1064,
+          "level": 0,
+          "equipment": 8,
+          "storage": []
+        },
+        {
+          "name": "Redbank / Dispatch yard",
+          "cols": 24,
+          "rows": 18,
+          "areaM2": 1728,
+          "level": 0,
+          "equipment": 0,
+          "storage": []
+        },
+        {
+          "name": "Redbank / Utility plant",
+          "cols": 24,
+          "rows": 18,
+          "areaM2": 1728,
+          "level": 0,
+          "equipment": 0,
+          "storage": []
+        },
+        {
+          "name": "Redbank / Crew module",
+          "cols": 24,
+          "rows": 18,
+          "areaM2": 1728,
+          "level": 0,
+          "equipment": 0,
+          "storage": []
+        },
+        {
+          "name": "Redbank / Security gate",
+          "cols": 24,
+          "rows": 18,
+          "areaM2": 1728,
+          "level": 0,
+          "equipment": 0,
+          "storage": []
+        },
+        {
+          "name": "Redbank / Vehicle maintenance",
+          "cols": 12,
+          "rows": 10,
+          "areaM2": 480,
+          "level": 0,
+          "equipment": 2,
+          "storage": []
+        },
+        {
+          "name": "Redbank / Shuttle pad",
+          "cols": 24,
+          "rows": 18,
+          "areaM2": 1728,
+          "level": 0,
+          "equipment": 0,
+          "storage": []
+        }
+      ],
+      "assumptions": "Reference personnel and annual figures retained. Equipment count, role split, floor dimensions, operating calendar, mineral yields and opening stock are adopted review assumptions."
+    },
+    {
+      "id": "deep-vein",
+      "name": "Deep Vein Complex",
+      "world": "Selonia",
+      "referencePersonnel": 120,
+      "modeledPeople": 120,
+      "annualReference": {
+        "tonnes": 155000,
+        "basis": "raw-ore extraction"
+      },
+      "ownership": "Spartan-owned operation",
+      "referenceLinks": [
+        "selonia-recovery"
+      ],
+      "equipment": 43,
+      "areas": [
+        {
+          "name": "Deep Vein / Main shaft headframe",
+          "cols": 14,
+          "rows": 15,
+          "areaM2": 840,
+          "level": 0,
+          "equipment": 1,
+          "storage": [
+            {
+              "item": "processWater",
+              "opening": 21233,
+              "capacity": 60000,
+              "unit": "kg"
+            },
+            {
+              "item": "processReagent",
+              "opening": 6370,
+              "capacity": 20370,
+              "unit": "kg"
+            }
+          ]
+        },
+        {
+          "name": "Deep Vein / Tunnel portal",
+          "cols": 24,
+          "rows": 18,
+          "areaM2": 1728,
+          "level": 0,
+          "equipment": 0,
+          "storage": []
+        },
+        {
+          "name": "Deep Vein / Ore lift",
+          "cols": 24,
+          "rows": 18,
+          "areaM2": 1728,
+          "level": 0,
+          "equipment": 0,
+          "storage": []
+        },
+        {
+          "name": "Deep Vein / Underground access and mining levels",
+          "cols": 39,
+          "rows": 49,
+          "areaM2": 7644,
+          "level": -1,
+          "equipment": 10,
+          "storage": [
+            {
+              "item": "depositNickel",
+              "opening": 552055,
+              "capacity": 804920,
+              "unit": "kg"
+            },
+            {
+              "item": "depositCopper",
+              "opening": 297261,
+              "capacity": 445238,
+              "unit": "kg"
+            }
+          ]
+        },
+        {
+          "name": "Deep Vein / Primary crusher",
+          "cols": 24,
+          "rows": 27,
+          "areaM2": 2592,
+          "level": 0,
+          "equipment": 21,
+          "storage": []
+        },
+        {
+          "name": "Deep Vein / Flotation hall",
+          "cols": 19,
+          "rows": 15,
+          "areaM2": 1140,
+          "level": 0,
+          "equipment": 9,
+          "storage": []
+        },
+        {
+          "name": "Deep Vein / Crew quarters",
+          "cols": 24,
+          "rows": 18,
+          "areaM2": 1728,
+          "level": 0,
+          "equipment": 0,
+          "storage": []
+        },
+        {
+          "name": "Deep Vein / Repair hangar",
+          "cols": 12,
+          "rows": 10,
+          "areaM2": 480,
+          "level": 0,
+          "equipment": 2,
+          "storage": []
+        },
+        {
+          "name": "Deep Vein / Assay lab",
+          "cols": 24,
+          "rows": 18,
+          "areaM2": 1728,
+          "level": 0,
+          "equipment": 0,
+          "storage": []
+        },
+        {
+          "name": "Deep Vein / Water treatment",
+          "cols": 36,
+          "rows": 34,
+          "areaM2": 4896,
+          "level": 0,
+          "equipment": 0,
+          "storage": [
+            {
+              "item": "tailings",
+              "opening": 0,
+              "capacity": 1327638,
+              "unit": "kg"
+            }
+          ]
+        },
+        {
+          "name": "Deep Vein / Concentrate storage",
+          "cols": 24,
+          "rows": 18,
+          "areaM2": 1728,
+          "level": 0,
+          "equipment": 0,
+          "storage": []
+        },
+        {
+          "name": "Deep Vein / Cargo loading apron",
+          "cols": 24,
+          "rows": 18,
+          "areaM2": 1728,
+          "level": 0,
+          "equipment": 0,
+          "storage": []
+        }
+      ],
+      "assumptions": "Reference personnel and annual figures retained. Equipment count, role split, floor dimensions, operating calendar, mineral yields and opening stock are adopted review assumptions."
+    },
+    {
+      "id": "north-ridge",
+      "name": "North Ridge Mine",
+      "world": "Talus",
+      "referencePersonnel": 125,
+      "modeledPeople": 125,
+      "annualReference": {
+        "tonnes": 165000,
+        "basis": "raw-ore extraction"
+      },
+      "ownership": "Spartan-owned operation",
+      "referenceLinks": [
+        "talus-bulk",
+        "harrow-junction"
+      ],
+      "equipment": 42,
+      "areas": [
+        {
+          "name": "North Ridge / Ridge cut",
+          "cols": 24,
+          "rows": 18,
+          "areaM2": 1728,
+          "level": 0,
+          "equipment": 0,
+          "storage": []
+        },
+        {
+          "name": "North Ridge / Open pit",
+          "cols": 29,
+          "rows": 55,
+          "areaM2": 6380,
+          "level": 0,
+          "equipment": 11,
+          "storage": [
+            {
+              "item": "depositIron",
+              "opening": 587672,
+              "capacity": 881746,
+              "unit": "kg"
+            },
+            {
+              "item": "depositChromium",
+              "opening": 316439,
+              "capacity": 473174,
+              "unit": "kg"
+            }
+          ]
+        },
+        {
+          "name": "North Ridge / Haul road",
+          "cols": 24,
+          "rows": 18,
+          "areaM2": 1728,
+          "level": 0,
+          "equipment": 0,
+          "storage": []
+        },
+        {
+          "name": "North Ridge / Primary crusher",
+          "cols": 14,
+          "rows": 15,
+          "areaM2": 840,
+          "level": 0,
+          "equipment": 6,
+          "storage": []
+        },
+        {
+          "name": "North Ridge / Sorting hall",
+          "cols": 14,
+          "rows": 19,
+          "areaM2": 1064,
+          "level": 0,
+          "equipment": 8,
+          "storage": []
+        },
+        {
+          "name": "North Ridge / Concentration plant",
+          "cols": 19,
+          "rows": 23,
+          "areaM2": 1748,
+          "level": 0,
+          "equipment": 15,
+          "storage": []
+        },
+        {
+          "name": "North Ridge / Ore stockpiles",
+          "cols": 24,
+          "rows": 18,
+          "areaM2": 1728,
+          "level": 0,
+          "equipment": 0,
+          "storage": []
+        },
+        {
+          "name": "North Ridge / Power station",
+          "cols": 24,
+          "rows": 18,
+          "areaM2": 1728,
+          "level": 0,
+          "equipment": 0,
+          "storage": []
+        },
+        {
+          "name": "North Ridge / Drone control center",
+          "cols": 24,
+          "rows": 18,
+          "areaM2": 1728,
+          "level": 0,
+          "equipment": 0,
+          "storage": []
+        },
+        {
+          "name": "North Ridge / Maintenance shop",
+          "cols": 12,
+          "rows": 10,
+          "areaM2": 480,
+          "level": 0,
+          "equipment": 2,
+          "storage": []
+        },
+        {
+          "name": "North Ridge / Crew barracks",
+          "cols": 24,
+          "rows": 18,
+          "areaM2": 1728,
+          "level": 0,
+          "equipment": 0,
+          "storage": []
+        },
+        {
+          "name": "North Ridge / Water recovery unit",
+          "cols": 37,
+          "rows": 35,
+          "areaM2": 5180,
+          "level": 0,
+          "equipment": 0,
+          "storage": [
+            {
+              "item": "tailings",
+              "opening": 0,
+              "capacity": 1419305,
+              "unit": "kg"
+            }
+          ]
+        },
+        {
+          "name": "North Ridge / Small landing pad",
+          "cols": 24,
+          "rows": 18,
+          "areaM2": 1728,
+          "level": 0,
+          "equipment": 0,
+          "storage": []
+        }
+      ],
+      "assumptions": "Reference personnel and annual figures retained. Equipment count, role split, floor dimensions, operating calendar, mineral yields and opening stock are adopted review assumptions."
+    },
+    {
+      "id": "asteron-belt",
+      "name": "Asteron Belt Mine",
+      "world": "Asteron Belt, Corellia System",
+      "referencePersonnel": 140,
+      "modeledPeople": 140,
+      "annualReference": {
+        "tonnes": 180000,
+        "basis": "raw-ore extraction"
+      },
+      "ownership": "Spartan-owned operation",
+      "referenceLinks": [],
+      "equipment": 50,
+      "areas": [
+        {
+          "name": "Asteron Belt / Sensor mast",
+          "cols": 38,
+          "rows": 37,
+          "areaM2": 5624,
+          "level": 0,
+          "equipment": 0,
+          "storage": [
+            {
+              "item": "tailings",
+              "opening": 0,
+              "capacity": 1562916,
+              "unit": "kg"
+            }
+          ]
+        },
+        {
+          "name": "Asteron Belt / Main mining hub",
+          "cols": 35,
+          "rows": 55,
+          "areaM2": 7700,
+          "level": 0,
+          "equipment": 12,
+          "storage": [
+            {
+              "item": "depositIron",
+              "opening": 542466,
+              "capacity": 804920,
+              "unit": "kg"
+            },
+            {
+              "item": "depositNickel",
+              "opening": 345206,
+              "capacity": 502857,
+              "unit": "kg"
+            },
+            {
+              "item": "depositCobalt",
+              "opening": 98631,
+              "capacity": 155396,
+              "unit": "kg"
+            }
+          ]
+        },
+        {
+          "name": "Asteron Belt / Autonomous drill array",
+          "cols": 24,
+          "rows": 18,
+          "areaM2": 1728,
+          "level": 0,
+          "equipment": 0,
+          "storage": []
+        },
+        {
+          "name": "Asteron Belt / Crew habitat ring",
+          "cols": 24,
+          "rows": 18,
+          "areaM2": 1728,
+          "level": 0,
+          "equipment": 0,
+          "storage": []
+        },
+        {
+          "name": "Asteron Belt / Power and life support",
+          "cols": 24,
+          "rows": 18,
+          "areaM2": 1728,
+          "level": 0,
+          "equipment": 0,
+          "storage": []
+        },
+        {
+          "name": "Asteron Belt / Maintenance workshop",
+          "cols": 12,
+          "rows": 10,
+          "areaM2": 480,
+          "level": 0,
+          "equipment": 2,
+          "storage": []
+        },
+        {
+          "name": "Asteron Belt / Ore crusher",
+          "cols": 24,
+          "rows": 19,
+          "areaM2": 1824,
+          "level": 0,
+          "equipment": 16,
+          "storage": []
+        },
+        {
+          "name": "Asteron Belt / Magnetic separator",
+          "cols": 24,
+          "rows": 23,
+          "areaM2": 2208,
+          "level": 0,
+          "equipment": 20,
+          "storage": []
+        },
+        {
+          "name": "Asteron Belt / Concentrate silos",
+          "cols": 24,
+          "rows": 18,
+          "areaM2": 1728,
+          "level": 0,
+          "equipment": 0,
+          "storage": []
+        },
+        {
+          "name": "Asteron Belt / Docking arm",
+          "cols": 24,
+          "rows": 18,
+          "areaM2": 1728,
+          "level": 0,
+          "equipment": 0,
+          "storage": []
+        },
+        {
+          "name": "Asteron Belt / Cargo pier",
+          "cols": 24,
+          "rows": 18,
+          "areaM2": 1728,
+          "level": 0,
+          "equipment": 0,
+          "storage": []
+        },
+        {
+          "name": "Asteron Belt / Drone bay",
+          "cols": 24,
+          "rows": 18,
+          "areaM2": 1728,
+          "level": 0,
+          "equipment": 0,
+          "storage": []
+        },
+        {
+          "name": "Asteron Belt / Utility skiff berths",
+          "cols": 24,
+          "rows": 18,
+          "areaM2": 1728,
+          "level": 0,
+          "equipment": 0,
+          "storage": []
+        }
+      ],
+      "assumptions": "Reference personnel and annual figures retained. Equipment count, role split, floor dimensions, operating calendar, mineral yields and opening stock are adopted review assumptions."
+    },
+    {
+      "id": "talus-bulk",
+      "name": "Talus Bulk Processing Terminal",
+      "world": "Talus",
+      "referencePersonnel": 165,
+      "modeledPeople": 165,
+      "annualReference": {
+        "tonnes": 240000,
+        "basis": "throughput capacity"
+      },
+      "ownership": "Spartan-owned operation",
+      "referenceLinks": [
+        "west-basin",
+        "redbank",
+        "north-ridge"
+      ],
+      "equipment": 37,
+      "areas": [
+        {
+          "name": "Talus Terminal / Raw receiving yard",
+          "cols": 58,
+          "rows": 60,
+          "areaM2": 13920,
+          "level": 0,
+          "equipment": 0,
+          "storage": [
+            {
+              "item": "oreIron",
+              "opening": 526028,
+              "capacity": 768253,
+              "unit": "kg"
+            },
+            {
+              "item": "feedIron",
+              "opening": 0,
+              "capacity": 661746,
+              "unit": "kg"
+            },
+            {
+              "item": "oreNickel",
+              "opening": 328768,
+              "capacity": 473174,
+              "unit": "kg"
+            },
+            {
+              "item": "feedNickel",
+              "opening": 0,
+              "capacity": 417301,
+              "unit": "kg"
+            },
+            {
+              "item": "oreCopper",
+              "opening": 263014,
+              "capacity": 391111,
+              "unit": "kg"
+            },
+            {
+              "item": "feedCopper",
+              "opening": 0,
+              "capacity": 340476,
+              "unit": "kg"
+            },
+            {
+              "item": "oreMixed",
+              "opening": 197261,
+              "capacity": 293333,
+              "unit": "kg"
+            },
+            {
+              "item": "feedMixed",
+              "opening": 0,
+              "capacity": 249682,
+              "unit": "kg"
+            }
+          ]
+        },
+        {
+          "name": "Talus Terminal / Mobile crusher line",
+          "cols": 19,
+          "rows": 19,
+          "areaM2": 1444,
+          "level": 0,
+          "equipment": 11,
+          "storage": []
+        },
+        {
+          "name": "Talus Terminal / Screening and sorting hall",
+          "cols": 19,
+          "rows": 19,
+          "areaM2": 1444,
+          "level": 0,
+          "equipment": 11,
+          "storage": []
+        },
+        {
+          "name": "Talus Terminal / Partial reduction modules",
+          "cols": 19,
+          "rows": 23,
+          "areaM2": 1748,
+          "level": 0,
+          "equipment": 13,
+          "storage": []
+        },
+        {
+          "name": "Talus Terminal / Blending stockpiles",
+          "cols": 24,
+          "rows": 18,
+          "areaM2": 1728,
+          "level": 0,
+          "equipment": 0,
+          "storage": []
+        },
+        {
+          "name": "Talus Terminal / Concentrate and feed storage",
+          "cols": 24,
+          "rows": 18,
+          "areaM2": 1728,
+          "level": 0,
+          "equipment": 0,
+          "storage": []
+        },
+        {
+          "name": "Talus Terminal / Dispatch yard",
+          "cols": 24,
+          "rows": 18,
+          "areaM2": 1728,
+          "level": 0,
+          "equipment": 0,
+          "storage": []
+        },
+        {
+          "name": "Talus Terminal / Utility and power block",
+          "cols": 24,
+          "rows": 18,
+          "areaM2": 1728,
+          "level": 0,
+          "equipment": 0,
+          "storage": []
+        },
+        {
+          "name": "Talus Terminal / Water recovery plant",
+          "cols": 43,
+          "rows": 42,
+          "areaM2": 7224,
+          "level": 0,
+          "equipment": 0,
+          "storage": [
+            {
+              "item": "tailings",
+              "opening": 0,
+              "capacity": 2090000,
+              "unit": "kg"
+            }
+          ]
+        },
+        {
+          "name": "Talus Terminal / Maintenance shop",
+          "cols": 12,
+          "rows": 10,
+          "areaM2": 480,
+          "level": 0,
+          "equipment": 2,
+          "storage": []
+        },
+        {
+          "name": "Talus Terminal / Admin and crew support",
+          "cols": 24,
+          "rows": 18,
+          "areaM2": 1728,
+          "level": 0,
+          "equipment": 0,
+          "storage": []
+        },
+        {
+          "name": "Talus Terminal / Landing pad",
+          "cols": 24,
+          "rows": 18,
+          "areaM2": 1728,
+          "level": 0,
+          "equipment": 0,
+          "storage": []
+        }
+      ],
+      "assumptions": "Reference personnel and annual figures retained. Equipment count, role split, floor dimensions, operating calendar, mineral yields and opening stock are adopted review assumptions."
+    },
+    {
+      "id": "selonia-recovery",
+      "name": "Selonia Metals Recovery Works",
+      "world": "Selonia",
+      "referencePersonnel": 190,
+      "modeledPeople": 190,
+      "annualReference": {
+        "tonnes": 200000,
+        "basis": "throughput capacity"
+      },
+      "ownership": "Spartan-owned operation",
+      "referenceLinks": [
+        "deep-vein"
+      ],
+      "equipment": 40,
+      "areas": [
+        {
+          "name": "Selonia Recovery / Inbound ore pad",
+          "cols": 57,
+          "rows": 49,
+          "areaM2": 11172,
+          "level": 0,
+          "equipment": 0,
+          "storage": [
+            {
+              "item": "oreNickel",
+              "opening": 712329,
+              "capacity": 1045873,
+              "unit": "kg"
+            },
+            {
+              "item": "feedNickel",
+              "opening": 0,
+              "capacity": 921904,
+              "unit": "kg"
+            },
+            {
+              "item": "oreCopper",
+              "opening": 383562,
+              "capacity": 563968,
+              "unit": "kg"
+            },
+            {
+              "item": "feedCopper",
+              "opening": 0,
+              "capacity": 502857,
+              "unit": "kg"
+            },
+            {
+              "item": "processWater",
+              "opening": 27398,
+              "capacity": 76000,
+              "unit": "kg"
+            },
+            {
+              "item": "processReagent",
+              "opening": 8220,
+              "capacity": 25802,
+              "unit": "kg"
+            }
+          ]
+        },
+        {
+          "name": "Selonia Recovery / Crushing hall",
+          "cols": 24,
+          "rows": 31,
+          "areaM2": 2976,
+          "level": 0,
+          "equipment": 27,
+          "storage": []
+        },
+        {
+          "name": "Selonia Recovery / Flotation circuit",
+          "cols": 19,
+          "rows": 19,
+          "areaM2": 1444,
+          "level": 0,
+          "equipment": 11,
+          "storage": []
+        },
+        {
+          "name": "Selonia Recovery / Thickener tanks",
+          "cols": 24,
+          "rows": 18,
+          "areaM2": 1728,
+          "level": 0,
+          "equipment": 0,
+          "storage": []
+        },
+        {
+          "name": "Selonia Recovery / Concentrate filtration building",
+          "cols": 24,
+          "rows": 18,
+          "areaM2": 1728,
+          "level": 0,
+          "equipment": 0,
+          "storage": []
+        },
+        {
+          "name": "Selonia Recovery / Precious-metal recovery lab",
+          "cols": 24,
+          "rows": 18,
+          "areaM2": 1728,
+          "level": 0,
+          "equipment": 0,
+          "storage": []
+        },
+        {
+          "name": "Selonia Recovery / Reagent plant",
+          "cols": 24,
+          "rows": 18,
+          "areaM2": 1728,
+          "level": 0,
+          "equipment": 0,
+          "storage": []
+        },
+        {
+          "name": "Selonia Recovery / Water recycle facility",
+          "cols": 40,
+          "rows": 38,
+          "areaM2": 6080,
+          "level": 0,
+          "equipment": 0,
+          "storage": [
+            {
+              "item": "tailings",
+              "opening": 0,
+              "capacity": 1712638,
+              "unit": "kg"
+            }
+          ]
+        },
+        {
+          "name": "Selonia Recovery / Concentrate storage silos",
+          "cols": 24,
+          "rows": 18,
+          "areaM2": 1728,
+          "level": 0,
+          "equipment": 0,
+          "storage": []
+        },
+        {
+          "name": "Selonia Recovery / Cargo loading apron",
+          "cols": 24,
+          "rows": 18,
+          "areaM2": 1728,
+          "level": 0,
+          "equipment": 0,
+          "storage": []
+        },
+        {
+          "name": "Selonia Recovery / Utility plant",
+          "cols": 24,
+          "rows": 18,
+          "areaM2": 1728,
+          "level": 0,
+          "equipment": 0,
+          "storage": []
+        },
+        {
+          "name": "Selonia Recovery / Crew and admin block",
+          "cols": 24,
+          "rows": 18,
+          "areaM2": 1728,
+          "level": 0,
+          "equipment": 0,
+          "storage": []
+        },
+        {
+          "name": "Selonia Recovery / Maintenance hangar",
+          "cols": 12,
+          "rows": 10,
+          "areaM2": 480,
+          "level": 0,
+          "equipment": 2,
+          "storage": []
+        }
+      ],
+      "assumptions": "Reference personnel and annual figures retained. Equipment count, role split, floor dimensions, operating calendar, mineral yields and opening stock are adopted review assumptions."
+    },
+    {
+      "id": "drall-separation",
+      "name": "Drall Dense-Media and Separation Works",
+      "world": "Drall",
+      "referencePersonnel": 170,
+      "modeledPeople": 170,
+      "annualReference": {
+        "tonnes": 210000,
+        "basis": "throughput capacity"
+      },
+      "ownership": "Spartan-owned operation",
+      "referenceLinks": [
+        "keldon-ridge"
+      ],
+      "equipment": 46,
+      "areas": [
+        {
+          "name": "Drall Separation / Rail and hauler receiving apron",
+          "cols": 51,
+          "rows": 62,
+          "areaM2": 12648,
+          "level": 0,
+          "equipment": 0,
+          "storage": [
+            {
+              "item": "oreChromium",
+              "opening": 575343,
+              "capacity": 843333,
+              "unit": "kg"
+            },
+            {
+              "item": "feedChromium",
+              "opening": 0,
+              "capacity": 731587,
+              "unit": "kg"
+            },
+            {
+              "item": "oreCobalt",
+              "opening": 345206,
+              "capacity": 502857,
+              "unit": "kg"
+            },
+            {
+              "item": "feedCobalt",
+              "opening": 0,
+              "capacity": 445238,
+              "unit": "kg"
+            },
+            {
+              "item": "oreNickel",
+              "opening": 230137,
+              "capacity": 340476,
+              "unit": "kg"
+            },
+            {
+              "item": "feedNickel",
+              "opening": 0,
+              "capacity": 293333,
+              "unit": "kg"
+            }
+          ]
+        },
+        {
+          "name": "Drall Separation / Ore stockpile and surge bins",
+          "cols": 24,
+          "rows": 18,
+          "areaM2": 1728,
+          "level": 0,
+          "equipment": 0,
+          "storage": []
+        },
+        {
+          "name": "Drall Separation / Primary crusher",
+          "cols": 19,
+          "rows": 15,
+          "areaM2": 1140,
+          "level": 0,
+          "equipment": 9,
+          "storage": []
+        },
+        {
+          "name": "Drall Separation / Screening hall",
+          "cols": 19,
+          "rows": 15,
+          "areaM2": 1140,
+          "level": 0,
+          "equipment": 9,
+          "storage": []
+        },
+        {
+          "name": "Drall Separation / Dense-media separation hall",
+          "cols": 19,
+          "rows": 23,
+          "areaM2": 1748,
+          "level": 0,
+          "equipment": 13,
+          "storage": []
+        },
+        {
+          "name": "Drall Separation / Flotation modules",
+          "cols": 19,
+          "rows": 23,
+          "areaM2": 1748,
+          "level": 0,
+          "equipment": 13,
+          "storage": []
+        },
+        {
+          "name": "Drall Separation / Reagent storage",
+          "cols": 24,
+          "rows": 18,
+          "areaM2": 1728,
+          "level": 0,
+          "equipment": 0,
+          "storage": []
+        },
+        {
+          "name": "Drall Separation / Concentrate bins",
+          "cols": 24,
+          "rows": 18,
+          "areaM2": 1728,
+          "level": 0,
+          "equipment": 0,
+          "storage": []
+        },
+        {
+          "name": "Drall Separation / Assay laboratory",
+          "cols": 24,
+          "rows": 18,
+          "areaM2": 1728,
+          "level": 0,
+          "equipment": 0,
+          "storage": []
+        },
+        {
+          "name": "Drall Separation / Water treatment and thickening",
+          "cols": 41,
+          "rows": 39,
+          "areaM2": 6396,
+          "level": 0,
+          "equipment": 0,
+          "storage": [
+            {
+              "item": "tailings",
+              "opening": 0,
+              "capacity": 1816527,
+              "unit": "kg"
+            }
+          ]
+        },
+        {
+          "name": "Drall Separation / Maintenance workshop",
+          "cols": 12,
+          "rows": 10,
+          "areaM2": 480,
+          "level": 0,
+          "equipment": 2,
+          "storage": []
+        },
+        {
+          "name": "Drall Separation / Administration and crew support",
+          "cols": 24,
+          "rows": 18,
+          "areaM2": 1728,
+          "level": 0,
+          "equipment": 0,
+          "storage": []
+        },
+        {
+          "name": "Drall Separation / Shuttle landing pad",
+          "cols": 24,
+          "rows": 18,
+          "areaM2": 1728,
+          "level": 0,
+          "equipment": 0,
+          "storage": []
+        }
+      ],
+      "assumptions": "Reference personnel and annual figures retained. Equipment count, role split, floor dimensions, operating calendar, mineral yields and opening stock are adopted review assumptions."
+    },
+    {
+      "id": "harrow-junction",
+      "name": "Harrow Junction Central Processing Hub",
+      "world": "Corellia",
+      "referencePersonnel": 185,
+      "modeledPeople": 185,
+      "annualReference": {
+        "tonnes": 230000,
+        "basis": "throughput capacity"
+      },
+      "ownership": "Spartan-owned operation",
+      "referenceLinks": [
+        "north-ridge",
+        "west-basin"
+      ],
+      "equipment": 43,
+      "areas": [
+        {
+          "name": "Harrow Junction / Inbound ore receiving yard",
+          "cols": 58,
+          "rows": 60,
+          "areaM2": 13920,
+          "level": 0,
+          "equipment": 0,
+          "storage": [
+            {
+              "item": "oreIron",
+              "opening": 567124,
+              "capacity": 843333,
+              "unit": "kg"
+            },
+            {
+              "item": "feedIron",
+              "opening": 0,
+              "capacity": 731587,
+              "unit": "kg"
+            },
+            {
+              "item": "oreChromium",
+              "opening": 315069,
+              "capacity": 473174,
+              "unit": "kg"
+            },
+            {
+              "item": "feedChromium",
+              "opening": 0,
+              "capacity": 417301,
+              "unit": "kg"
+            },
+            {
+              "item": "oreNickel",
+              "opening": 252055,
+              "capacity": 364920,
+              "unit": "kg"
+            },
+            {
+              "item": "feedNickel",
+              "opening": 0,
+              "capacity": 316031,
+              "unit": "kg"
+            },
+            {
+              "item": "oreMixed",
+              "opening": 126028,
+              "capacity": 190317,
+              "unit": "kg"
+            },
+            {
+              "item": "feedMixed",
+              "opening": 0,
+              "capacity": 172857,
+              "unit": "kg"
+            }
+          ]
+        },
+        {
+          "name": "Harrow Junction / Sample and assay lab",
+          "cols": 24,
+          "rows": 18,
+          "areaM2": 1728,
+          "level": 0,
+          "equipment": 0,
+          "storage": []
+        },
+        {
+          "name": "Harrow Junction / Coarse crusher",
+          "cols": 19,
+          "rows": 15,
+          "areaM2": 1140,
+          "level": 0,
+          "equipment": 9,
+          "storage": []
+        },
+        {
+          "name": "Harrow Junction / Grinding mill hall",
+          "cols": 14,
+          "rows": 23,
+          "areaM2": 1288,
+          "level": 0,
+          "equipment": 10,
+          "storage": []
+        },
+        {
+          "name": "Harrow Junction / Magnetic separation hall",
+          "cols": 24,
+          "rows": 27,
+          "areaM2": 2592,
+          "level": 0,
+          "equipment": 22,
+          "storage": []
+        },
+        {
+          "name": "Harrow Junction / Blending stockpiles",
+          "cols": 24,
+          "rows": 18,
+          "areaM2": 1728,
+          "level": 0,
+          "equipment": 0,
+          "storage": []
+        },
+        {
+          "name": "Harrow Junction / Concentrate silos",
+          "cols": 24,
+          "rows": 18,
+          "areaM2": 1728,
+          "level": 0,
+          "equipment": 0,
+          "storage": []
+        },
+        {
+          "name": "Harrow Junction / Dispatch apron and freight loading",
+          "cols": 24,
+          "rows": 18,
+          "areaM2": 1728,
+          "level": 0,
+          "equipment": 0,
+          "storage": []
+        },
+        {
+          "name": "Harrow Junction / Water recovery unit",
+          "cols": 42,
+          "rows": 41,
+          "areaM2": 6888,
+          "level": 0,
+          "equipment": 0,
+          "storage": [
+            {
+              "item": "tailings",
+              "opening": 0,
+              "capacity": 1978472,
+              "unit": "kg"
+            }
+          ]
+        },
+        {
+          "name": "Harrow Junction / Maintenance shop",
+          "cols": 12,
+          "rows": 10,
+          "areaM2": 480,
+          "level": 0,
+          "equipment": 2,
+          "storage": []
+        },
+        {
+          "name": "Harrow Junction / Crew and admin block",
+          "cols": 24,
+          "rows": 18,
+          "areaM2": 1728,
+          "level": 0,
+          "equipment": 0,
+          "storage": []
+        },
+        {
+          "name": "Harrow Junction / Power station",
+          "cols": 24,
+          "rows": 18,
+          "areaM2": 1728,
+          "level": 0,
+          "equipment": 0,
+          "storage": []
+        },
+        {
+          "name": "Harrow Junction / Small landing pad",
+          "cols": 24,
+          "rows": 18,
+          "areaM2": 1728,
+          "level": 0,
+          "equipment": 0,
+          "storage": []
+        }
+      ],
+      "assumptions": "Reference personnel and annual figures retained. Equipment count, role split, floor dimensions, operating calendar, mineral yields and opening stock are adopted review assumptions."
+    },
+    {
+      "id": "spartan-hq",
+      "name": "Spartan Headquarters and Manufacturing Campus",
+      "world": "Corellia",
+      "referencePersonnel": 1450,
+      "modeledPeople": 1450,
+      "annualReference": null,
+      "ownership": "Spartan-owned operation",
+      "referenceLinks": [],
+      "equipment": 96,
+      "areas": [
+        {
+          "name": "Spartan HQ / Corporate headquarters",
+          "cols": 24,
+          "rows": 18,
+          "areaM2": 1728,
+          "level": 0,
+          "equipment": 0,
+          "storage": []
+        },
+        {
+          "name": "Spartan HQ / R&D and prospecting labs",
+          "cols": 14,
+          "rows": 15,
+          "areaM2": 840,
+          "level": 0,
+          "equipment": 6,
+          "storage": []
+        },
+        {
+          "name": "Spartan HQ / Materials and metallurgy lab",
+          "cols": 19,
+          "rows": 18,
+          "areaM2": 1368,
+          "level": 0,
+          "equipment": 8,
+          "storage": []
+        },
+        {
+          "name": "Spartan HQ / Training center",
+          "cols": 24,
+          "rows": 18,
+          "areaM2": 1728,
+          "level": 0,
+          "equipment": 0,
+          "storage": []
+        },
+        {
+          "name": "Spartan HQ / Automation and drone systems workshop",
+          "cols": 27,
+          "rows": 33,
+          "areaM2": 3564,
+          "level": 0,
+          "equipment": 26,
+          "storage": []
+        },
+        {
+          "name": "Spartan HQ / Equipment fabrication hall",
+          "cols": 29,
+          "rows": 35,
+          "areaM2": 4060,
+          "level": 0,
+          "equipment": 38,
+          "storage": []
+        },
+        {
+          "name": "Spartan HQ / Prototype test yard",
+          "cols": 19,
+          "rows": 19,
+          "areaM2": 1444,
+          "level": 0,
+          "equipment": 12,
+          "storage": []
+        },
+        {
+          "name": "Spartan HQ / Security and medical building",
+          "cols": 24,
+          "rows": 18,
+          "areaM2": 1728,
+          "level": 0,
+          "equipment": 0,
+          "storage": []
+        },
+        {
+          "name": "Spartan HQ / Fleet operations office",
+          "cols": 24,
+          "rows": 18,
+          "areaM2": 1728,
+          "level": 0,
+          "equipment": 0,
+          "storage": []
+        },
+        {
+          "name": "Spartan HQ / Logistics dispatch center",
+          "cols": 24,
+          "rows": 18,
+          "areaM2": 1728,
+          "level": 0,
+          "equipment": 0,
+          "storage": []
+        },
+        {
+          "name": "Spartan HQ / Warehousing and spare parts depot",
+          "cols": 21,
+          "rows": 27,
+          "areaM2": 2268,
+          "level": 0,
+          "equipment": 0,
+          "storage": [
+            {
+              "item": "iron",
+              "opening": 150000,
+              "capacity": 247500,
+              "unit": "kg"
+            },
+            {
+              "item": "nickel",
+              "opening": 30000,
+              "capacity": 47500,
+              "unit": "kg"
+            },
+            {
+              "item": "chromium",
+              "opening": 9000,
+              "capacity": 20000,
+              "unit": "kg"
+            },
+            {
+              "item": "copper",
+              "opening": 12000,
+              "capacity": 20000,
+              "unit": "kg"
+            },
+            {
+              "item": "electronicsFeed",
+              "opening": 6000,
+              "capacity": 11611,
+              "unit": "kg"
+            },
+            {
+              "item": "processor",
+              "opening": 3000,
+              "capacity": 4888,
+              "unit": "each"
+            },
+            {
+              "item": "sensorModule",
+              "opening": 1000,
+              "capacity": 2037,
+              "unit": "each"
+            }
+          ]
+        },
+        {
+          "name": "Spartan HQ / Utilities and power plant",
+          "cols": 12,
+          "rows": 12,
+          "areaM2": 576,
+          "level": 0,
+          "equipment": 6,
+          "storage": []
+        },
+        {
+          "name": "Spartan HQ / Vehicle yard",
+          "cols": 24,
+          "rows": 18,
+          "areaM2": 1728,
+          "level": 0,
+          "equipment": 0,
+          "storage": []
+        },
+        {
+          "name": "Spartan HQ / Small landing pads",
+          "cols": 24,
+          "rows": 18,
+          "areaM2": 1728,
+          "level": 0,
+          "equipment": 0,
+          "storage": []
+        }
+      ],
+      "assumptions": "Reference personnel and annual figures retained. Equipment count, role split, floor dimensions, operating calendar, mineral yields and opening stock are adopted review assumptions."
+    }
+  ],
+  "operatingDays": [
+    {
+      "id": "west-basin",
+      "seconds": 2.4725780989999997,
+      "machines": 28,
+      "people": 120,
+      "completed": 70.7,
+      "dispatched": 70.7,
+      "unit": "t",
+      "products": {
+        "feedCopper": 45500,
+        "feedNickel": 15400,
+        "feedMixed": 9800
+      },
+      "trips": 1541,
+      "prepHours": 0.2475,
+      "maxMaterialError": 0,
+      "tailingsContained": 46450,
+      "liftTrips": 0,
+      "carrierTrips": 1180,
+      "beltParcels": 0,
+      "reservedBeltSlots": 0,
+      "inserterCount": 0
+    },
+    {
+      "id": "outer-spur",
+      "seconds": 2.414681344,
+      "machines": 38,
+      "people": 120,
+      "completed": 28.2,
+      "dispatched": 26.6,
+      "unit": "t",
+      "products": {
+        "concIron": 16000,
+        "concNickel": 6400,
+        "feedMixed": 4200
+      },
+      "trips": 1566,
+      "prepHours": 0.33305555555555555,
+      "maxMaterialError": 0,
+      "tailingsContained": 39140,
+      "liftTrips": 0,
+      "carrierTrips": 1238,
+      "beltParcels": 0,
+      "reservedBeltSlots": 0,
+      "inserterCount": 0
+    },
+    {
+      "id": "keldon-ridge",
+      "seconds": 1.8066240379999998,
+      "machines": 34,
+      "people": 110,
+      "completed": 89.4,
+      "dispatched": 88.2,
+      "unit": "t",
+      "products": {
+        "feedChromium": 73000,
+        "concCobalt": 15200
+      },
+      "trips": 1787,
+      "prepHours": 0.26666666666666666,
+      "maxMaterialError": 0,
+      "tailingsContained": 65340,
+      "liftTrips": 0,
+      "carrierTrips": 1371,
+      "beltParcels": 0,
+      "reservedBeltSlots": 0,
+      "inserterCount": 0
+    },
+    {
+      "id": "redbank",
+      "seconds": 3.853110933,
+      "machines": 31,
+      "people": 115,
+      "completed": 53.2,
+      "dispatched": 53.2,
+      "unit": "t",
+      "products": {
+        "feedIron": 42000,
+        "feedNickel": 11200
+      },
+      "trips": 1506,
+      "prepHours": 0.3288888888888889,
+      "maxMaterialError": 0,
+      "tailingsContained": 23300,
+      "liftTrips": 0,
+      "carrierTrips": 1068,
+      "beltParcels": 0,
+      "reservedBeltSlots": 0,
+      "inserterCount": 0
+    },
+    {
+      "id": "deep-vein",
+      "seconds": 1.1207069849999989,
+      "machines": 43,
+      "people": 120,
+      "completed": 37.8,
+      "dispatched": 37.8,
+      "unit": "t",
+      "products": {
+        "concNickel": 4140,
+        "concPrecious": 60,
+        "concCopper": 33600
+      },
+      "trips": 1227,
+      "prepHours": 0.4708333333333333,
+      "maxMaterialError": 0,
+      "tailingsContained": 45250,
+      "liftTrips": 86,
+      "carrierTrips": 917,
+      "beltParcels": 0,
+      "reservedBeltSlots": 0,
+      "inserterCount": 0
+    },
+    {
+      "id": "north-ridge",
+      "seconds": 2.4140350259999996,
+      "machines": 42,
+      "people": 125,
+      "completed": 48.9,
+      "dispatched": 48.1,
+      "unit": "t",
+      "products": {
+        "concIron": 32000,
+        "feedChromium": 16100
+      },
+      "trips": 1763,
+      "prepHours": 0.3472222222222222,
+      "maxMaterialError": 0,
+      "tailingsContained": 60910,
+      "liftTrips": 0,
+      "carrierTrips": 1340,
+      "beltParcels": 0,
+      "reservedBeltSlots": 0,
+      "inserterCount": 0
+    },
+    {
+      "id": "asteron-belt",
+      "seconds": 2.5038588419999996,
+      "machines": 50,
+      "people": 140,
+      "completed": 50.5,
+      "dispatched": 50.5,
+      "unit": "t",
+      "products": {
+        "concIron": 34400,
+        "concNickel": 11200,
+        "feedCobalt": 4900
+      },
+      "trips": 1817,
+      "prepHours": 0.33944444444444444,
+      "maxMaterialError": 0,
+      "tailingsContained": 59090,
+      "liftTrips": 0,
+      "carrierTrips": 1411,
+      "beltParcels": 0,
+      "reservedBeltSlots": 0,
+      "inserterCount": 0
+    },
+    {
+      "id": "talus-bulk",
+      "seconds": 3.2457163580000015,
+      "machines": 37,
+      "people": 165,
+      "completed": 80.5,
+      "dispatched": 79.1,
+      "unit": "t",
+      "products": {
+        "feedIron": 46900,
+        "feedNickel": 16800,
+        "feedCopper": 4900,
+        "feedMixed": 10500
+      },
+      "trips": 1340,
+      "prepHours": 0.7983333333333333,
+      "maxMaterialError": 0,
+      "tailingsContained": 43320,
+      "liftTrips": 0,
+      "carrierTrips": 1028,
+      "beltParcels": 0,
+      "reservedBeltSlots": 0,
+      "inserterCount": 0
+    },
+    {
+      "id": "selonia-recovery",
+      "seconds": 4.326870984000001,
+      "machines": 40,
+      "people": 190,
+      "completed": 32.3,
+      "dispatched": 31.6,
+      "unit": "t",
+      "products": {
+        "concNickel": 24840,
+        "concPrecious": 360,
+        "concCopper": 6400
+      },
+      "trips": 1407,
+      "prepHours": 0.7638888888888888,
+      "maxMaterialError": 0,
+      "tailingsContained": 46160,
+      "liftTrips": 0,
+      "carrierTrips": 1092,
+      "beltParcels": 0,
+      "reservedBeltSlots": 0,
+      "inserterCount": 0
+    },
+    {
+      "id": "drall-separation",
+      "seconds": 3.8196651029999993,
+      "machines": 46,
+      "people": 170,
+      "completed": 67.2,
+      "dispatched": 63.3,
+      "unit": "t",
+      "products": {
+        "concChromium": 38500,
+        "concCobalt": 20000,
+        "concNickel": 4800
+      },
+      "trips": 1308,
+      "prepHours": 0.8511111111111112,
+      "maxMaterialError": 0,
+      "tailingsContained": 75420,
+      "liftTrips": 0,
+      "carrierTrips": 1003,
+      "beltParcels": 0,
+      "reservedBeltSlots": 0,
+      "inserterCount": 0
+    },
+    {
+      "id": "harrow-junction",
+      "seconds": 3.802528460999998,
+      "machines": 43,
+      "people": 185,
+      "completed": 58.2,
+      "dispatched": 57.4,
+      "unit": "t",
+      "products": {
+        "concIron": 24800,
+        "feedChromium": 19600,
+        "feedNickel": 9800,
+        "concMixed": 3200
+      },
+      "trips": 1345,
+      "prepHours": 0.5975,
+      "maxMaterialError": 0,
+      "tailingsContained": 43080,
+      "liftTrips": 0,
+      "carrierTrips": 1051,
+      "beltParcels": 0,
+      "reservedBeltSlots": 0,
+      "inserterCount": 0
+    },
+    {
+      "id": "spartan-hq",
+      "seconds": 10.416619626,
+      "machines": 96,
+      "people": 1450,
+      "completed": 125,
+      "dispatched": 122,
+      "unit": "units",
+      "products": {
+        "testedMiningModule": 0,
+        "testedMiningDrone": 8,
+        "testedScanner": 17,
+        "spareKit": 97
+      },
+      "trips": 1449,
+      "prepHours": 2.2733333333333334,
+      "maxMaterialError": 0,
+      "tailingsContained": 0,
+      "liftTrips": 0,
+      "carrierTrips": 1066,
+      "beltParcels": 0,
+      "reservedBeltSlots": 0,
+      "inserterCount": 0
+    }
+  ],
+  "counts": {
+    "sites": 15,
+    "areas": 192,
+    "people": 6605,
+    "equipment": 1655
+  },
+  "assumptions": [
+    "All new individual equipment allocations, role/skill splits, dimensions, two-day opening stocks, 365 operating days, nine-hour shifts and mineral recovery recipes are adopted review values.",
+    "Mine annual extraction and processing capacity are reference figures, not achieved simulation results. Cold-start days are not sustainable throughput demonstrations.",
+    "Finished ore feeds and concentrates are not refined metal. Mineral mass includes contained tailings and all reagent/water inputs.",
+    "Asteroid paths represent protected module-transfer galleries. The shared Deep Vein shaft is reserved for one entire cargo trip at a time; its transport rates and loading abstraction are adopted.",
+    "Listed mine/processor relationships are shown. Cross-site and cross-world shipment scheduling, allocation shares, freight costs and receiving automation are not implemented. Site ledgers remain independent.",
+    "Reference conveyors between areas are abstracted by reserved cargo transfers in this review build. Within each floor, mixed belts and inserters remain available.",
+    "Spartan HQ produces transportable equipment modules, drones, scanners and kits; final assembly of large self-propelled haul vehicles is outside the current carrier envelope.",
+    "Current source and all three previous-site layouts are retained; older workspace upgrades do not relocate saved machinery."
+  ]
+}

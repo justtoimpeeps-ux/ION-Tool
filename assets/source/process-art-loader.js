@@ -1,0 +1,3 @@
+/* Atlas-backed previews are generated once; work animation draws directly from atlas frames. */
+const PROCESS_FRAMES={},PROCESS_ART={};
+const PROCESS_ART_READY=IONArt.ready.then(()=>{const atlas=ION_ATLASES.machines,image=IONArt.images.machines,canvas=document.createElement('canvas');canvas.width=192;canvas.height=128;const context=canvas.getContext('2d');for(const [id,frames]of Object.entries(atlas.frames)){context.clearRect(0,0,192,128);context.drawImage(image,...(frames[1]||frames[0]),0,0,192,128);const preview=canvas.toDataURL('image/webp',.92);PROCESS_ART[id]=preview;PROCESS_FRAMES[id]=[preview,preview,preview,preview]}});

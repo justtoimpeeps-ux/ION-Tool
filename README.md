@@ -1,3 +1,9 @@
+# All-sites review build
+
+Use `dist/ION_Campus_Planner_v4_2_all_sites_review.html` for the complete15-site review. It includes seven mines, four processing plants and Spartan HQ/manufacturing in addition to the three earlier sites. Open **Sites + → Review all 15 sites**. See [review guide](docs/ALL_SITES_REVIEW.md) for reference facts, adopted allocations, measured site-day checks and limitations.
+
+Build the review package with `python3 scripts/package.py --review`. It preserves the previous standalone artifacts and excludes duplicate historical continuation traces from the review ZIP.
+
 # ION Campus Planner V4.2
 
 A reconstructed browser factory-design and operating-day planner for the IE-4 program. Recovered from the verified V4.1 package and rebuilt against the preserved V4.2 handoff. This is reconstruction, not recovery of the inaccessible original V4.2 workspace.
