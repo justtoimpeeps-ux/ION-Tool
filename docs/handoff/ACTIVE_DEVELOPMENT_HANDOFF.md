@@ -1,3 +1,7 @@
+# Expanded V4.2 release verification completed
+
+Source commit: `007a5e30e879fcd2760526844da4121cae9343da`. Final evidence: `../VALIDATION_V4_2.json`, `../PACKAGING_VERIFICATION_V4_2.json` and `../RELEASE_V4_2.md`. Expanded standalone/source browser checks and85core tests pass. The final package is rebuilt and verified; the chronology below preserves earlier work-in-progress states and should not be mistaken for current limitations. Exact original map-image files remain pending; image upload and labeled schematics are included. Main remains unchanged.
+
 # Active development checkpoint — NOT a finished release
 
 Last fully packaged/verified release: `e509a3f` on `recovery/v4-2-reconstruction`. Main must remain `718ae90c0a731e785474c3f5baba88748baff112`. User authorizes remote recovery checkpoints. Current source is unfinished; tracked dist downloads still represent the prior release until rebuilt and verified. Preserve the overall page layout/style, which the user explicitly likes.

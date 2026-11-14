@@ -1,48 +1,26 @@
 {
-  "verified_at_utc": "2026-11-14T11:52:28.997884+00:00",
-  "source_commit": "2fd27d9fc7768e14c89a301c7b88fbe4a801da7d",
+  "verified_at_utc": "2026-11-14T16:43:21.182257+00:00",
+  "source_commit": "007a5e30e879fcd2760526844da4121cae9343da",
   "branch": "recovery/v4-2-reconstruction",
   "main_unchanged": "718ae90c0a731e785474c3f5baba88748baff112",
-  "core_tests": 71,
-  "zip_source_tests": 71,
-  "zip_crc_and_all_104_entries_match": true,
+  "core_tests": 85,
+  "zip_source_tests": 85,
+  "zip_crc_and_all_entries_match": true,
   "rebuilt_standalone_byte_identical": true,
   "original_v41_hashes_unchanged": true,
-  "matching_day1_replay_sha256": "a71f49a2b80c4ad6270b39c6d7b8e3a2858590cc5348b63162389cec2fa39051",
-  "physical_day_calculation": "Previously measured results retained; full physical day not recalculated during packaging. Exact recorded replay loaded and verified in current standalone.",
+  "matching_day1_replay_sha256": "95c366829b2622b1975df010d0a125f62dafa0e147f56042c6a3acf525c381b7",
   "browser_logs": {
-    "browser-source": [
-      "PASS V4 browser: sites/buildings, worker-backed physical trips, replay/seek without advancing, one-time accept, next-day stock carry, fixed skills, man-hours, ledger, workspace export/import and browser restoration."
-    ],
-    "browser-package": [
-      "PASS V4 browser: sites/buildings, worker-backed physical trips, replay/seek without advancing, one-time accept, next-day stock carry, fixed skills, man-hours, ledger, workspace export/import and browser restoration."
-    ],
-    "capital-retry": [
-      "PASS capital browser: actual-stock shortage, recorded receipt, reforecast, one allocation, pending-project rejection, one debit through completion, cash separation, stable report, report-import rejection and restored identity."
-    ],
-    "capital-package": [
-      "PASS capital browser: actual-stock shortage, recorded receipt, reforecast, one allocation, pending-project rejection, one debit through completion, cash separation, stable report, report-import rejection and restored identity."
-    ],
-    "inventory": [
-      "PASS inventory browser: authoritative carried stock, legacy VC capability/economics, explicit catalogue migration, unchanged machine IDs and stable restore and atomic failed scoped import.",
-      "PASS V4 workspace compatibility: original layouts retained; explicit compaction preserves implemented factory, asset IDs, quote and Undo.",
-      "PASS V4.1 display: two-stage palette, distinct sprites, ghost rotation, compaction/Undo, progress/error overlay, wheel and middle-drag navigation, stock fullness."
-    ],
-    "inventory-package": [
-      "PASS inventory browser: authoritative carried stock, legacy VC capability/economics, explicit catalogue migration, unchanged machine IDs and stable restore and atomic failed scoped import."
-    ],
-    "attachments": [
-      "PASS floor attachments: exposed-square click, blocked-square rejection, exact physical point, Undo, Escape cancellation, and undistorted placement ghosts in all orientations."
-    ],
-    "replay": [
-      "PASS full 934-tile recorded replay: {\"certified\":244,\"shipped\":194,\"trips\":7338,\"balanceError\":9.313225746154785e-10,\"fps\":33.37708606787925,\"p95FrameMs\":66.70000000000073}; animated playback, live scrolling, worker departures, final balances, no posting or page errors."
-    ]
+    "final-source-vnext": "PASS VNext browser: 3 sites; isolated rosters; locked station; 2-stage palette; programmed CNC C-copy; natural art; all processes move; compressed workspace; nonengine dispatch; replay audit and playback without posting.",
+    "final-source-saves": "PASS older workspace retains every original floor, machine and worker; missing reference sites install once; original image upload preserves proportions and survives compressed save/reload.",
+    "final-packet-visuals": "PASS packet visuals: progressive reference-aligned assembly/final workpieces, 48 moving processes with distinct shape/color identifiers, walking handlers without chassis, neutral speeders with separate cargo, recorded-cycle frame progression and no ledger posting.",
+    "final-attachments-browser": "PASS floor attachments: exposed-square click, blocked-square rejection, exact physical point, Undo, Escape cancellation, and undistorted placement ghosts in all orientations.",
+    "final-inventory-browser": "PASS inventory browser: authoritative carried stock, legacy VC capability/economics, explicit catalogue migration, unchanged machine IDs and stable restore and atomic failed scoped import.",
+    "final-standalone-vnext": "PASS VNext browser: 3 sites; isolated rosters; locked station; 2-stage palette; programmed CNC C-copy; natural art; all processes move; compressed workspace; nonengine dispatch; replay audit and playback without posting.",
+    "final-standalone-saves": "PASS older workspace retains every original floor, machine and worker; missing reference sites install once; original image upload preserves proportions and survives compressed save/reload.",
+    "final-standalone-packet": "PASS packet visuals: progressive reference-aligned assembly/final workpieces, 48 moving processes with distinct shape/color identifiers, walking handlers without chassis, neutral speeders with separate cargo, recorded-cycle frame progression and no ledger posting.",
+    "final-standalone-attachments": "PASS floor attachments: exposed-square click, blocked-square rejection, exact physical point, Undo, Escape cancellation, and undistorted placement ghosts in all orientations.",
+    "final-standalone-inventory": "PASS inventory browser: authoritative carried stock, legacy VC capability/economics, explicit catalogue migration, unchanged machine IDs and stable restore and atomic failed scoped import."
   },
-  "test_harness_fix": "Pass the capital forecast timeout as Playwright waitForFunction third argument; previously it was treated as function data and silently used the 30-second default.",
-  "playback": {
-    "fps": 33.37708606787925,
-    "p95FrameMs": 66.70000000000073,
-    "frames": 89,
-    "context": "Measured while other browser verification jobs were running; not comparable to the prior isolated performance measurement."
-  }
+  "original_map_files_pending": true,
+  "direct_file_navigation": "Managed Chromium rejects file:// with ERR_BLOCKED_BY_ADMINISTRATOR; standalone checked over HTTP, with zero dependent HTTP requests."
 }
