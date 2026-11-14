@@ -1,7 +1,7 @@
 /* Validate a replay completely before replacing the visible replay. No posting occurs. */
 const FactoryReplay=(()=>{
  const finite=(n,min=0)=>Number.isFinite(n)&&n>=min;
- function signature(buildings){return JSON.stringify(Object.entries(buildings).map(([name,b])=>[name,b.cols,b.rows,b.machines.map(m=>[m.id,m.type,m.recipe||m.type,m.x,m.y,m.w,m.h,m.angle,m.model||'standard',m.inputSide||'',m.outputSide||'',m.inputPosition??.5,m.outputPosition??.5,m.staffingRequired??null,m.pickupCallPercent??100,[...(m.upgrades||[])].sort(),m.crew.map(w=>w.id)]),b.storage.map(s=>[s.id,s.item,s.x,s.y,s.w,s.h,s.storageModel||'legacy',s.loadingZones||[]]),b.paths,b.docks]))}
+ function signature(buildings){return JSON.stringify(Object.entries(buildings).map(([name,b])=>[name,b.cols,b.rows,b.machines.map(m=>[m.id,m.type,m.recipe||m.type,m.x,m.y,m.w,m.h,m.angle,m.model||'standard',m.inputSide||'',m.outputSide||'',m.inputPosition??.5,m.outputPosition??.5,m.staffingRequired??null,m.pickupCallPercent??100,[...(m.upgrades||[])].sort(),m.crew.map(w=>w.id)]),b.storage.map(s=>[s.id,s.item,s.x,s.y,s.w,s.h,s.storageModel||'legacy',s.loadingZones||[]]),b.paths,b.docks,b.transportAnchor||null]))}
  function validate(data,{site,buildings,specs,materials,people,Day}){
   if(data?.format!=='ION-day-replay-1'||data.site?.id!==site||signature(data.buildings)!==signature(buildings))throw Error('Load the matching workspace/configuration and select its site before loading this replay.');
   const r=data.result,names=new Set(Object.keys(buildings)),machines=new Map(Object.values(buildings).flatMap(b=>b.machines.map(m=>[m.id,m]))),stores=new Map(Object.values(buildings).flatMap(b=>b.storage.map(s=>[s.id,s]))),workers=new Set(people.map(w=>w.id));
