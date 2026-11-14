@@ -1,3 +1,7 @@
+# Complete site reference set received
+
+The user has finished supplying current sites. See `CURRENT_SITE_REFERENCE_REGISTER.md` and `.json`: 15 total sites, including the3already delivered plus7mines,4processing sites and SpartanHQ/manufacturing. The12additional sites are collected references, not yet implemented. User approved close reconstructions from pasted images; uploads are optional. Preserve distinct surface/underground/asteroid geometry, confirmed personnel, annual raw extraction versus processing capacity, and the listed many-to-many/cross-world feed connections.
+
 # Included reference-map reconstructions
 
 The user explicitly approved close reconstructions from pasted images. All three maps are now included by default, with44aligned clickable building/module regions. Original-file upload is optional; it is no longer a dependency. Retained PNGs: `assets/source/map-*.png`; compact runtime images: `assets/map-*.webp`; hotspot source: `assets/source/map-hotspots.json`; reproducible encoder: `scripts/render_reference_maps.cjs`. Numerical day engines, floor layouts, workers, inventory and station bounds are unchanged by this artwork update. Earlier notes below preserve the former exact-file limitation as history.
