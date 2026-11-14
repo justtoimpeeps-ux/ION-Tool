@@ -1,7 +1,7 @@
 {
   "build": "All sites review",
-  "source_commit": "e2c127329bc6bd3a56f98aad1244357c0db03bd4",
-  "verified_at_utc": "2026-11-14T18:31:00.791588+00:00",
+  "source_commit": "dedf9e06d5ee45a36ffb1f17c55304b95e58c830",
+  "verified_at_utc": "2026-11-14T19:03:46.575731+00:00",
   "branch": "recovery/v4-2-reconstruction",
   "main_unchanged": "718ae90c0a731e785474c3f5baba88748baff112",
   "counts": {
@@ -301,7 +301,9 @@
     "standalone-complete": "PASS all 15 sites, 30 real map clicks, isolated source rosters, review inventory, finite deep-shaft operating day, read-only replay validation, acceptance/save/reload and embedded standalone assets.",
     "standalone-vnext": "PASS VNext browser: 15 sites; isolated rosters; locked station; 2-stage palette; programmed CNC C-copy; natural art; all processes move; compressed workspace; nonengine dispatch; replay audit and playback without posting.",
     "standalone-saves": "PASS older workspace retains every original floor, machine and worker; missing reference sites install once; original image upload preserves proportions and survives compressed save/reload.",
-    "standalone-packet": "PASS packet visuals: progressive reference-aligned assembly/final workpieces, all process types with family identifiers and selectable-function graphics, walking handlers without chassis, neutral speeders with separate cargo, recorded-cycle frame progression and no ledger posting."
+    "standalone-packet": "PASS packet visuals: progressive reference-aligned assembly/final workpieces, all process types with family identifiers and selectable-function graphics, walking handlers without chassis, neutral speeders with separate cargo, recorded-cycle frame progression and no ledger posting.",
+    "campus_hover_interiors_source": "PASS translucent hover, keyboard landmark information, filtered interior tabs, transport-map consistency, fitted utility/lab interiors and unchanged saved layout/workforce/ledgers: { interiors: 138, landmarks: 54, furnished: 50 }",
+    "campus_hover_interiors_standalone": "PASS translucent hover, keyboard landmark information, filtered interior tabs, transport-map consistency, fitted utility/lab interiors and unchanged saved layout/workforce/ledgers: { interiors: 138, landmarks: 54, furnished: 50 }"
   },
   "canonicalRecipe": "Exact positive raw quantities match tests/fixtures/v41-raw-bom.json; object insertion order is not treated as a recipe change.",
   "originalOrindaReplay": "The existing day-one replay still matches the exact original 13-area Orinda layout; all recorded phases and carrier paths validate.",
