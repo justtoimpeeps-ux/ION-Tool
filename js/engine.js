@@ -3,7 +3,8 @@ const FactoryEngine=(()=>{
  const EPS=1e-8;
  function recipeType(m){return m.recipe||m.type}
  function operation(m,specs){return specs[recipeType(m)]}
- function recipeChoices(m,specs){const hardware=specs[m.type];return hardware.art==='cnc'?Object.keys(specs).filter(k=>specs[k].art==='cnc'&&specs[k].w<=hardware.w&&specs[k].h<=hardware.h):[m.type]}
+ function recipeChoices(m,specs){const hardware=specs[m.type],family=hardware.programFamily||(hardware.art==='cnc'?'cnc':null);return family?Object.keys(specs).filter(k=>(specs[k].programFamily||(specs[k].art==='cnc'?'cnc':null))===family&&specs[k].w<=hardware.w&&specs[k].h<=hardware.h):[m.type]}
+
  function equipmentModel(m,specs){return specs[m.type].models?.[m.model||'standard']||{speed:1,workerDelta:0,price:specs[m.type].price,days:specs[m.type].days,name:'Standard production cell'}}
  function modifiers(m,catalog={}){return (m.upgrades||[]).reduce((a,k)=>{const u=catalog[k];if(u){a.speed*=u.speed||1;a.workers+=u.workerReduction||0}return a},{speed:1,workers:0})}
  function operatorLimit(m,specs){return specs[m.type].operatorLimit??Math.max(1,specs[m.type].workers||1)}

@@ -34,3 +34,19 @@ const PROCESS_IDENTITY={inserter:{color:'#e0ac66',path:'M2 14h7 M5 14V9l5-4 3 3 
  couplerFit:{color:'#9aceb2',path:'M1 6h5v4H1z M10 6h5v4h-5z M6 8h4 M5 2l3 3 3-3 M5 14l3-3 3 3'},
  housingMachine:{color:'#8bb5de',path:'M1 2h14v12H1z M4 5h8v6H4z M8 1v5 M6 6h4'}
 };
+Object.assign(PROCESS_IDENTITY,{
+ engineeringFrame:{color:'#8acddd',path:'M1 2h14v12H1z M4 5h8v6H4z M1 8h3 M12 8h3'},
+ engineeringActuator:{color:'#e2bf7e',path:'M1 6h4v4H1z M5 7h6v2H5z M11 3h4v10h-4z M13 1v2'},
+ engineeringControls:{color:'#7edbb6',path:'M2 2h12v12H2z M5 5h6v6H5z M0 5h2 M0 11h2 M14 5h2 M14 11h2'},
+ additive:{color:'#e3a6ef',path:'M1 14h14 M3 11h10 M5 8h6 M8 1v5 M5 1h6 M8 6l-2 2 M8 6l2 2'},
+ robotAssembly:{color:'#e8bc63',path:'M1 14h14 M3 14V9l4-4 3 3-3 4 M7 5V2h4v3 M11 8l4 2-2 3'},
+ machineryAssembly:{color:'#c3adf4',path:'M1 14h14 M2 12V4h12v8z M5 7h6v3H5z M8 1v3'},
+ robotMetrology:{color:'#7bd7e7',path:'M2 3h12v11H2z M4 5h3 M9 5h3 M8 5v7 M4 9h8 M6 1h4'},
+ machineryMetrology:{color:'#9ecbf3',path:'M1 2h14v12H1z M3 4v7h10 M5 5v3 M8 5v3 M11 5v3'},
+ engineeringPacking:{color:'#dab78b',path:'M2 6l6-4 6 4v8H2z M2 6l6 3 6-3 M8 9v5 M8 2v4'},
+ machineryPacking:{color:'#b9a4e6',path:'M1 6h14v8H1z M4 6V2h8v4 M5 9h6 M8 6v8'},
+ orbitalAssay:{color:'#e9c66b',path:'M1 14h14 M3 3h4v3l-3 6h8L9 6V3h4 M3 1h4 M9 1h4'},
+ microgravityLab:{color:'#77cbee',path:'M8 1a7 7 0 1 0 0 14 M3 8h10 M8 3v10 M6 5l4 6 M6 11l4-6'},
+ droneRepair:{color:'#dca764',path:'M2 3l4 3-2 2-3-4 M4 8l6 6 3-3-6-6 M8 2h6v5h-3 M13 8v6'},
+ servicePacking:{color:'#85ccad',path:'M1 5h14v9H1z M1 5l4-3h6l4 3 M4 9l3 3 5-5'}
+});

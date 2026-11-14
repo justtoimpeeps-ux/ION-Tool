@@ -57,6 +57,10 @@ for k in kinds:
         else:body=base['art'](k,phase)
         frames.append(svg(body))
     sources['machines'][k]=frames
+sources['machines']['inserter']=[sources['machines']['integrate'][0]]*4
+sources['machines']['cncFiveAxis']=sources['machines']['cnc'].copy()
+sources['machines']['cncLathe']=sources['machines']['cnc'].copy()
+sources['containers']={'metalChest':[svg('')],'gasVat':[svg('')]}
 for k in items:sources['items'][k]=[svg(item(k))]
 for k in ['housing','field','energy','gas','electronic','thermal','interface','sensor','core','tested','shipped']:sources['engines'][k]=[svg(item(k))]
 (root/'assets/source').mkdir(parents=True,exist_ok=True)
