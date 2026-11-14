@@ -1,6 +1,6 @@
 {
-  "verified_at_utc": "2026-11-14T16:43:21.182257+00:00",
-  "source_commit": "007a5e30e879fcd2760526844da4121cae9343da",
+  "verified_at_utc": "2026-11-14T17:05:57.793281+00:00",
+  "source_commit": "877eb51a3854fd01c17f4934b632c9f278ccf87a",
   "branch": "recovery/v4-2-reconstruction",
   "main_unchanged": "718ae90c0a731e785474c3f5baba88748baff112",
   "core_tests": 85,
@@ -19,8 +19,17 @@
     "final-standalone-saves": "PASS older workspace retains every original floor, machine and worker; missing reference sites install once; original image upload preserves proportions and survives compressed save/reload.",
     "final-standalone-packet": "PASS packet visuals: progressive reference-aligned assembly/final workpieces, 48 moving processes with distinct shape/color identifiers, walking handlers without chassis, neutral speeders with separate cargo, recorded-cycle frame progression and no ledger posting.",
     "final-standalone-attachments": "PASS floor attachments: exposed-square click, blocked-square rejection, exact physical point, Undo, Escape cancellation, and undistorted placement ghosts in all orientations.",
-    "final-standalone-inventory": "PASS inventory browser: authoritative carried stock, legacy VC capability/economics, explicit catalogue migration, unchanged machine IDs and stable restore and atomic failed scoped import."
+    "final-standalone-inventory": "PASS inventory browser: authoritative carried stock, legacy VC capability/economics, explicit catalogue migration, unchanged machine IDs and stable restore and atomic failed scoped import.",
+    "map-source-browser": "PASS 3 included reconstructed maps, preserved image proportions, 44 real clickable highlights, unchanged floor/ledger data and self-contained standalone images.",
+    "map-standalone-browser": "PASS 3 included reconstructed maps, preserved image proportions, 44 real clickable highlights, unchanged floor/ledger data and self-contained standalone images.",
+    "map-source-vnext": "PASS VNext browser: 3 sites; isolated rosters; locked station; 2-stage palette; programmed CNC C-copy; natural art; all processes move; compressed workspace; nonengine dispatch; replay audit and playback without posting.",
+    "map-source-saves": "PASS older workspace retains every original floor, machine and worker; missing reference sites install once; original image upload preserves proportions and survives compressed save/reload.",
+    "map-standalone-vnext": "PASS VNext browser: 3 sites; isolated rosters; locked station; 2-stage palette; programmed CNC C-copy; natural art; all processes move; compressed workspace; nonengine dispatch; replay audit and playback without posting.",
+    "map-standalone-saves": "PASS older workspace retains every original floor, machine and worker; missing reference sites install once; original image upload preserves proportions and survives compressed save/reload."
   },
-  "original_map_files_pending": true,
-  "direct_file_navigation": "Managed Chromium rejects file:// with ERR_BLOCKED_BY_ADMINISTRATOR; standalone checked over HTTP, with zero dependent HTTP requests."
+  "original_map_files_pending": false,
+  "direct_file_navigation": "Managed Chromium rejects file:// with ERR_BLOCKED_BY_ADMINISTRATOR; standalone checked over HTTP, with zero dependent HTTP requests.",
+  "included_reconstructed_maps": 3,
+  "aligned_clickable_regions": 44,
+  "map_basis": "User-approved close reconstructions from pasted references; own-file upload is optional."
 }
