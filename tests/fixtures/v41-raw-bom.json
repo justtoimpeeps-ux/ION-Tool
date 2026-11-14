@@ -1,0 +1,26 @@
+{
+  "sourceCommit": "87676c29fb83e9d5bde4ac7efcacfcced453eb99",
+  "originalZipSha256": "993b7b296a700b0392e878eabfadd7a3cd92e3737498f44232db933ee296969f",
+  "raw": {
+    "tibanna": 16,
+    "nickel": 118,
+    "cobalt": 10,
+    "copper": 7.5,
+    "silver": 1.5,
+    "gold": 0.72,
+    "pgm": 0.28,
+    "iron": 203,
+    "chromium": 27,
+    "sealCompound": 0.9,
+    "regValve": 6,
+    "regSense": 6,
+    "superconductor": 59,
+    "insulationFeed": 0.12,
+    "electronicsFeed": 37,
+    "sensorModule": 10,
+    "safingModule": 2,
+    "ceramic": 75,
+    "coolant": 28,
+    "processor": 4
+  }
+}

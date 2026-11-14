@@ -20,3 +20,7 @@ This is the final reconstruction checklist; `V4_2_RECOVERY_AUDIT.md` records the
 | Packaging/release | Source/assets, retained generation sources, standalone with embedded art/workers, complete ZIP, current matching replay, validation and actual remote downloads verified at release. |
 
 Remaining modeling limits are explicit in `../RELEASE_V4_2.md`: adopted physical/equipment estimates, conservative dispatcher, incomplete pedestrian collision study, unmodeled interstellar logistics, unavailable exact canonical measurements, untested direct desktop file navigation in the managed browser, and no demonstration of sustainable or overtime annual output. Original V4.2 artwork/source was not recovered. New art and behavior are reconstructed.
+
+Extended checks additionally cover dormant unfinished work, actual warehouse contents during implementation, authoritative carried stock, fractional whole-item rejection, legacy VC semantics, atomic failed imports, strict read-only replay loading, and three-day stock/WIP carry without initialization. See the extended review and continuation measurements in the release documents. Third-day certification declined; sustainable output is expressly unproven rather than forced to the source reference.
+
+Direct floor-based attachment selection, occupied/interior rejection, no-op selection, Escape/Undo, and aspect-preserving placement ghosts are covered by `attachments-browser.cjs`. Workspace map-array corruption is rejected before it can drop unallocated inventory during serialization.

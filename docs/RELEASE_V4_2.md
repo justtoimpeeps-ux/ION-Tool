@@ -33,3 +33,34 @@ Save/export and Workforce precede test controls. Daily manpower is above the rig
 See `VALIDATION_V4_2.json` for current measurements. The new full-campus day certified 244 and dispatched 194 with finite inventory and conservation. This first day draws on opening WIP; it does not establish sustainable 247/day or the overtime-supported 108,800/year requirement. A+B's 247/day source reference remains separate. 108,800 × 250,000 Cr is 27.2 billion Cr gross annual engine sales, not profit. The provisional 365-day requirement is 298.08/day; a linear ~10.9h estimate is not a demonstrated overtime requirement. Do not add labor again to the referenced 152,500 Cr/engine expense without reconciling its coverage; other service revenue is separate.
 
 Physical dimensions, packing, service parameters, fabrication bills and equipment equivalents are adopted planning values where source measurements are absent. The original reference cutaway does not supply these missing measurements. The existing conservative traffic dispatcher is not an optimized safety/turning study. Pedestrians do not have a full collision model, and cross-site/interstellar logistics are not invented. Artwork is reconstructed, not recovered from the inaccessible V4.2 workspace.
+
+## Extended reconstruction review
+
+Further review and regression tests corrected several inherited edge cases:
+
+- Unfinished operations pause when operators or physical access are unavailable. Reserved inputs and remaining cycle time stay in WIP; neither output nor productive hours are invented. Restoring staff resumes the same work once.
+- Implementing a smaller warehouse, changing its material, or removing it preserves displaced contents in explicitly unallocated inventory/WIP. A newly proposed warehouse starts without actual stock. Recorded receipts are distinct from a proposed opening quantity.
+- An existing operating ledger is authoritative over stale layout quantities. Fabrication debits synchronize both views and retain before/after amounts. Whole-item receipts/issues reject fractional engines or modules.
+- Old VC choices retain their historical prices and capabilities as retired `vcLegacy` designs, including historical model-inventory totals. They do not silently become zero-price generation-I fabrication projects. The catalogue revision and migration notes persist.
+- Failed scoped imports leave the configuration view, layout, revision and Undo history unchanged. Invalid replay imports preserve the current replay; complete replay schema checks cover events, staff, quantities, costs, paid hours, routes and conservation. Matching includes upgrades, staffing, attachment positions and storage physics. Historical replay provenance is retained.
+- Detailed generated machinery sheets now cover all 33 processes. Empty/dim idle plates and loaded workpiece plates share aspect-preserving atlas coordinates; aligned overlays animate casting, presses, feed/winding, robotic tooling, machining, coating and scanning only during recorded work. The machinery source PNGs, engine source PNG, source geometry, atlas metadata and generation scripts are included.
+- Short type labels improve readability on small workstations. Numerical rounding on floor captions changes display only; detailed quantities and recipes retain their precision. Trace amounts near floating-point zero display as zero.
+- The diagnostics panel distinguishes remaining warehouse stock, upstream output and unallocated WIP from local ingredient starvation. Waiting hours are a sampled lower bound, not ingredient waits summed as elapsed time. Dispatch that draws on carried inventory is labeled explicitly.
+
+Three full physical days were validated without replenishing opening WIP or reinitializing closing balances:
+
+| Modeled day | Certified | Dispatched | Pre-shift hours | Production hours |
+| --- | ---: | ---: | ---: | ---: |
+| 1 | 244 | 194 | 6.7825 | 9 |
+| 2 | 245 | 242 | 3.0203 | 9 |
+| 3 | 196 | 235 | 2.5786 | 9 |
+
+Day three exposes upstream production/delivery, buffer and queue constraints after downstream opening WIP is drawn down. Raw stock remains in warehouses; aggregate stock is not proof of local delivery access or sustainable throughput. None of these runs demonstrates the source's sustainable 247/day reference or the overtime-supported annual requirement.
+
+Independent reconstruction of every carrier reservation found **zero cell overlaps, zero edge overlaps and zero double-booked vehicles** on all three days. These checks are separate from the scheduler's own diagnostics. Read-only continuation replay files are included under `examples/continuation/`. They are validation artifacts, not posted actual ION operating days. Detailed continuation measurements and flow diagnosis are in `CONTINUATION_V4_2.json`.
+
+## Direct flow attachments and placement previews
+
+For flexible equipment, Tile actions now offers **Choose input/output point on floor**. Available empty boundary squares highlight; click one to set the physical attachment. Occupied/interior squares reject, Escape cancels, and Undo restores the prior point. Selecting the current square is a no-op. Test the proposal to redraw actual routed flows; historical replays are not rewritten. Fixed ports remain fixed. Placement/move ghosts now use the same fitted transform as installed machinery, including rotated footprints.
+
+Malformed workspace map arrays that would lose inventory or ledger-series identities during JSON serialization are rejected before import. The complete core suite now contains 71 passing tests.

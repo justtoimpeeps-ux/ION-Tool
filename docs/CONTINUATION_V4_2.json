@@ -23,7 +23,7 @@
       "trips": 5448,
       "prepHours": 2.578611111111111,
       "paidManHours": 29841.789722222224,
-      "maxMaterialError": 1.862645149230957e-09,
+      "maxMaterialError": 1.862645149230957e-9,
       "wipMassRemaining": 896.3666666666666,
       "closingCarriedWithoutReinitialization": true
     }
@@ -62,5 +62,2321 @@
   ],
   "sustainable247PerDayDemonstrated": false,
   "finding": "Day three certification declined to 196 after opening downstream WIP was drawn down. Upstream output, local ingredient delivery and reserved traffic/finite buffers constrain flow even while raw warehouses contain stock. No inventory or capacity was invented to force the source target.",
-  "harnessNote": "A first day-three continuation comparison failed on cross-VM object prototypes, after simulation completed. The harness now compares exact serialized state values and immutability, which match the portable-save contract. Day three was rerun successfully from the saved day-two closing state."
+  "harnessNote": "A first day-three continuation comparison failed on cross-VM object prototypes, after simulation completed. The harness now compares exact serialized state values and immutability, which match the portable-save contract. Day three was rerun successfully from the saved day-two closing state.",
+  "flowDiagnosis": {
+    "1": {
+      "basis": "Recorded machine-state samples. Waiting hours are a lower bound because several ingredients may be missing in the same sample; do not add ingredient waits as separate elapsed time.",
+      "rows": [
+        {
+          "type": "energy",
+          "name": "Ion-grid and particle-energizer cassette cell",
+          "batches": 33,
+          "staffedCapacity": 271.2198716837177,
+          "utilization": 0.12167250059937665,
+          "busyMachineHours": 17.5036564310408,
+          "waitingMachineHoursAtLeast": 124.05,
+          "blockedMachineHours": 0,
+          "missingMaterials": [
+            {
+              "item": "gold",
+              "name": "Gold",
+              "samples": 7259,
+              "warehouseStockRemaining": 6944.4300000000185,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            },
+            {
+              "item": "silver",
+              "name": "Silver",
+              "samples": 7252,
+              "warehouseStockRemaining": 14885.860000000033,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            },
+            {
+              "item": "pgm",
+              "name": "Platinum-group metals",
+              "samples": 7251,
+              "warehouseStockRemaining": 2978.9399999999932,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            },
+            {
+              "item": "ceramic",
+              "name": "Technical ceramic",
+              "samples": 7224,
+              "warehouseStockRemaining": 695518,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            }
+          ]
+        },
+        {
+          "type": "thermal",
+          "name": "Ionization chamber and thermal jacket cell",
+          "batches": 37,
+          "staffedCapacity": 273.5436649539576,
+          "utilization": 0.13526176892536618,
+          "busyMachineHours": 19.476227633103836,
+          "waitingMachineHoursAtLeast": 124.28333333333333,
+          "blockedMachineHours": 0,
+          "missingMaterials": [
+            {
+              "item": "chromium",
+              "name": "Chromium alloy",
+              "samples": 7341,
+              "warehouseStockRemaining": 257423,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            },
+            {
+              "item": "cobalt",
+              "name": "Cobalt alloy",
+              "samples": 6654,
+              "warehouseStockRemaining": 98868,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            },
+            {
+              "item": "nickel",
+              "name": "Nickel alloy",
+              "samples": 6398,
+              "warehouseStockRemaining": 1087472.000000001,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            },
+            {
+              "item": "ceramic",
+              "name": "Technical ceramic",
+              "samples": 4490,
+              "warehouseStockRemaining": 695518,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            }
+          ]
+        },
+        {
+          "type": "contactMachine",
+          "name": "Coupler conductive-contact batch",
+          "batches": 43,
+          "staffedCapacity": 258.63597784125653,
+          "utilization": 0.1662568385067919,
+          "busyMachineHours": 19.169025182560123,
+          "waitingMachineHoursAtLeast": 88.31666666666666,
+          "blockedMachineHours": 0,
+          "missingMaterials": [
+            {
+              "item": "nickel",
+              "name": "Nickel alloy",
+              "samples": 5299,
+              "warehouseStockRemaining": 1087472.000000001,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            }
+          ]
+        },
+        {
+          "type": "sensor",
+          "name": "Engine sensors and safety instrumentation cell",
+          "batches": 49,
+          "staffedCapacity": 277.6748529899398,
+          "utilization": 0.17646538558453934,
+          "busyMachineHours": 19.619653840973132,
+          "waitingMachineHoursAtLeast": 87.9,
+          "blockedMachineHours": 0,
+          "missingMaterials": [
+            {
+              "item": "silver",
+              "name": "Silver",
+              "samples": 5214,
+              "warehouseStockRemaining": 14885.860000000033,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            },
+            {
+              "item": "pgm",
+              "name": "Platinum-group metals",
+              "samples": 4588,
+              "warehouseStockRemaining": 2978.9399999999932,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            },
+            {
+              "item": "copper",
+              "name": "Copper",
+              "samples": 4530,
+              "warehouseStockRemaining": 79447.90000000011,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            },
+            {
+              "item": "gold",
+              "name": "Gold",
+              "samples": 4181,
+              "warehouseStockRemaining": 6944.4300000000185,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            }
+          ]
+        },
+        {
+          "type": "regMachine",
+          "name": "Regulator body machining batch",
+          "batches": 47,
+          "staffedCapacity": 263.1427284259643,
+          "utilization": 0.17861029366511086,
+          "busyMachineHours": 35.47612948158914,
+          "waitingMachineHoursAtLeast": 161.03333333333333,
+          "blockedMachineHours": 0.06666666666666667,
+          "missingMaterials": [
+            {
+              "item": "nickel",
+              "name": "Nickel alloy",
+              "samples": 9518,
+              "warehouseStockRemaining": 1087472.000000001,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            },
+            {
+              "item": "iron",
+              "name": "Iron alloy",
+              "samples": 9474,
+              "warehouseStockRemaining": 1773758,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            },
+            {
+              "item": "chromium",
+              "name": "Chromium alloy",
+              "samples": 9468,
+              "warehouseStockRemaining": 257423,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            }
+          ]
+        },
+        {
+          "type": "electronic",
+          "name": "Charge-input control electronics cell",
+          "batches": 60,
+          "staffedCapacity": 258.49433710859427,
+          "utilization": 0.23211340206185568,
+          "busyMachineHours": 30.289743556701023,
+          "waitingMachineHoursAtLeast": 77.91666666666667,
+          "blockedMachineHours": 0,
+          "missingMaterials": [
+            {
+              "item": "processor",
+              "name": "Processor modules",
+              "samples": 3903,
+              "warehouseStockRemaining": 683,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            },
+            {
+              "item": "electronicsFeed",
+              "name": "Electronics feedstock",
+              "samples": 3643,
+              "warehouseStockRemaining": 346702,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            },
+            {
+              "item": "pgm",
+              "name": "Platinum-group metals",
+              "samples": 2253,
+              "warehouseStockRemaining": 2978.9399999999932,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            },
+            {
+              "item": "silver",
+              "name": "Silver",
+              "samples": 2092,
+              "warehouseStockRemaining": 14885.860000000033,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            }
+          ]
+        },
+        {
+          "type": "regAssemble",
+          "name": "Regulator assembly batch",
+          "batches": 87,
+          "staffedCapacity": 268.30023398521115,
+          "utilization": 0.32426360092103196,
+          "busyMachineHours": 38.72813113363758,
+          "waitingMachineHoursAtLeast": 74.98333333333333,
+          "blockedMachineHours": 0,
+          "missingMaterials": [
+            {
+              "item": "regValve",
+              "name": "Regulator valve",
+              "samples": 3973,
+              "warehouseStockRemaining": 929,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            },
+            {
+              "item": "regSense",
+              "name": "Regulator sensing element",
+              "samples": 3719,
+              "warehouseStockRemaining": 965,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            },
+            {
+              "item": "regBlank",
+              "name": "Machined regulator housing",
+              "samples": 295,
+              "warehouseStockRemaining": 0,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            }
+          ]
+        },
+        {
+          "type": "kit",
+          "name": "Eight-subassembly kitting station",
+          "batches": 98,
+          "staffedCapacity": 302.2046672081626,
+          "utilization": 0.32428354236004003,
+          "busyMachineHours": 52.800619869581396,
+          "waitingMachineHoursAtLeast": 92.23333333333333,
+          "blockedMachineHours": 34.166666666666664,
+          "missingMaterials": [
+            {
+              "item": "energy",
+              "name": "Ion-grid and particle-energizer cassette",
+              "samples": 5129,
+              "warehouseStockRemaining": 0,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            },
+            {
+              "item": "thermal",
+              "name": "Ionization chamber and thermal jacket",
+              "samples": 4349,
+              "warehouseStockRemaining": 0,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            },
+            {
+              "item": "sensor",
+              "name": "Engine sensors and safety instrumentation",
+              "samples": 3463,
+              "warehouseStockRemaining": 0,
+              "upstreamOutputRemaining": 1,
+              "unallocatedWipRemaining": 0
+            },
+            {
+              "item": "electronic",
+              "name": "Charge-input control electronics",
+              "samples": 2332,
+              "warehouseStockRemaining": 0,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            }
+          ]
+        },
+        {
+          "type": "couplerCoat",
+          "name": "Coupler coating / contact fit batch",
+          "batches": 93,
+          "staffedCapacity": 265.2812888819935,
+          "utilization": 0.3505712762175613,
+          "busyMachineHours": 35.99438153463517,
+          "waitingMachineHoursAtLeast": 71,
+          "blockedMachineHours": 0,
+          "missingMaterials": [
+            {
+              "item": "contact",
+              "name": "Machined nickel-alloy contact",
+              "samples": 4260,
+              "warehouseStockRemaining": 0,
+              "upstreamOutputRemaining": 24,
+              "unallocatedWipRemaining": 0
+            },
+            {
+              "item": "couplerBlank",
+              "name": "Machined coupler body",
+              "samples": 818,
+              "warehouseStockRemaining": 0,
+              "upstreamOutputRemaining": 249,
+              "unallocatedWipRemaining": 0
+            }
+          ]
+        },
+        {
+          "type": "wireDraw",
+          "name": "Wire drawing / extrusion batch",
+          "batches": 100,
+          "staffedCapacity": 265.57637374170656,
+          "utilization": 0.3765395189003435,
+          "busyMachineHours": 56.704880674098945,
+          "waitingMachineHoursAtLeast": 82.53333333333333,
+          "blockedMachineHours": 3.6333333333333333,
+          "missingMaterials": [
+            {
+              "item": "silver",
+              "name": "Silver",
+              "samples": 4907,
+              "warehouseStockRemaining": 14885.860000000033,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            },
+            {
+              "item": "copper",
+              "name": "Copper",
+              "samples": 4755,
+              "warehouseStockRemaining": 79447.90000000011,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            }
+          ]
+        },
+        {
+          "type": "cast",
+          "name": "Casting / forging / forming cell",
+          "batches": 110,
+          "staffedCapacity": 283.425319193597,
+          "utilization": 0.38810929211607664,
+          "busyMachineHours": 176.64874373896004,
+          "waitingMachineHoursAtLeast": 242.9,
+          "blockedMachineHours": 8.983333333333333,
+          "missingMaterials": [
+            {
+              "item": "chromium",
+              "name": "Chromium alloy",
+              "samples": 13746,
+              "warehouseStockRemaining": 257423,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            },
+            {
+              "item": "nickel",
+              "name": "Nickel alloy",
+              "samples": 13171,
+              "warehouseStockRemaining": 1087472.000000001,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            },
+            {
+              "item": "iron",
+              "name": "Iron alloy",
+              "samples": 13161,
+              "warehouseStockRemaining": 1773758,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            }
+          ]
+        },
+        {
+          "type": "housingMachine",
+          "name": "Housing precision finishing",
+          "batches": 111,
+          "staffedCapacity": 284.41459118578484,
+          "utilization": 0.3902753355136156,
+          "busyMachineHours": 41.378612314499016,
+          "waitingMachineHoursAtLeast": 0,
+          "blockedMachineHours": 65.36666666666666,
+          "missingMaterials": []
+        },
+        {
+          "type": "field",
+          "name": "Magnet-ring assembly cell",
+          "batches": 108,
+          "staffedCapacity": 271.9944694404644,
+          "utilization": 0.39706689706659504,
+          "busyMachineHours": 57.044694605783334,
+          "waitingMachineHoursAtLeast": 34.38333333333333,
+          "blockedMachineHours": 50.666666666666664,
+          "missingMaterials": [
+            {
+              "item": "nickel",
+              "name": "Nickel alloy",
+              "samples": 1663,
+              "warehouseStockRemaining": 1087472.000000001,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            },
+            {
+              "item": "copper",
+              "name": "Copper",
+              "samples": 1658,
+              "warehouseStockRemaining": 79447.90000000011,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            },
+            {
+              "item": "silver",
+              "name": "Silver",
+              "samples": 1622,
+              "warehouseStockRemaining": 14885.860000000033,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            },
+            {
+              "item": "pgm",
+              "name": "Platinum-group metals",
+              "samples": 1557,
+              "warehouseStockRemaining": 2978.9399999999932,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            }
+          ]
+        },
+        {
+          "type": "couplerMachine",
+          "name": "Coupler body mill-turn batch",
+          "batches": 105,
+          "staffedCapacity": 262.0611082856345,
+          "utilization": 0.40066990743836306,
+          "busyMachineHours": 83.11754667333474,
+          "waitingMachineHoursAtLeast": 106.08333333333333,
+          "blockedMachineHours": 4.733333333333333,
+          "missingMaterials": [
+            {
+              "item": "nickel",
+              "name": "Nickel alloy",
+              "samples": 6180,
+              "warehouseStockRemaining": 1087472.000000001,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            },
+            {
+              "item": "iron",
+              "name": "Iron alloy",
+              "samples": 5915,
+              "warehouseStockRemaining": 1773758,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            },
+            {
+              "item": "chromium",
+              "name": "Chromium alloy",
+              "samples": 4595,
+              "warehouseStockRemaining": 257423,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            }
+          ]
+        },
+        {
+          "type": "interface",
+          "name": "Power-feed and mounting interfaces cell",
+          "batches": 112,
+          "staffedCapacity": 277.6748529899398,
+          "utilization": 0.40334945276466133,
+          "busyMachineHours": 41.053049520646624,
+          "waitingMachineHoursAtLeast": 0,
+          "blockedMachineHours": 65.78333333333333,
+          "missingMaterials": []
+        },
+        {
+          "type": "gas",
+          "name": "Propellant pump and injection set cell",
+          "batches": 116,
+          "staffedCapacity": 270.8879012165406,
+          "utilization": 0.4282214136513711,
+          "busyMachineHours": 53.98274414109322,
+          "waitingMachineHoursAtLeast": 2.65,
+          "blockedMachineHours": 68.25,
+          "missingMaterials": [
+            {
+              "item": "tibanna",
+              "name": "Tibanna charge",
+              "samples": 159,
+              "warehouseStockRemaining": 147472,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            }
+          ]
+        },
+        {
+          "type": "regTest",
+          "name": "Regulator pressure-test batch",
+          "batches": 124,
+          "staffedCapacity": 282.8388380349174,
+          "utilization": 0.4384122097994611,
+          "busyMachineHours": 30.844164131548226,
+          "waitingMachineHoursAtLeast": 31.383333333333333,
+          "blockedMachineHours": 8.7,
+          "missingMaterials": [
+            {
+              "item": "regUntested",
+              "name": "Assembled regulator",
+              "samples": 1883,
+              "warehouseStockRemaining": 0,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            }
+          ]
+        },
+        {
+          "type": "couplerFit",
+          "name": "Interface coupler fit-test batch",
+          "batches": 118,
+          "staffedCapacity": 267.3468828999845,
+          "utilization": 0.44137413804874714,
+          "busyMachineHours": 23.417976109337076,
+          "waitingMachineHoursAtLeast": 3.033333333333333,
+          "blockedMachineHours": 26.9,
+          "missingMaterials": [
+            {
+              "item": "couplerCoated",
+              "name": "Coated coupler with contacts",
+              "samples": 182,
+              "warehouseStockRemaining": 0,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            }
+          ]
+        },
+        {
+          "type": "wireFinish",
+          "name": "Conductor surface finishing batch",
+          "batches": 121,
+          "staffedCapacity": 270.4452739269711,
+          "utilization": 0.4474102957801137,
+          "busyMachineHours": 31.745715267318793,
+          "waitingMachineHoursAtLeast": 31.016666666666666,
+          "blockedMachineHours": 8.5,
+          "missingMaterials": [
+            {
+              "item": "coilWireRaw",
+              "name": "Drawn field-coil wire",
+              "samples": 1861,
+              "warehouseStockRemaining": 0,
+              "upstreamOutputRemaining": 108,
+              "unallocatedWipRemaining": 0
+            }
+          ]
+        },
+        {
+          "type": "finish",
+          "name": "Surface finishing / cleaning / coating line",
+          "batches": 131,
+          "staffedCapacity": 285.9195239703213,
+          "utilization": 0.4581708803264443,
+          "busyMachineHours": 140.30951340612765,
+          "waitingMachineHoursAtLeast": 2.3333333333333335,
+          "blockedMachineHours": 216.4,
+          "missingMaterials": [
+            {
+              "item": "housingHeat",
+              "name": "Heat-treated injector-relay housing",
+              "samples": 140,
+              "warehouseStockRemaining": 0,
+              "upstreamOutputRemaining": 68,
+              "unallocatedWipRemaining": 0
+            }
+          ]
+        },
+        {
+          "type": "coilTest",
+          "name": "Field-coil electrical test batch",
+          "batches": 138,
+          "staffedCapacity": 277.6748529899397,
+          "utilization": 0.49698414715645783,
+          "busyMachineHours": 52.39291082631856,
+          "waitingMachineHoursAtLeast": 0,
+          "blockedMachineHours": 54.11666666666667,
+          "missingMaterials": []
+        },
+        {
+          "type": "sealInspect",
+          "name": "Seal dimensional inspection batch",
+          "batches": 134,
+          "staffedCapacity": 267.3468828999845,
+          "utilization": 0.5012214788011197,
+          "busyMachineHours": 17.864421766597953,
+          "waitingMachineHoursAtLeast": 0.6333333333333333,
+          "blockedMachineHours": 16.583333333333332,
+          "missingMaterials": [
+            {
+              "item": "sealRaw",
+              "name": "Formed seal",
+              "samples": 38,
+              "warehouseStockRemaining": 0,
+              "upstreamOutputRemaining": 640,
+              "unallocatedWipRemaining": 0
+            }
+          ]
+        },
+        {
+          "type": "sealForm",
+          "name": "Seal molding / forming batch",
+          "batches": 154,
+          "staffedCapacity": 269.41247691797554,
+          "utilization": 0.5716142094149795,
+          "busyMachineHours": 62.92259592783501,
+          "waitingMachineHoursAtLeast": 23.1,
+          "blockedMachineHours": 20.283333333333335,
+          "missingMaterials": [
+            {
+              "item": "sealCompound",
+              "name": "Qualified seal compound",
+              "samples": 1386,
+              "warehouseStockRemaining": 73.99999999999974,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            }
+          ]
+        },
+        {
+          "type": "coilWind",
+          "name": "Precision coil winding batch",
+          "batches": 155,
+          "staffedCapacity": 263.9668199614537,
+          "utilization": 0.5871950119436761,
+          "busyMachineHours": 58.662926339107344,
+          "waitingMachineHoursAtLeast": 23.866666666666667,
+          "blockedMachineHours": 5.1,
+          "missingMaterials": [
+            {
+              "item": "superconductor",
+              "name": "Superconductive media",
+              "samples": 1344,
+              "warehouseStockRemaining": 511873,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            },
+            {
+              "item": "coilWire",
+              "name": "Finished field-coil wire",
+              "samples": 697,
+              "warehouseStockRemaining": 0,
+              "upstreamOutputRemaining": 12,
+              "unallocatedWipRemaining": 0
+            }
+          ]
+        },
+        {
+          "type": "coilInsulate",
+          "name": "Coil insulation / curing batch",
+          "batches": 157,
+          "staffedCapacity": 264.2484918729979,
+          "utilization": 0.5941377333402408,
+          "busyMachineHours": 41.89535462850637,
+          "waitingMachineHoursAtLeast": 7.5,
+          "blockedMachineHours": 22.016666666666666,
+          "missingMaterials": [
+            {
+              "item": "woundCoil",
+              "name": "Wound field coil",
+              "samples": 450,
+              "warehouseStockRemaining": 0,
+              "upstreamOutputRemaining": 208,
+              "unallocatedWipRemaining": 0
+            }
+          ]
+        },
+        {
+          "type": "heat",
+          "name": "Heat treatment / vacuum processing unit",
+          "batches": 176,
+          "staffedCapacity": 286.052993122253,
+          "utilization": 0.6152706115009303,
+          "busyMachineHours": 346.95698564065276,
+          "waitingMachineHoursAtLeast": 45.4,
+          "blockedMachineHours": 307.96666666666664,
+          "missingMaterials": [
+            {
+              "item": "housingRaw",
+              "name": "Injector-relay housing preform",
+              "samples": 2724,
+              "warehouseStockRemaining": 0,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            }
+          ]
+        },
+        {
+          "type": "insulationForm",
+          "name": "Coil insulation forming batch",
+          "batches": 170,
+          "staffedCapacity": 270.4452739269711,
+          "utilization": 0.6285929775423085,
+          "busyMachineHours": 45.404048549508545,
+          "waitingMachineHoursAtLeast": 6.083333333333333,
+          "blockedMachineHours": 19.55,
+          "missingMaterials": [
+            {
+              "item": "insulationFeed",
+              "name": "Qualified insulating feed",
+              "samples": 365,
+              "warehouseStockRemaining": 8.639999999999977,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            }
+          ]
+        },
+        {
+          "type": "package",
+          "name": "Robotic packaging / palletizing station",
+          "batches": 195,
+          "staffedCapacity": 297.8684935562997,
+          "utilization": 0.65465131163039,
+          "busyMachineHours": 221.72628460418753,
+          "waitingMachineHoursAtLeast": 99.78333333333333,
+          "blockedMachineHours": 0,
+          "missingMaterials": [
+            {
+              "item": "tested",
+              "name": "Certified IE-4 ion engine",
+              "samples": 5987,
+              "warehouseStockRemaining": 0,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            }
+          ]
+        },
+        {
+          "type": "integrate",
+          "name": "Final engine assembly / integration cell",
+          "batches": 250,
+          "staffedCapacity": 262.67864041932467,
+          "utilization": 0.9517332646495915,
+          "busyMachineHours": 237.93503802909163,
+          "waitingMachineHoursAtLeast": 2.5,
+          "blockedMachineHours": 9.35,
+          "missingMaterials": [
+            {
+              "item": "machined",
+              "name": "Machined IE-4 engine",
+              "samples": 150,
+              "warehouseStockRemaining": 0,
+              "upstreamOutputRemaining": 6,
+              "unallocatedWipRemaining": 0
+            }
+          ]
+        },
+        {
+          "type": "cnc",
+          "name": "Precision machining / integration centre",
+          "batches": 252,
+          "staffedCapacity": 263.37307345584946,
+          "utilization": 0.9568176301904454,
+          "busyMachineHours": 1883.3113049224103,
+          "waitingMachineHoursAtLeast": 12.916666666666666,
+          "blockedMachineHours": 45.75,
+          "missingMaterials": [
+            {
+              "item": "kit",
+              "name": "Complete IE-4 eight-module kit",
+              "samples": 775,
+              "warehouseStockRemaining": 0,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            }
+          ]
+        },
+        {
+          "type": "qa",
+          "name": "QA / certification acceptance stand",
+          "batches": 244,
+          "staffedCapacity": 247.6352142711556,
+          "utilization": 0.9853202853969908,
+          "busyMachineHours": 240.45050769452533,
+          "waitingMachineHoursAtLeast": 0,
+          "blockedMachineHours": 0.9,
+          "missingMaterials": []
+        },
+        {
+          "type": "calibrate",
+          "name": "Calibration / functional test stand",
+          "batches": 251,
+          "staffedCapacity": 252.8003796555721,
+          "utilization": 0.9928782557287887,
+          "busyMachineHours": 223.21209450687357,
+          "waitingMachineHoursAtLeast": 0,
+          "blockedMachineHours": 0,
+          "missingMaterials": []
+        }
+      ],
+      "dispatchUsesCarriedInventory": false,
+      "rawStockVersusDelivery": "Warehouse stock remaining does not establish delivery access or available transport. Diagnose routing, queues and finite buffers separately from total raw stock."
+    },
+    "2": {
+      "basis": "Recorded machine-state samples. Waiting hours are a lower bound because several ingredients may be missing in the same sample; do not add ingredient waits as separate elapsed time.",
+      "rows": [
+        {
+          "type": "finish",
+          "name": "Surface finishing / cleaning / coating line",
+          "batches": 34,
+          "staffedCapacity": 285.6895599464471,
+          "utilization": 0.11901029917359719,
+          "busyMachineHours": 46.34478512051381,
+          "waitingMachineHoursAtLeast": 0,
+          "blockedMachineHours": 313.46666666666664,
+          "missingMaterials": []
+        },
+        {
+          "type": "kit",
+          "name": "Eight-subassembly kitting station",
+          "batches": 38,
+          "staffedCapacity": 302.02176415010507,
+          "utilization": 0.12581874722483233,
+          "busyMachineHours": 24.518978298262187,
+          "waitingMachineHoursAtLeast": 153.4,
+          "blockedMachineHours": 0,
+          "missingMaterials": [
+            {
+              "item": "energy",
+              "name": "Ion-grid and particle-energizer cassette",
+              "samples": 9176,
+              "warehouseStockRemaining": 0,
+              "upstreamOutputRemaining": 3,
+              "unallocatedWipRemaining": 0
+            },
+            {
+              "item": "thermal",
+              "name": "Ionization chamber and thermal jacket",
+              "samples": 6319,
+              "warehouseStockRemaining": 0,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            },
+            {
+              "item": "sensor",
+              "name": "Engine sensors and safety instrumentation",
+              "samples": 394,
+              "warehouseStockRemaining": 0,
+              "upstreamOutputRemaining": 35,
+              "unallocatedWipRemaining": 0
+            },
+            {
+              "item": "electronic",
+              "name": "Charge-input control electronics",
+              "samples": 149,
+              "warehouseStockRemaining": 0,
+              "upstreamOutputRemaining": 37,
+              "unallocatedWipRemaining": 0
+            }
+          ]
+        },
+        {
+          "type": "housingMachine",
+          "name": "Housing precision finishing",
+          "batches": 39,
+          "staffedCapacity": 284.19727000076045,
+          "utilization": 0.13722862292060597,
+          "busyMachineHours": 15.889150258285946,
+          "waitingMachineHoursAtLeast": 0,
+          "blockedMachineHours": 91.65,
+          "missingMaterials": []
+        },
+        {
+          "type": "field",
+          "name": "Magnet-ring assembly cell",
+          "batches": 38,
+          "staffedCapacity": 271.7717890280932,
+          "utilization": 0.13982319554172679,
+          "busyMachineHours": 21.37877888061245,
+          "waitingMachineHoursAtLeast": 1.1666666666666667,
+          "blockedMachineHours": 121.26666666666667,
+          "missingMaterials": [
+            {
+              "item": "pgm",
+              "name": "Platinum-group metals",
+              "samples": 45,
+              "warehouseStockRemaining": 2956.0399999999854,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            },
+            {
+              "item": "gold",
+              "name": "Gold",
+              "samples": 25,
+              "warehouseStockRemaining": 6891.7300000000305,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            }
+          ]
+        },
+        {
+          "type": "interface",
+          "name": "Power-feed and mounting interfaces cell",
+          "batches": 39,
+          "staffedCapacity": 277.4560358439821,
+          "utilization": 0.14056280982090552,
+          "busyMachineHours": 15.975560737423738,
+          "waitingMachineHoursAtLeast": 0,
+          "blockedMachineHours": 91.6,
+          "missingMaterials": []
+        },
+        {
+          "type": "coilTest",
+          "name": "Field-coil electrical test batch",
+          "batches": 39,
+          "staffedCapacity": 277.40069454392784,
+          "utilization": 0.14059085203128122,
+          "busyMachineHours": 15.816156949963899,
+          "waitingMachineHoursAtLeast": 0,
+          "blockedMachineHours": 91.78333333333333,
+          "missingMaterials": []
+        },
+        {
+          "type": "sealForm",
+          "name": "Seal molding / forming batch",
+          "batches": 38,
+          "staffedCapacity": 269.0937342999974,
+          "utilization": 0.14121473359032563,
+          "busyMachineHours": 16.345849484630108,
+          "waitingMachineHoursAtLeast": 1,
+          "blockedMachineHours": 90.3,
+          "missingMaterials": [
+            {
+              "item": "sealCompound",
+              "name": "Qualified seal compound",
+              "samples": 60,
+              "warehouseStockRemaining": 283.00000000000034,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            }
+          ]
+        },
+        {
+          "type": "gas",
+          "name": "Propellant pump and injection set cell",
+          "batches": 39,
+          "staffedCapacity": 270.6487259588086,
+          "utilization": 0.14409822127127103,
+          "busyMachineHours": 19.524350541837276,
+          "waitingMachineHoursAtLeast": 0,
+          "blockedMachineHours": 106.23333333333333,
+          "missingMaterials": []
+        },
+        {
+          "type": "insulationForm",
+          "name": "Coil insulation forming batch",
+          "batches": 39,
+          "staffedCapacity": 270.09475846305355,
+          "utilization": 0.1443937684015991,
+          "busyMachineHours": 10.593582916770469,
+          "waitingMachineHoursAtLeast": 1.3333333333333333,
+          "blockedMachineHours": 59.86666666666667,
+          "missingMaterials": [
+            {
+              "item": "insulationFeed",
+              "name": "Qualified insulating feed",
+              "samples": 80,
+              "warehouseStockRemaining": 36.96000000000005,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            }
+          ]
+        },
+        {
+          "type": "coilInsulate",
+          "name": "Coil insulation / curing batch",
+          "batches": 39,
+          "staffedCapacity": 263.93242990446834,
+          "utilization": 0.14776509280847466,
+          "busyMachineHours": 11.144637847430245,
+          "waitingMachineHoursAtLeast": 0,
+          "blockedMachineHours": 60.8,
+          "missingMaterials": []
+        },
+        {
+          "type": "heat",
+          "name": "Heat treatment / vacuum processing unit",
+          "batches": 44,
+          "staffedCapacity": 285.76115858574946,
+          "utilization": 0.15397473966636635,
+          "busyMachineHours": 101.72124647416273,
+          "waitingMachineHoursAtLeast": 6.616666666666666,
+          "blockedMachineHours": 593.3333333333334,
+          "missingMaterials": [
+            {
+              "item": "housingRaw",
+              "name": "Injector-relay housing preform",
+              "samples": 397,
+              "warehouseStockRemaining": 0,
+              "upstreamOutputRemaining": 12,
+              "unallocatedWipRemaining": 0
+            }
+          ]
+        },
+        {
+          "type": "sealInspect",
+          "name": "Seal dimensional inspection batch",
+          "batches": 42,
+          "staffedCapacity": 267.07335787339736,
+          "utilization": 0.1572601637783337,
+          "busyMachineHours": 5.61093905916581,
+          "waitingMachineHoursAtLeast": 0,
+          "blockedMachineHours": 30.133333333333333,
+          "missingMaterials": []
+        },
+        {
+          "type": "couplerFit",
+          "name": "Interface coupler fit-test batch",
+          "batches": 45,
+          "staffedCapacity": 267.1086312754593,
+          "utilization": 0.16847078203771393,
+          "busyMachineHours": 8.902057084747662,
+          "waitingMachineHoursAtLeast": 0.36666666666666664,
+          "blockedMachineHours": 44.5,
+          "missingMaterials": [
+            {
+              "item": "couplerCoated",
+              "name": "Coated coupler with contacts",
+              "samples": 22,
+              "warehouseStockRemaining": 0,
+              "upstreamOutputRemaining": 278,
+              "unallocatedWipRemaining": 0
+            }
+          ]
+        },
+        {
+          "type": "thermal",
+          "name": "Ionization chamber and thermal jacket cell",
+          "batches": 48,
+          "staffedCapacity": 273.4673762941639,
+          "utilization": 0.17552367909643185,
+          "busyMachineHours": 25.642033964502012,
+          "waitingMachineHoursAtLeast": 116.55,
+          "blockedMachineHours": 0,
+          "missingMaterials": [
+            {
+              "item": "chromium",
+              "name": "Chromium alloy",
+              "samples": 6929,
+              "warehouseStockRemaining": 255224,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            },
+            {
+              "item": "nickel",
+              "name": "Nickel alloy",
+              "samples": 4184,
+              "warehouseStockRemaining": 1077907.0000000002,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            },
+            {
+              "item": "cobalt",
+              "name": "Cobalt alloy",
+              "samples": 3881,
+              "warehouseStockRemaining": 98390,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            },
+            {
+              "item": "ceramic",
+              "name": "Technical ceramic",
+              "samples": 1305,
+              "warehouseStockRemaining": 691388,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            }
+          ]
+        },
+        {
+          "type": "regTest",
+          "name": "Regulator pressure-test batch",
+          "batches": 53,
+          "staffedCapacity": 282.5909225645175,
+          "utilization": 0.1875502564591392,
+          "busyMachineHours": 13.175019048230867,
+          "waitingMachineHoursAtLeast": 3.65,
+          "blockedMachineHours": 54.666666666666664,
+          "missingMaterials": [
+            {
+              "item": "regUntested",
+              "name": "Assembled regulator",
+              "samples": 219,
+              "warehouseStockRemaining": 0,
+              "upstreamOutputRemaining": 185,
+              "unallocatedWipRemaining": 0
+            }
+          ]
+        },
+        {
+          "type": "energy",
+          "name": "Ion-grid and particle-energizer cassette cell",
+          "batches": 56,
+          "staffedCapacity": 271.1518304466043,
+          "utilization": 0.20652635797355465,
+          "busyMachineHours": 31.25078240428546,
+          "waitingMachineHoursAtLeast": 111.31666666666666,
+          "blockedMachineHours": 0,
+          "missingMaterials": [
+            {
+              "item": "silver",
+              "name": "Silver",
+              "samples": 6478,
+              "warehouseStockRemaining": 14750.620000000054,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            },
+            {
+              "item": "copper",
+              "name": "Copper",
+              "samples": 6429,
+              "warehouseStockRemaining": 78842.20000000029,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            },
+            {
+              "item": "gold",
+              "name": "Gold",
+              "samples": 6387,
+              "warehouseStockRemaining": 6891.7300000000305,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            },
+            {
+              "item": "pgm",
+              "name": "Platinum-group metals",
+              "samples": 6300,
+              "warehouseStockRemaining": 2956.0399999999854,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            }
+          ]
+        },
+        {
+          "type": "coilWind",
+          "name": "Precision coil winding batch",
+          "batches": 55,
+          "staffedCapacity": 263.64370839926363,
+          "utilization": 0.20861487776035856,
+          "busyMachineHours": 20.349244762220874,
+          "waitingMachineHoursAtLeast": 2.4166666666666665,
+          "blockedMachineHours": 74.75,
+          "missingMaterials": [
+            {
+              "item": "coilWire",
+              "name": "Finished field-coil wire",
+              "samples": 135,
+              "warehouseStockRemaining": 0,
+              "upstreamOutputRemaining": 371,
+              "unallocatedWipRemaining": 0
+            },
+            {
+              "item": "superconductor",
+              "name": "Superconductive media",
+              "samples": 62,
+              "warehouseStockRemaining": 508271,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            }
+          ]
+        },
+        {
+          "type": "cast",
+          "name": "Casting / forging / forming cell",
+          "batches": 77,
+          "staffedCapacity": 283.18603174234937,
+          "utilization": 0.27190606657484,
+          "busyMachineHours": 111.14363328998301,
+          "waitingMachineHoursAtLeast": 257.56666666666666,
+          "blockedMachineHours": 62.65,
+          "missingMaterials": [
+            {
+              "item": "chromium",
+              "name": "Chromium alloy",
+              "samples": 15283,
+              "warehouseStockRemaining": 255224,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            },
+            {
+              "item": "iron",
+              "name": "Iron alloy",
+              "samples": 13844,
+              "warehouseStockRemaining": 1756852,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            },
+            {
+              "item": "nickel",
+              "name": "Nickel alloy",
+              "samples": 13018,
+              "warehouseStockRemaining": 1077907.0000000002,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            }
+          ]
+        },
+        {
+          "type": "couplerCoat",
+          "name": "Coupler coating / contact fit batch",
+          "batches": 86,
+          "staffedCapacity": 265.0993340056005,
+          "utilization": 0.3244066995588271,
+          "busyMachineHours": 35.03806094432664,
+          "waitingMachineHoursAtLeast": 19.7,
+          "blockedMachineHours": 52.36666666666667,
+          "missingMaterials": [
+            {
+              "item": "contact",
+              "name": "Machined nickel-alloy contact",
+              "samples": 1182,
+              "warehouseStockRemaining": 0,
+              "upstreamOutputRemaining": 281,
+              "unallocatedWipRemaining": 0
+            }
+          ]
+        },
+        {
+          "type": "couplerMachine",
+          "name": "Coupler body mill-turn batch",
+          "batches": 93,
+          "staffedCapacity": 261.83455596002915,
+          "utilization": 0.35518611994895394,
+          "busyMachineHours": 68.43077071460995,
+          "waitingMachineHoursAtLeast": 5.85,
+          "blockedMachineHours": 121.65,
+          "missingMaterials": [
+            {
+              "item": "nickel",
+              "name": "Nickel alloy",
+              "samples": 298,
+              "warehouseStockRemaining": 1077907.0000000002,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            },
+            {
+              "item": "chromium",
+              "name": "Chromium alloy",
+              "samples": 201,
+              "warehouseStockRemaining": 255224,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            },
+            {
+              "item": "iron",
+              "name": "Iron alloy",
+              "samples": 129,
+              "warehouseStockRemaining": 1756852,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            }
+          ]
+        },
+        {
+          "type": "electronic",
+          "name": "Charge-input control electronics cell",
+          "batches": 94,
+          "staffedCapacity": 258.36687093305983,
+          "utilization": 0.3638237350652995,
+          "busyMachineHours": 46.05777559180785,
+          "waitingMachineHoursAtLeast": 59.43333333333333,
+          "blockedMachineHours": 17.466666666666665,
+          "missingMaterials": [
+            {
+              "item": "silver",
+              "name": "Silver",
+              "samples": 2938,
+              "warehouseStockRemaining": 14750.620000000054,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            },
+            {
+              "item": "pgm",
+              "name": "Platinum-group metals",
+              "samples": 2898,
+              "warehouseStockRemaining": 2956.0399999999854,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            },
+            {
+              "item": "gold",
+              "name": "Gold",
+              "samples": 2888,
+              "warehouseStockRemaining": 6891.7300000000305,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            },
+            {
+              "item": "copper",
+              "name": "Copper",
+              "samples": 2452,
+              "warehouseStockRemaining": 78842.20000000029,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            }
+          ]
+        },
+        {
+          "type": "sensor",
+          "name": "Engine sensors and safety instrumentation cell",
+          "batches": 103,
+          "staffedCapacity": 277.5704588383313,
+          "utilization": 0.3710769526089645,
+          "busyMachineHours": 40.024547553519334,
+          "waitingMachineHoursAtLeast": 29.933333333333334,
+          "blockedMachineHours": 33,
+          "missingMaterials": [
+            {
+              "item": "silver",
+              "name": "Silver",
+              "samples": 1236,
+              "warehouseStockRemaining": 14750.620000000054,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            },
+            {
+              "item": "safingModule",
+              "name": "Safing modules",
+              "samples": 1018,
+              "warehouseStockRemaining": 716,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            },
+            {
+              "item": "copper",
+              "name": "Copper",
+              "samples": 843,
+              "warehouseStockRemaining": 78842.20000000029,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            },
+            {
+              "item": "gold",
+              "name": "Gold",
+              "samples": 814,
+              "warehouseStockRemaining": 6891.7300000000305,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            }
+          ]
+        },
+        {
+          "type": "wireFinish",
+          "name": "Conductor surface finishing batch",
+          "batches": 102,
+          "staffedCapacity": 270.1991190720926,
+          "utilization": 0.37749938027290564,
+          "busyMachineHours": 26.76324099756733,
+          "waitingMachineHoursAtLeast": 2.4,
+          "blockedMachineHours": 42.3,
+          "missingMaterials": [
+            {
+              "item": "coilWireRaw",
+              "name": "Drawn field-coil wire",
+              "samples": 144,
+              "warehouseStockRemaining": 0,
+              "upstreamOutputRemaining": 388,
+              "unallocatedWipRemaining": 0
+            }
+          ]
+        },
+        {
+          "type": "regAssemble",
+          "name": "Regulator assembly batch",
+          "batches": 102,
+          "staffedCapacity": 268.11661230586304,
+          "utilization": 0.3804314813721429,
+          "busyMachineHours": 44.80985018968511,
+          "waitingMachineHoursAtLeast": 39.9,
+          "blockedMachineHours": 23.416666666666668,
+          "missingMaterials": [
+            {
+              "item": "regBlank",
+              "name": "Machined regulator housing",
+              "samples": 2108,
+              "warehouseStockRemaining": 0,
+              "upstreamOutputRemaining": 24,
+              "unallocatedWipRemaining": 0
+            },
+            {
+              "item": "regValve",
+              "name": "Regulator valve",
+              "samples": 840,
+              "warehouseStockRemaining": 1906,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            },
+            {
+              "item": "regSense",
+              "name": "Regulator sensing element",
+              "samples": 776,
+              "warehouseStockRemaining": 1906,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            }
+          ]
+        },
+        {
+          "type": "regMachine",
+          "name": "Regulator body machining batch",
+          "batches": 122,
+          "staffedCapacity": 263.0454483387288,
+          "utilization": 0.4637981792518918,
+          "busyMachineHours": 97.83663210608647,
+          "waitingMachineHoursAtLeast": 96.2,
+          "blockedMachineHours": 0,
+          "missingMaterials": [
+            {
+              "item": "chromium",
+              "name": "Chromium alloy",
+              "samples": 5199,
+              "warehouseStockRemaining": 255224,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            },
+            {
+              "item": "nickel",
+              "name": "Nickel alloy",
+              "samples": 1860,
+              "warehouseStockRemaining": 1077907.0000000002,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            },
+            {
+              "item": "iron",
+              "name": "Iron alloy",
+              "samples": 1710,
+              "warehouseStockRemaining": 1756852,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            }
+          ]
+        },
+        {
+          "type": "wireDraw",
+          "name": "Wire drawing / extrusion batch",
+          "batches": 136,
+          "staffedCapacity": 265.36089553670854,
+          "utilization": 0.5125095757795501,
+          "busyMachineHours": 72.18550111662428,
+          "waitingMachineHoursAtLeast": 26.583333333333332,
+          "blockedMachineHours": 43.333333333333336,
+          "missingMaterials": [
+            {
+              "item": "silver",
+              "name": "Silver",
+              "samples": 1480,
+              "warehouseStockRemaining": 14750.620000000054,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            },
+            {
+              "item": "copper",
+              "name": "Copper",
+              "samples": 1318,
+              "warehouseStockRemaining": 78842.20000000029,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            }
+          ]
+        },
+        {
+          "type": "contactMachine",
+          "name": "Coupler conductive-contact batch",
+          "batches": 150,
+          "staffedCapacity": 258.5419011952911,
+          "utilization": 0.580176750099384,
+          "busyMachineHours": 61.44094489155101,
+          "waitingMachineHoursAtLeast": 17.833333333333332,
+          "blockedMachineHours": 26.9,
+          "missingMaterials": [
+            {
+              "item": "nickel",
+              "name": "Nickel alloy",
+              "samples": 1070,
+              "warehouseStockRemaining": 1077907.0000000002,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            }
+          ]
+        },
+        {
+          "type": "cnc",
+          "name": "Precision machining / integration centre",
+          "batches": 191,
+          "staffedCapacity": 262.8471525213046,
+          "utilization": 0.7266580526662499,
+          "busyMachineHours": 795.1232226990226,
+          "waitingMachineHoursAtLeast": 1099.7666666666667,
+          "blockedMachineHours": 47.61666666666667,
+          "missingMaterials": [
+            {
+              "item": "kit",
+              "name": "Complete IE-4 eight-module kit",
+              "samples": 65986,
+              "warehouseStockRemaining": 0,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            }
+          ]
+        },
+        {
+          "type": "package",
+          "name": "Robotic packaging / palletizing station",
+          "batches": 243,
+          "staffedCapacity": 297.4429202689176,
+          "utilization": 0.8169634690928402,
+          "busyMachineHours": 269.8927332418142,
+          "waitingMachineHoursAtLeast": 51.35,
+          "blockedMachineHours": 0.03333333333333333,
+          "missingMaterials": [
+            {
+              "item": "tested",
+              "name": "Certified IE-4 ion engine",
+              "samples": 3081,
+              "warehouseStockRemaining": 0,
+              "upstreamOutputRemaining": 1,
+              "unallocatedWipRemaining": 0
+            }
+          ]
+        },
+        {
+          "type": "integrate",
+          "name": "Final engine assembly / integration cell",
+          "batches": 247,
+          "staffedCapacity": 262.165883829647,
+          "utilization": 0.942151573621602,
+          "busyMachineHours": 233.84382368698337,
+          "waitingMachineHoursAtLeast": 5.266666666666667,
+          "blockedMachineHours": 11.066666666666666,
+          "missingMaterials": [
+            {
+              "item": "machined",
+              "name": "Machined IE-4 engine",
+              "samples": 316,
+              "warehouseStockRemaining": 0,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            }
+          ]
+        },
+        {
+          "type": "calibrate",
+          "name": "Calibration / functional test stand",
+          "batches": 248,
+          "staffedCapacity": 252.28337320037886,
+          "utilization": 0.9830215794800843,
+          "busyMachineHours": 222.28219837834055,
+          "waitingMachineHoursAtLeast": 0,
+          "blockedMachineHours": 0,
+          "missingMaterials": []
+        },
+        {
+          "type": "qa",
+          "name": "QA / certification acceptance stand",
+          "batches": 245,
+          "staffedCapacity": 247.12994703720372,
+          "utilization": 0.9913812669701132,
+          "busyMachineHours": 240.6504613843262,
+          "waitingMachineHoursAtLeast": 0,
+          "blockedMachineHours": 0.25,
+          "missingMaterials": []
+        }
+      ],
+      "dispatchUsesCarriedInventory": false,
+      "rawStockVersusDelivery": "Warehouse stock remaining does not establish delivery access or available transport. Diagnose routing, queues and finite buffers separately from total raw stock."
+    },
+    "3": {
+      "basis": "Recorded machine-state samples. Waiting hours are a lower bound because several ingredients may be missing in the same sample; do not add ingredient waits as separate elapsed time.",
+      "rows": [
+        {
+          "type": "cnc",
+          "name": "Precision machining / integration centre",
+          "batches": 48,
+          "staffedCapacity": 262.6269449622054,
+          "utilization": 0.1827687559130982,
+          "busyMachineHours": 447.87584231145945,
+          "waitingMachineHoursAtLeast": 1494.7,
+          "blockedMachineHours": 0.9666666666666667,
+          "missingMaterials": [
+            {
+              "item": "kit",
+              "name": "Complete IE-4 eight-module kit",
+              "samples": 89682,
+              "warehouseStockRemaining": 0,
+              "upstreamOutputRemaining": 1,
+              "unallocatedWipRemaining": 0
+            }
+          ]
+        },
+        {
+          "type": "cast",
+          "name": "Casting / forging / forming cell",
+          "batches": 55,
+          "staffedCapacity": 283.0346659840398,
+          "utilization": 0.19432248628901672,
+          "busyMachineHours": 87.11774523552441,
+          "waitingMachineHoursAtLeast": 230.58333333333334,
+          "blockedMachineHours": 113.41666666666667,
+          "missingMaterials": [
+            {
+              "item": "chromium",
+              "name": "Chromium alloy",
+              "samples": 13283,
+              "warehouseStockRemaining": 253289,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            },
+            {
+              "item": "nickel",
+              "name": "Nickel alloy",
+              "samples": 12457,
+              "warehouseStockRemaining": 1070186.400000002,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            },
+            {
+              "item": "iron",
+              "name": "Iron alloy",
+              "samples": 12276,
+              "warehouseStockRemaining": 1744980,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            }
+          ]
+        },
+        {
+          "type": "integrate",
+          "name": "Final engine assembly / integration cell",
+          "batches": 51,
+          "staffedCapacity": 261.66129102400254,
+          "utilization": 0.1949084627703748,
+          "busyMachineHours": 41.13004764593293,
+          "waitingMachineHoursAtLeast": 210.26666666666668,
+          "blockedMachineHours": 0.16666666666666666,
+          "missingMaterials": [
+            {
+              "item": "machined",
+              "name": "Machined IE-4 engine",
+              "samples": 12616,
+              "warehouseStockRemaining": 0,
+              "upstreamOutputRemaining": 4,
+              "unallocatedWipRemaining": 0
+            }
+          ]
+        },
+        {
+          "type": "heat",
+          "name": "Heat treatment / vacuum processing unit",
+          "batches": 64,
+          "staffedCapacity": 285.6769121063874,
+          "utilization": 0.22402930474187602,
+          "busyMachineHours": 171.44613646190686,
+          "waitingMachineHoursAtLeast": 0,
+          "blockedMachineHours": 530.1333333333333,
+          "missingMaterials": []
+        },
+        {
+          "type": "kit",
+          "name": "Eight-subassembly kitting station",
+          "batches": 71,
+          "staffedCapacity": 301.93792303080966,
+          "utilization": 0.2351476730293173,
+          "busyMachineHours": 41.2112592884812,
+          "waitingMachineHoursAtLeast": 128.41666666666666,
+          "blockedMachineHours": 0,
+          "missingMaterials": [
+            {
+              "item": "thermal",
+              "name": "Ionization chamber and thermal jacket",
+              "samples": 7193,
+              "warehouseStockRemaining": 0,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            },
+            {
+              "item": "energy",
+              "name": "Ion-grid and particle-energizer cassette",
+              "samples": 5727,
+              "warehouseStockRemaining": 0,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            }
+          ]
+        },
+        {
+          "type": "regTest",
+          "name": "Regulator pressure-test batch",
+          "batches": 68,
+          "staffedCapacity": 282.4817190090179,
+          "utilization": 0.2407235421766503,
+          "busyMachineHours": 16.995246901094024,
+          "waitingMachineHoursAtLeast": 0,
+          "blockedMachineHours": 54.38333333333333,
+          "missingMaterials": []
+        },
+        {
+          "type": "housingMachine",
+          "name": "Housing precision finishing",
+          "batches": 69,
+          "staffedCapacity": 284.1139648207575,
+          "utilization": 0.24286029038921367,
+          "busyMachineHours": 27.65204042474631,
+          "waitingMachineHoursAtLeast": 0,
+          "blockedMachineHours": 79.55,
+          "missingMaterials": []
+        },
+        {
+          "type": "sensor",
+          "name": "Engine sensors and safety instrumentation cell",
+          "batches": 68,
+          "staffedCapacity": 277.35810079243464,
+          "utilization": 0.2451704125667088,
+          "busyMachineHours": 26.282381251761887,
+          "waitingMachineHoursAtLeast": 15.166666666666666,
+          "blockedMachineHours": 65.48333333333333,
+          "missingMaterials": [
+            {
+              "item": "silver",
+              "name": "Silver",
+              "samples": 640,
+              "warehouseStockRemaining": 14645.280000000057,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            },
+            {
+              "item": "copper",
+              "name": "Copper",
+              "samples": 625,
+              "warehouseStockRemaining": 78274.60000000024,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            },
+            {
+              "item": "gold",
+              "name": "Gold",
+              "samples": 446,
+              "warehouseStockRemaining": 6838.250000000045,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            },
+            {
+              "item": "pgm",
+              "name": "Platinum-group metals",
+              "samples": 391,
+              "warehouseStockRemaining": 2935.0499999999815,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            }
+          ]
+        },
+        {
+          "type": "sealInspect",
+          "name": "Seal dimensional inspection batch",
+          "batches": 67,
+          "staffedCapacity": 266.98667060382337,
+          "utilization": 0.2509488576657075,
+          "busyMachineHours": 8.962038685203128,
+          "waitingMachineHoursAtLeast": 0,
+          "blockedMachineHours": 26.633333333333333,
+          "missingMaterials": []
+        },
+        {
+          "type": "finish",
+          "name": "Surface finishing / cleaning / coating line",
+          "batches": 72,
+          "staffedCapacity": 285.61196248820534,
+          "utilization": 0.2520902814180037,
+          "busyMachineHours": 86.93739005734264,
+          "waitingMachineHoursAtLeast": 0,
+          "blockedMachineHours": 272.7,
+          "missingMaterials": []
+        },
+        {
+          "type": "interface",
+          "name": "Power-feed and mounting interfaces cell",
+          "batches": 70,
+          "staffedCapacity": 277.37307511126943,
+          "utilization": 0.25236768194576636,
+          "busyMachineHours": 27.630490311924692,
+          "waitingMachineHoursAtLeast": 0,
+          "blockedMachineHours": 79.7,
+          "missingMaterials": []
+        },
+        {
+          "type": "coilTest",
+          "name": "Field-coil electrical test batch",
+          "batches": 70,
+          "staffedCapacity": 277.3189642080034,
+          "utilization": 0.2524169243164215,
+          "busyMachineHours": 27.95568335196748,
+          "waitingMachineHoursAtLeast": 0,
+          "blockedMachineHours": 79.36666666666666,
+          "missingMaterials": []
+        },
+        {
+          "type": "gas",
+          "name": "Propellant pump and injection set cell",
+          "batches": 69,
+          "staffedCapacity": 270.5640038762314,
+          "utilization": 0.2550228375226285,
+          "busyMachineHours": 32.61898128887922,
+          "waitingMachineHoursAtLeast": 0,
+          "blockedMachineHours": 92.96666666666667,
+          "missingMaterials": []
+        },
+        {
+          "type": "thermal",
+          "name": "Ionization chamber and thermal jacket cell",
+          "batches": 70,
+          "staffedCapacity": 273.3677853899738,
+          "utilization": 0.2560652854546897,
+          "busyMachineHours": 37.35406893314726,
+          "waitingMachineHoursAtLeast": 100.2,
+          "blockedMachineHours": 0,
+          "missingMaterials": [
+            {
+              "item": "chromium",
+              "name": "Chromium alloy",
+              "samples": 5852,
+              "warehouseStockRemaining": 253289,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            },
+            {
+              "item": "nickel",
+              "name": "Nickel alloy",
+              "samples": 872,
+              "warehouseStockRemaining": 1070186.400000002,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            },
+            {
+              "item": "ceramic",
+              "name": "Technical ceramic",
+              "samples": 478,
+              "warehouseStockRemaining": 685900,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            },
+            {
+              "item": "coolant",
+              "name": "Coolant charge",
+              "samples": 366,
+              "warehouseStockRemaining": 254736,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            }
+          ]
+        },
+        {
+          "type": "sealForm",
+          "name": "Seal molding / forming batch",
+          "batches": 69,
+          "staffedCapacity": 269.01398991458694,
+          "utilization": 0.2564922367863017,
+          "busyMachineHours": 27.907727544250438,
+          "waitingMachineHoursAtLeast": 0.8,
+          "blockedMachineHours": 78.65,
+          "missingMaterials": [
+            {
+              "item": "sealCompound",
+              "name": "Qualified seal compound",
+              "samples": 48,
+              "warehouseStockRemaining": 466.80000000000155,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            }
+          ]
+        },
+        {
+          "type": "couplerCoat",
+          "name": "Coupler coating / contact fit batch",
+          "batches": 68,
+          "staffedCapacity": 264.924003269229,
+          "utilization": 0.2566773835547661,
+          "busyMachineHours": 28.18408444711979,
+          "waitingMachineHoursAtLeast": 0,
+          "blockedMachineHours": 79.15,
+          "missingMaterials": []
+        },
+        {
+          "type": "wireFinish",
+          "name": "Conductor surface finishing batch",
+          "batches": 70,
+          "staffedCapacity": 269.99304091985584,
+          "utilization": 0.25926594167580286,
+          "busyMachineHours": 19.223269043195568,
+          "waitingMachineHoursAtLeast": 0,
+          "blockedMachineHours": 52.53333333333333,
+          "missingMaterials": []
+        },
+        {
+          "type": "couplerMachine",
+          "name": "Coupler body mill-turn batch",
+          "batches": 68,
+          "staffedCapacity": 261.65067259026824,
+          "utilization": 0.2598884968527659,
+          "busyMachineHours": 52.79349412594194,
+          "waitingMachineHoursAtLeast": 2.2333333333333334,
+          "blockedMachineHours": 142.36666666666667,
+          "missingMaterials": [
+            {
+              "item": "chromium",
+              "name": "Chromium alloy",
+              "samples": 134,
+              "warehouseStockRemaining": 253289,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            }
+          ]
+        },
+        {
+          "type": "field",
+          "name": "Magnet-ring assembly cell",
+          "batches": 71,
+          "staffedCapacity": 271.6893249031837,
+          "utilization": 0.2613278973154385,
+          "busyMachineHours": 37.5546133143009,
+          "waitingMachineHoursAtLeast": 1.8666666666666667,
+          "blockedMachineHours": 104.01666666666667,
+          "missingMaterials": [
+            {
+              "item": "pgm",
+              "name": "Platinum-group metals",
+              "samples": 101,
+              "warehouseStockRemaining": 2935.0499999999815,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            },
+            {
+              "item": "gold",
+              "name": "Gold",
+              "samples": 78,
+              "warehouseStockRemaining": 6838.250000000045,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            },
+            {
+              "item": "silver",
+              "name": "Silver",
+              "samples": 34,
+              "warehouseStockRemaining": 14645.280000000057,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            },
+            {
+              "item": "cobalt",
+              "name": "Cobalt alloy",
+              "samples": 17,
+              "warehouseStockRemaining": 97679,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            }
+          ]
+        },
+        {
+          "type": "insulationForm",
+          "name": "Coil insulation forming batch",
+          "batches": 71,
+          "staffedCapacity": 270.0127774080346,
+          "utilization": 0.26295051916268053,
+          "busyMachineHours": 18.917031629939196,
+          "waitingMachineHoursAtLeast": 0,
+          "blockedMachineHours": 52.71666666666667,
+          "missingMaterials": []
+        },
+        {
+          "type": "contactMachine",
+          "name": "Coupler conductive-contact batch",
+          "batches": 68,
+          "staffedCapacity": 258.2379320111712,
+          "utilization": 0.26332305045355753,
+          "busyMachineHours": 28.253353002688215,
+          "waitingMachineHoursAtLeast": 2.55,
+          "blockedMachineHours": 76.3,
+          "missingMaterials": [
+            {
+              "item": "nickel",
+              "name": "Nickel alloy",
+              "samples": 153,
+              "warehouseStockRemaining": 1070186.400000002,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            }
+          ]
+        },
+        {
+          "type": "coilWind",
+          "name": "Precision coil winding batch",
+          "batches": 70,
+          "staffedCapacity": 263.53268184764323,
+          "utilization": 0.2656217039542339,
+          "busyMachineHours": 26.881356735724978,
+          "waitingMachineHoursAtLeast": 0.13333333333333333,
+          "blockedMachineHours": 71.2,
+          "missingMaterials": [
+            {
+              "item": "superconductor",
+              "name": "Superconductive media",
+              "samples": 8,
+              "warehouseStockRemaining": 503994,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            }
+          ]
+        },
+        {
+          "type": "energy",
+          "name": "Ion-grid and particle-energizer cassette cell",
+          "batches": 72,
+          "staffedCapacity": 271.03001720705157,
+          "utilization": 0.2656532318521608,
+          "busyMachineHours": 37.34079557910071,
+          "waitingMachineHoursAtLeast": 88.18333333333334,
+          "blockedMachineHours": 0,
+          "missingMaterials": [
+            {
+              "item": "silver",
+              "name": "Silver",
+              "samples": 4007,
+              "warehouseStockRemaining": 14645.280000000057,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            },
+            {
+              "item": "nickel",
+              "name": "Nickel alloy",
+              "samples": 3616,
+              "warehouseStockRemaining": 1070186.400000002,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            },
+            {
+              "item": "gold",
+              "name": "Gold",
+              "samples": 3001,
+              "warehouseStockRemaining": 6838.250000000045,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            },
+            {
+              "item": "copper",
+              "name": "Copper",
+              "samples": 2893,
+              "warehouseStockRemaining": 78274.60000000024,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            }
+          ]
+        },
+        {
+          "type": "couplerFit",
+          "name": "Interface coupler fit-test batch",
+          "batches": 71,
+          "staffedCapacity": 267.0155567782572,
+          "utilization": 0.2659021101866431,
+          "busyMachineHours": 14.011502766544101,
+          "waitingMachineHoursAtLeast": 0,
+          "blockedMachineHours": 39.63333333333333,
+          "missingMaterials": []
+        },
+        {
+          "type": "wireDraw",
+          "name": "Wire drawing / extrusion batch",
+          "batches": 71,
+          "staffedCapacity": 265.08629759694026,
+          "utilization": 0.26783730673229456,
+          "busyMachineHours": 38.35631554038788,
+          "waitingMachineHoursAtLeast": 7.516666666666667,
+          "blockedMachineHours": 97.3,
+          "missingMaterials": [
+            {
+              "item": "copper",
+              "name": "Copper",
+              "samples": 391,
+              "warehouseStockRemaining": 78274.60000000024,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            },
+            {
+              "item": "silver",
+              "name": "Silver",
+              "samples": 344,
+              "warehouseStockRemaining": 14645.280000000057,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            }
+          ]
+        },
+        {
+          "type": "coilInsulate",
+          "name": "Coil insulation / curing batch",
+          "batches": 71,
+          "staffedCapacity": 263.8503305991095,
+          "utilization": 0.26909195011726705,
+          "busyMachineHours": 19.937679451083117,
+          "waitingMachineHoursAtLeast": 0,
+          "blockedMachineHours": 52,
+          "missingMaterials": []
+        },
+        {
+          "type": "electronic",
+          "name": "Charge-input control electronics cell",
+          "batches": 70,
+          "staffedCapacity": 258.17227945871787,
+          "utilization": 0.2711367779172942,
+          "busyMachineHours": 34.12681745028916,
+          "waitingMachineHoursAtLeast": 25.516666666666666,
+          "blockedMachineHours": 64.08333333333333,
+          "missingMaterials": [
+            {
+              "item": "gold",
+              "name": "Gold",
+              "samples": 1461,
+              "warehouseStockRemaining": 6838.250000000045,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            },
+            {
+              "item": "silver",
+              "name": "Silver",
+              "samples": 1123,
+              "warehouseStockRemaining": 14645.280000000057,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            },
+            {
+              "item": "pgm",
+              "name": "Platinum-group metals",
+              "samples": 1097,
+              "warehouseStockRemaining": 2935.0499999999815,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            },
+            {
+              "item": "copper",
+              "name": "Copper",
+              "samples": 885,
+              "warehouseStockRemaining": 78274.60000000024,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            }
+          ]
+        },
+        {
+          "type": "regAssemble",
+          "name": "Regulator assembly batch",
+          "batches": 73,
+          "staffedCapacity": 267.9050691751879,
+          "utilization": 0.27248457905163415,
+          "busyMachineHours": 31.0210566398961,
+          "waitingMachineHoursAtLeast": 3.533333333333333,
+          "blockedMachineHours": 81.55,
+          "missingMaterials": [
+            {
+              "item": "regSense",
+              "name": "Regulator sensing element",
+              "samples": 186,
+              "warehouseStockRemaining": 3093,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            },
+            {
+              "item": "regValve",
+              "name": "Regulator valve",
+              "samples": 39,
+              "warehouseStockRemaining": 3093,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            }
+          ]
+        },
+        {
+          "type": "regMachine",
+          "name": "Regulator body machining batch",
+          "batches": 110,
+          "staffedCapacity": 262.7796785617635,
+          "utilization": 0.418601623238327,
+          "busyMachineHours": 79.17663525963964,
+          "waitingMachineHoursAtLeast": 21.833333333333332,
+          "blockedMachineHours": 94.86666666666666,
+          "missingMaterials": [
+            {
+              "item": "chromium",
+              "name": "Chromium alloy",
+              "samples": 1057,
+              "warehouseStockRemaining": 253289,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            },
+            {
+              "item": "nickel",
+              "name": "Nickel alloy",
+              "samples": 870,
+              "warehouseStockRemaining": 1070186.400000002,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            },
+            {
+              "item": "iron",
+              "name": "Iron alloy",
+              "samples": 725,
+              "warehouseStockRemaining": 1744980,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            }
+          ]
+        },
+        {
+          "type": "calibrate",
+          "name": "Calibration / functional test stand",
+          "batches": 125,
+          "staffedCapacity": 251.7684405311571,
+          "utilization": 0.4964879622572507,
+          "busyMachineHours": 101.41308417536958,
+          "waitingMachineHoursAtLeast": 121.03333333333333,
+          "blockedMachineHours": 1.35,
+          "missingMaterials": [
+            {
+              "item": "core",
+              "name": "Assembled IE-4 ion engine",
+              "samples": 7262,
+              "warehouseStockRemaining": 0,
+              "upstreamOutputRemaining": 1,
+              "unallocatedWipRemaining": 0
+            }
+          ]
+        },
+        {
+          "type": "package",
+          "name": "Robotic packaging / palletizing station",
+          "batches": 234,
+          "staffedCapacity": 296.92842328230427,
+          "utilization": 0.7880687116892304,
+          "busyMachineHours": 240.48603414568007,
+          "waitingMachineHoursAtLeast": 81.33333333333333,
+          "blockedMachineHours": 0.03333333333333333,
+          "missingMaterials": [
+            {
+              "item": "tested",
+              "name": "Certified IE-4 ion engine",
+              "samples": 4880,
+              "warehouseStockRemaining": 0,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            }
+          ]
+        },
+        {
+          "type": "qa",
+          "name": "QA / certification acceptance stand",
+          "batches": 196,
+          "staffedCapacity": 246.62435415644043,
+          "utilization": 0.7947309205143299,
+          "busyMachineHours": 178.96075905039334,
+          "waitingMachineHoursAtLeast": 61.9,
+          "blockedMachineHours": 0.7166666666666667,
+          "missingMaterials": [
+            {
+              "item": "calibrated",
+              "name": "Calibrated IE-4 ion engine",
+              "samples": 3714,
+              "warehouseStockRemaining": 0,
+              "upstreamOutputRemaining": 0,
+              "unallocatedWipRemaining": 0
+            }
+          ]
+        }
+      ],
+      "dispatchUsesCarriedInventory": true,
+      "rawStockVersusDelivery": "Warehouse stock remaining does not establish delivery access or available transport. Diagnose routing, queues and finite buffers separately from total raw stock."
+    }
+  }
 }

@@ -19,6 +19,7 @@ const FactoryEngine=(()=>{
    for(let a=0;a<(m.angle||0);a++){[x,y]=[h-1-y,x];[w,h]=[h,w]}return [m.x+x,m.y+y];
   });
  }
+ function attachmentAt(m,specs,kind,x,y){const s=specs[m.type];if(s.port!=='flex'||!['input','output'].includes(kind))return null;for(const side of ['left','right','top','bottom']){const size=side==='left'||side==='right'?s.h:s.w;for(let i=0;i<size;i++){const position=(i+.5)/size,candidate={...m,[kind+'Side']:side,[kind+'Position']:position};if(accessPoints(candidate,specs,kind==='output').some(p=>p[0]===x&&p[1]===y))return {side,position}}}return null}
  function pathCapacity(p){return p.kind==='belt'?280:p.kind==='cart'?145:22}
  function storageProfile(item,materials){
   const m=materials[item],tank=['coolant','tibanna'].includes(item),metal=['iron','nickel','cobalt','chromium','copper','silver','gold','pgm'].includes(item);
@@ -148,6 +149,6 @@ const FactoryEngine=(()=>{
   dailyOutputs.push(stage.qa?.actual??stage[sorted.at(-1)?.type]?.actual??0);
   return {warmupDays,dailyOutputs,machines,stage,stocks,buffers,traffic,details,diagnostics,routes:[...routes.values()],links:[...links.values()],remainingSupply,steps,hours};
  }
- return {operatorLimit,crewLimit,productiveCrew,cartCells,equipmentModel,storageProfile,simulate,staffing,requiredWorkers,effectiveRate,ratedRate,accessPoints,pathCapacity,storageCap,topological};
+ return {attachmentAt,operatorLimit,crewLimit,productiveCrew,cartCells,equipmentModel,storageProfile,simulate,staffing,requiredWorkers,effectiveRate,ratedRate,accessPoints,pathCapacity,storageCap,topological};
 })();
 if(typeof module!=='undefined')module.exports=FactoryEngine;

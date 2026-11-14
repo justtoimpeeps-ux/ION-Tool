@@ -22,7 +22,7 @@
   "normalPaidManHours": 29250,
   "paidManHours": 31308.46739463602,
   "coreTests": {
-    "passed": 69,
+    "passed": 71,
     "failed": 0,
     "skipped": 0
   },
@@ -39,6 +39,10 @@
     },
     {
       "command": "node tests/capital-browser.cjs http://127.0.0.1:8000",
+      "status": "passed"
+    },
+    {
+      "command": "node tests/inventory-browser.cjs http://127.0.0.1:8000",
       "status": "passed"
     },
     {
@@ -60,22 +64,35 @@
     {
       "command": "node tests/replay-v4.cjs http://127.0.0.1:8000/dist/ION_Campus_Planner_v4_2.html",
       "status": "passed"
+    },
+    {
+      "command": "node tests/inventory-browser.cjs http://127.0.0.1:8000/dist/ION_Campus_Planner_v4_2.html",
+      "status": "passed"
+    },
+    {
+      "command": "node tests/attachments-browser.cjs http://127.0.0.1:8000/dist/ION_Campus_Planner_v4_2.html",
+      "status": "passed"
     }
   ],
   "playback": {
-    "fps": 60.00134834490651,
-    "p95FrameMs": 16.80000000000291,
+    "fps": 58.68389819332716,
+    "p95FrameMs": 16.799999999999272,
     "frames": 89,
     "pause_freezes_animation": true,
-    "all_four_orientations_preserve_aspect_ratio": true
+    "all_four_orientations_preserve_aspect_ratio": true,
+    "corrupt_import_preserves_playback": true
   },
   "recipePreservation": "Exact expanded raw recipe equality against recovery checkpoint 87676c2, plus baseline recipe conservation tests",
-  "matchingReplaySha256": "2770de5266f3128e69a3d6b15f5501a2eec05b46b68d55aac68a38a7fb2fc33e",
+  "matchingReplaySha256": "a71f49a2b80c4ad6270b39c6d7b8e3a2858590cc5348b63162389cec2fa39051",
   "packaging": {
     "embeddedAtlases": true,
     "embeddedWorkers": true,
     "noAdditionalHTTPRequestsInStandaloneWorkflow": true,
-    "originalV41DownloadsUnchanged": true
+    "originalV41DownloadsUnchanged": true,
+    "sourceZipTestsPassed": 71,
+    "rebuiltStandaloneByteIdentical": true,
+    "replayTransport": "ION-gzip-1 compressed portable JSON",
+    "serverRestartAfterEnvironmentReconnect": "HTTP and package version verified"
   },
   "continuationValidation": "CONTINUATION_V4_2.json",
   "sustainable247PerDayDemonstrated": false,
@@ -87,6 +104,14 @@
     "Legacy VC capability and prices migrate without becoming in-house fabrication.",
     "Failed scoped imports preserve view, revision, history and layouts.",
     "Replay schema rejects corrupt costs, events, cargo and ledgers before replacing playback.",
-    "Exact replay signature includes upgrades, staffing, attachments and storage model."
-  ]
+    "Exact replay signature includes upgrades, staffing, attachments and storage model.",
+    "Direct floor input/output attachment choice, occupied/interior rejection, no-op, Escape and Undo.",
+    "Placement ghosts preserve proportions in every rotation.",
+    "Workspace map-array shapes reject before JSON serialization can drop inventory."
+  ],
+  "continuationReplaySha256": {
+    "ION_Orinda_Day_3_replay.json": "9b593318106e4ca5889c68a75f29520867d4f210a887c580029384338ebdb6cd",
+    "ION_Orinda_Day_2_replay.json": "1eb59e30ae6ed2fdb1ba21762d57ab781d67030628eeb810fe7652554fd4d4bf"
+  },
+  "verified_at_utc": "2026-11-14T03:28:56.792372+00:00"
 }
