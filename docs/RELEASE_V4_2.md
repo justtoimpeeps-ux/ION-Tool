@@ -64,3 +64,9 @@ Independent reconstruction of every carrier reservation found **zero cell overla
 For flexible equipment, Tile actions now offers **Choose input/output point on floor**. Available empty boundary squares highlight; click one to set the physical attachment. Occupied/interior squares reject, Escape cancels, and Undo restores the prior point. Selecting the current square is a no-op. Test the proposal to redraw actual routed flows; historical replays are not rewritten. Fixed ports remain fixed. Placement/move ghosts now use the same fitted transform as installed machinery, including rotated footprints.
 
 Malformed workspace map arrays that would lose inventory or ledger-series identities during JSON serialization are rejected before import. The complete core suite now contains 71 passing tests.
+
+## User-packet review
+
+The full resupplied packet was audited against code and behavior in `handoff/V4_2_PACKET_AUDIT.md`. This review corrected walking-handler silhouettes, neutral campus speeders with separate cargo, generic process overlays and repeated finished-workpiece plates. Working plates now follow recorded cycle stages, including ingredients, assembly and output; all 33 roles have process motion. The user's request for easier recognition adds distinct pictograms and matching color accents to floor and palette art while retaining the machinery designs. Idle and paused work remains still. Recipes, physical quantities, staffing, layout identities and ledger postings are unchanged.
+
+`PACKET_AUDIT_VALIDATION_V4_2.json` records fresh checks and a full-campus day, separately from earlier reconstruction evidence.

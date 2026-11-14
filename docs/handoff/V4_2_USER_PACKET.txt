@@ -1,0 +1,484 @@
+ION Factory Planner — V4.2 reconstruction handoff
+Objective and recovery rules
+Continue developing the existing browser-based ION factory planner. It is a working factory design and operations tool with Factorio-inspired visualization, not merely a decorative game.
+
+The original V4.2 workspace is inaccessible. Do not reset, replace, or modify the original environment. Reconstruct in this new task while recovery continues.
+
+Repository: justtoimpeeps-ux/ION-Tool
+
+Published V4.1 recovery point:
+- Branch: planner-v4-1-downloads
+- Commit: 0f9ba7271dfce9bf7cc09d8c1662d3615629e6bf
+- V4.1 complete ZIP
+- ZIP SHA-256: 993b7b296a700b0392e878eabfadd7a3cd92e3737498f44232db933ee296969f
+- Standalone HTML SHA-256: 595fb32857d7bfb34ada4599d75a5f0f180efc72a68324e058feaf416bf166de
+Inspect the branch and ZIP; the complete source may be inside the package rather than reflected in the repository’s main branch.
+
+Backup authorization: The user authorizes pushing recovery checkpoints to a dedicated branch. Preserve source, artwork, decisions, validation, and unfinished work. Verify each remote checkpoint. A local commit alone is not a recovery checkpoint.
+
+Publish complete source/assets and verified downloadable HTML/ZIP before calling a release delivered. Leave main unchanged unless separately instructed.
+
+Original recovery reference:
+- Feedback session: 4c586f6b-fc6b-4464-853e-538b99905da9
+- Original environment: ccarenv_b64_Y2NhcmVudl9hM2U4YzJmMGQ1ZjQ4MTkxOGZlMDE0NTQwMGIzZDNjYQ
+1. Project facts and operating model
+ION operates a Star Wars engine manufacturing campus.
+- Standard production reference: 247 engines/day for Factory A+B combined, not per factory.
+- Normal production shift: nine hours.
+- Separate pre-shift logistics and maintenance phase; it lasts as long as the modeled work requires.
+- Existing sustainable reference: approximately 90,000 engines/year combined.
+- Overtime-supported requirement: 108,800 engines/year.
+- Engine sale price: 250,000 Cr.
+- Therefore annual engine sales value at that requirement is 27.2 billion Cr.
+- On a provisional 365-day accounting basis, the requirement is approximately 298.08/day.
+- Approximately 10.9 production hours/day is only a linear planning estimate, not a demonstrated overtime requirement.
+- Standard 247/day corresponds to 61.75 million Cr/day gross production value.
+- Gross sales value is not profit.
+- A referenced 152,500 Cr/engine production expense must not have labor added again without checking which costs it includes.
+- Other service revenue of 710 million/year is separate.
+Keep source references, modeled projections, accepted modeled days, and actual ION gameplay implementation distinct.
+2. Sources and recipes
+Source documents supplied during development included:
+- Original ION_Factory_A_Simulator_V5_5(2).html
+- ION_Consolidated_Assets_Register_ORGANIZATION_UPDATED_2026-10-13(1).docx
+- ION_Logistics_110926.docx
+- ION_Consolidated_Assets_Register_110926.docx
+- Campus master-plan image
+- Canon ion-engine cutaway
+The November documents superseded earlier process details where applicable. Original development paid particular attention to register sections 4A, 7A, 8C, and 10–14.
+
+Look for preserved source extracts under docs/sources/110926/ and reconciliation documentation in the V4.1 package. Do not assume uploads from the old task are available in this new one.
+
+The user explicitly authorized filling incomplete recipes using logical industrial equivalents and adopting those values. Do not keep labeling adopted values “Assumed” in ordinary UI.
+
+Preserve recipe quantities and material conservation. Canon visual redesign was intended primarily as a functional regrouping/renaming, not permission to invent extra consumption or transform inventory.
+
+If source information is absent, identify the specific missing information rather than fabricate documented facts.
+3. Campus and initial layout
+Each square represents 2 m × 2 m.
+
+The campus has shared buildings:
+1. Central receiving/raw-material warehouse
+2. Precision machining hall
+3. Subassemblies/WIP
+4. Final assembly, calibration, and testing
+Remaining production processes are split between Factory A and Factory B.
+
+Shared buildings support combined campus throughput; do not halve their requirements as though each served only one factory.
+
+Factory C starts unbuilt.
+
+Initial machine quantities must reflect:
+- Complete production sequence
+- Plausible machine capabilities
+- Appropriate staffing
+- Reasonable approximate ratios
+- Existing asset inventory
+Do not infer arbitrary machine counts merely by dividing production by workforce. Initial layouts need not be optimized, but grossly implausible ratios are unacceptable.
+
+Determine the footprint after placing the necessary equipment, storage, and access. Do not retain an obsolete oversized floor.
+
+User prefers tight, organized layouts with limited dead space. Buildings should be near-square or portrait rectangles to favor vertical scrolling.
+
+Preserve imported/user layouts. Repacking existing layouts must be an explicit proposal with Undo.
+
+Recorded V4.2 fresh-layout dimensions were:
+Building	Squares
+Receiving	77 × 107
+Factory A	67 × 75
+Factory B	65 × 73
+Subassemblies	49 × 55
+Precision machining	79 × 87
+Final assembly/test	57 × 63
+
+
+These are reconstruction references, not dimensions to force regardless of the restored source.
+4. Workforce and equipment
+Recorded fixed inventory:
+- 934 fixed assets
+- 3,250 workers, including shared QA
+- Fixed skill distribution: 1,235 / 1,235 / 618 / 146 / 16 across Tiers 1–5
+- This approximates the requested 38% / 38% / 19% / 4.5% / 0.5%.
+- Preserve worker identities, assignments, roles, and spare workers.
+- No automatic experience progression or promotions.
+- No automatic hiring to make production work.
+Workers can remain individually identified for assignment without accumulating XP.
+
+Different machines require different staffing. Enforce physical operator limits in both assignment UI and calculations.
+
+Some equipment permits useful additional helpers, within realistic caps. Extra workers must not exceed mechanical capacity.
+
+V4.2 allowed generally zero or one helper depending on process, with modest benefit. Legacy imports with excess assigned workers should preserve and flag the roster; do not silently delete people. Excess workers do not contribute productive machine hours.
+
+Track paid manpower for normal shifts, preparation, and maintenance. The ordinary nine-hour paid base is:
+
+3,250 × 9 = 29,250 man-hours/day.
+5. Day calculation, inventories, and maintenance
+Calculate the day first, then replay its recorded activity.
+- Inventory is finite and conserved.
+- Machines need complete recipes.
+- Buffers have finite capacity.
+- Material reservations, unfinished work, vehicle loads, and closing stock remain accounted for.
+- Leftovers carry forward.
+- Do not reset or create material simply to make playback look stocked.
+- Opening certified finished-engine stock is zero.
+- Approximately 750 engine-equivalents of opening WIP was an estimated allocation, not finished inventory.
+Pre-shift logistics replenishes the deficits required to begin production. It is separately timed and costed. Stations may need further deliveries during the shift.
+
+Maintenance can occur before production using qualified personnel, parts, and time.
+
+Condition must have operational meaning. Recorded V4.2 behavior included wear of approximately 0.2 percentage points per nine busy hours, with maintenance improving condition. Preserve the recovered model where possible.
+
+Only accepting an operating day carries its closing state forward. Replaying, seeking, loading a replay, or calculating an unaccepted preview must not post another day, expense, wear change, or inventory transaction.
+
+Workers enter before work and leave after the shift.
+6. Transport and roads
+Transport modes:
+- Belt: most efficient
+- Cart/speeder path
+- Walk: least efficient
+All unoccupied floor squares are walkable by default.
+
+Cart-path squares are still available for machine placement; painting a road does not make an otherwise empty square occupied equipment.
+
+Cart paths must be at least two squares wide:
+- Narrow segments outlined/highlighted red.
+- Carriers cannot use them as valid cart lanes.
+- Walkers may still traverse appropriate floor.
+- V4.2 classified cart cells as valid when belonging to a complete 2×2 cart block.
+- Fresh baseline floors had no narrow cart cells.
+Keep physical pathfinding, collision/traffic reservations, yields, loading, and delivery.
+
+Vehicles are small Star Wars repulsorlift speeders, not wheeled forklifts. Slight bobbing while moving is desirable.
+
+Cargo should be visibly identifiable in the vehicle bed. Retain material color cues without coloring the entire vehicle unrealistically.
+
+Load limits depend on:
+- Mass
+- Volume
+- Item dimensions/envelope
+- Vehicle capacity
+A vehicle should carry far fewer complete engines than metal bars. A wire spool or crate may reasonably represent multiple units.
+
+Do not change physical quantities merely to match sprite size.
+
+Roads should look continuous, with worn markings and Star Wars-like stencils. Add very faint gridlines to both walk space and roads.
+
+Campus-level interbuilding transfers remain important. Removing their sidebar panel does not remove their calculations or map flows.
+7. Material-flow visualization
+Preserve and refine:
+- Separate parallel material lines rather than complete overlap.
+- Visible connections to machine access points.
+- Direction arrows at both the start and end.
+- Arrows approximately 50% larger than early versions.
+- Line spacing sufficient for those arrows.
+- Hover tooltips identifying transported material and relevant flow information.
+- Building input/output access squares.
+- Fixed ports where physically appropriate and flexible access elsewhere.
+Flexible input/output borders should alternate/ribbon their input and output colors, with longer dashed segments.
+
+User also requested choosing/redrawing/moving flow attachment points. Audit V4.1 for this; do not claim interactive routing is complete merely because automatic endpoints exist.
+
+Keep the three-square stock/reserve indicator.
+
+Machine status light:
+- Steady red: unmanned/not operating
+- Yellow: idle, waiting, or under maintenance
+- Green: producing
+- Brighter green: higher operating intensity
+- No generic blinking-green indicator regardless of actual state
+8. Tile appearance and information
+“Tile” means equipment/workstation. “Square” means a floor-grid space.
+
+Tiles must have plausible physical footprints, not identical dimensions.
+
+Normal tile text should contain only:
+1. Centered TYPE #
+2. Current production / capacity in the established format
+Keep recipes in hover/detail popups, not written over the machine artwork.
+
+Popups should explicitly say what the machine makes, with inputs, quantities, supply/demand, staffing, condition, capacity, and other useful details.
+
+Retain double-click detail/assignment behavior.
+
+Use clean top-down machinery artwork with distinct images for different processes where possible.
+
+Preserve image proportions: contain-fit artwork within its footprint instead of stretching it. Keep mechanism animation aligned with the fitted artwork.
+
+The user liked the generated machine art. The final correction request concerned askew/misshapen sprites.
+9. Engine redesign and artwork consistency
+The engine should resemble the supplied Star Wars ion-engine cutaway functionally and visually.
+
+Cutaway elements included:
+- Ion acceleration grids
+- Vectoring grids
+- Ionization chamber
+- Magnet ring
+- Charge inputs
+- Particle energizer
+- Injector-relay housing
+- Propellant pump
+- Solar/power lines
+Keep eight major production groups by grouping related functions:
+Existing key	Revised meaning
+housing	Injector-relay housing and frame
+field	Magnet-ring assembly
+energy	Ion-grid and particle-energizer cassette
+gas	Propellant pump and injection set
+electronic	Charge-input control electronics
+thermal	Ionization chamber and thermal jacket
+interface	Power-feed and mounting interfaces
+sensor	Engine sensors and safety instrumentation
+
+
+IE-4 remains the project’s designation. Do not claim exact canonical specifications for the pictured engine.
+
+Update all representations consistently:
+- Item icons
+- Intermediate parts
+- Completed engine
+- Certified/packaged engine
+- Vehicle cargo
+- Storage piles
+- Workpieces already baked into machine artwork
+- Animated workpieces
+A new engine icon alone is insufficient.
+
+Tiny periodic abbreviations belong only imprinted on metal bar graphics: Fe, Ni, Co, Cr, Cu, Ag, Au, Pt. Use full material names elsewhere.
+10. Animation and storage visuals
+Requested process motion includes:
+- Molten material pouring into molds
+- Furnace heat/glow
+- Wire feeding and winding
+- Robot arms moving
+- Welding sparks
+- Machining heads
+- Press/forming movement
+- Coating spray
+- Calibration/test scanning
+- Engine parts becoming finished engines
+Use lightweight animation driven by actual recorded work state and cycle progress. Freeze appropriately when paused. Idle artwork must not falsely show active production.
+
+Recorded V4.2 used rendered WebP atlases plus canvas overlays, not heavyweight 3D.
+
+Lost asset filenames:
+- assets/machine-atlas.webp
+- assets/item-atlas.webp
+- assets/ion-engine-atlas.webp
+If these cannot be recovered, regenerate coordinated art rather than silently reverting to generic symbols.
+
+Storage visuals must represent actual material type and percentage full: bars, crates, tanks, spools, parts, engines, etc.
+
+Storage capacity must be audited against material demand, physical size, stacking/volume, and load limits. Retain empty/full visual distinction and capacity bars.
+
+Show completed output waiting for pickup.
+11. Interface layout and controls
+Keep the factory floor prominent.
+
+Top area:
+- Compact header
+- Save/export controls between title and test controls
+- Workforce button spaced between save controls and Test Current
+- Location selector, then buildings for that site
+- Campus map is the first building/view
+- Compact operating-scenario options
+- Implementation planning information near the top
+Remove:
+- Campus footprint display
+- Forecast basis control
+- Shared cargo handling control
+- Collaborative blueprints sidebar box
+- Dedicated equipment/storage detail sidebar section
+- Sources and assumptions panel
+- Redundant bottom “calculating production” message
+- Interbuilding cargo-flow sidebar panel
+Keep:
+- Flow display, higher in the left sidebar
+- Production dashboard
+- Daily manpower cost, right sidebar above production dashboard, visible once calculated
+- Diagnostics collapsed near the bottom
+- Ledger for detailed accounting
+- Hover and double-click details
+Flow material list: one item per line; bought items use Item name (Purchased).
+
+Default scale:
+- The former 70% square size becomes the new 100%.
+- Recorded implementation retained logical CELL = 48 and used .7 × zoom / 100.
+- Workers and vehicles slightly larger.
+- Preserve readable workflow/arrow size.
+- Slightly larger tile lettering where needed.
+Calculation uses a prominent progress overlay over the floor, with phase/progress/errors. Keep scrolling functional during replay.
+
+Dragging should stay responsive and avoid expensive unnecessary recomputation.
+12. Build palette and equipment choices
+Keep the visual two-stage palette.
+- B opens Build.
+- “Add Station” shows process categories.
+- Selecting a process shows machine/design alternatives.
+- “Define Space” offers belt, cart path, walk path, storage, expand/add floor, etc.
+- Hover offers name, role, recipe, cost, staffing, lead time, and maximum capability.
+- Selected placement appears as a ghost cursor.
+- R rotates the ghost or appropriate selected equipment.
+- Escape cancels.
+- Separate Inspect/Move tools are unnecessary; normal interaction already supports them.
+- Rotate does not need its own palette control.
+Offer 2–4 plausible commercial equivalents per process where reasonable, plus an eligible in-house option.
+
+Company roles:
+- Spartan: mining and mineral processing
+- VC: manufacturing and production
+Do not offer Spartan variants indiscriminately on factory manufacturing processes.
+
+VC generation-I options should be modestly better than the best commercial alternative, with significantly longer fabrication/install time.
+
+Recorded V4.2 used approximately 6% better nominal throughput.
+
+Preferred economics:
+- No external equipment purchase price for in-house fabrication
+- Explicit warehouse-material fabrication bill
+- Longer lead time
+- Material and labor obligations still matter
+- No invented intercompany sale/profit
+Validate sufficient actual materials before scheduling. Reserve/debit them once. Record fabrication WIP/allocation; never consume the bill again at project completion.
+
+Legacy catalogue choices remain importable even if retired from new placement.
+13. Implementation schedules and document reconciliation
+Designing an improvement does not implement it in ION.
+
+Maintain:
+- Editable proposal
+- Current implemented configuration
+- Scheduled project
+- Completion date
+- Capital quote
+- Actual recorded spending
+- Material allocations
+- Production before/after
+- Equipment/staffing/layout changes
+Old production applies until completion. New committed configuration and projections apply from completion.
+
+Advancing a calendar date alone must not fabricate operating days or production.
+
+User must be able to update external registers without guessing or double-counting.
+
+Provide two distinct exports:
+Save file
+Complete resumable workspace:
+- Sites/buildings/layouts
+- Equipment/model/upgrades/condition
+- Worker assignments and spare roster
+- Warehouses/buffers/WIP
+- Operating state
+- Proposal and implemented snapshots
+- Projects, dates, costs
+- Stable identifiers
+ION change report
+Structured reconciliation data:
+- What changed
+- Scheduled/completed status and dates
+- Before/after assets and configuration
+- Staffing and inventories
+- Production by step
+- Resource consumption
+- Paid man-hours and costs
+- Capital quotes, cash records, material allocations
+- Accepted modeled operating days
+Recorded V4.2 report format: ION-change-report-1.
+
+Use persistent workspace ID and stable transaction IDs. Re-exporting must not create another debit or expense.
+
+Clearly separate:
+- Quotes
+- Cumulative spending
+- Signed adjustments
+- Material reservations
+- Accepted operating results
+- Unaccepted forecasts
+If the same accepted operating entry appears in multiple report sections, label those as views of the same transaction, not additional postings.
+
+Report export is read-only reconciliation, not a replacement save file.
+
+Preserve older import compatibility. Do not silently import a reconciliation report as a complete workspace.
+14. Recorded V4.2 implementation structure
+These were the recorded modules; verify against restored V4.1 before recreating:
+File	Responsibility
+js/app.js	Main UI, scale, rendering, controls
+js/campaign.js	Day calculation/replay/acceptance
+js/day-engine.js	Physical operating-day simulation
+js/engine.js	Aggregate solver and shared rules
+js/baseline.js	Initial inventory allocation and packing
+js/data.js	Processes, recipes, models
+js/register.js	Source facts
+js/implementation-model.js	Dated project state
+js/implementation.js	Project UI/workflow
+js/storage.js	Portable/compressed storage
+js/capital.js	In-house material allocation
+js/ion-export.js	Reconciliation report
+js/sprite-assets.js	Atlas loading/cropping/caching
+js/process-motion.js	Work-driven animation
+js/floor-art.js	Road/speeder rendering
+
+
+Recorded additional artifacts:
+- docs/RELEASE_V4_2.md
+- docs/VALIDATION_V4_2.json
+- docs/handoff/ION_IE4_Canon_Revision_Packet.md
+- docs/handoff/ION_IE4_Raw_Recipe_Unchanged.csv
+- docs/handoff/ION_Planned_Equipment_Design_Catalogue.csv
+- Matching examples/ION_Orinda_Day_1_replay.json
+- Self-contained HTML and complete source ZIP
+Bundle artwork and workers into the standalone HTML. It must not require a server or external asset downloads for normal desktop use.
+15. Performance and validation evidence
+Do not interpret these historical results as results of the reconstructed build. Rerun appropriate checks.
+
+Recorded V4.1:
+- Full fresh compact day: 246 certified, 194 dispatched
+- Approximately five hours modeled preparation
+- Fixed-input optimization reduced calculation from about 1,211 to 434 seconds
+- Replay approximately 58–59 FPS
+Recorded inaccessible V4.2:
+- All 934 assets present
+- Nine-hour production shift
+- 244 certified, 194 dispatched
+- 6.5578 hours modeled preparation
+- 446.16 seconds calculation
+- 7,305 trips
+- Maximum material-balance error approximately 1.63 × 10⁻⁹
+- Full replay approximately 56.2 FPS
+- Paid man-hours approximately 31,255.88, including preparation and maintenance
+This did not demonstrate the full source baseline or overtime contract output. Preserve that distinction.
+
+Reported checks passed for:
+- Recipes and baseline asset/worker counts
+- Material conservation
+- Roads and operator limits
+- In-house allocation once/insufficient-stock rejection
+- Stable report transactions
+- Source and packaged save/import
+- Proposal versus implementation
+- Accepting operating days once
+- Next-day inventory carry
+- Replay/seek without posting
+- Build palette, rotation, dragging, Undo
+- Scrolling during playback
+- Worker departures
+- Aspect-preserving sprite fitting
+- Distinct canon-aligned item sprites
+- Visible process animation
+- ZIP integrity
+Use meaningful tests, not claims based only on screenshots.
+16. Reconstruction order
+1. Recover and verify V4.1 source/package.
+2. Push a verified remote recovery checkpoint immediately.
+3. Inventory existing functionality against this handoff.
+4. Create a checklist of present, missing, and uncertain behavior.
+5. Reconstruct data integrity, saves/reports, staffing, roads, and capital accounting.
+6. Reconstruct UI/layout changes.
+7. Integrate coordinated engine/machine/item/speeder art and animation.
+8. Run focused tests, then a full-campus physical day.
+9. Generate a replay matching the exact release layout.
+10. Publish source/assets, standalone HTML, ZIP, validation, and outstanding limitations.
+11. Verify remote files and actual download links.
+Push remote checkpoints throughout rather than waiting for the final release.
+
+Do not tell the user that recovered V4.2 has been restored when it has actually been reconstructed. Do not quietly omit requests because the old source is inaccessible.

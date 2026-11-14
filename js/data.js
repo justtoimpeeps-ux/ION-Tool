@@ -347,7 +347,7 @@ const EQUIPMENT_PROFILES={
  regAssemble:[2,1,2,'bench','Any exposed edge'],regTest:[2,2,1,'test','Any exposed edge'],sealForm:[2,2,1,'press','Inline mold-feed/discharge'],sealInspect:[1,1,1,'inspection','Any exposed edge'],couplerCoat:[3,2,1,'coating','Any exposed edge'],couplerFit:[2,1,1,'inspection','Any exposed edge']
 };
 for(const [id,[w,h,workers,art,access]]of Object.entries(EQUIPMENT_PROFILES)){
- const s=SPECS[id];Object.assign(s,{w,h,workers,art,accessDescription:access,footprintSource:'Assumed industrial working envelope; rounded up to 2 m squares'});DEFAULT_STAFFING[id]=workers;
+ const s=SPECS[id];Object.assign(s,{w,h,workers,art,accessDescription:access,footprintSource:'Adopted industrial working envelope; rounded up to 2 m squares'});DEFAULT_STAFFING[id]=workers;
  s.port=['Inline press feed/discharge','Inline feed/discharge','Inline wire-feed/discharge'].includes(access)?'fixed':'flex';
  if(access.startsWith('Front')||access.startsWith('Shared front')){s.port='fixed';s.access=[{kind:'in',side:'bottom',position:.5},{kind:'out',side:'bottom',position:.5}]}
 }
