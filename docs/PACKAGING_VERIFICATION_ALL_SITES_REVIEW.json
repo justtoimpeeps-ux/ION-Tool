@@ -1,6 +1,6 @@
 {
   "build": "All sites review",
-  "source_commit": "55f55fbc9a4e6bce016f8117812087ba02d83882",
+  "source_commit": "ce7608709964f3bfe771b596581eb1e96da4b44d",
   "branch": "recovery/v4-2-reconstruction",
   "core_tests": 104,
   "source_zip_tests": 104,
@@ -28,7 +28,8 @@
     "payroll": "PASS separate prep identities and per-person marginal overtime; displayed crew split; accept/save/reload and legacy recorded replay.",
     "duty_payroll": "PASS real 2,000-person roster: only assigned production staff and separate active prep staff charged; legacy defaults excluded, deliberate standby opt-in retained, correct Proposal/Implemented panel and valid save.",
     "delete_shortcuts": "PASS D/Delete confirmation/cancel, machines/storage/paths to walk, worker and implemented-stock preservation, Undo, fixed access, read-only/typing/modal/repeat guards and valid saves.",
-    "replay_speeds": "PASS exactly 10x/100x/1000x, 100x default and exact one-second advancement at each multiplier."
+    "replay_speeds": "PASS exactly 10x/100x/1000x, 100x default and exact one-second advancement at each multiplier.",
+    "map_identifiers": "PASS 15 image maps / 192 accessible named highlights with no added numeric badges/text or duplicate building key; hover and keyboard landmark/interior flows preserved."
   },
   "campus_interiors": 138,
   "map_only_landmarks": 54,
@@ -42,5 +43,6 @@
   "delete_shortcuts_review": "DELETE_SHORTCUTS.md",
   "core_tests_last_run": "f65adc1c47a723ea3e1a52b75b236171bf2c90a5",
   "source_zip_tests_last_run": "f65adc1c47a723ea3e1a52b75b236171bf2c90a5",
-  "replay_speed_change_scope": "UI selector values only; existing numerical/unit checks are unchanged."
+  "replay_speed_change_scope": "UI selector values only; existing numerical/unit checks are unchanged.",
+  "map_identifier_change_scope": "Presentation only; map images, highlight geometry, simulation and saved ledgers unchanged."
 }
