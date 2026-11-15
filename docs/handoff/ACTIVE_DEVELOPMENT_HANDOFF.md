@@ -1,3 +1,7 @@
+# Replay speed choices
+
+User requested exactly 10×, 100× and 1000×. The replay speed selector now uses those values with 100× selected by default. A browser check verifies the three options and exact simulated-time advancement for each multiplier. No numerical day engine, graphics, save schema or ledger behavior changes. Keep main unchanged and verify the updated standalone/package downloads.
+
 # D / Delete removal shortcuts
 
 User requested D or Delete on a selected tile/space, with confirmation and cleared footprint restored to walk path. See `../DELETE_SHORTCUTS.md`. `removeSelectedTile` is shared by shortcuts and ordinary eraser removal, guarded to Proposal/edit mode. Cancellation is mutation-free; machine crew returns to the unassigned pool; Undo works; storage proposal deletion retains implemented stock/ledgers for existing stock-transfer handling. Fixed access and input/modal/drag/repeat guards remain. Clear selectedPath on navigation/Undo and stop stale replay overlays after removal. Deliberately cleared reference worksites use keepWorksiteOpen so the empty floor stays buildable and automatic fittings do not reappear. New browser test: `tests/delete-shortcuts-browser.cjs`. All 104 source-ZIP tests and standalone shortcut/campus/VNext checks pass. Package CRC/source/rebuild checks and immutable download verification accompany delivery; main remains unchanged.
