@@ -1,0 +1,37 @@
+{
+  "version": "0.4.3",
+  "feature_checkpoint": "558dce04d972bf6ff3596f925488913425037420",
+  "branch": "recovery/v4-2-reconstruction",
+  "main_unchanged": "718ae90c0a731e785474c3f5baba88748baff112",
+  "core_tests": {
+    "source": 115,
+    "source_failed": 0,
+    "extracted_zip": 115,
+    "extracted_failed": 0
+  },
+  "standalone_browser": {
+    "all_sites": 15,
+    "real_map_clicks": 192,
+    "independent_rosters": true,
+    "deep_vein_finite_materials": true,
+    "inline_day_worker": true,
+    "payroll_replay_validation_acceptance_reload": true,
+    "equipment_receipt_factory_order_deployment_ownership_export_reload": true,
+    "vnext_palette_station_rosters_art_cycles_c_copy_replay": true,
+    "delete_confirmation_cancel_undo_workspace": true,
+    "packet_animation_and_upright_cargo": true,
+    "offline_intercepted_document_no_external_requests": true
+  },
+  "startup_fix": "Guard sidebar installation estimate until the implementation script has loaded; standalone saved-workspace reopening now passes.",
+  "package": {
+    "html": "ION_Campus_Planner_v4_3.html",
+    "zip": "ION_Campus_Planner_v4_3.zip",
+    "zip_crc_clean": true,
+    "all_archived_files_match_current_source": true,
+    "expected_entries": 208,
+    "source_html_rebuild_identical": true,
+    "previous_release_hashes_preserved": true
+  },
+  "local_file_browser_check": "Managed test Chromium blocks file:// navigation by policy; standalone tested over loopback HTTP with embedded assets/workers and no external asset requests.",
+  "checksums": "dist/SHA256SUMS contains final artifact hashes; ZIP hash is external to avoid self-reference."
+}

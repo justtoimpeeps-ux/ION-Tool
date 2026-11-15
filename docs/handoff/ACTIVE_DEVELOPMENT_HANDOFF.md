@@ -1,3 +1,7 @@
+# V4.3 downloadable review authorized
+
+The user explicitly requested packaging the current working batch for later review. V4.3 standalone/source ZIP built and verified: 115 source/extracted tests, all 15 sites/192 map clicks, finite Deep Vein inline-worker day/payroll/replay/save/reload, equipment receipts/orders/deployment/export/reload, VNext, packet visuals and delete/Undo. Publish recovery downloads only. A standalone saved-workspace startup-order bug was fixed with a readiness guard in app.js. Main remains 718ae90c0a731e785474c3f5baba88748baff112. Earlier no-package instructions below are historical and superseded by this request. Source feature checkpoint: 558dce0. See ../RELEASE_V4_3.md and ../PACKAGING_VERIFICATION_V4_3.json.
+
 # Equipment / fleet working batch — no new edition
 
 See [equipment supply handoff](../EQUIPMENT_SUPPLY_WORKING_BATCH.md). Equipment inventory, producer-material/cell-backed factory orders, owned-fleet deployment, parallel installation estimates, Spartan raw/mining makers, direct autonomous cargo drones and dark paths are implemented in working source. Default drones zero; no main, dist or package-version change. Factory bookings reserve whole operating days conservatively; capital calendar completion does not post operating wages. One pending configuration project remains; jobs inside it run in parallel. 115 core tests pass. Equipment receipt/deployment/order/export/reload, existing 15-site/Deep Vein acceptance/reload, packet visuals and D/Delete browser checks pass. Saved as a source checkpoint on recovery only.

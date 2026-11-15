@@ -1,3 +1,7 @@
+# V4.3 batch approved for packaging
+
+User authorized the downloadable review edition on November 15, 2026. See [release notes](RELEASE_V4_3.md). The former hold below is historical and has been superseded.
+
 # V4.3 working batch — not packaged
 
 There is sufficient scope for a consolidated V4.3 review: the broader site set, complete machine cycles, corrected separate-crew/on-duty payroll and marginal overtime, confirmed D/Delete editing, replay speeds and cleaned-up map identifiers. More feature requests are not required to justify the version number.

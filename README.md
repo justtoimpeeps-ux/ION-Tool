@@ -1,3 +1,11 @@
+# ION Campus Planner V4.3 — downloadable review
+
+Open `dist/ION_Campus_Planner_v4_3.html` in a desktop browser. It is self-contained and includes all 15 sites, furnished interiors, animated machinery, equipment inventory/orders, parallel installation estimates and autonomous Spartan cargo drones.
+
+Downloads: [standalone HTML](https://github.com/justtoimpeeps-ux/ION-Tool/raw/refs/heads/recovery/v4-2-reconstruction/dist/ION_Campus_Planner_v4_3.html) · [source ZIP and standalone](https://github.com/justtoimpeeps-ux/ION-Tool/raw/refs/heads/recovery/v4-2-reconstruction/dist/ION_Campus_Planner_v4_3.zip). Download the HTML, then open the saved file; GitHub's source preview does not run the application.
+
+See [V4.3 review notes](docs/RELEASE_V4_3.md) for what to try. Build with `npm run package`; source has no runtime dependencies. The ZIP retains current source, artwork, tests, documentation and current replay examples; historical duplicate archive/continuation traces remain in the repository. Earlier downloads remain available and unchanged. Main is unchanged.
+
 # All-sites review build
 
 Use `dist/ION_Campus_Planner_v4_2_all_sites_review.html` for the complete15-site review. It includes seven mines, four processing plants and Spartan HQ/manufacturing in addition to the three earlier sites. Open **Sites + → Review all 15 sites**. See [review guide](docs/ALL_SITES_REVIEW.md) for reference facts, adopted allocations, measured site-day checks and limitations.
