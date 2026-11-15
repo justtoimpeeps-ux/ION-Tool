@@ -1,3 +1,7 @@
+# Remove duplicate map identifiers
+
+User reported multiple identifiers per building on the map/site images. Image-backed reference maps now retain only the labels baked into the artwork: added numbered badges/text and the repeated HTML building key are omitted. Clickable highlight rectangles, hover titles, accessible names and Enter/Space navigation remain. Non-image schematic fallbacks retain their labels/key. Browser verification covers all 15 maps and 192 named keyboard-accessible regions, plus campus hover/interior/landmark behavior and unchanged saved data. This is presentation only; no geometry, staffing, costs, animation assets or day calculations change. Deliver a verified standalone/source ZIP on recovery and keep main unchanged.
+
 # Replay speed choices
 
 User requested exactly 10×, 100× and 1000×. The replay speed selector now uses those values with 100× selected by default. A browser check verifies the three options and exact simulated-time advancement for each multiplier. No numerical day engine, graphics, save schema or ledger behavior changes. Keep main unchanged and verify the updated standalone/package downloads.
